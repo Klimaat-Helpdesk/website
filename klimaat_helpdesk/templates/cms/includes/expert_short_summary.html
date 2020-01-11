@@ -1,0 +1,38 @@
+{% load static i18n %}
+<article class="media">
+  <figure class="media-left">
+    <p class="image is-64x64">
+      <img src="{% static 'images/portrait_placeholder.png' %}" alt="profile picture">
+    </p>
+  </figure>
+  <div class="media-content">
+    <div class="content">
+      <p>
+        <strong><a href="">{{ expert.name }}</a></strong>
+        <br>
+        {{ expert.profile.bio }}
+      </p>
+    </div>
+    {% with profile=expert.expert_profile %}
+    <nav class="level is-mobile">
+      <div class="level-left">
+        {% if profile.website %}
+        <a class="level-item" href="{{ profile.website }}">
+          <span class="icon is-small"><i class="fas fa-link"></i></span>
+        </a>
+        {% endif %}
+        {% if profile.twitter_profile %}
+        <a class="level-item" href="https://www.twitter.com/{{ profile.twitter_profile }}">
+          <span class="icon is-small"><i class="fab fa-twitter"></i></span>
+        </a>
+      {% endif %}
+      {% if profile.linkedin_profile %}
+        <a class="level-item" href="https://www.linkedin.com/in/{{ profile.linkedin_profile }}">
+          <span class="icon is-small"><i class="fab fa-linkedin"></i></span>
+        </a>
+      {% endif %}
+      </div>
+    </nav>
+    {% endwith %}
+  </div>
+</article>

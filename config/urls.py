@@ -12,8 +12,7 @@ from klimaat_helpdesk.cms.views import HomePage
 
 urlpatterns = [
     # path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
-    # path("", HomePage.as_view()),
-    path("about/", TemplateView.as_view(template_name="pages/about.html"), name="about"),
+    path("", include('klimaat_helpdesk.core.urls', namespace='core')),
     path(settings.ADMIN_URL, admin.site.urls),
     path("users/", include("klimaat_helpdesk.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),

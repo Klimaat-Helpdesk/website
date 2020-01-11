@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load i18n static wagtailcore_tags %}
+
+{% block head %}
+  <section class="hero is-primary is-bold">
+    <div class="hero-body">
+      <div class="container">
+        <h2 class="title is-size-2-desktop is-size-3-touch">Helpdesk Klimaat</h2>
+        <h3 class="subtitle is-size-4-desktop is-size-5-touch">{% blocktrans %}All the questions you may have
+          regarding climate breakdown, global warming, answered by experts.{% endblocktrans %}</h3>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+{% block content %}
+  <div class="container">
+    <div class="question-breadcrumb boxed">
+      <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+          <li><a href="{% url 'core:home' %}">Questions</a></li>
+{#          <li><a href="#">{{ question.category }}</a></li>#}
+          <li class="is-active"><a href="#" aria-current="page">Specific Question</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="columns">
+      <div class="column">
+        <section class="question">
+          <div class="container">
+            <div class="boxed">
+              <p class="title">{{ self.title }}</p>
+              <div class="tags">
+                {% for tag in self.get_tags %}
+                  <span class="tag"><i class="fas fa-tag"></i> {{ tag }}</span>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="answer">
+          <div class="container boxed">
+            {{ self.content|richtext }}
+          </div>
+          <hr>
+          <div class="expert-info boxed">
+            {% for expert in self.experts %}
+              {% include 'cms/includes/expert_short_summary.html' with expert=expert %}
+            {% endfor %}
+          </div>
+        </section>
+      </div>
+{#      {% include 'cms/includes/aside.html' %}#}
+    </div>
+  </div>
+{% endblock %}

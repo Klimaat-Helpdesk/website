@@ -58,6 +58,10 @@ body {
   padding: 10px;
 }
 
+.tag svg{
+  margin-right: 5px;
+}
+
 .question-breadcrumb {
   margin: 20px;
 }
