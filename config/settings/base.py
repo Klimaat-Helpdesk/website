@@ -60,9 +60,10 @@ DJANGO_APPS = [
     "django.contrib.sites",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    # "django.contrib.humanize", # Handy template tags
+    "django.contrib.humanize", # Handy template tags
     "django.contrib.admin",
 ]
+
 THIRD_PARTY_APPS = [
     "crispy_forms",
     "allauth",
@@ -72,12 +73,31 @@ THIRD_PARTY_APPS = [
     "django_celery_beat",
 ]
 
+WAGTAIL_APPS = [
+    'wagtail.contrib.forms',
+    'wagtail.contrib.redirects',
+    'wagtail.embeds',
+    'wagtail.sites',
+    'wagtail.users',
+    'wagtail.snippets',
+    'wagtail.documents',
+    'wagtail.images',
+    'wagtail.search',
+    'wagtail.admin',
+    'wagtail.core',
+
+    'modelcluster',
+    'taggit',
+]
+
 LOCAL_APPS = [
     "klimaat_helpdesk.users.apps.UsersConfig",
-    # Your stuff: custom apps go here
+    "klimaat_helpdesk.core.apps.CoreConfig",
+    "klimaat_helpdesk.experts.apps.ExpertsConfig",
+    "klimaat_helpdesk.cms.apps.CmsConfig",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
-INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + WAGTAIL_APPS + LOCAL_APPS
 
 # MIGRATIONS
 # ------------------------------------------------------------------------------
@@ -130,6 +150,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'wagtail.core.middleware.SiteMiddleware',
+    'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 ]
 
 # STATIC
@@ -232,7 +254,7 @@ LOGGING = {
     "formatters": {
         "verbose": {
             "format": "%(levelname)s %(asctime)s %(module)s "
-            "%(process)d %(thread)d %(message)s"
+                      "%(process)d %(thread)d %(message)s"
         }
     },
     "handlers": {
@@ -268,20 +290,26 @@ CELERY_TASK_TIME_LIMIT = 5 * 60
 CELERY_TASK_SOFT_TIME_LIMIT = 60
 # http://docs.celeryproject.org/en/latest/userguide/configuration.html#beat-scheduler
 CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
+
 # django-allauth
-# ------------------------------------------------------------------------------
-ACCOUNT_ALLOW_REGISTRATION = env.bool("DJANGO_ACCOUNT_ALLOW_REGISTRATION", True)
-# https://django-allauth.readthedocs.io/en/latest/configuration.html
-ACCOUNT_AUTHENTICATION_METHOD = "username"
-# https://django-allauth.readthedocs.io/en/latest/configuration.html
-ACCOUNT_EMAIL_REQUIRED = True
-# https://django-allauth.readthedocs.io/en/latest/configuration.html
-ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 ACCOUNT_ADAPTER = "klimaat_helpdesk.users.adapters.AccountAdapter"
-# https://django-allauth.readthedocs.io/en/latest/configuration.html
+ACCOUNT_ALLOW_REGISTRATION = env.bool("DJANGO_ACCOUNT_ALLOW_REGISTRATION", True)
+ACCOUNT_AUTHENTICATION_METHOD = "email"
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
+ACCOUNT_LOGOUT_ON_GET = True
+ACCOUNT_LOGIN_ON_PASSWORD_RESET = True
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
+ACCOUNT_USERNAME_REQUIRED = False
 SOCIALACCOUNT_ADAPTER = "klimaat_helpdesk.users.adapters.SocialAccountAdapter"
 
+## Custom Config
+# Wagtail
 
-# Your stuff...
-# ------------------------------------------------------------------------------
+WAGTAIL_SITE_NAME = 'Klimaat Helpdesk'
+
+# Taggit
+TAGGIT_CASE_INSENSITIVE = True
