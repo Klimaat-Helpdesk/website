@@ -3,6 +3,19 @@ body {
   /*margin-bottom: 50px;*/
 }
 
+.rich-text h2{
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #363636;
+  font-weight: 600;
+}
+
+.rich-text h3{
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+}
+
 .klimaat_helpdesk {
   display: flex;
   min-height: 100vh;

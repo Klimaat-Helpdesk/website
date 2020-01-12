@@ -39,10 +39,12 @@ class AnswerCategory(models.Model):
         allow_unicode=True,
         max_length=50,
         help_text=_('A slug to identify the category'))
+    description = models.CharField(_('description'), max_length=255, blank=False, null=True)
 
     panels = [
         FieldPanel('name'),
         FieldPanel('slug'),
+        FieldPanel('description'),
     ]
 
     class Meta:
@@ -62,10 +64,14 @@ class Answer(Page):
 
     content = RichTextField()
 
-    categories = ParentalManyToManyField('cms.AnswerCategory', blank=True)
+    excerpt = models.CharField(verbose_name=_('Short description'), max_length=255, blank=False, null=True)
+    category = models.ForeignKey(AnswerCategory, related_name='answers', on_delete=models.SET_NULL, null=True, default=None)
     tags = ClusterTaggableManager(through=AnswerTag, blank=True)
 
+    parent_page_types = ['AnswerIndexPage']
+
     content_panels = Page.content_panels + [
+        FieldPanel('excerpt', classname='full'),
         FieldPanel('content', classname='full'),
         MultiFieldPanel(
             [
@@ -75,7 +81,7 @@ class Answer(Page):
         ),
         MultiFieldPanel(
             [
-                FieldPanel('categories', widget=forms.CheckboxSelectMultiple),
+                FieldPanel('category'),
             ],
             heading=_("Categories")
         ),
@@ -100,10 +106,22 @@ class Answer(Page):
             ])
         return tags
 
+    def get_context(self, request, *args, **kwargs):
+        context = super(Answer, self).get_context(request, *args, **kwargs)
+
+        categories = AnswerCategory.objects.all()
+
+        context.update({
+            'categories': categories,
+        })
+        return context
+
 
 class AnswerIndexPage(RoutablePageMixin, Page):
     """List of answers on the website
     """
+    template = 'cms/answers_list.html'
+
     subtitle = models.TextField(help_text=_('Subtitle to show on the header of the page'))
 
     content_panels = Page.content_panels + [
@@ -128,11 +146,15 @@ class AnswerIndexPage(RoutablePageMixin, Page):
         except EmptyPage:
             answers = paginator.page(paginator.num_pages)
 
+        categories = AnswerCategory.objects.all()
+
         context.update({
+            'categories': categories,
             'answers': answers,
             'subtitle': self.subtitle,
             'paginator': paginator
         })
+        return context
 
     @route(r"^category/(?P<cat_slug>[-\w]*)/$", name="category_view")
     def category_view(self, request, cat_slug):
@@ -143,7 +165,10 @@ class AnswerIndexPage(RoutablePageMixin, Page):
             return redirect('/')
 
         context.update({
-            'answers': Answer.objects.live().public().filter(category__in=[category])
+            'answers': Answer.objects.live().public().filter(category=category),
+            'subtitle': category.description,
         })
 
-        return render(request, 'cms/category_list.html', context)
+        return render(request, self.template, context)
+
+

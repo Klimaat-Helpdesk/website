@@ -1,0 +1,21 @@
+{% load static wagtailimages_tags %}
+<div class="boxed media">
+  <div class="media-left">
+    <figure class="image is-48x48">
+      {% if expert.picture %}
+        {% image expert.picture fill-48x48 %}
+    {% else %}
+          <img src="{% static 'images/portrait_placeholder.png' %}"
+                                        alt="Profile Picture"/>
+    {% endif %}
+  </figure>
+  </div>
+  <div class="media-content content">
+    <div class="expert-title">
+      <strong>{{ expert.name }}</strong>
+      <time>Answering questions since {{ expert.creation_date|date:"F Y" }}</time>
+    </div>
+    <div class="expert-bio">{{ expert.bio }}
+    </div>
+  </div>
+</div>

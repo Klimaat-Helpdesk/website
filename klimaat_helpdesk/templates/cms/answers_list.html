@@ -1,12 +1,11 @@
-{% extends 'base.html' %}
-{% load static i18n %}
+{% extends "base.html" %}
+{% load i18n static %}
 {% block head %}
   <section class="hero is-primary is-bold">
     <div class="hero-body">
       <div class="container">
         <h2 class="title is-size-2-desktop is-size-3-touch">Helpdesk Klimaat</h2>
-        <h3 class="subtitle is-size-4-desktop is-size-5-touch">{% blocktrans %}All the questions you may have
-          regarding climate breakdown, global warming, answered by experts.{% endblocktrans %}</h3>
+        <h3 class="subtitle is-size-4-desktop is-size-5-touch">{{ page.subtitle }}</h3>
       </div>
     </div>
   </section>
@@ -36,7 +35,23 @@
         <div class="header-title"><h1 class="title">{% trans "Meet an expert" %}</h1></div>
         <p class="subtitle is-4">Get to know one of the many experts answering questions</p>
       </header>
-      {% include 'experts/includes/expert_block.html' with expert=expert_profile %}
+      <div class="boxed media">
+        <div class="media-left">
+          <figure class="image is-48x48"><img src="{% static 'images/portrait_placeholder.png' %}"
+                                              alt="Profile Picture"/></figure>
+        </div>
+        <div class="media-content content">
+          <div class="expert-title">
+            <strong>Expert Number 1</strong>
+            <time>Answering questions since 2019</time>
+          </div>
+          <div class="expert-bio">Aliquam rhoncus ex tortor, nec tristique nunc maximus vel. Duis mi dui, malesuada quis
+            ligula eget, auctor tincidunt dolor. Praesent odio justo, mollis sit amet ornare sed, bibendum ut nunc.
+            Fusce neque ligula, ornare in lobortis quis, cursus a erat. Nam quis dui ultrices, efficitur turpis vel,
+            iaculis ex.
+          </div>
+        </div>
+      </div>
     </div>
     <div class="container">
       <a class="button is-active is-primary">See all our experts</a>

@@ -38,4 +38,4 @@ OnHostRule = true
     [frontends.django.headers]
       HostsProxyHeaders = ['X-CSRFToken']
     [frontends.django.routes.dr1]
-      rule = "Host:klimaathelpdesk.com"
+      rule = "Host:klimaat.aquicarattino.com"

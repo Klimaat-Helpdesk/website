@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load i18n static bulma_tags %}
+{% block head %}
+  <section class="hero is-primary is-bold">
+    <div class="hero-body">
+      <div class="container">
+        <h2 class="title is-size-2-desktop is-size-3-touch">Helpdesk Klimaat</h2>
+        <h3 class="subtitle is-size-4-desktop is-size-5-touch">{% blocktrans %}All the questions you may have
+          regarding climate breakdown, global warming, answered by experts.{% endblocktrans %}</h3>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+{% block content %}
+  <section class="section">
+    <div class="container">
+      <section class="section question-intro">
+        <div class="title">{% trans "Thanks for submitting your question" %}</div>
+        <div><p>{% blocktrans %}We will review the question and send it to experts to answer it. If you gave us your
+          e-mail
+          in the previous step, we will keep you posted about the progress. If not, please check back this website
+          periodically.
+        {% endblocktrans %}</p>
+        </div>
+      </section>
+      <section class="section question-form">
+        <div class="columns">
+          <div class="column is-half is-offset-one-quarter">
+            <p class="boxed">{% blocktrans %}Remember that some questions are harder to answer, and therefore it may
+              take longer,
+              some are out of the scope of this website, or duplicated. We promise we will be as transparent as possible
+              regarding the decisions taken.{% endblocktrans %}</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </section>
+{% endblock %}

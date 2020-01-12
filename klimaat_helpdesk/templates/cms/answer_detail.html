@@ -18,7 +18,7 @@
       <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
           <li><a href="{% url 'core:home' %}">Questions</a></li>
-{#          <li><a href="#">{{ question.category }}</a></li>#}
+          <li><a href="/answers/?category={{ self.category.slug }}">{{ self.category }}</a></li>
           <li class="is-active"><a href="#" aria-current="page">Specific Question</a></li>
         </ul>
       </nav>
@@ -44,12 +44,12 @@
           <hr>
           <div class="expert-info boxed">
             {% for expert in self.experts %}
-              {% include 'cms/includes/expert_short_summary.html' with expert=expert %}
+              {% include 'experts/includes/expert_block.html' with expert=expert %}
             {% endfor %}
           </div>
         </section>
       </div>
-{#      {% include 'cms/includes/aside.html' %}#}
+      {% include 'cms/includes/aside.html' %}
     </div>
   </div>
 {% endblock %}

@@ -3,26 +3,17 @@ Klimaat Helpdesk
 
 Q&A about the climate
 
-.. image:: https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg
-     :target: https://github.com/pydanny/cookiecutter-django/
-     :alt: Built with Cookiecutter Django
-.. image:: https://img.shields.io/badge/code%20style-black-000000.svg
-     :target: https://github.com/ambv/black
-     :alt: Black code style
-
-
 :License: MIT
 
+Getting Started
+---------------
+Spin up docker containers with all the necessary dependencies. You will need docker-compose installed on your system::
 
-Settings
---------
+    $ docker-compose -f local.yml build
+    $ docker-compose -f local.yml up -d
 
-Moved to settings_.
+The last command will spin up the containers and the website will be accessible through http://localhost:8000
 
-.. _settings: http://cookiecutter-django.readthedocs.io/en/latest/settings.html
-
-Basic Commands
---------------
 
 Setting Up Your Users
 ^^^^^^^^^^^^^^^^^^^^^
