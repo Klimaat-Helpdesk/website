@@ -6,7 +6,7 @@ from .base import env
 # https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
 SECRET_KEY = env("DJANGO_SECRET_KEY")
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["helpdesk-klimaat.org"])
+ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["www.helpdesk-climate.org", "helpdesk-climate.org"])
 
 # DATABASES
 # ------------------------------------------------------------------------------
@@ -124,13 +124,13 @@ TEMPLATES[0]["OPTIONS"]["loaders"] = [  # noqa F405
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#default-from-email
 DEFAULT_FROM_EMAIL = env(
-    "DJANGO_DEFAULT_FROM_EMAIL", default="Klimaat Helpdesk <noreply@helpdesk-klimaat.org>"
+    "DJANGO_DEFAULT_FROM_EMAIL", default="Helpdesk Climate<noreply@mail.helpdesk-climate.org>"
 )
 # https://docs.djangoproject.com/en/dev/ref/settings/#server-email
 SERVER_EMAIL = env("DJANGO_SERVER_EMAIL", default=DEFAULT_FROM_EMAIL)
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-subject-prefix
 EMAIL_SUBJECT_PREFIX = env(
-    "DJANGO_EMAIL_SUBJECT_PREFIX", default="[Helpdesk Klimaat]"
+    "DJANGO_EMAIL_SUBJECT_PREFIX", default="[Helpdesk Climate]"
 )
 
 # ADMIN
