@@ -1,7 +1,8 @@
-Klimaat Helpdesk
+Helpdesk Climate
 ================
 
-Q&A about the climate
+This repository holds the code for https://helpdesk-climate.org, a website aimed at answering questions regarding climate
+change, global warming, and related. This project was built using Django & Wagtail.
 
 :License: MIT
 
