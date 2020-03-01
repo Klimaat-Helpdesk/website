@@ -1,0 +1,465 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-01 11:48+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: klimaat_helpdesk/cms/apps.py:7
+msgid "Q&A CMS"
+msgstr ""
+
+#: klimaat_helpdesk/cms/models.py:36 klimaat_helpdesk/experts/models.py:15
+msgid "name"
+msgstr ""
+
+#: klimaat_helpdesk/cms/models.py:38
+msgid "slug"
+msgstr ""
+
+#: klimaat_helpdesk/cms/models.py:41
+msgid "A slug to identify the category"
+msgstr ""
+
+#: klimaat_helpdesk/cms/models.py:42
+msgid "description"
+msgstr ""
+
+#: klimaat_helpdesk/cms/models.py:51
+msgid "Answer Category"
+msgstr ""
+
+#: klimaat_helpdesk/cms/models.py:52
+msgid "Answer Categories"
+msgstr ""
+
+#: klimaat_helpdesk/cms/models.py:67
+msgid "Short description"
+msgstr ""
+
+#: klimaat_helpdesk/cms/models.py:78 klimaat_helpdesk/cms/models.py:80
+msgid "Expert(s)"
+msgstr ""
+
+#: klimaat_helpdesk/cms/models.py:86
+msgid "Categories"
+msgstr ""
+
+#: klimaat_helpdesk/cms/models.py:125
+msgid "Subtitle to show on the header of the page"
+msgstr ""
+
+#: klimaat_helpdesk/core/admin.py:8
+msgid "Questions"
+msgstr ""
+
+#: klimaat_helpdesk/core/apps.py:7
+msgid "Core App"
+msgstr ""
+
+#: klimaat_helpdesk/core/forms.py:8
+msgid "Accept Terms & Conditions"
+msgstr ""
+
+#: klimaat_helpdesk/core/models.py:9
+msgid "Your Question"
+msgstr ""
+
+#: klimaat_helpdesk/core/models.py:10
+msgid "User Email"
+msgstr ""
+
+#: klimaat_helpdesk/experts/admin.py:10 klimaat_helpdesk/experts/apps.py:7
+msgid "Experts"
+msgstr ""
+
+#: klimaat_helpdesk/experts/models.py:16
+msgid "email"
+msgstr ""
+
+#: klimaat_helpdesk/experts/models.py:17
+msgid "biography"
+msgstr ""
+
+#: klimaat_helpdesk/experts/models.py:19
+msgid "areas of expertise"
+msgstr ""
+
+#: klimaat_helpdesk/experts/models.py:20
+msgid "Affiliation"
+msgstr ""
+
+#: klimaat_helpdesk/experts/models.py:21
+msgid "Website"
+msgstr ""
+
+#: klimaat_helpdesk/experts/models.py:22
+msgid "Twitter Profile"
+msgstr ""
+
+#: klimaat_helpdesk/experts/models.py:23
+msgid "LinkedIn Profile"
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/account_inactive.html:5
+#: klimaat_helpdesk/templates/account/account_inactive.html:8
+msgid "Account Inactive"
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/account_inactive.html:10
+msgid "This account is inactive."
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/email.html:7
+msgid "Account"
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/email.html:10
+msgid "E-mail Addresses"
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/email.html:13
+msgid "The following e-mail addresses are associated with your account:"
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/email.html:27
+msgid "Verified"
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/email.html:29
+msgid "Unverified"
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/email.html:31
+msgid "Primary"
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/email.html:37
+msgid "Make Primary"
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/email.html:38
+msgid "Re-send Verification"
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/email.html:39
+msgid "Remove"
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/email.html:46
+msgid "Warning:"
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/email.html:46
+msgid ""
+"You currently do not have any e-mail address set up. You should really add "
+"an e-mail address so you can receive notifications, reset your password, etc."
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/email.html:51
+msgid "Add E-mail Address"
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/email.html:56
+msgid "Add E-mail"
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/email.html:66
+msgid "Do you really want to remove the selected e-mail address?"
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/email_confirm.html:6
+#: klimaat_helpdesk/templates/account/email_confirm.html:10
+msgid "Confirm E-mail Address"
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/email_confirm.html:16
+#, python-format
+msgid ""
+"Please confirm that <a href=\"mailto:%(email)s\">%(email)s</a> is an e-mail "
+"address for user %(user_display)s."
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/email_confirm.html:20
+msgid "Confirm"
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/email_confirm.html:27
+#, python-format
+msgid ""
+"This e-mail confirmation link expired or is invalid. Please <a href="
+"\"%(email_url)s\">issue a new e-mail confirmation request</a>."
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/login.html:7
+#: klimaat_helpdesk/templates/account/login.html:11
+#: klimaat_helpdesk/templates/account/login.html:44
+msgid "Sign In"
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/login.html:16
+#, python-format
+msgid ""
+"Please sign in with one\n"
+"of your existing third party accounts. Or, <a href=\"%(signup_url)s\">sign "
+"up</a>\n"
+"for a %(site_name)s account and sign in below:"
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/login.html:26
+msgid "or"
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/login.html:33
+#, python-format
+msgid ""
+"If you have not created an account yet, then please\n"
+"<a href=\"%(signup_url)s\">sign up</a> first."
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/login.html:43
+msgid "Forgot Password?"
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/logout.html:5
+#: klimaat_helpdesk/templates/account/logout.html:8
+#: klimaat_helpdesk/templates/account/logout.html:17
+msgid "Sign Out"
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/logout.html:10
+msgid "Are you sure you want to sign out?"
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/password_change.html:6
+#: klimaat_helpdesk/templates/account/password_change.html:9
+#: klimaat_helpdesk/templates/account/password_change.html:14
+#: klimaat_helpdesk/templates/account/password_reset_from_key.html:5
+#: klimaat_helpdesk/templates/account/password_reset_from_key.html:8
+#: klimaat_helpdesk/templates/account/password_reset_from_key_done.html:4
+#: klimaat_helpdesk/templates/account/password_reset_from_key_done.html:7
+msgid "Change Password"
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/password_reset.html:7
+#: klimaat_helpdesk/templates/account/password_reset.html:11
+#: klimaat_helpdesk/templates/account/password_reset_done.html:6
+#: klimaat_helpdesk/templates/account/password_reset_done.html:9
+msgid "Password Reset"
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/password_reset.html:16
+msgid ""
+"Forgotten your password? Enter your e-mail address below, and we'll send you "
+"an e-mail allowing you to reset it."
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/password_reset.html:21
+msgid "Reset My Password"
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/password_reset.html:24
+msgid "Please contact us if you have any trouble resetting your password."
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/password_reset_done.html:15
+msgid ""
+"We have sent you an e-mail. Please contact us if you do not receive it "
+"within a few minutes."
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/password_reset_from_key.html:8
+msgid "Bad Token"
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/password_reset_from_key.html:12
+#, python-format
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used.  Please request a <a href=\"%(passwd_reset_url)s\">new password reset</"
+"a>."
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/password_reset_from_key.html:18
+msgid "change password"
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/password_reset_from_key.html:21
+#: klimaat_helpdesk/templates/account/password_reset_from_key_done.html:8
+msgid "Your password is now changed."
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/password_set.html:6
+#: klimaat_helpdesk/templates/account/password_set.html:9
+#: klimaat_helpdesk/templates/account/password_set.html:14
+msgid "Set Password"
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/signup.html:6
+msgid "Signup"
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/signup.html:9
+#: klimaat_helpdesk/templates/account/signup.html:19
+msgid "Sign Up"
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/signup.html:11
+#, python-format
+msgid ""
+"Already have an account? Then please <a href=\"%(login_url)s\">sign in</a>."
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/signup_closed.html:5
+#: klimaat_helpdesk/templates/account/signup_closed.html:8
+msgid "Sign Up Closed"
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/signup_closed.html:10
+msgid "We are sorry, but the sign up is currently closed."
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/verification_sent.html:5
+#: klimaat_helpdesk/templates/account/verification_sent.html:8
+#: klimaat_helpdesk/templates/account/verified_email_required.html:5
+#: klimaat_helpdesk/templates/account/verified_email_required.html:8
+msgid "Verify Your E-mail Address"
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/verification_sent.html:10
+msgid ""
+"We have sent an e-mail to you for verification. Follow the link provided to "
+"finalize the signup process. Please contact us if you do not receive it "
+"within a few minutes."
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/verified_email_required.html:12
+msgid ""
+"This part of the site requires us to verify that\n"
+"you are who you claim to be. For this purpose, we require that you\n"
+"verify ownership of your e-mail address. "
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/verified_email_required.html:16
+msgid ""
+"We have sent an e-mail to you for\n"
+"verification. Please click on the link inside this e-mail. Please\n"
+"contact us if you do not receive it within a few minutes."
+msgstr ""
+
+#: klimaat_helpdesk/templates/account/verified_email_required.html:20
+#, python-format
+msgid ""
+"<strong>Note:</strong> you can still <a href=\"%(email_url)s\">change your e-"
+"mail address</a>."
+msgstr ""
+
+#: klimaat_helpdesk/templates/cms/answer_detail.html:9
+#: klimaat_helpdesk/templates/core/home_page.html:8
+#: klimaat_helpdesk/templates/core/new_question.html:8
+#: klimaat_helpdesk/templates/core/new_question_thanks.html:8
+msgid ""
+"All the questions you may have\n"
+"          regarding climate breakdown, global warming, answered by experts."
+msgstr ""
+
+#: klimaat_helpdesk/templates/cms/answers_list.html:18
+#: klimaat_helpdesk/templates/core/home_page.html:19
+msgid "Top"
+msgstr ""
+
+#: klimaat_helpdesk/templates/cms/answers_list.html:19
+#: klimaat_helpdesk/templates/core/home_page.html:20
+msgid "New"
+msgstr ""
+
+#: klimaat_helpdesk/templates/cms/answers_list.html:35
+#: klimaat_helpdesk/templates/core/home_page.html:36
+msgid "Meet an expert"
+msgstr ""
+
+#: klimaat_helpdesk/templates/cms/includes/aside.html:12
+#: klimaat_helpdesk/templates/core/includes/aside.html:12
+#: klimaat_helpdesk/templates/core/new_question.html:18
+msgid "Ask your question"
+msgstr ""
+
+#: klimaat_helpdesk/templates/cms/includes/aside.html:13
+#: klimaat_helpdesk/templates/core/includes/aside.html:13
+msgid "Didn't find the answer you were looking for? Submit your own question!"
+msgstr ""
+
+#: klimaat_helpdesk/templates/cms/includes/aside.html:14
+#: klimaat_helpdesk/templates/core/includes/aside.html:14
+msgid "Ask a Question"
+msgstr ""
+
+#: klimaat_helpdesk/templates/core/includes/answer_block.html:15
+msgid "read more"
+msgstr ""
+
+#: klimaat_helpdesk/templates/core/new_question.html:19
+msgid ""
+"After you ask your question, we will review it and assign it to an expert to "
+"answer it.\n"
+"          The entire process may take up to a couple of weeks. If you would "
+"like to be informed about the progress, you\n"
+"          can leave us your e-mail."
+msgstr ""
+
+#: klimaat_helpdesk/templates/core/new_question.html:30
+msgid "Submit"
+msgstr ""
+
+#: klimaat_helpdesk/templates/core/new_question_thanks.html:18
+msgid "Thanks for submitting your question"
+msgstr ""
+
+#: klimaat_helpdesk/templates/core/new_question_thanks.html:19
+msgid ""
+"We will review the question and send it to experts to answer it. If you gave "
+"us your\n"
+"          e-mail\n"
+"          in the previous step, we will keep you posted about the progress. "
+"If not, please check back this website\n"
+"          periodically.\n"
+"        "
+msgstr ""
+
+#: klimaat_helpdesk/templates/core/new_question_thanks.html:29
+msgid ""
+"Remember that some questions are harder to answer, and therefore it may\n"
+"              take longer,\n"
+"              some are out of the scope of this website, or duplicated. We "
+"promise we will be as transparent as possible\n"
+"              regarding the decisions taken."
+msgstr ""
+
+#: klimaat_helpdesk/users/apps.py:7
+msgid "Users"
+msgstr ""
+
+#: klimaat_helpdesk/users/forms.py:16
+msgid "This username has already been taken."
+msgstr ""
+
+#: klimaat_helpdesk/users/models.py:15
+msgid "Name of User"
+msgstr ""
+
+#: klimaat_helpdesk/users/views.py:34
+msgid "Infos successfully updated"
+msgstr ""
