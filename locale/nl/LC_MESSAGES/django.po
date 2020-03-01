@@ -66,7 +66,7 @@ msgstr ""
 #: klimaat_helpdesk/templates/cms/answer_detail.html:20
 #: klimaat_helpdesk/templates/includes/navbar.html:19
 msgid "Questions"
-msgstr ""
+msgstr "vragen"
 
 #: klimaat_helpdesk/core/apps.py:7
 msgid "Core App"
@@ -74,55 +74,55 @@ msgstr ""
 
 #: klimaat_helpdesk/core/forms.py:8
 msgid "Accept Terms & Conditions"
-msgstr ""
+msgstr "Algemene voorwaarden accepteren"
 
 #: klimaat_helpdesk/core/models.py:9
 msgid "Your Question"
-msgstr ""
+msgstr "uw vraag"
 
 #: klimaat_helpdesk/core/models.py:10
 msgid "User Email"
-msgstr ""
+msgstr "uw e-mail"
 
 #: klimaat_helpdesk/experts/admin.py:10 klimaat_helpdesk/experts/apps.py:7
 msgid "Experts"
-msgstr ""
+msgstr "deskundigen"
 
 #: klimaat_helpdesk/experts/models.py:16
 msgid "email"
-msgstr ""
+msgstr "e-mail"
 
 #: klimaat_helpdesk/experts/models.py:17
 msgid "biography"
-msgstr ""
+msgstr "biografie"
 
 #: klimaat_helpdesk/experts/models.py:19
 msgid "areas of expertise"
-msgstr ""
+msgstr "expertisegebieden"
 
 #: klimaat_helpdesk/experts/models.py:20
 msgid "Affiliation"
-msgstr ""
+msgstr "werkzaam bij"
 
 #: klimaat_helpdesk/experts/models.py:21
 msgid "Website"
-msgstr ""
+msgstr "Website"
 
 #: klimaat_helpdesk/experts/models.py:22
 msgid "Twitter Profile"
-msgstr ""
+msgstr "op Twitter"
 
 #: klimaat_helpdesk/experts/models.py:23
 msgid "LinkedIn Profile"
-msgstr ""
+msgstr "op LinkedIn"
 
 #: klimaat_helpdesk/templates/404.html:4 klimaat_helpdesk/templates/404.html:7
 msgid "Page not found"
-msgstr ""
+msgstr "Pagina niet gevonden"
 
 #: klimaat_helpdesk/templates/404.html:9
 msgid "This is not the page you were looking for."
-msgstr ""
+msgstr "Pagina niet gevonden"
 
 #: klimaat_helpdesk/templates/account/account_inactive.html:5
 #: klimaat_helpdesk/templates/account/account_inactive.html:8
@@ -322,6 +322,8 @@ msgstr ""
 msgid "Signup"
 msgstr ""
 
+### seems signup and sign up are both used
+
 #: klimaat_helpdesk/templates/account/signup.html:9
 #: klimaat_helpdesk/templates/account/signup.html:19
 msgid "Sign Up"
@@ -370,16 +372,19 @@ msgid ""
 "contact us if you do not receive it within a few minutes."
 msgstr ""
 
+
 #: klimaat_helpdesk/templates/account/verified_email_required.html:20
 #, python-format
 msgid ""
 "<strong>Note:</strong> you can still <a href=\"%(email_url)s\">change your e-"
 "mail address</a>."
-msgstr ""
+msgstr "U kunt uw e-mailadres aanpassen."
 
 #: klimaat_helpdesk/templates/base.html:62
 msgid "<strong>Klimaat Helpdesk</strong> by Scientists for Future."
-msgstr ""
+msgstr "Helpdesk Klimaat is mogelijk gemaakt door Scientist for Future NL"
+
+### English must be Helpdesk Klimaat or Helpdesk Climate
 
 #: klimaat_helpdesk/templates/cms/answer_detail.html:9
 #: klimaat_helpdesk/templates/core/home_page.html:8
@@ -388,47 +393,49 @@ msgstr ""
 msgid ""
 "All the questions you may have\n"
 "          regarding climate breakdown, global warming, answered by experts."
-msgstr ""
+msgstr "Uw vragen over de klimaatverandering en de gevolgen daarvan, beantwood door actieve wetenschappers"
+
+### I think the english message should be toned down, suggetion: Active scientists answering your questions regarding the climate change and its impacts"
 
 #: klimaat_helpdesk/templates/cms/answers_list.html:18
 #: klimaat_helpdesk/templates/core/home_page.html:19
 msgid "Top"
-msgstr ""
+msgstr "top"
 
 #: klimaat_helpdesk/templates/cms/answers_list.html:19
 #: klimaat_helpdesk/templates/core/home_page.html:20
 msgid "New"
-msgstr ""
+msgstr "nieuw"
 
 #: klimaat_helpdesk/templates/cms/answers_list.html:35
 #: klimaat_helpdesk/templates/core/home_page.html:36
 msgid "Meet an expert"
-msgstr ""
+msgstr "Maak kenis met een deskundige"
 
 #: klimaat_helpdesk/templates/cms/includes/aside.html:12
 #: klimaat_helpdesk/templates/core/includes/aside.html:12
 #: klimaat_helpdesk/templates/core/new_question.html:18
 msgid "Ask your question"
-msgstr ""
+msgstr "Stel uw vraag"
 
 #: klimaat_helpdesk/templates/cms/includes/aside.html:13
 #: klimaat_helpdesk/templates/core/includes/aside.html:13
 msgid "Didn't find the answer you were looking for? Submit your own question!"
-msgstr ""
+msgstr "Hebt u het antwoord dat u zocht niet gevonden? Stel uw eigen vraag!"
 
 #: klimaat_helpdesk/templates/cms/includes/aside.html:14
 #: klimaat_helpdesk/templates/core/includes/aside.html:14
 #: klimaat_helpdesk/templates/includes/navbar.html:33
 msgid "Ask a Question"
-msgstr ""
+msgstr "Stel uw vraag"
 
 #: klimaat_helpdesk/templates/core/home_page.html:37
 msgid "Get to know one of the many experts answering questions"
-msgstr ""
+msgstr "Maak kennis met een van de vele deskundigen die uw vragen beantwoorden"
 
 #: klimaat_helpdesk/templates/core/includes/answer_block.html:15
 msgid "read more"
-msgstr ""
+msgstr "lees meer"
 
 #: klimaat_helpdesk/templates/core/new_question.html:19
 msgid ""
@@ -438,14 +445,17 @@ msgid ""
 "like to be informed about the progress, you\n"
 "          can leave us your e-mail."
 msgstr ""
+"Nadat wij uw vraag hebben ontvangen, zullen we deze beoordelen en toewijzen aan een van onze deskundigen"
+"Het hele proces kan enkele weken duren. Als u wilt graag op de hoogte gehouden worden van de voortgang, \n"
+"u kan uw e-mail invullen"
 
 #: klimaat_helpdesk/templates/core/new_question.html:30
 msgid "Submit"
-msgstr ""
+msgstr "stuur"
 
 #: klimaat_helpdesk/templates/core/new_question_thanks.html:18
 msgid "Thanks for submitting your question"
-msgstr ""
+msgstr "bedankt voor het stellen van uw vraag"
 
 #: klimaat_helpdesk/templates/core/new_question_thanks.html:19
 msgid ""
@@ -457,6 +467,12 @@ msgid ""
 "          periodically.\n"
 "        "
 msgstr ""
+"We zullen de vraag beoordelen en naar deskundigen sturen om deze te beantwoorden. Als u gaf"
+"Als u uw email in de vorige stap heeft ingevoerd,"
+"houden we u op de hoogte van de voortgang."
+"Zo niet, controleer deze website dan opnieuw"
+
+### not clear for me what to do exactly with multi-line messages, I hope the show up correctly
 
 #: klimaat_helpdesk/templates/core/new_question_thanks.html:29
 msgid ""
@@ -465,66 +481,69 @@ msgid ""
 "              some are out of the scope of this website, or duplicated. We "
 "promise we will be as transparent as possible\n"
 "              regarding the decisions taken."
-msgstr ""
+msgstr "Onthoud dat sommige vragen moeilijker te beantwoorden zijn en daarom kan langer duren. "
 
 #: klimaat_helpdesk/templates/experts/includes/expert_block.html:16
 #, python-format
 msgid "Answering questions since %(expert.creation_date|date:\"F Y\")s"
-msgstr ""
+msgstr "beantwoord vragen sinds %(expert.creation_date|date:\"F Y\")s"
 
 #: klimaat_helpdesk/templates/includes/navbar.html:5
 msgid "Klimaat Helpdesk"
-msgstr ""
+msgstr "Helpdesk Klimaat"
+
+### in English, this should actually be Helpdesk-Climate (or use the dutch name for all languages) 
 
 #: klimaat_helpdesk/templates/includes/navbar.html:22
 #: klimaat_helpdesk/templates/includes/navbar.html:25
 msgid "Our Experts"
-msgstr ""
+msgstr "onze deskundigen"
 
 #: klimaat_helpdesk/templates/includes/navbar.html:36
 msgid "Become an Expert"
-msgstr ""
+msgstr "word lid van onze deskundigenteam"
 
 #: klimaat_helpdesk/templates/under_construction.html:34
-msgid "Helpdesk-Climate is an online expert system under construction."
-msgstr ""
+msgid "Helpdesk-Climate is an online expert system under construction."  #suggestion: Helpdesk-Climate is an online expert run by scientists
+msgstr "Helpdesk-Klimaat is een expertsysteem ondersteund door actieve wetenschappers"
 
-#: klimaat_helpdesk/templates/under_construction.html:35
-msgid ""
+#: klimaat_helpdesk/templates/under_construction.html:35 
+msgid ""  
 "If you are willing to provide your expertise and help us answering "
 "questions, please join our team by sending\n"
 "        an email to helpdesk@scientists4future.nl mentioning your area of "
 "expertise."
-msgstr ""
+msgstr "als u met ons wilt samenwerken, stuur dan een e-mail naar helpdesk@scientists4future.nl "
 
 #: klimaat_helpdesk/templates/users/user_detail.html:4
 msgid "User"
-msgstr ""
+msgstr "gebruiker"
 
 #: klimaat_helpdesk/templates/users/user_detail.html:24
 msgid "My Info"
-msgstr ""
+msgstr "mijn info"
 
 #: klimaat_helpdesk/templates/users/user_detail.html:25
 msgid "E-Mail"
-msgstr ""
+msgstr "e-mail"
 
 #: klimaat_helpdesk/templates/users/user_form.html:13
 msgid "Update"
-msgstr ""
+msgstr "bijwerken"
 
 #: klimaat_helpdesk/users/apps.py:7
 msgid "Users"
-msgstr ""
+msgstr "gebruikers"
 
 #: klimaat_helpdesk/users/forms.py:16
 msgid "This username has already been taken."
-msgstr ""
+msgstr "deze gebruikersnaam is al in gebruik."
 
 #: klimaat_helpdesk/users/models.py:15
-msgid "Name of User"
-msgstr ""
+msgid "Name of User"  
+msgstr "gebruikersnaam"
+### unclear what it really means
 
 #: klimaat_helpdesk/users/views.py:34
 msgid "Infos successfully updated"
-msgstr ""
+msgstr "succesvol bijgewerkt"
