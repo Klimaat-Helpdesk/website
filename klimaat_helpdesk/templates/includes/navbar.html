@@ -1,7 +1,8 @@
+{% load i18n %}
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="/">
-      <h3>Klimaat Helpdesk</h3>
+      <h3>{% trans "Klimaat Helpdesk" %}</h3>
     </a>
 
     <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
@@ -15,13 +16,13 @@
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
       <a class="navbar-item">
-        Questions
+        {% trans "Questions" %}
       </a>
       <a class="navbar-item" href="">
-        Our Experts
+        {% trans "Our Experts" %}
       </a>
       <a class="navbar-item">
-        About
+        {% trans "Our Experts" %}
       </a>
     </div>
 
@@ -29,10 +30,10 @@
       <div class="navbar-item">
         <div class="buttons">
           <a class="button is-primary" href="{% url 'core:ask' %}">
-            Ask a Question
+            {% trans "Ask a Question" %}
           </a>
           <a class="button is-light" href="">
-            Become an Expert
+            {% trans "Become an Expert" %}
           </a>
         </div>
       </div>

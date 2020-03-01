@@ -17,7 +17,7 @@
     <div class="question-breadcrumb boxed">
       <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
-          <li><a href="{% url 'core:home' %}">Questions</a></li>
+          <li><a href="{% url 'core:home' %}">{% trans "Questions" %}</a></li>
           <li><a href="/answers/?category={{ self.category.slug }}">{{ self.category }}</a></li>
           <li class="is-active"><a href="#" aria-current="page">Specific Question</a></li>
         </ul>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-01 11:48+0000\n"
+"POT-Creation-Date: 2020-03-01 12:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -63,6 +63,8 @@ msgid "Subtitle to show on the header of the page"
 msgstr ""
 
 #: klimaat_helpdesk/core/admin.py:8
+#: klimaat_helpdesk/templates/cms/answer_detail.html:20
+#: klimaat_helpdesk/templates/includes/navbar.html:19
 msgid "Questions"
 msgstr ""
 
@@ -112,6 +114,14 @@ msgstr ""
 
 #: klimaat_helpdesk/experts/models.py:23
 msgid "LinkedIn Profile"
+msgstr ""
+
+#: klimaat_helpdesk/templates/404.html:4 klimaat_helpdesk/templates/404.html:7
+msgid "Page not found"
+msgstr ""
+
+#: klimaat_helpdesk/templates/404.html:9
+msgid "This is not the page you were looking for."
 msgstr ""
 
 #: klimaat_helpdesk/templates/account/account_inactive.html:5
@@ -367,6 +377,10 @@ msgid ""
 "mail address</a>."
 msgstr ""
 
+#: klimaat_helpdesk/templates/base.html:62
+msgid "<strong>Klimaat Helpdesk</strong> by Scientists for Future."
+msgstr ""
+
 #: klimaat_helpdesk/templates/cms/answer_detail.html:9
 #: klimaat_helpdesk/templates/core/home_page.html:8
 #: klimaat_helpdesk/templates/core/new_question.html:8
@@ -404,7 +418,12 @@ msgstr ""
 
 #: klimaat_helpdesk/templates/cms/includes/aside.html:14
 #: klimaat_helpdesk/templates/core/includes/aside.html:14
+#: klimaat_helpdesk/templates/includes/navbar.html:33
 msgid "Ask a Question"
+msgstr ""
+
+#: klimaat_helpdesk/templates/core/home_page.html:37
+msgid "Get to know one of the many experts answering questions"
 msgstr ""
 
 #: klimaat_helpdesk/templates/core/includes/answer_block.html:15
@@ -446,6 +465,52 @@ msgid ""
 "              some are out of the scope of this website, or duplicated. We "
 "promise we will be as transparent as possible\n"
 "              regarding the decisions taken."
+msgstr ""
+
+#: klimaat_helpdesk/templates/experts/includes/expert_block.html:16
+#, python-format
+msgid "Answering questions since %(expert.creation_date|date:\"F Y\")s"
+msgstr ""
+
+#: klimaat_helpdesk/templates/includes/navbar.html:5
+msgid "Klimaat Helpdesk"
+msgstr ""
+
+#: klimaat_helpdesk/templates/includes/navbar.html:22
+#: klimaat_helpdesk/templates/includes/navbar.html:25
+msgid "Our Experts"
+msgstr ""
+
+#: klimaat_helpdesk/templates/includes/navbar.html:36
+msgid "Become an Expert"
+msgstr ""
+
+#: klimaat_helpdesk/templates/under_construction.html:34
+msgid "Helpdesk-Climate is an online expert system under construction."
+msgstr ""
+
+#: klimaat_helpdesk/templates/under_construction.html:35
+msgid ""
+"If you are willing to provide your expertise and help us answering "
+"questions, please join our team by sending\n"
+"        an email to helpdesk@scientists4future.nl mentioning your area of "
+"expertise."
+msgstr ""
+
+#: klimaat_helpdesk/templates/users/user_detail.html:4
+msgid "User"
+msgstr ""
+
+#: klimaat_helpdesk/templates/users/user_detail.html:24
+msgid "My Info"
+msgstr ""
+
+#: klimaat_helpdesk/templates/users/user_detail.html:25
+msgid "E-Mail"
+msgstr ""
+
+#: klimaat_helpdesk/templates/users/user_form.html:13
+msgid "Update"
 msgstr ""
 
 #: klimaat_helpdesk/users/apps.py:7

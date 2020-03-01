@@ -1,4 +1,4 @@
-{% load static wagtailimages_tags %}
+{% load static wagtailimages_tags i18n %}
 <div class="boxed media">
   <div class="media-left">
     <figure class="image is-48x48">
@@ -13,7 +13,7 @@
   <div class="media-content content">
     <div class="expert-title">
       <strong>{{ expert.name }}</strong>
-      <time>Answering questions since {{ expert.creation_date|date:"F Y" }}</time>
+      <time>{% blocktrans %}Answering questions since {{ expert.creation_date|date:"F Y" }}{% endblocktrans %}</time>
     </div>
     <div class="expert-bio">{{ expert.bio }}
     </div>

@@ -34,12 +34,12 @@
     <div class="container">
       <header class="header">
         <div class="header-title"><h1 class="title">{% trans "Meet an expert" %}</h1></div>
-        <p class="subtitle is-4">Get to know one of the many experts answering questions</p>
+        <p class="subtitle is-4">{% trans "Get to know one of the many experts answering questions" %}</p>
       </header>
       {% include 'experts/includes/expert_block.html' with expert=expert_profile %}
     </div>
     <div class="container">
-      <a class="button is-active is-primary">See all our experts</a>
+      <a class="button is-active is-primary">{% trans See all our experts %}</a>
     </div>
   </div>
 {% endblock %}
