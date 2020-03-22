@@ -11,9 +11,9 @@ from wagtail.core import urls as wagtail_urls
 
 urlpatterns = [
     path("", TemplateView.as_view(template_name='under_construction.html')),
-    path("test", include('klimaat_helpdesk.core.urls', namespace='test')),
     path("accounts/", include("allauth.urls")),
-    path("", include('klimaat_helpdesk.core.urls', namespace='core')),
+    path("test", include('klimaat_helpdesk.core.urls', namespace='test')),
+    # path("", include('klimaat_helpdesk.core.urls', namespace='core')),
     path(settings.ADMIN_URL, admin.site.urls),
     path("users/", include("klimaat_helpdesk.users.urls", namespace="users")),
     re_path(r'^cms/', include(wagtailadmin_urls)),
