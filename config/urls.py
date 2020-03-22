@@ -10,8 +10,8 @@ from wagtail.core import urls as wagtail_urls
 
 
 urlpatterns = [
+    re_path(r"^accounts/", include("allauth.urls")),
     path("", TemplateView.as_view(template_name='under_construction.html')),
-    path("accounts/", include("allauth.urls")),
     path("test", include('klimaat_helpdesk.core.urls', namespace='test')),
     # path("", include('klimaat_helpdesk.core.urls', namespace='core')),
     path(settings.ADMIN_URL, admin.site.urls),
