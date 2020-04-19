@@ -15,6 +15,8 @@ from wagtail.core.models import Orderable, Page
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet
 
+from klimaat_helpdesk.experts.models import Expert
+
 
 class ExpertAnswerRelationship(Orderable, models.Model):
     """Intermediate table for holding the many-to-many relationship in case there are many experts working on the same
@@ -172,3 +174,30 @@ class AnswerIndexPage(RoutablePageMixin, Page):
         return render(request, self.template, context)
 
 
+class ExpertIndexPage(Page):
+    """ List of experts on the website """
+    template = 'experts/experts_list.html'
+    subtitle = models.CharField(max_length=128, blank=False)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('subtitle'),
+    ]
+
+    def get_context(self, request, *args, **kwargs):
+        context = super(ExpertIndexPage, self).get_context(request, *args, **kwargs)
+        experts = Expert.objects.all()
+        context['experts'] = experts
+        return context
+
+
+class GeneralPage(Page):
+    """ A page that won't show sidebar. Ideal for privacy policy, etc. """
+    template = 'cms/general_page.html'
+    subtitle = models.CharField(max_length=128, blank=True)
+
+    content = RichTextField()
+
+    content_panels = Page.content_panels + [
+        FieldPanel('subtitle'),
+        FieldPanel('content')
+    ]
