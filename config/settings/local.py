@@ -60,3 +60,5 @@ INSTALLED_APPS += ["django_extensions"]  # noqa F405
 CELERY_TASK_EAGER_PROPAGATES = True
 # Your stuff...
 # ------------------------------------------------------------------------------
+GITLAB_PERSONAL_TOKEN = env('GITLAB_PERSONAL_TOKEN', default=None)
+GITLAB_PROJECT_ID = env('GITLAB_PROJECT_ID', default=None)

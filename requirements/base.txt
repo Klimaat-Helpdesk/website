@@ -24,3 +24,6 @@ coreapi==2.3.3  # https://github.com/core-api/python-client
 wagtail==2.8.1  # https://github.com/wagtail/wagtail
 wagtailmenus==3.0.1  # https://github.com/rkhleics/wagtailmenus
 -e git+git://github.com/wagtail/wagtail-review.git@stable/0.2.x#egg=wagtail-review   # https://github.com/wagtail/wagtail-review/
+
+# Gitlab
+python-gitlab==2.2.0

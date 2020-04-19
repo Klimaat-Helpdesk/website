@@ -206,5 +206,7 @@ LOGGING = {
     },
 }
 
-# Your stuff...
+# GITLAB
 # ------------------------------------------------------------------------------
+GITLAB_PERSONAL_TOKEN = env('GITLAB_PERSONAL_TOKEN')
+GITLAB_PROJECT_ID = env('GITLAB_PROJECT_ID')
