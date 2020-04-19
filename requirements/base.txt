@@ -1,19 +1,19 @@
 pytz==2019.3  # https://github.com/stub42/pytz
 python-slugify==4.0.0  # https://github.com/un33k/python-slugify
-Pillow<7.0  # https://github.com/python-pillow/Pillow
+Pillow==6.2.2  # https://github.com/python-pillow/Pillow
 argon2-cffi==19.2.0  # https://github.com/hynek/argon2_cffi
 redis==3.3.11  # https://github.com/antirez/redis
 celery==4.4.0  # pyup: < 5.0  # https://github.com/celery/celery
 django-celery-beat==1.5.0  # https://github.com/celery/django-celery-beat
-flower==0.9.3  # https://github.com/mher/flower
+flower==0.9.4  # https://github.com/mher/flower
 
 # Django
 # ------------------------------------------------------------------------------
-django==2.2.9  # pyup: < 3.0  # https://www.djangoproject.com/
+django==3.0.5  # pyup: < 3.0  # https://www.djangoproject.com/
 django-environ==0.4.5  # https://github.com/joke2k/django-environ
 django-model-utils==4.0.0  # https://github.com/jazzband/django-model-utils
 django-allauth==0.41.0  # https://github.com/pennersr/django-allauth
-django-crispy-forms==1.8.1  # https://github.com/django-crispy-forms/django-crispy-forms
+django-crispy-forms==1.9.0  # https://github.com/django-crispy-forms/django-crispy-forms
 django-redis==4.11.0  # https://github.com/niwinz/django-redis
 
 # Django REST Framework
@@ -21,4 +21,5 @@ djangorestframework==3.11.0  # https://github.com/encode/django-rest-framework
 coreapi==2.3.3  # https://github.com/core-api/python-client
 
 # Wagtail
-wagtail>=2.7,<3.0
+wagtail==2.8.1  # https://github.com/wagtail/wagtail
+-e git+git://github.com/wagtail/wagtail-review.git@stable/0.2.x#egg=wagtail-review   # https://github.com/wagtail/wagtail-review/
