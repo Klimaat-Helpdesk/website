@@ -12,3 +12,4 @@ class Question(models.Model):
 
     date_asked = models.DateTimeField(auto_now_add=True)
     approved = models.NullBooleanField(default=None)
+
