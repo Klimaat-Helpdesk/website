@@ -28,7 +28,7 @@
         <section class="question">
           <div class="container">
             <div class="boxed">
-              <p class="title">{{ self.title }}</p>
+              <p class="title" data-contentpath-field="title">{{ self.title }}</p>
               <div class="tags">
                 {% for tag in self.get_tags %}
                   <span class="tag"><i class="fas fa-tag"></i> {{ tag }}</span>
@@ -38,7 +38,7 @@
           </div>
         </section>
         <section class="answer">
-          <div class="container boxed">
+          <div class="container boxed" data-contentpath-field="body">
             {{ self.content|richtext }}
           </div>
           <hr>
