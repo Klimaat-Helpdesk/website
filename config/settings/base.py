@@ -5,7 +5,6 @@ Base settings to build other settings files upon.
 import environ
 from django.utils.translation import gettext_lazy as _
 
-
 ROOT_DIR = (
     environ.Path(__file__) - 3
 )  # (klimaat_helpdesk/config/settings/base.py - 3 = klimaat_helpdesk/)
@@ -65,7 +64,7 @@ DJANGO_APPS = [
     "django.contrib.sites",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "django.contrib.humanize", # Handy template tags
+    "django.contrib.humanize",  # Handy template tags
     "django.contrib.admin",
 ]
 
@@ -92,7 +91,7 @@ WAGTAIL_APPS = [
     'wagtail.search',
     'wagtail.admin',
     'wagtail.core',
-
+    'wagtail_review',
     'modelcluster',
     'taggit',
 ]
@@ -317,6 +316,7 @@ SOCIALACCOUNT_ADAPTER = "klimaat_helpdesk.users.adapters.SocialAccountAdapter"
 # Wagtail
 
 WAGTAIL_SITE_NAME = 'Klimaat Helpdesk'
+BASE_URL = 'https://www.helpdesk-climate.org'
 
 # Taggit
 TAGGIT_CASE_INSENSITIVE = True
