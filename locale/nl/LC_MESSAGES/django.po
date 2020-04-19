@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-04 18:07+0000\n"
+"POT-Creation-Date: 2020-04-19 08:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: config/settings/base.py:32
+msgid "Dutch"
+msgstr ""
 
 #: klimaat_helpdesk/cms/apps.py:7
 msgid "Q&A CMS"
@@ -177,8 +181,9 @@ msgstr "Waarschuwing:"
 msgid ""
 "You currently do not have any e-mail address set up. You should really add "
 "an e-mail address so you can receive notifications, reset your password, etc."
-msgstr "Je hebt momenteel geen e-mailadres toegevoegd. Voeg aub een e-mailadres"
-"toe, zodat je notificaties kunt ontvangen, je wachtwoord kunt resetten, etc."
+msgstr ""
+"Je hebt momenteel geen e-mailadres toegevoegd. Voeg aub een e-mailadrestoe, "
+"zodat je notificaties kunt ontvangen, je wachtwoord kunt resetten, etc."
 
 #: klimaat_helpdesk/templates/account/email.html:51
 msgid "Add E-mail Address"
@@ -202,8 +207,9 @@ msgstr "Bevestig je e-mailadres"
 msgid ""
 "Please confirm that <a href=\"mailto:%(email)s\">%(email)s</a> is an e-mail "
 "address for user %(user_display)s."
-msgstr "Bevestig aub dat <a href=\"mailto:%(email)s\">%(email)s</a> een e-mailadres is "
-"voor de gebruiker %(user_display)s."
+msgstr ""
+"Bevestig aub dat <a href=\"mailto:%(email)s\">%(email)s</a> een e-mailadres "
+"is voor de gebruiker %(user_display)s."
 
 #: klimaat_helpdesk/templates/account/email_confirm.html:20
 msgid "Confirm"
@@ -214,9 +220,9 @@ msgstr "Bevestig"
 msgid ""
 "This e-mail confirmation link expired or is invalid. Please <a href="
 "\"%(email_url)s\">issue a new e-mail confirmation request</a>."
-msgstr "Deze bevestigingslink is verlopen of niet geldig. <a href="
-"\"%(email_url)s\">Vraag een nieuwe "
-"bevestigingsmail aan.</a>"
+msgstr ""
+"Deze bevestigingslink is verlopen of niet geldig. <a href=\"%(email_url)s"
+"\">Vraag een nieuwe bevestigingsmail aan.</a>"
 
 #: klimaat_helpdesk/templates/account/login.html:7
 #: klimaat_helpdesk/templates/account/login.html:11
@@ -231,8 +237,9 @@ msgid ""
 "of your existing third party accounts. Or, <a href=\"%(signup_url)s\">sign "
 "up</a>\n"
 "for a %(site_name)s account and sign in below:"
-msgstr "Log in met een van je bestaande accounts. Of <a href=\"%(signup_url)s\">schrijf je in</a> voor een "
-"%(site_name)s account en log hieronder in:"
+msgstr ""
+"Log in met een van je bestaande accounts. Of <a href=\"%(signup_url)s"
+"\">schrijf je in</a> voor een %(site_name)s account en log hieronder in:"
 
 #: klimaat_helpdesk/templates/account/login.html:26
 msgid "or"
@@ -243,7 +250,9 @@ msgstr "of"
 msgid ""
 "If you have not created an account yet, then please\n"
 "<a href=\"%(signup_url)s\">sign up</a> first."
-msgstr "Als je nog geen account hebt gemaakt, <a href=\"%(signup_url)s\">schrijf je</a> dan in."
+msgstr ""
+"Als je nog geen account hebt gemaakt, <a href=\"%(signup_url)s\">schrijf je</"
+"a> dan in."
 
 #: klimaat_helpdesk/templates/account/login.html:43
 msgid "Forgot Password?"
@@ -280,8 +289,9 @@ msgstr "Reset je wachtwoord"
 msgid ""
 "Forgotten your password? Enter your e-mail address below, and we'll send you "
 "an e-mail allowing you to reset it."
-msgstr "Wachtwoord vergeten? Vul hieronder je e-mailadres in, en we zullen een "
-"e-mail sturen met een rest link."
+msgstr ""
+"Wachtwoord vergeten? Vul hieronder je e-mailadres in, en we zullen een e-"
+"mail sturen met een rest link."
 
 #: klimaat_helpdesk/templates/account/password_reset.html:21
 msgid "Reset My Password"
@@ -289,14 +299,17 @@ msgstr "Reset mijn wachtwoord"
 
 #: klimaat_helpdesk/templates/account/password_reset.html:24
 msgid "Please contact us if you have any trouble resetting your password."
-msgstr "Neem contact met ons op als je problemen hebt met het resetten van je wachtwoord."
+msgstr ""
+"Neem contact met ons op als je problemen hebt met het resetten van je "
+"wachtwoord."
 
 #: klimaat_helpdesk/templates/account/password_reset_done.html:15
 msgid ""
 "We have sent you an e-mail. Please contact us if you do not receive it "
 "within a few minutes."
-msgstr "We hebben je een e-mail gestuurd. Mocht je na een paar minuten nog niks hebben "
-"ontvangen, neem dan contact met ons op."
+msgstr ""
+"We hebben je een e-mail gestuurd. Mocht je na een paar minuten nog niks "
+"hebben ontvangen, neem dan contact met ons op."
 
 #: klimaat_helpdesk/templates/account/password_reset_from_key.html:8
 msgid "Bad Token"
@@ -308,8 +321,10 @@ msgid ""
 "The password reset link was invalid, possibly because it has already been "
 "used.  Please request a <a href=\"%(passwd_reset_url)s\">new password reset</"
 "a>."
-msgstr "Het wachtwoord resetten is mislukt, waarschijnlijk omdat een oud wachtwoord is hergebruikt."
-" <a href=\"%(passwd_reset_url)s\">Vraag een nieuw wachtwoord aan</a>."
+msgstr ""
+"Het wachtwoord resetten is mislukt, waarschijnlijk omdat een oud wachtwoord "
+"is hergebruikt. <a href=\"%(passwd_reset_url)s\">Vraag een nieuw wachtwoord "
+"aan</a>."
 
 #: klimaat_helpdesk/templates/account/password_reset_from_key.html:18
 msgid "change password"
@@ -363,9 +378,10 @@ msgid ""
 "We have sent an e-mail to you for verification. Follow the link provided to "
 "finalize the signup process. Please contact us if you do not receive it "
 "within a few minutes."
-msgstr "We hebben een e-mail naar je gestuurd voor verificatie. Klik op de link "
-"in de e-mail om dit process te voltooien. Mocht je na een paar minuten nog niks hebben "
-"ontvangen, neem dan contact met ons op."
+msgstr ""
+"We hebben een e-mail naar je gestuurd voor verificatie. Klik op de link in "
+"de e-mail om dit process te voltooien. Mocht je na een paar minuten nog niks "
+"hebben ontvangen, neem dan contact met ons op."
 
 #: klimaat_helpdesk/templates/account/verified_email_required.html:12
 msgid ""
@@ -379,8 +395,10 @@ msgid ""
 "We have sent an e-mail to you for\n"
 "verification. Please click on the link inside this e-mail. Please\n"
 "contact us if you do not receive it within a few minutes."
-msgstr "We hebben een e-mail gestuurd voor de verificatie. Klik op de link in deze e-mail. "
-"Mocht je na een paar minuten nog niks hebben ontvangen, neem dan contact met ons op."
+msgstr ""
+"We hebben een e-mail gestuurd voor de verificatie. Klik op de link in deze e-"
+"mail. Mocht je na een paar minuten nog niks hebben ontvangen, neem dan "
+"contact met ons op."
 
 #: klimaat_helpdesk/templates/account/verified_email_required.html:20
 #, python-format
@@ -402,8 +420,8 @@ msgid ""
 "All the questions you may have\n"
 "          regarding climate breakdown, global warming, answered by experts."
 msgstr ""
-"Al je vragen over de klimaatverandering en de gevolgen daarvan beantwoord door "
-"actieve wetenschappers"
+"Al je vragen over de klimaatverandering en de gevolgen daarvan beantwoord "
+"door actieve wetenschappers"
 
 # ## I think the english message should be toned down, suggetion: Active scientists answering your questions regarding the climate change and its impacts"
 #: klimaat_helpdesk/templates/cms/answers_list.html:18
@@ -461,8 +479,9 @@ msgid ""
 "          can leave us your e-mail."
 msgstr ""
 "Nadat wij je vraag hebben ontvangen, zullen we deze beoordelen en toewijzen "
-"aan een van onze deskundigen om te beantwoorden. Het hele proces kan enkele weken duren. Als je "
-"graag op de hoogte wilt worden gehouden van de voortgang, \n"
+"aan een van onze deskundigen om te beantwoorden. Het hele proces kan enkele "
+"weken duren. Als je graag op de hoogte wilt worden gehouden van de "
+"voortgang, \n"
 "kun je je e-mail invullen"
 
 #: klimaat_helpdesk/templates/core/new_question.html:30
@@ -484,8 +503,8 @@ msgid ""
 "        "
 msgstr ""
 "We zullen de vraag beoordelen en naar deskundigen sturen om deze te "
-"beantwoorden. Als je je e-mail in de vorige stap hebt ingevoerd,"
-"houden we je op de hoogte van de voortgang. Heb je dit niet gedaan, houd dan deze website "
+"beantwoorden. Als je je e-mail in de vorige stap hebt ingevoerd,houden we je "
+"op de hoogte van de voortgang. Heb je dit niet gedaan, houd dan deze website "
 "in de gaten"
 
 # ## not clear for me what to do exactly with multi-line messages, I hope the show up correctly
@@ -531,9 +550,9 @@ msgid ""
 "        an email to helpdesk@scientists4future.nl mentioning your area of "
 "expertise."
 msgstr ""
-"Bent u bereid om uw expertise ter beschikking te stellen voor het beantwoorden van vragen,"
-"word dan lid van ons team door een e-mail te sturen naar "
-"helpdesk@scientists4future.nl met vermelding van uw vakgebied"
+"Bent u bereid om uw expertise ter beschikking te stellen voor het "
+"beantwoorden van vragen,word dan lid van ons team door een e-mail te sturen "
+"naar helpdesk@scientists4future.nl met vermelding van uw vakgebied"
 
 #: klimaat_helpdesk/templates/users/user_detail.html:4
 msgid "User"
@@ -550,6 +569,32 @@ msgstr "E-mail"
 #: klimaat_helpdesk/templates/users/user_form.html:13
 msgid "Update"
 msgstr "Bijwerken"
+
+#: klimaat_helpdesk/templates/wagtail_review/email/request_review.txt:3
+#, python-format
+msgid "Dear %(full_name)s,"
+msgstr ""
+
+#: klimaat_helpdesk/templates/wagtail_review/email/request_review.txt:3
+msgid "Dear"
+msgstr ""
+
+#: klimaat_helpdesk/templates/wagtail_review/email/request_review.txt:4
+#, python-format
+msgid ""
+"\n"
+"%(full_name)s has requested a review from you on the page \"%(page_title)s"
+"\". To review the page and provide your feedback, please visit the link "
+"below. You can add notes on individual paragraphs just by highlighting them "
+"and entering a message. Once you are ready, you can submit your review and "
+"overall opinion by clicking on the button at the bottom-right of the page:"
+msgstr ""
+
+#: klimaat_helpdesk/templates/wagtail_review/email/request_review.txt:9
+msgid ""
+"Please do not share this link - it is personal to you, and anyone else with "
+"the link will be able to respond to the review under your name. "
+msgstr ""
 
 #: klimaat_helpdesk/users/apps.py:7
 msgid "Users"

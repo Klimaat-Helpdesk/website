@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-04 18:07+0000\n"
+"POT-Creation-Date: 2020-04-19 08:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: config/settings/base.py:32
+msgid "Dutch"
+msgstr ""
 
 #: klimaat_helpdesk/cms/apps.py:7
 msgid "Q&A CMS"
@@ -515,6 +519,32 @@ msgstr ""
 
 #: klimaat_helpdesk/templates/users/user_form.html:13
 msgid "Update"
+msgstr ""
+
+#: klimaat_helpdesk/templates/wagtail_review/email/request_review.txt:3
+#, python-format
+msgid "Dear %(full_name)s,"
+msgstr ""
+
+#: klimaat_helpdesk/templates/wagtail_review/email/request_review.txt:3
+msgid "Dear"
+msgstr ""
+
+#: klimaat_helpdesk/templates/wagtail_review/email/request_review.txt:4
+#, python-format
+msgid ""
+"\n"
+"%(full_name)s has requested a review from you on the page \"%(page_title)s"
+"\". To review the page and provide your feedback, please visit the link "
+"below. You can add notes on individual paragraphs just by highlighting them "
+"and entering a message. Once you are ready, you can submit your review and "
+"overall opinion by clicking on the button at the bottom-right of the page:"
+msgstr ""
+
+#: klimaat_helpdesk/templates/wagtail_review/email/request_review.txt:9
+msgid ""
+"Please do not share this link - it is personal to you, and anyone else with "
+"the link will be able to respond to the review under your name. "
 msgstr ""
 
 #: klimaat_helpdesk/users/apps.py:7
