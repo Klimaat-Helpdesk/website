@@ -13,85 +13,60 @@ Spin up docker containers with all the necessary dependencies. You will need doc
     $ docker-compose -f local.yml build
     $ docker-compose -f local.yml up -d
 
-The last command will spin up the containers and the website will be accessible through http://localhost:8000
+The last command will spin up the containers and the website will be accessible through http://localhost:8000. If you remove the ``-d``, you will see the logs on screen, but the website will run only while your terminal is open.
 
+Setting Up A Super User
+^^^^^^^^^^^^^^^^^^^^^^^
+Since we are using Wagtail as a CMS, we need to start by creating a super user::
 
-Setting Up Your Users
-^^^^^^^^^^^^^^^^^^^^^
+    $ docker-compose -f local.yml run --rm django python manage.py createsuperuser
 
-* To create a **normal user account**, just go to Sign Up and fill out the form. Once you submit it, you'll see a "Verify Your E-mail Address" page. Go to your console to see a simulated email verification message. Copy the link into your browser. Now the user's email should be verified and ready to go.
-
-* To create an **superuser account**, use this command::
-
-    $ python manage.py createsuperuser
-
-For convenience, you can keep your normal user logged in on Chrome and your superuser logged in on Firefox (or similar), so that you can see how the site behaves for both kinds of users.
-
-Type checks
-^^^^^^^^^^^
-
-Running type checks with mypy:
-
-::
-
-  $ mypy klimaat_helpdesk
-
-Test coverage
-^^^^^^^^^^^^^
-
-To run the tests, check your test coverage, and generate an HTML coverage report::
-
-    $ coverage run -m pytest
-    $ coverage html
-    $ open htmlcov/index.html
-
-Running tests with py.test
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-::
-
-  $ pytest
-
-Live reloading and Sass CSS compilation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Moved to `Live reloading and SASS compilation`_.
-
-.. _`Live reloading and SASS compilation`: http://cookiecutter-django.readthedocs.io/en/latest/live-reloading-and-sass-compilation.html
-
-
-
-Celery
-^^^^^^
-
-This app comes with Celery.
-
-To run a celery worker:
-
-.. code-block:: bash
-
-    cd klimaat_helpdesk
-    celery -A config.celery_app worker -l info
-
-Please note: For Celery's import magic to work, it is important *where* the celery commands are run. If you are in the same folder with *manage.py*, you should be right.
-
-
-
-
+Follow the steps on screen, and then head to http://localshot:8000/cms to log in.
 
 Deployment
 ----------
+This website can be deployed using Docker. It will set up Django behind a Gunicorn worker, Traefik as a reverse proxy, Celery and Redis which are currently not in used in this project, but available in case they are needed.
 
-The following details how to deploy this application.
+Create a folder called ``.production`` in ``.envs``, add two files: **.django** and **.postgres**. The Django config file should hold the settings for the website::
 
+    DJANGO_READ_DOT_ENV_FILE=True
+    DJANGO_SETTINGS_MODULE=config.settings.production
+    DJANGO_SECRET_KEY=
+    DJANGO_ADMIN_URL=
+    DJANGO_ALLOWED_HOSTS=
+
+    DJANGO_SECURE_SSL_REDIRECT=False
+
+    MAILGUN_API_KEY=
+    DJANGO_SERVER_EMAIL=
+    MAILGUN_DOMAIN=
+    MAILGUN_API_URL=
+
+    DJANGO_AWS_ACCESS_KEY_ID=
+    DJANGO_AWS_SECRET_ACCESS_KEY=
+    DJANGO_AWS_STORAGE_BUCKET_NAME=
+
+    DJANGO_ACCOUNT_ALLOW_REGISTRATION=True
+
+    WEB_CONCURRENCY=
+
+    REDIS_URL=
+
+    CELERY_FLOWER_USER=
+    CELERY_FLOWER_PASSWORD=
+
+And the postgres::
+
+    POSTGRES_HOST=
+    POSTGRES_PORT=
+    POSTGRES_DB=
+    POSTGRES_USER=
+    POSTGRES_PASSWORD=
 
 
 Docker
 ^^^^^^
 
-See detailed `cookiecutter-django Docker documentation`_.
-
-.. _`cookiecutter-django Docker documentation`: http://cookiecutter-django.readthedocs.io/en/latest/deployment-with-docker.html
-
-
+    $ docker-compose -f production.yml build
+    $ docker-compose -f production.yml up -d
 
