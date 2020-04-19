@@ -214,8 +214,9 @@ msgstr "Bevestig"
 msgid ""
 "This e-mail confirmation link expired or is invalid. Please <a href="
 "\"%(email_url)s\">issue a new e-mail confirmation request</a>."
-msgstr "Deze bevestigingslink is verlopen of niet geldig. Vraag een nieuwe "
-"bevestigingsmail aan."
+msgstr "Deze bevestigingslink is verlopen of niet geldig. <a href="
+"\"%(email_url)s\">Vraag een nieuwe "
+"bevestigingsmail aan.</a>"
 
 #: klimaat_helpdesk/templates/account/login.html:7
 #: klimaat_helpdesk/templates/account/login.html:11
@@ -230,8 +231,8 @@ msgid ""
 "of your existing third party accounts. Or, <a href=\"%(signup_url)s\">sign "
 "up</a>\n"
 "for a %(site_name)s account and sign in below:"
-msgstr "Log in met een van je bestaande accounts. Of schrijf je in voor een "
-"%(site_name) account en log hieronder in:"
+msgstr "Log in met een van je bestaande accounts. Of <a href=\"%(signup_url)s\">schrijf je in</a> voor een "
+"%(site_name)s account en log hieronder in:"
 
 #: klimaat_helpdesk/templates/account/login.html:26
 msgid "or"
@@ -242,7 +243,7 @@ msgstr "of"
 msgid ""
 "If you have not created an account yet, then please\n"
 "<a href=\"%(signup_url)s\">sign up</a> first."
-msgstr "Als je nog geen account hebt gemaakt, schrijf je dan in."
+msgstr "Als je nog geen account hebt gemaakt, <a href=\"%(signup_url)s\">schrijf je</a> dan in."
 
 #: klimaat_helpdesk/templates/account/login.html:43
 msgid "Forgot Password?"
@@ -308,7 +309,7 @@ msgid ""
 "used.  Please request a <a href=\"%(passwd_reset_url)s\">new password reset</"
 "a>."
 msgstr "Het wachtwoord resetten is mislukt, waarschijnlijk omdat een oud wachtwoord is hergebruikt."
-"Vraag een nieuw wachtwoord aan."
+" <a href=\"%(passwd_reset_url)s\">Vraag een nieuw wachtwoord aan</a>."
 
 #: klimaat_helpdesk/templates/account/password_reset_from_key.html:18
 msgid "change password"
@@ -339,7 +340,7 @@ msgstr "Account aanmaken"
 #, python-format
 msgid ""
 "Already have an account? Then please <a href=\"%(login_url)s\">sign in</a>."
-msgstr "Heb je al een account? Log hier in"
+msgstr "Heb je al een account? <a href=\"%(login_url)s\">Log hier in</a>"
 
 #: klimaat_helpdesk/templates/account/signup_closed.html:5
 #: klimaat_helpdesk/templates/account/signup_closed.html:8
@@ -364,7 +365,7 @@ msgid ""
 "within a few minutes."
 msgstr "We hebben een e-mail naar je gestuurd voor verificatie. Klik op de link "
 "in de e-mail om dit process te voltooien. Mocht je na een paar minuten nog niks hebben "
-"ontvangen, neem dan contact met ons op." 
+"ontvangen, neem dan contact met ons op."
 
 #: klimaat_helpdesk/templates/account/verified_email_required.html:12
 msgid ""
