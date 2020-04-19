@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load i18n static %}
+{% block head %}
+  <section class="hero is-primary is-bold">
+    <div class="hero-body">
+      <div class="container">
+        <h2 class="title is-size-2-desktop is-size-3-touch">{{ page.title }}</h2>
+        <h3 class="subtitle is-size-4-desktop is-size-5-touch">{{ page.subtitle }}</h3>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+{% block content %}
+  <main class="section">
+    <div class="container">
+      <div class="columns">
+        <main class="column">
+          {% for expert in experts %}
+            {% include 'experts/includes/expert_block.html' with expert=expert %}
+          {% endfor %}
+        </main>
+        {% include 'core/includes/aside.html' %}
+      </div>
+    </div>
+  </main>
+{% endblock %}

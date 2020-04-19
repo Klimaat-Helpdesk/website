@@ -1,3 +1,4 @@
+{% load menu_tags %}
 {% load static i18n bulma_tags wagtailreview_tags %}
 <!DOCTYPE html>
 <html lang="en">
@@ -61,11 +62,11 @@
     <p>
       {% blocktrans %}<strong>Klimaat Helpdesk</strong> by Scientists for Future.{% endblocktrans %}
     </p>
+  <p>{% flat_menu "footer" %}</p>
   </div>
 </footer>
-
-{% wagtailreview %}
 {% block footer_js %}
 {% endblock %}
+{% wagtailreview %}
 </body>
 </html>
