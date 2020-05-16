@@ -13,17 +13,27 @@
 {% block content %}
   <main class="section">
     <div class="container">
-      <div class="tabs">
-        <ul>
-          <li class="is-active"><a>{% trans "Top" %}</a></li>
-          <li><a>{% trans "New" %}</a></li>
-        </ul>
-      </div>
       <div class="columns">
         <main class="column">
           {% for answer in answers %}
             {% include 'core/includes/answer_block.html' with answer=answer %}
           {% endfor %}
+          {% if answers.paginator.num_pages > 1 %}
+            <nav class="pagination" role="navigation" aria-label="pagination">
+              {% if answers.has_previous %}
+                <a class="pagination-previous"
+                   href="?page={{ answers.previous_page_number }}">{% trans "Previous Page" %}</a>
+              {% endif %}
+              {% if answers.has_next %}
+                <a href="?page={{ answers.next_page_number }}" class="pagination-next">{% trans "Next page" %}</a>
+              {% endif %}
+              {% for page_num in answers.paginator.page_range %}
+                <li>
+                  <a href="?page={{ page_num }}" class="pagination-link">{{ page_num }}</a>
+                </li>
+              {% endfor %}
+            </nav>
+          {% endif %}
         </main>
         {% include 'core/includes/aside.html' %}
       </div>
@@ -40,21 +50,11 @@
           <figure class="image is-48x48"><img src="{% static 'images/portrait_placeholder.png' %}"
                                               alt="Profile Picture"/></figure>
         </div>
-        <div class="media-content content">
-          <div class="expert-title">
-            <strong>Expert Number 1</strong>
-            <time>Answering questions since 2019</time>
-          </div>
-          <div class="expert-bio">Aliquam rhoncus ex tortor, nec tristique nunc maximus vel. Duis mi dui, malesuada quis
-            ligula eget, auctor tincidunt dolor. Praesent odio justo, mollis sit amet ornare sed, bibendum ut nunc.
-            Fusce neque ligula, ornare in lobortis quis, cursus a erat. Nam quis dui ultrices, efficitur turpis vel,
-            iaculis ex.
-          </div>
-        </div>
+        {% include 'experts/includes/expert_block.html' with expert=expert %}
       </div>
     </div>
     <div class="container">
-      <a class="button is-active is-primary">See all our experts</a>
+      <a class="button is-active is-primary" href="{{ experts_page.url }}">{% trans "See all our experts" %}</a>
     </div>
   </div>
 {% endblock %}

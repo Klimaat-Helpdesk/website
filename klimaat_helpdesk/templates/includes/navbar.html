@@ -22,9 +22,9 @@
           <a class="button is-primary" href="{% url 'core:ask' %}">
             {% trans "Ask a Question" %}
           </a>
-          <a class="button is-light" href="">
-            {% trans "Become an Expert" %}
-          </a>
+
+          <form action="/search" method="get"><input class="input" type="text" name="query"
+                                                     placeholder="{% trans 'Search' %}"></form>
         </div>
       </div>
     </div>

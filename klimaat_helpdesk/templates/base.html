@@ -1,5 +1,4 @@
-{% load menu_tags %}
-{% load static i18n bulma_tags wagtailreview_tags %}
+{% load static i18n bulma_tags footer_tags menu_tags wagtailreview_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,14 +56,7 @@
 
   </section>
 </main>
-<footer class="footer">
-  <div class="content has-text-centered">
-    <p>
-      {% blocktrans %}<strong>Klimaat Helpdesk</strong> by Scientists for Future.{% endblocktrans %}
-    </p>
-  <p>{% flat_menu "footer" %}</p>
-  </div>
-</footer>
+{% get_footer %}
 {% block footer_js %}
 {% endblock %}
 {% wagtailreview %}

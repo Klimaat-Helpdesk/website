@@ -27,6 +27,9 @@
             <form class="form boxed" method="post">
               {% csrf_token %}
               {{ form|bulma }}
+              <p>
+                <a href="/terms">{% trans "Our terms and conditions" %}</a>
+              </p>
               <button class="button is-primary">{% trans "Submit" %}</button>
             </form>
           </div>
