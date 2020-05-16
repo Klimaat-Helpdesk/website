@@ -8,7 +8,6 @@ from django.views import defaults as default_views
 from klimaat_helpdesk.search.views import search as search_views
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
-from wagtail_review import urls as wagtailreview_urls
 
 urlpatterns = [
     re_path(r"^accounts/", include("allauth.urls")),
@@ -17,7 +16,6 @@ urlpatterns = [
     path(settings.ADMIN_URL, admin.site.urls),
     path("users/", include("klimaat_helpdesk.users.urls", namespace="users")),
     re_path(r'^cms/', include(wagtailadmin_urls)),
-    url(r'^review/', include(wagtailreview_urls)),
     path("", include(wagtail_urls)),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

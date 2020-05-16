@@ -91,7 +91,6 @@ WAGTAIL_APPS = [
     'wagtail.search',
     'wagtail.admin',
     'wagtail.core',
-    'wagtail_review',
     'modelcluster',
     'taggit',
     'wagtailmenus',
