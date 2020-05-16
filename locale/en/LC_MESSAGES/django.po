@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-19 08:47+0000\n"
+"POT-Creation-Date: 2020-05-16 14:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,49 +26,48 @@ msgstr ""
 msgid "Q&A CMS"
 msgstr ""
 
-#: klimaat_helpdesk/cms/models.py:36 klimaat_helpdesk/experts/models.py:15
+#: klimaat_helpdesk/cms/models.py:39 klimaat_helpdesk/experts/models.py:15
 msgid "name"
 msgstr ""
 
-#: klimaat_helpdesk/cms/models.py:38
+#: klimaat_helpdesk/cms/models.py:41
 msgid "slug"
 msgstr ""
 
-#: klimaat_helpdesk/cms/models.py:41
+#: klimaat_helpdesk/cms/models.py:44
 msgid "A slug to identify the category"
 msgstr ""
 
-#: klimaat_helpdesk/cms/models.py:42
+#: klimaat_helpdesk/cms/models.py:45
 msgid "description"
 msgstr ""
 
-#: klimaat_helpdesk/cms/models.py:51
+#: klimaat_helpdesk/cms/models.py:54
 msgid "Answer Category"
 msgstr ""
 
-#: klimaat_helpdesk/cms/models.py:52
+#: klimaat_helpdesk/cms/models.py:55
 msgid "Answer Categories"
 msgstr ""
 
-#: klimaat_helpdesk/cms/models.py:67
+#: klimaat_helpdesk/cms/models.py:70
 msgid "Short description"
 msgstr ""
 
-#: klimaat_helpdesk/cms/models.py:78 klimaat_helpdesk/cms/models.py:80
+#: klimaat_helpdesk/cms/models.py:81 klimaat_helpdesk/cms/models.py:83
 msgid "Expert(s)"
 msgstr ""
 
-#: klimaat_helpdesk/cms/models.py:86
+#: klimaat_helpdesk/cms/models.py:89
 msgid "Categories"
 msgstr ""
 
-#: klimaat_helpdesk/cms/models.py:125
+#: klimaat_helpdesk/cms/models.py:134
 msgid "Subtitle to show on the header of the page"
 msgstr ""
 
-#: klimaat_helpdesk/core/admin.py:8
+#: klimaat_helpdesk/core/admin.py:9
 #: klimaat_helpdesk/templates/cms/answer_detail.html:20
-#: klimaat_helpdesk/templates/includes/navbar.html:19
 msgid "Questions"
 msgstr ""
 
@@ -80,11 +79,11 @@ msgstr ""
 msgid "Accept Terms & Conditions"
 msgstr ""
 
-#: klimaat_helpdesk/core/models.py:9
+#: klimaat_helpdesk/core/models.py:15
 msgid "Your Question"
 msgstr ""
 
-#: klimaat_helpdesk/core/models.py:10
+#: klimaat_helpdesk/core/models.py:16
 msgid "User Email"
 msgstr ""
 
@@ -118,6 +117,12 @@ msgstr ""
 
 #: klimaat_helpdesk/experts/models.py:23
 msgid "LinkedIn Profile"
+msgstr ""
+
+#: klimaat_helpdesk/search/apps.py:7
+#: klimaat_helpdesk/templates/includes/navbar.html:27
+#: klimaat_helpdesk/templates/search/search.html:7
+msgid "Search"
 msgstr ""
 
 #: klimaat_helpdesk/templates/404.html:4 klimaat_helpdesk/templates/404.html:7
@@ -381,10 +386,6 @@ msgid ""
 "mail address</a>."
 msgstr ""
 
-#: klimaat_helpdesk/templates/base.html:62
-msgid "<strong>Klimaat Helpdesk</strong> by Scientists for Future."
-msgstr ""
-
 #: klimaat_helpdesk/templates/cms/answer_detail.html:9
 #: klimaat_helpdesk/templates/core/home_page.html:8
 #: klimaat_helpdesk/templates/core/new_question.html:8
@@ -394,48 +395,48 @@ msgid ""
 "          regarding climate breakdown, global warming, answered by experts."
 msgstr ""
 
-#: klimaat_helpdesk/templates/cms/answers_list.html:18
-#: klimaat_helpdesk/templates/core/home_page.html:19
-msgid "Top"
+#: klimaat_helpdesk/templates/cms/answer_detail.html:22
+msgid "Specific Question"
 msgstr ""
 
-#: klimaat_helpdesk/templates/cms/answers_list.html:19
-#: klimaat_helpdesk/templates/core/home_page.html:20
-msgid "New"
+#: klimaat_helpdesk/templates/cms/answers_list.html:25
+msgid "Previous Page"
 msgstr ""
 
-#: klimaat_helpdesk/templates/cms/answers_list.html:35
-#: klimaat_helpdesk/templates/core/home_page.html:36
+#: klimaat_helpdesk/templates/cms/answers_list.html:28
+msgid "Next page"
+msgstr ""
+
+#: klimaat_helpdesk/templates/cms/answers_list.html:45
+#: klimaat_helpdesk/templates/core/home_page.html:30
 msgid "Meet an expert"
 msgstr ""
 
-#: klimaat_helpdesk/templates/cms/includes/aside.html:12
+#: klimaat_helpdesk/templates/cms/answers_list.html:57
+#: klimaat_helpdesk/templates/core/home_page.html:36
+msgid "See all our experts"
+msgstr ""
+
+#: klimaat_helpdesk/templates/core/home_page.html:31
+msgid "Get to know one of the many experts answering questions"
+msgstr ""
+
+#: klimaat_helpdesk/templates/core/includes/answer_block.html:8
+msgid "read more"
+msgstr ""
+
 #: klimaat_helpdesk/templates/core/includes/aside.html:12
 #: klimaat_helpdesk/templates/core/new_question.html:18
 msgid "Ask your question"
 msgstr ""
 
-#: klimaat_helpdesk/templates/cms/includes/aside.html:13
 #: klimaat_helpdesk/templates/core/includes/aside.html:13
 msgid "Didn't find the answer you were looking for? Submit your own question!"
 msgstr ""
 
-#: klimaat_helpdesk/templates/cms/includes/aside.html:14
 #: klimaat_helpdesk/templates/core/includes/aside.html:14
-#: klimaat_helpdesk/templates/includes/navbar.html:33
+#: klimaat_helpdesk/templates/includes/navbar.html:23
 msgid "Ask a Question"
-msgstr ""
-
-#: klimaat_helpdesk/templates/core/home_page.html:37
-msgid "Get to know one of the many experts answering questions"
-msgstr ""
-
-#: klimaat_helpdesk/templates/core/home_page.html:42
-msgid "See all our experts"
-msgstr ""
-
-#: klimaat_helpdesk/templates/core/includes/answer_block.html:15
-msgid "read more"
 msgstr ""
 
 #: klimaat_helpdesk/templates/core/new_question.html:19
@@ -447,7 +448,11 @@ msgid ""
 "          can leave us your e-mail."
 msgstr ""
 
-#: klimaat_helpdesk/templates/core/new_question.html:30
+#: klimaat_helpdesk/templates/core/new_question.html:31
+msgid "Our terms and conditions"
+msgstr ""
+
+#: klimaat_helpdesk/templates/core/new_question.html:33
 msgid "Submit"
 msgstr ""
 
@@ -475,22 +480,12 @@ msgid ""
 "              regarding the decisions taken."
 msgstr ""
 
-#: klimaat_helpdesk/templates/experts/includes/expert_block.html:16
-#, python-format
-msgid "Answering questions since %(expert.creation_date|date:\"F Y\")s"
-msgstr ""
-
 #: klimaat_helpdesk/templates/includes/navbar.html:5
 msgid "Klimaat Helpdesk"
 msgstr ""
 
-#: klimaat_helpdesk/templates/includes/navbar.html:22
-#: klimaat_helpdesk/templates/includes/navbar.html:25
-msgid "Our Experts"
-msgstr ""
-
-#: klimaat_helpdesk/templates/includes/navbar.html:36
-msgid "Become an Expert"
+#: klimaat_helpdesk/templates/search/search.html:23
+msgid "No answers found"
 msgstr ""
 
 #: klimaat_helpdesk/templates/under_construction.html:34
