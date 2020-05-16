@@ -15,8 +15,8 @@
     <div class="container">
       <div class="columns">
         <main class="column">
-        {% if search_results %}
-          {% for answer in search_result %}
+        {% if results %}
+          {% for answer in results %}
             {% include 'core/includes/answer_block.html' with answer=answer %}
           {% endfor %}
         {% else %}
