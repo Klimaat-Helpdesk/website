@@ -3,6 +3,9 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 import gitlab
+from wagtail.admin.edit_handlers import FieldPanel
+from wagtail.core.fields import RichTextField
+from wagtail.snippets.models import register_snippet
 
 
 class Question(models.Model):
@@ -50,3 +53,16 @@ class GitlabIssues(models.Model):
         super().save(force_insert=force_insert, force_update=force_update, using=using, update_fields=update_fields)
 
 
+@register_snippet
+class FooterText(models.Model):
+    text = RichTextField(blank=False)
+
+    panels = [
+        FieldPanel('text'),
+    ]
+
+    class Meta:
+        verbose_name_plural = 'Footer Text'
+
+    def __str__(self):
+        return "Footer Text"
