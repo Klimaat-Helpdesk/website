@@ -1,38 +1,40 @@
 {% extends "base.html" %}
-{% load static wagtailcore_tags %}
-
-{% block body_class %}template-searchresults{% endblock %}
-
-{% block title %}Search{% endblock %}
-
+{% load i18n static wagtailcore_tags %}
+{% block head %}
+  <section class="hero is-primary is-bold">
+    <div class="hero-body">
+      <div class="container">
+        <h2 class="title is-size-2-desktop is-size-3-touch">{% trans "Search" %}</h2>
+        <h3 class="subtitle is-size-4-desktop is-size-5-touch">{{ search_query }}</h3>
+      </div>
+    </div>
+  </section>
+{% endblock %}
 {% block content %}
-    <h1>Search</h1>
-
-    <form action="{% url 'search' %}" method="get">
-        <input type="text" name="query"{% if search_query %} value="{{ search_query }}"{% endif %}>
-        <input type="submit" value="Search" class="button">
-    </form>
-
-    {% if search_results %}
-        <ul>
-            {% for result in search_results %}
-                <li>
-                    <h4><a href="{% pageurl result %}">{{ result }}</a></h4>
-                    {% if result.search_description %}
-                        {{ result.search_description }}
-                    {% endif %}
-                </li>
-            {% endfor %}
-        </ul>
-
-        {% if search_results.has_previous %}
-            <a href="{% url 'search' %}?query={{ search_query|urlencode }}&amp;page={{ search_results.previous_page_number }}">Previous</a>
+  <main class="section">
+    <div class="container">
+      <div class="columns">
+        <main class="column">
+        {% if search_results %}
+          {% for answer in search_result %}
+            {% include 'core/includes/answer_block.html' with answer=answer %}
+          {% endfor %}
+        {% else %}
+          {% trans "No answers found" %}
         {% endif %}
-
-        {% if search_results.has_next %}
-            <a href="{% url 'search' %}?query={{ search_query|urlencode }}&amp;page={{ search_results.next_page_number }}">Next</a>
-        {% endif %}
-    {% elif search_query %}
-        No results found
-    {% endif %}
+        </main>
+      </div>
+    </div>
+  </main>
+  <nav class="pagination" role="navigation" aria-label="pagination">
+  {% if search_results.has_previous %}
+    <a class="pagination-previous"
+    href="{% url 'search' %}?query={{ search_query|urlencode }}&amp;page={{ search_results.previous_page_number }}"
+    >Previous</a>
+  {% endif %}
+  {% if search_results.has_next %}
+      <a class="pagination-next"
+      href="{% url 'search' %}?query={{ search_query|urlencode }}&amp;page={{ search_results.next_page_number }}"
+      >Next page</a>
+  {% endif %}
 {% endblock %}
