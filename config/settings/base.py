@@ -102,6 +102,7 @@ LOCAL_APPS = [
     "klimaat_helpdesk.core.apps.CoreConfig",
     "klimaat_helpdesk.experts.apps.ExpertsConfig",
     "klimaat_helpdesk.cms.apps.CmsConfig",
+    "klimaat_helpdesk.search.apps.SearchConfig",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + WAGTAIL_APPS + LOCAL_APPS
