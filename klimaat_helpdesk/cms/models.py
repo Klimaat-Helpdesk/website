@@ -12,6 +12,7 @@ from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel
 from wagtail.contrib.routable_page.models import RoutablePageMixin, route
 from wagtail.core.fields import RichTextField
 from wagtail.core.models import Orderable, Page
+from wagtail.search import index
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet
 
@@ -90,6 +91,10 @@ class Answer(Page):
         FieldPanel('tags'),
     ]
 
+    search_fields = Page.search_fields + [
+        index.SearchField('content'),
+    ]
+
     @property
     def experts(self):
         experts = [
@@ -149,11 +154,15 @@ class AnswerIndexPage(RoutablePageMixin, Page):
             answers = paginator.page(paginator.num_pages)
 
         categories = AnswerCategory.objects.all()
+        expert = Expert.objects.last()
 
         context.update({
+            'answers_page': AnswerIndexPage.objects.first(),
             'categories': categories,
             'answers': answers,
             'subtitle': self.subtitle,
+            'experts_page': ExpertIndexPage.objects.first(),
+            'expert': expert,
             'paginator': paginator
         })
         return context
