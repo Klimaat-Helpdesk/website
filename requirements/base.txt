@@ -1,6 +1,6 @@
 pytz==2019.3  # https://github.com/stub42/pytz
 python-slugify==4.0.0  # https://github.com/un33k/python-slugify
-Pillow==6.2.2  # https://github.com/python-pillow/Pillow
+Pillow==7.1.2  # https://github.com/python-pillow/Pillow
 argon2-cffi==19.2.0  # https://github.com/hynek/argon2_cffi
 redis==3.3.11  # https://github.com/antirez/redis
 celery==4.4.0  # pyup: < 5.0  # https://github.com/celery/celery
