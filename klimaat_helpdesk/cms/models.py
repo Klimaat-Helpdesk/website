@@ -120,6 +120,8 @@ class Answer(Page):
 
         context.update({
             'categories': categories,
+            'answers_page': AnswerIndexPage.objects.first().url,
+            'experts_page': ExpertIndexPage.objects.first(),
         })
         return context
 
@@ -157,7 +159,7 @@ class AnswerIndexPage(RoutablePageMixin, Page):
         expert = Expert.objects.last()
 
         context.update({
-            'answers_page': AnswerIndexPage.objects.first(),
+            'answers_page': AnswerIndexPage.objects.first().url,
             'categories': categories,
             'answers': answers,
             'subtitle': self.subtitle,
@@ -165,6 +167,7 @@ class AnswerIndexPage(RoutablePageMixin, Page):
             'expert': expert,
             'paginator': paginator
         })
+        print(context)
         return context
 
     @route(r"^category/(?P<cat_slug>[-\w]*)/$", name="category_view")
@@ -195,7 +198,14 @@ class ExpertIndexPage(Page):
     def get_context(self, request, *args, **kwargs):
         context = super(ExpertIndexPage, self).get_context(request, *args, **kwargs)
         experts = Expert.objects.all()
-        context['experts'] = experts
+        categories = AnswerCategory.objects.all()
+
+        context.update({
+            'experts': experts,
+            'answers_page': AnswerIndexPage.objects.first().url,
+            'categories': categories,
+
+        })
         return context
 
 

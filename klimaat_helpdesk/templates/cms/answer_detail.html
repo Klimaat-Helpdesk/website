@@ -18,8 +18,8 @@
       <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
           <li><a href="{% url 'core:home' %}">{% trans "Questions" %}</a></li>
-          <li><a href="/answers/?category={{ self.category.slug }}">{{ self.category }}</a></li>
-          <li class="is-active"><a href="#" aria-current="page">Specific Question</a></li>
+          <li><a href="{{ answers_page }}category/{{ self.category.slug }}">{{ self.category }}</a></li>
+          <li class="is-active"><a href="#" aria-current="page">{% trans "Specific Question" %}</a></li>
         </ul>
       </nav>
     </div>
@@ -42,14 +42,14 @@
             {{ self.content|richtext }}
           </div>
           <hr>
-          <div class="expert-info boxed">
-            {% for expert in self.experts %}
+          {% for expert in self.experts %}
+            <div class="expert-info boxed">
               {% include 'experts/includes/expert_block.html' with expert=expert %}
-            {% endfor %}
-          </div>
+            </div>
+          {% endfor %}
         </section>
       </div>
-      {% include 'cms/includes/aside.html' %}
+      {% include 'core/includes/aside.html' %}
     </div>
   </div>
 {% endblock %}

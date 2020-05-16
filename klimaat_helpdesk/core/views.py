@@ -1,7 +1,7 @@
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, FormView
 
-from klimaat_helpdesk.cms.models import Answer, AnswerCategory
+from klimaat_helpdesk.cms.models import Answer, AnswerCategory, AnswerIndexPage, ExpertIndexPage
 from klimaat_helpdesk.core.forms import AskQuestion
 from klimaat_helpdesk.core.models import Question
 from klimaat_helpdesk.experts.models import Expert
@@ -16,6 +16,8 @@ class HomePage(TemplateView):
         expert_profile = Expert.objects.first()
         context = super(HomePage, self).get_context_data(**kwargs)
         context.update({
+            'answers_page': AnswerIndexPage.objects.first().url,
+            'experts_page': ExpertIndexPage.objects.first(),
             'answers': latest_answers,
             'categories': categories,
             'expert_profile': expert_profile,
