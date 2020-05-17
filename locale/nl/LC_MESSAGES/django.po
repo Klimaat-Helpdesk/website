@@ -588,7 +588,7 @@ msgid ""
 msgstr ""
 "\n" "%(full_name)s heeft je verzocht om de pagina \"%(page_title)s"
 "\" te reviewen. Om de pagina te reviewen en je commentaar in te vullen, bezoek de link "
-"hier onder. Om notities op individule paragrafen achter te laten, highlight de 
+"hier onder. Om notities op individule paragrafen achter te laten, highlight de "
 "paragraaf en vul je commentaar in. Zodra je klaar bent, kun je je review en je mening" 
 "submitten door op de knop rechtsonder te klikken:"
 
