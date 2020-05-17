@@ -20,7 +20,7 @@ msgstr ""
 
 #: config/settings/base.py:32
 msgid "Dutch"
-msgstr ""
+msgstr "Nederlands"
 
 #: klimaat_helpdesk/cms/apps.py:7
 msgid "Q&A CMS"
@@ -64,7 +64,7 @@ msgstr "Categoriën"
 
 #: klimaat_helpdesk/cms/models.py:134
 msgid "Subtitle to show on the header of the page"
-msgstr ""
+msgstr "Subtitel voor op de header van de pagina"
 
 #: klimaat_helpdesk/core/admin.py:9
 #: klimaat_helpdesk/templates/cms/answer_detail.html:20
@@ -123,7 +123,7 @@ msgstr "op LinkedIn"
 #: klimaat_helpdesk/templates/includes/navbar.html:27
 #: klimaat_helpdesk/templates/search/search.html:7
 msgid "Search"
-msgstr ""
+msgstr "Zoeken"
 
 #: klimaat_helpdesk/templates/404.html:4 klimaat_helpdesk/templates/404.html:7
 msgid "Page not found"
@@ -432,11 +432,11 @@ msgstr "Vragen"
 
 #: klimaat_helpdesk/templates/cms/answers_list.html:25
 msgid "Previous Page"
-msgstr ""
+msgstr "Vorige pagina"
 
 #: klimaat_helpdesk/templates/cms/answers_list.html:28
 msgid "Next page"
-msgstr ""
+msgstr "Volgende pagina"
 
 #: klimaat_helpdesk/templates/cms/answers_list.html:45
 #: klimaat_helpdesk/templates/core/home_page.html:30
@@ -533,7 +533,7 @@ msgstr "Helpdesk Klimaat"
 
 #: klimaat_helpdesk/templates/search/search.html:23
 msgid "No answers found"
-msgstr ""
+msgstr "Geen antwoorden gevonden"
 
 #: klimaat_helpdesk/templates/under_construction.html:34
 msgid "Helpdesk-Climate is an online expert system under construction."
@@ -570,11 +570,11 @@ msgstr "Bijwerken"
 #: klimaat_helpdesk/templates/wagtail_review/email/request_review.txt:3
 #, python-format
 msgid "Dear %(full_name)s,"
-msgstr ""
+msgstr "Beste %(full_name)s"
 
 #: klimaat_helpdesk/templates/wagtail_review/email/request_review.txt:3
 msgid "Dear"
-msgstr ""
+msgstr "Beste"
 
 #: klimaat_helpdesk/templates/wagtail_review/email/request_review.txt:4
 #, python-format
@@ -586,12 +586,19 @@ msgid ""
 "and entering a message. Once you are ready, you can submit your review and "
 "overall opinion by clicking on the button at the bottom-right of the page:"
 msgstr ""
+"\n" "%(full_name)s heeft je verzocht om de pagina \"%(page_title)s"
+"\" te reviewen. Om de pagina te reviewen en je commentaar in te vullen, bezoek de link "
+"hier onder. Om notities op individule paragrafen achter te laten, highlight de 
+"paragraaf en vul je commentaar in. Zodra je klaar bent, kun je je review en je mening" 
+"submitten door op de knop rechtsonder te klikken:"
 
 #: klimaat_helpdesk/templates/wagtail_review/email/request_review.txt:9
 msgid ""
 "Please do not share this link - it is personal to you, and anyone else with "
 "the link will be able to respond to the review under your name. "
 msgstr ""
+"Deel deze link niet - deze is voor jouw persoonlijk, en iemand anders met deze"
+"link zal als jouw de review kunnen beantwoorden."
 
 #: klimaat_helpdesk/users/apps.py:7
 msgid "Users"
