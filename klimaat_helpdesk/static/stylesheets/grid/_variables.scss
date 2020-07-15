@@ -24,21 +24,22 @@
   --grid-columns: 12;
   --grid-gutter: 5px;
   --grid-spacing: 20px;
-  --grid-margin: 20px;
+  --grid-margin: 0;
   --grid-max-width: 100%;
 
   @include landscape {
     --grid-gutter: 20px;
     --grid-spacing: 30px;
-    --grid-margin: 80px;
+    --grid-margin: 160px;
+    --grid-max-width: 1360px;
   }
 
   // Component settings
-  --margin: 40px;
+  --margin: 20px;
   --beat: 10px;
 
   @include landscape {
-    --margin: 60px;
+    --margin: 80px;
   }
 }
 
