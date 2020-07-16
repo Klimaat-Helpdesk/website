@@ -26,3 +26,6 @@ wagtailmenus==3.0.1  # https://github.com/rkhleics/wagtailmenus
 
 # Gitlab
 python-gitlab==2.2.0
+
+# Webpack
+django-webpack-loader==0.7.0

@@ -75,6 +75,7 @@ THIRD_PARTY_APPS = [
     "allauth.socialaccount",
     "rest_framework",
     "django_celery_beat",
+    "webpack_loader",
 ]
 
 WAGTAIL_APPS = [
@@ -168,7 +169,10 @@ STATIC_ROOT = str(ROOT_DIR("staticfiles"))
 # https://docs.djangoproject.com/en/dev/ref/settings/#static-url
 STATIC_URL = "/static/"
 # https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
-STATICFILES_DIRS = [str(APPS_DIR.path("static"))]
+STATICFILES_DIRS = [
+    str(APPS_DIR.path("static")),
+    str(ROOT_DIR.path('assets')),
+]
 # https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#staticfiles-finders
 STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
@@ -214,6 +218,17 @@ TEMPLATES = [
         },
     }
 ]
+
+# Webpackloader
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': 'bundles/',
+        'STATS_FILE': str(ROOT_DIR('webpack-stats.json')),
+        'POLL_INTERVAL': 0.1,
+        'IGNORE': ['.+\.hot-update.js', '.+\.map']
+    }
+}
+
 # http://django-crispy-forms.readthedocs.io/en/latest/install.html#template-packs
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 

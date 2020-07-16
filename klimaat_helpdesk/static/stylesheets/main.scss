@@ -3,7 +3,7 @@
 @charset "UTF-8";
 
 // Project fonts - Early in the chain so the browser can start loading the webfonts immediately
-@import 'fonts/*';
+@import 'fonts/geomanist';
 
 // Grid system
 @import 'grid/breakpoints';
@@ -12,7 +12,7 @@
 
 // Project environment
 @import 'definitions/variables';
-@import 'definitions/typography/*';
+//@import 'definitions/typography/*';
 @import 'definitions/typography';
 
 // Normalization
