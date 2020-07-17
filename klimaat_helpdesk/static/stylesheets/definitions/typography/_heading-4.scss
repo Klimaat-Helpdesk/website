@@ -1,0 +1,16 @@
+:root {
+  --heading-4-font-size: 20px;
+  --heading-4-font-style: normal;
+  --heading-4-font-variant: normal;
+  --heading-4-font-weight: #{get-geomanist-weight(book)};
+  --heading-4-letter-spacing: 0;
+  --heading-4-line-height: 24px;
+  --heading-4-margin-bottom: .5em;
+  --heading-4-margin-top: 1em;
+  --heading-4-word-spacing: normal;
+
+  @include landscape {
+    --heading-4-font-size: 25px;
+    --heading-4-line-height: 30px;
+  }
+}
