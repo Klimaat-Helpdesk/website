@@ -3,11 +3,11 @@
 
 {% block head %}
   <section class="header">
-    <div class="hero-body">
-      <div class="container">
-        <h2 class="title is-size-2-desktop is-size-3-touch">Helpdesk Klimaat</h2>
-        <h3 class="subtitle is-size-4-desktop is-size-5-touch">{% blocktrans %}All the questions you may have
-          regarding climate breakdown, global warming, answered by experts.{% endblocktrans %}</h3>
+    <div class="header__container">
+      <div class="header__title-container">
+        <h1 class="header__title">
+          {{ self.title }}
+        </h1>
       </div>
     </div>
   </section>
@@ -53,3 +53,59 @@
     </div>
   </div>
 {% endblock %}
+
+
+{##}
+{#{% block head %}#}
+{#  <section class="header">#}
+{#    <div class="hero-body">#}
+{#      <div class="container">#}
+{#        <h2 class="title is-size-2-desktop is-size-3-touch">Helpdesk Klimaat</h2>#}
+{#        <h3 class="subtitle is-size-4-desktop is-size-5-touch">{% blocktrans %}All the questions you may have#}
+{#          regarding climate breakdown, global warming, answered by experts.{% endblocktrans %}</h3>#}
+{#      </div>#}
+{#    </div>#}
+{#  </section>#}
+{#{% endblock %}#}
+{#{% block content %}#}
+{#  <div class="container">#}
+{#    <div class="question-breadcrumb boxed">#}
+{#      <nav class="breadcrumb" aria-label="breadcrumbs">#}
+{#        <ul>#}
+{#          <li><a href="{% url 'core:home' %}">{% trans "Questions" %}</a></li>#}
+{#          <li><a href="{{ answers_page }}category/{{ self.category.slug }}">{{ self.category }}</a></li>#}
+{#          <li class="is-active"><a href="#" aria-current="page">{% trans "Specific Question" %}</a></li>#}
+{#        </ul>#}
+{#      </nav>#}
+{#    </div>#}
+{#    <div class="columns">#}
+{#      <div class="column">#}
+{#        <section class="question">#}
+{#          <div class="container">#}
+{#            <div class="boxed">#}
+{#              <p class="title">{{ self.title }}</p>#}
+{#              <div class="tags">#}
+{#                {% for tag in self.get_tags %}#}
+{#                  <span class="tag"><i class="fas fa-tag"></i> {{ tag }}</span>#}
+{#                {% endfor %}#}
+{#              </div>#}
+{#            </div>#}
+{#          </div>#}
+{#        </section>#}
+{#        <section class="answer">#}
+{#          <div class="container boxed">#}
+{#            {{ self.content|richtext }}#}
+{#          </div>#}
+{#          <hr>#}
+{#          {% for expert in self.experts %}#}
+{#            <div class="expert-info boxed">#}
+{#              {% include 'experts/includes/expert_block.html' with expert=expert %}#}
+{#            </div>#}
+{#          {% endfor %}#}
+{#        </section>#}
+{#      </div>#}
+{#      {% include 'core/includes/aside.html' %}#}
+{#    </div>#}
+{#  </div>#}
+{#{% endblock %}#}
+

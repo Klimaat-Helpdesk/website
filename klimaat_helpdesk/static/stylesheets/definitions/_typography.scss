@@ -10,7 +10,7 @@
   @if mixin-exists($name) {
     @warn 'Typography mixin "#{$name}" does not exist';
   } @else {
-    font: var(--#{$name}-font-style) var(--#{$name}-font-variant) var(--#{$name}-font-weight) var(--#{$name}-font-size) / var(--#{$name}-line-height) $inter-font-stack;
+    font: var(--#{$name}-font-style) var(--#{$name}-font-variant) var(--#{$name}-font-weight) var(--#{$name}-font-size) / var(--#{$name}-line-height) $geomanist-font-stack;
     letter-spacing: var(--#{$name}-letter-spacing);
     text-transform: var(--#{$name}-text-transform);
     word-spacing: var(--#{$name}-word-spacing);

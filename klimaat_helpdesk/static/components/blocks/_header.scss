@@ -1,0 +1,21 @@
+.header {
+  position: relative;
+
+  .header__container {
+    @include grid-container;
+  }
+
+  .header__title-container {
+    grid-column: column 2 / span 9;
+  }
+
+  .header__title {
+    @include typography(heading-1);
+  }
+
+  @include landscape {
+    .header__title-container {
+      grid-column: column 1 / span 10;
+    }
+  }
+}

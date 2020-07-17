@@ -12,12 +12,18 @@
 
 // Project environment
 @import 'definitions/variables';
-//@import 'definitions/typography/*';
+@import 'definitions/typography/_button';
+@import 'definitions/typography/_heading-1';
+@import 'definitions/typography/_heading-2';
+@import 'definitions/typography/_heading-3';
+@import 'definitions/typography/_heading-4';
+@import 'definitions/typography/_heading-5';
+@import 'definitions/typography/_heading-6';
 @import 'definitions/typography';
 
 // Normalization
 @import '/normalize/normalize';
 
 // Project output
-@import '../components/header';
+@import '../components/blocks/_header';
 
