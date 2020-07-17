@@ -1,5 +1,6 @@
 .header {
   position: relative;
+  margin: 100px 0;
 
   .header__container {
     @include grid-container;
@@ -11,6 +12,22 @@
 
   .header__title {
     @include typography(heading-1);
+  }
+
+  .header__subject {
+    grid-column: column 2 / span 9;
+  }
+
+  .header__introduction {
+    grid-column: column 2 / span 10;
+  }
+
+  .header__introduction-text {
+    @include typography(introduction);
+  }
+
+  .header__tags {
+    grid-column: column 2 / span 9;
   }
 
   @include landscape {

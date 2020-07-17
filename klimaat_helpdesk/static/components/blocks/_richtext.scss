@@ -1,0 +1,67 @@
+
+.richtext {
+  position: relative;
+
+  h1 {
+    @include typography(heading-1);
+  }
+
+  h2 {
+    @include typography(heading-2);
+  }
+
+  h3 {
+    @include typography(heading-3);
+  }
+
+  h4 {
+    @include typography(heading-4);
+  }
+
+  h5 {
+    @include typography(heading-5);
+  }
+
+  h6 {
+    @include typography(heading-6);
+  }
+
+  p,
+  ul,
+  ol {
+    @include typography(paragraph);
+  }
+
+  p {
+    strong, b {
+      font-weight: bold;
+    }
+  }
+
+  p {
+    em, i {
+      font-style: italic;
+    }
+  }
+
+  li {
+    @include typography(paragraph);
+  }
+
+  p,
+  li {
+    a {
+      &,
+      &:link,
+      &:active,
+      &:visited {
+          background-color: $color-yellow-warm;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+
+
+

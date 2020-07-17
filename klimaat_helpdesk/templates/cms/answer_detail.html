@@ -9,48 +9,42 @@
           {{ self.title }}
         </h1>
       </div>
+        <div class="header__subject">
+          <span class="header__subject-tag">Maatschappij</span>
+        </div>
+        <div class="header__introduction">
+          <p class="header__introduction-text">Als de CO2-uitstoot eenmaal daalt, gaat dan ook de wereldwijde temperatuur weer omlaag? Helaas, nee.
+            De temperatuur wordt niet direct beïnvloed door de uitstoot, maar door de concentratie van CO2, in de atmosfeer. En die is grotendeels
+            cumulatief: zolang de uitstoot hoog blijft, loopt dit niveau steeds verder op.</p>
+        </div>
+        <div class="header__tags">
+          <span class="header__tag">#Broeikasgas</span>
+          <span class="header__tag">#CO2 opslag</span>
+          <span class="header__tag">#CO2 opname</span>
+          <span class="header__tag">#CO2 balans</span>
+        </div>
     </div>
   </section>
+
 {% endblock %}
 {% block content %}
-  <div class="container">
-    <div class="question-breadcrumb boxed">
-      <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-          <li><a href="{% url 'core:home' %}">{% trans "Questions" %}</a></li>
-          <li><a href="{{ answers_page }}category/{{ self.category.slug }}">{{ self.category }}</a></li>
-          <li class="is-active"><a href="#" aria-current="page">{% trans "Specific Question" %}</a></li>
-        </ul>
-      </nav>
-    </div>
-    <div class="columns">
-      <div class="column">
-        <section class="question">
-          <div class="container">
-            <div class="boxed">
-              <p class="title">{{ self.title }}</p>
-              <div class="tags">
-                {% for tag in self.get_tags %}
-                  <span class="tag"><i class="fas fa-tag"></i> {{ tag }}</span>
-                {% endfor %}
-              </div>
-            </div>
-          </div>
-        </section>
-        <section class="answer">
-          <div class="container boxed">
+  <div class="content">
+    <div class="content__container">
+        <div class="content__answer richtext">
             {{ self.content|richtext }}
-          </div>
-          <hr>
-          {% for expert in self.experts %}
-            <div class="expert-info boxed">
-              {% include 'experts/includes/expert_block.html' with expert=expert %}
-            </div>
-          {% endfor %}
-        </section>
-      </div>
-      {% include 'core/includes/aside.html' %}
+        </div>
     </div>
+  </div>
+  <div class="quote">
+    <div class="quote__wrapper">
+      <p class="quote__text">
+        "Bovendien wordt sinds het Parijsakkoord in verschillende landen ook gericht klimaatbeleid gevoerd.
+        Als gevolg van beide factoren hebben veel rijke landen al enige tijd een dalende CO2-uitstoot -
+        terwijl de economie gewoon groeit."
+      </p>
+
+    </div>
+
   </div>
 {% endblock %}
 

@@ -19,6 +19,9 @@
 @import 'definitions/typography/_heading-4';
 @import 'definitions/typography/_heading-5';
 @import 'definitions/typography/_heading-6';
+@import 'definitions/typography/_introduction';
+@import 'definitions/typography/_paragraph';
+@import 'definitions/typography/_quote';
 @import 'definitions/typography';
 
 // Normalization
@@ -26,4 +29,6 @@
 
 // Project output
 @import '../components/blocks/_header';
-
+@import '../components/blocks/_content';
+@import '../components/blocks/_richtext';
+@import '../components/blocks/_quote';
