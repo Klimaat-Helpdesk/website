@@ -27,7 +27,7 @@ class HomePage(TemplateView):
 
 home_page = HomePage.as_view()
 
-
+# test commit
 class NewQuestion(FormView):
     form_class = AskQuestion
     template_name = 'core/new_question.html'
