@@ -1,0 +1,40 @@
+.related-content {
+  position: relative;
+  margin: var(--margin) 0;
+
+  &::before {
+    content: '';
+    position: absolute;
+    background-color: $color-yellow-warm;
+
+  }
+
+  .related-content__wrapper {
+    @include grid-container;
+  }
+
+  .related-content__title-wrapper {
+    grid-column: column 2 / span 9;
+  }
+
+  .related-content__title {
+    @include typography(heading-2, true, true);
+    border-bottom: 1px solid $color-true-black;
+    padding-bottom: 10px;
+  }
+
+  .related-content__link {
+    grid-column: column 2 / span 9;
+    //border-bottom: 1px solid black;
+    padding-bottom: 40px;
+  }
+
+  .related-content__link-title {
+    @include typography(heading-3, true, true);
+  }
+
+  .related-content__link-author {
+    @include typography(paragraph);
+    margin-bottom: 10px;
+  }
+}
