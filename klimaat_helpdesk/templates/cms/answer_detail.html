@@ -2,15 +2,16 @@
 {% load i18n static wagtailcore_tags %}
 
 {% block head %}
-  <section class="header">
-    <div class="header__container">
-      <div class="header__title-container">
-        <h1 class="header__title">
-          {{ self.title }}
-        </h1>
-      </div>
-        <div class="header__subject">
-          <span class="header__subject-tag">Maatschappij</span>
+  <div class="answer-detail">
+    <div class="header">
+      <div class="header__container">
+        <div class="header__title-container">
+          <h1 class="header__title">
+            {{ self.title }}
+          </h1>
+        </div>
+        <div class="header__theme">
+          <span class="header__subject-tag tag">Maatschappij</span>
         </div>
         <div class="header__introduction">
           <p class="header__introduction-text">Als de CO2-uitstoot eenmaal daalt, gaat dan ook de wereldwijde temperatuur weer omlaag? Helaas, nee.
@@ -24,10 +25,12 @@
           <span class="header__tag">#CO2 balans</span>
         </div>
     </div>
-  </section>
+  </div>
 
 {% endblock %}
 {% block content %}
+  <div class="answer-detail__content">
+
   <div class="content">
     <div class="content__container">
         <div class="content__answer richtext">
@@ -35,6 +38,20 @@
         </div>
     </div>
   </div>
+
+  <div class="image">
+    <div class="image__wrapper">
+      <picture class="image__image">
+
+      {% if images.mobile %}<source srcset="{{ images.mobile }}">{% endif %}
+      {% if images.landscape %}<source srcset="{{ images.landscape }}" media="(min-width: 800px)">{% endif %}
+
+      <img class="image__img" src="/static/images/golfstromen.jpg" alt="golfstromen">
+    </picture>
+
+    </div>
+  </div>
+
   <div class="quote">
     <div class="quote__wrapper">
       <p class="quote__text">
@@ -42,64 +59,40 @@
         Als gevolg van beide factoren hebben veel rijke landen al enige tijd een dalende CO2-uitstoot -
         terwijl de economie gewoon groeit."
       </p>
+    </div>
+  </div>
+  </div>
+
+  <div class="disclosure">
+    <div class="disclosure__content">
+      <h2 class="disclosure__title">Hoe kwam dit antwoord tot stand?</h2>
+      <span class="disclosure__text">
+      De vraag is beantwoord door Detlef van Vuuren en geveriveerd door Loe L. - zij hebben hiervoor
+      50 wetenschappelijke teksten voorgelezen - in 8 boeken nageslagen en waren in totaal 3h bezig
+      om je vraag op een wetenschappelijk correct manier te beantwoorden.   Samenvattende introductie
+      en beantwoording van de vraag. Voor die beleidsomslag zijn de ingrediënten inmiddels wel aanwezig,
+      denkt Van Vuuren: de daling van de kosten van hernieuwbare energie, energieopslag en bijvoorbeeld
+      elektrisch vervoer heeft het mogelijk gemaakt om naar de toekomst de uitstoot te verlagen. "Maar
+      dan moeten we die kans dus wel benutten."
+      </span>
+    </div>
+
+    <div class="disclosure__disclosure">
+      <h4 class="disclosure__disclosure-title">
+        <button id="{{ button_id }}" class="disclosure__title-button" aria-controls="{{ content_id }}" aria-expanded="false">
+          <span class="disclosure__title-button-span">{{ title }}</span>
+
+          <span class="disclosure__title-button-icon">
+          {% include 'assets/icons/custom/chevron-down.svg' %}
+        </span>
+      </button>
+      </h4>
 
     </div>
 
+
   </div>
+
 {% endblock %}
 
-
-{##}
-{#{% block head %}#}
-{#  <section class="header">#}
-{#    <div class="hero-body">#}
-{#      <div class="container">#}
-{#        <h2 class="title is-size-2-desktop is-size-3-touch">Helpdesk Klimaat</h2>#}
-{#        <h3 class="subtitle is-size-4-desktop is-size-5-touch">{% blocktrans %}All the questions you may have#}
-{#          regarding climate breakdown, global warming, answered by experts.{% endblocktrans %}</h3>#}
-{#      </div>#}
-{#    </div>#}
-{#  </section>#}
-{#{% endblock %}#}
-{#{% block content %}#}
-{#  <div class="container">#}
-{#    <div class="question-breadcrumb boxed">#}
-{#      <nav class="breadcrumb" aria-label="breadcrumbs">#}
-{#        <ul>#}
-{#          <li><a href="{% url 'core:home' %}">{% trans "Questions" %}</a></li>#}
-{#          <li><a href="{{ answers_page }}category/{{ self.category.slug }}">{{ self.category }}</a></li>#}
-{#          <li class="is-active"><a href="#" aria-current="page">{% trans "Specific Question" %}</a></li>#}
-{#        </ul>#}
-{#      </nav>#}
-{#    </div>#}
-{#    <div class="columns">#}
-{#      <div class="column">#}
-{#        <section class="question">#}
-{#          <div class="container">#}
-{#            <div class="boxed">#}
-{#              <p class="title">{{ self.title }}</p>#}
-{#              <div class="tags">#}
-{#                {% for tag in self.get_tags %}#}
-{#                  <span class="tag"><i class="fas fa-tag"></i> {{ tag }}</span>#}
-{#                {% endfor %}#}
-{#              </div>#}
-{#            </div>#}
-{#          </div>#}
-{#        </section>#}
-{#        <section class="answer">#}
-{#          <div class="container boxed">#}
-{#            {{ self.content|richtext }}#}
-{#          </div>#}
-{#          <hr>#}
-{#          {% for expert in self.experts %}#}
-{#            <div class="expert-info boxed">#}
-{#              {% include 'experts/includes/expert_block.html' with expert=expert %}#}
-{#            </div>#}
-{#          {% endfor %}#}
-{#        </section>#}
-{#      </div>#}
-{#      {% include 'core/includes/aside.html' %}#}
-{#    </div>#}
-{#  </div>#}
-{#{% endblock %}#}
-
+</div>
