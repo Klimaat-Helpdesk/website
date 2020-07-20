@@ -5,8 +5,17 @@
   &::before {
     content: '';
     position: absolute;
+    border-radius: 100%;
     background-color: $color-yellow-warm;
-
+    width: 280px;
+    height: 280px;
+    filter: blur(60px);
+    z-index: -1;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
   }
 
   .related-content__wrapper {
@@ -21,11 +30,12 @@
     @include typography(heading-2, true, true);
     border-bottom: 1px solid $color-true-black;
     padding-bottom: 10px;
+    margin-bottom: 30px;
   }
 
   .related-content__link {
     grid-column: column 2 / span 9;
-    //border-bottom: 1px solid black;
+    border-bottom: 1px solid black;
     padding-bottom: 40px;
   }
 
@@ -36,5 +46,23 @@
   .related-content__link-author {
     @include typography(paragraph);
     margin-bottom: 10px;
+  }
+
+  @include landscape {
+    .related-content {
+      &::before {
+        content: '';
+        height: 750px;
+        width: 750px;
+      }
+    }
+
+    .related-content__title-wrapper {
+      grid-column: column 1 / span 9;
+    }
+
+    .related-content__link {
+      grid-column: column 1 / span 9;
+    }
   }
 }
