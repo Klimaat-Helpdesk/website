@@ -11,4 +11,10 @@
 
     @include typography(quote);
   }
+
+  @include landscape {
+    .quote__text {
+      grid-column: column 4 / span 9;
+    }
+  }
 }

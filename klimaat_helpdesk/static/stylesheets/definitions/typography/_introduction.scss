@@ -5,8 +5,8 @@
   --introduction-font-weight: #{get-geomanist-weight(regular)};
   --introduction-letter-spacing: 0;
   --introduction-line-height: 28px;
-  --introduction-margin-bottom: .5em;
-  --introduction-margin-top: 1em;
+  --introduction-margin-bottom: 30px;
+  --introduction-margin-top: 30px;
 
   @include landscape {
     --introduction-font-size: 25px;

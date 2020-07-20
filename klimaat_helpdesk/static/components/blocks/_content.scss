@@ -9,4 +9,10 @@
   .content__answer {
     grid-column: column 2 / span 10;
   }
+
+  @include landscape {
+    .content__answer {
+      grid-column: column 5 / span 8;
+    }
+  }
 }

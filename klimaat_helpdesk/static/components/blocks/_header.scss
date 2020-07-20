@@ -2,6 +2,16 @@
   position: relative;
   margin: 100px 0;
 
+  &::before {
+    content: '';
+    width: 100vw;
+    height: calc(100% + 100px);
+    background: linear-gradient(to bottom, rgba($color-yellow-warm, 1), rgba($color-yellow-background, 1));
+    position: absolute;
+    top: -100px;
+    z-index: -1;
+  }
+
   .header__container {
     @include grid-container;
   }
@@ -14,12 +24,14 @@
     @include typography(heading-1);
   }
 
-  .header__subject {
+  .header__theme {
     grid-column: column 2 / span 9;
+    margin-bottom: 50px;
   }
 
   .header__introduction {
     grid-column: column 2 / span 10;
+    margin-bottom: 10px;
   }
 
   .header__introduction-text {
@@ -27,12 +39,40 @@
   }
 
   .header__tags {
-    grid-column: column 2 / span 9;
+    grid-column: column 2 / span 11;
+  }
+
+  .header__tag {
+    @include typography(paragraph);
+    display: inline-block;
+    width: 40%;
+    margin-bottom: 5px;
   }
 
   @include landscape {
     .header__title-container {
       grid-column: column 1 / span 10;
+    }
+
+    .header__title {
+      margin-bottom: 100px;
+    }
+
+    .header__theme {
+      grid-column: column 1 / span 3;
+    }
+
+    .header__introduction {
+      grid-column: column 5 / span 8;
+    }
+
+    .header__tags {
+      grid-column: column 5 / span 8;
+    }
+
+    .header__tag {
+      width: auto;
+      margin-right: 20px;
     }
   }
 }

@@ -3,33 +3,33 @@
   position: relative;
 
   h1 {
-    @include typography(heading-1);
+    @include typography(heading-1, true, true);
   }
 
   h2 {
-    @include typography(heading-2);
+    @include typography(heading-2, true, true);
   }
 
   h3 {
-    @include typography(heading-3);
+    @include typography(heading-3, true, true);
   }
 
   h4 {
-    @include typography(heading-4);
+    @include typography(heading-4, true, true);
   }
 
   h5 {
-    @include typography(heading-5);
+    @include typography(heading-5, true, true);
   }
 
   h6 {
-    @include typography(heading-6);
+    @include typography(heading-6, true, true);
   }
 
   p,
   ul,
   ol {
-    @include typography(paragraph);
+    @include typography(paragraph, true, true);
   }
 
   p {
@@ -45,22 +45,38 @@
   }
 
   li {
-    @include typography(paragraph);
+    @include typography(paragraph, true, true);
   }
 
   p,
   li {
     a {
+      position: relative;
+
       &,
       &:link,
       &:active,
       &:visited {
+        text-decoration: none;
+
+        &::before {
+          content: '';
           background-color: $color-yellow-warm;
-          text-decoration: none;
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          z-index: -1;
+        }
+
+        &:hover {
+          &::before {
+            filter: blur(2px);
+          }
         }
       }
     }
   }
+}
 
 
 

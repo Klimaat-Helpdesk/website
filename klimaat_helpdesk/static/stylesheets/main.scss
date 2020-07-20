@@ -22,6 +22,7 @@
 @import 'definitions/typography/_introduction';
 @import 'definitions/typography/_paragraph';
 @import 'definitions/typography/_quote';
+@import 'definitions/typography/_thema';
 @import 'definitions/typography';
 
 // Normalization
@@ -32,3 +33,9 @@
 @import '../components/blocks/_content';
 @import '../components/blocks/_richtext';
 @import '../components/blocks/_quote';
+@import '../components/blocks/_tag';
+@import '../components/blocks/_image';
+
+@import '../components/pages/_answer-detail';
+
+

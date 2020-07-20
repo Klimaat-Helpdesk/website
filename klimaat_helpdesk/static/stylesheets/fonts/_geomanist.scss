@@ -5,7 +5,7 @@
 // Variable font settings
 $geomanist-font-name: 'Geomanist Webfont';
 $geomanist-font-cleanname: 'geomanist-webfont';
-$geomanist-font-path: '/fonts/' + $geomanist-font-cleanname + '/';
+$geomanist-font-path: '/static/fonts/' + $geomanist-font-cleanname + '/';
 $geomanist-font-stack: $geomanist-font-name, 'Arial', 'Helvetica', sans-serif;
 $geomanist-font-feature-settings: 'kern' 1, 'calt' 0, 'liga' 1, 'dlig' 0; //'dlig' 1; TURN DLIG ON FOR NICE oo LIGATURE
 

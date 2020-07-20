@@ -1,0 +1,15 @@
+.tag {
+  @include typography(thema);
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid $color-true-black;
+  border-radius: 16px;
+  padding: 0 15px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-true-black;
+    color: $color-white;
+  }
+}
