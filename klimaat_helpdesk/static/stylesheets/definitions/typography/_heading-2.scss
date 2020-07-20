@@ -5,12 +5,12 @@
   --heading-2-font-weight: #{get-geomanist-weight(book)};
   --heading-2-letter-spacing: 0;
   --heading-2-line-height: 36px;
-  --heading-2-margin-bottom: .5em;
-  --heading-2-margin-top: 1em;
+  --heading-2-margin-bottom: 20px;
+  --heading-2-margin-top: 20px;
   --heading-2-word-spacing: normal;
 
   @include landscape {
-    --heading-1-font-size: 40px;
-    --heading-1-line-height: 46px;
+    --heading-2-font-size: 40px;
+    --heading-2-line-height: 46px;
   }
 }

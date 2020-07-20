@@ -1,0 +1,79 @@
+.disclosure {
+  position: relative;
+  margin: var(--margin) 0;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: $color-yellow-warm;
+    z-index: -1;
+  }
+
+  .disclosure__content {
+    @include grid-container;
+    margin-bottom: 40px;
+  }
+
+  .disclosure__title {
+    @include typography(heading-2, false, false);
+    grid-column: column 2 / span 10;
+    margin-top: 80px;
+  }
+
+  .disclosure__text {
+    @include typography(paragraph, false, false);
+    display: inline-block;
+    grid-column: column 2 / span 10;
+  }
+
+  .disclosure__disclosure {
+    @include grid-container;
+    margin-bottom: 80px;
+  }
+
+  .disclosure__disclosure-title {
+    @include typography(heading-4, true, true);
+    grid-column: column 2 / span 10;
+    border-bottom: 1px solid $color-true-black;
+    padding-bottom: 5px;
+  }
+
+  .disclosure__title-button-icon {
+    background-image: url('/static/icons/chevron-down.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display: inline-block;
+    content: '';
+    height: 10px;
+    vertical-align: middle;
+    width: 10px;
+    margin-left: 10px;
+}
+
+  .disclosure__disclosure-content {
+    grid-column: column 2 / span 10;
+    margin-bottom: 80px;
+  }
+
+  @include landscape {
+    .disclosure__title {
+      grid-column: column 1 / span 3;
+    }
+
+    .disclosure__text {
+      grid-column: column 5 / span 8;
+      margin-top: 80px;
+    }
+
+    .disclosure__disclosure-title {
+      grid-column: column 5 / span 8;
+    }
+
+    .disclosure__disclosure-content {
+      grid-column: column 5 / span 8;
+    }
+  }
+}

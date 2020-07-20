@@ -29,12 +29,15 @@
 @import '/normalize/normalize';
 
 // Project output
+@import '../components/_document';
+
 @import '../components/blocks/_header';
 @import '../components/blocks/_content';
 @import '../components/blocks/_richtext';
 @import '../components/blocks/_quote';
 @import '../components/blocks/_tag';
 @import '../components/blocks/_image';
+@import '../components/blocks/_disclosure';
 
 @import '../components/pages/_answer-detail';
 
