@@ -1,0 +1,19 @@
+
+main.klimaat_helpdesk-content {
+  &:before {
+    content: "";
+    display: block;
+    width: 30vw;
+    height: 30vw;
+    border-radius: 50%;
+    background-color: $color-yellow-warm;
+    position: fixed;
+    left: 35vw;
+    z-index: -1;
+  }
+
+  .smokedglass { // the questions
+    background: rgba(#fff,0.4);
+    backdrop-filter: blur(6px);
+  }
+}
