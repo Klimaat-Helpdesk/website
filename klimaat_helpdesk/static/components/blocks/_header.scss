@@ -16,6 +16,18 @@
     @include grid-container;
   }
 
+  .header__back-link-icon {
+    background-image: url('/static/icons/arrow-right.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display: inline-block;
+    content: '';
+    height: 10px;
+    vertical-align: middle;
+    width: 20px;
+  }
+
   .header__title-container {
     grid-column: column 2 / span 9;
   }

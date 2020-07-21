@@ -48,14 +48,16 @@
     margin-bottom: 10px;
   }
 
+  .related-content__auhtor-name {
+    font-weight: bold;
+  }
+
   @include landscape {
-    .related-content {
-      &::before {
-        content: '';
-        height: 750px;
-        width: 750px;
-      }
-    }
+     &::before {
+       content: '';
+       height: 750px;
+       width: 750px;
+     }
 
     .related-content__title-wrapper {
       grid-column: column 1 / span 9;

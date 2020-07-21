@@ -5,6 +5,11 @@
   <div class="answer-detail">
     <div class="header">
       <div class="header__container">
+        <div class="header__back-link-container">
+          <a class="header__back-link">
+            <span class="header__back-link-icon"></span>
+          </a>
+        </div>
         <div class="header__title-container">
           <h1 class="header__title">
             {{ self.title }}
@@ -63,7 +68,7 @@
   </div>
   </div>
 
-  <div class="disclosure">
+  <div class="disclosure" data-controller="disclosure">
     <div class="disclosure__wrapper">
       <div class="disclosure__content">
         <h2 class="disclosure__title">Hoe kwam dit antwoord tot stand?</h2>
