@@ -50,7 +50,7 @@
 
   .related-content__link-author {
     @include typography(paragraph);
-    margin-bottom: 10px;
+    margin: 0 10px 10px 0;
   }
 
   .related-content__auhtor-name {
@@ -70,6 +70,10 @@
 
     .related-content__link {
       grid-column: column 1 / span 9;
+    }
+    
+    .related-content__link-author {
+      float: left;
     }
   }
 }
