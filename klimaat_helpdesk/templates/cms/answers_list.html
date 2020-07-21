@@ -1,14 +1,31 @@
 {% extends "base.html" %}
 {% load i18n static %}
 {% block head %}
-  <section class="hero is-primary is-bold">
-    <div class="hero-body">
-      <div class="container">
-        <h2 class="title is-size-2-desktop is-size-3-touch">Helpdesk Klimaat</h2>
-        <h3 class="subtitle is-size-4-desktop is-size-5-touch">{{ page.subtitle }}</h3>
+  <div class="header">
+    <div class="header__wrapper">
+      <h1 class="header__title">{{ page.title }}</h1>
+      <div class="header__search">
+        <div class="header__search-themes">
+          <span class="tag">Maatschappij</span>
+          <span class="tag">Blik op de toekomst</span>
+          <span class="tag">Warmer klimaat</span>
+          <span class="tag">Energie</span>
+          <span class="tag">Internationaal</span>
+          <span class="tag">Natuur</span>
+          <span class="tag">Water</span>
+          <span class="tag">Economie</span>
+        </div>
+        <div class="header__search-button">
+          <button class="button">
+            <span class="button__text">Filter</span>
+            <span class="button__icon"></span>
+          </button>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+
+
 {% endblock %}
 {% block content %}
   <main class="section">

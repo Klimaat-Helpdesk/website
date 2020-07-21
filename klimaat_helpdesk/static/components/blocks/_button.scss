@@ -1,0 +1,30 @@
+.button {
+  @include typography(button);
+  height: 46px;
+  background-color: $color-true-black;
+  color: $color-white;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 23px;
+  padding: 0 20px;
+  cursor: pointer;
+  margin-bottom: 5px;
+
+  &:hover {
+    background-color: $color-white;
+    color: $color-true-black;
+    border: 1px solid $color-true-black;
+  }
+
+  .button__icon {
+    background-image: url('/static/icons/arrow-right.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display: inline-block;
+    content: '';
+    height: 10px;
+    vertical-align: middle;
+    width: 20px;
+  }
+}

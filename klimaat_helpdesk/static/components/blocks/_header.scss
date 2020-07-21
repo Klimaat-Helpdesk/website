@@ -1,0 +1,28 @@
+.header {
+  position: relative;
+  margin: var(--margin) 0;
+
+  .header__wrapper {
+    @include grid-container;
+  }
+
+  .header__title {
+    grid-column: column 2 / span 10;
+    @include typography(heading-1, true, true);
+  }
+
+  .header__search {
+    grid-column: column 2 / span 10;
+  }
+
+
+  @include landscape {
+    .header__title {
+      grid-column: column 1 / span 9;
+    }
+
+    .header__search {
+      grid-column: column 1 / span 9;
+    }
+  }
+}
