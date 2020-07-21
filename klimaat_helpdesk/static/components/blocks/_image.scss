@@ -16,4 +16,8 @@
     object-position: 50% 50%;
     width: 100%;
   }
+
+  .image__caption {
+    @include typography(paragraph);
+  }
 }

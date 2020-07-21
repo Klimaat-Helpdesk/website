@@ -12,7 +12,9 @@
 
 // Project environment
 @import 'definitions/variables';
+@import 'definitions/typography/_attribution';
 @import 'definitions/typography/_button';
+@import 'definitions/typography/_caption';
 @import 'definitions/typography/_heading-1';
 @import 'definitions/typography/_heading-2';
 @import 'definitions/typography/_heading-3';
@@ -31,7 +33,7 @@
 // Project output
 @import '../components/_document';
 
-@import '../components/blocks/_header';
+@import '../components/blocks/_content-header';
 @import '../components/blocks/_content';
 @import '../components/blocks/_richtext';
 @import '../components/blocks/_quote';
