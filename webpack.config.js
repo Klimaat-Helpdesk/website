@@ -31,6 +31,16 @@ module.exports = {
       },
     ]
   },
+
+  resolve: {
+    modules: [
+      '../node_modules',
+      './klimaat_helpdesk/static/stylesheets',
+      './klimaat_helpdesk/static/scripts',
+    ],
+    extensions: ['.js', '.scss'], // ,
+  },
+
   plugins: [
     new CleanWebpackPlugin({ cleanOnceBeforeBuildPatterns: [ 'build' ]}),  // Remove/clean build folders
     new MiniCssExtractPlugin({
