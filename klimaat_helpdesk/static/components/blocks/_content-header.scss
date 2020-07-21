@@ -1,4 +1,4 @@
-.header {
+.content-header {
   position: relative;
   margin: 100px 0;
 
@@ -12,11 +12,19 @@
     z-index: -1;
   }
 
-  .header__container {
+  .content-header__container {
     @include grid-container;
   }
 
-  .header__back-link-icon {
+  .content-header__back-link {
+    position: relative;
+    grid-column: column 2;
+    top: -40px;
+    cursor: pointer;
+    height: 0;
+  }
+
+  .content-header__back-link-icon {
     background-image: url('/static/icons/arrow-right.svg');
     background-position: center;
     background-repeat: no-repeat;
@@ -26,35 +34,36 @@
     height: 10px;
     vertical-align: middle;
     width: 20px;
+    transform: rotate(180deg);
   }
 
-  .header__title-container {
+  .content-header__title-container {
     grid-column: column 2 / span 9;
   }
 
-  .header__title {
+  .content-header__title {
     @include typography(heading-1);
   }
 
-  .header__theme {
+  .content-header__theme {
     grid-column: column 2 / span 9;
     margin-bottom: 50px;
   }
 
-  .header__introduction {
+  .content-header__introduction {
     grid-column: column 2 / span 10;
     margin-bottom: 10px;
   }
 
-  .header__introduction-text {
+  .content-header__introduction-text {
     @include typography(introduction);
   }
 
-  .header__tags {
+  .content-header__tags {
     grid-column: column 2 / span 11;
   }
 
-  .header__tag {
+  .content-header__tag {
     @include typography(paragraph);
     display: inline-block;
     width: 40%;
@@ -62,27 +71,37 @@
   }
 
   @include landscape {
-    .header__title-container {
+    .content-header__title-container {
       grid-column: column 1 / span 10;
     }
 
-    .header__title {
+    .content-header__title {
       margin-bottom: 100px;
     }
 
-    .header__theme {
+    .content-header__back-link {
+      grid-column: column 1;
+      left: -160px;
+    }
+
+    .content-header__back-link-icon {
+      width: 30px;
+      height: 20px;
+    }
+
+    .content-header__theme {
       grid-column: column 1 / span 3;
     }
 
-    .header__introduction {
+    .content-header__introduction {
       grid-column: column 5 / span 8;
     }
 
-    .header__tags {
+    .content-header__tags {
       grid-column: column 5 / span 8;
     }
 
-    .header__tag {
+    .content-header__tag {
       width: auto;
       margin-right: 20px;
     }
