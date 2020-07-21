@@ -17,7 +17,6 @@ function setupControllers(container) {
         return;
       }
 
-
       try {
         let Controller = require(`controllers/${controller}.js`).default;
         el.__controller__ = new Controller(el);
