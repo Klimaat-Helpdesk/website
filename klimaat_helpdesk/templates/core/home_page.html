@@ -1,15 +1,24 @@
 {% extends 'base.html' %}
 {% load static i18n %}
 {% block head %}
-  <section class="hero is-primary is-bold">
-    <div class="hero-body">
-      <div class="container">
-        <h2 class="title is-size-2-desktop is-size-3-touch">Helpdesk Klimaat</h2>
-        <h3 class="subtitle is-size-4-desktop is-size-5-touch">{% blocktrans %}All the questions you may have
-          regarding climate breakdown, global warming, answered by experts.{% endblocktrans %}</h3>
+  <div class="logo-header">
+    <div class="logo-header__wrapper">
+      <div class="logo-header__logo">
+        {% include 'svg/logo/logo.svg' %}
+      </div>
+      <div class="logo-header__subtitle">Antwoorden van wetenschappers op al je vragen over klimaatverandering </div>
+      <div class="logo-header__buttons">
+          <button class="button">
+            <span class="button__text">Vragenoverzicht</span>
+            <span class="button__icon"></span>
+          </button>
+          <button class="button button--secondary">
+            <span class="button__text">Wie we zijn</span>
+            <span class="button__icon"></span>
+          </button>
       </div>
     </div>
-  </section>
+  </div>
 {% endblock %}
 {% block content %}
   <main class="section">
@@ -20,20 +29,19 @@
             {% include 'core/includes/answer_block.html' with answer=answer %}
           {% endfor %}
         </main>
-        {% include 'core/includes/aside.html' %}
       </div>
     </div>
   </main>
-  <div class="section">
-    <div class="container">
-      <header class="header">
-        <div class="header-title"><h1 class="title">{% trans "Meet an expert" %}</h1></div>
-        <p class="subtitle is-4">{% trans "Get to know one of the many experts answering questions" %}</p>
-      </header>
-      {% include 'experts/includes/expert_block.html' with expert=expert_profile %}
-    </div>
-    <div class="container">
-      <a class="button is-active is-primary" href="{{ experts_page.url }}">{% trans "See all our experts" %}</a>
-    </div>
-  </div>
+{#  <div class="section">#}
+{#    <div class="container">#}
+{#      <header class="header">#}
+{#        <div class="header-title"><h1 class="title">{% trans "Meet an expert" %}</h1></div>#}
+{#        <p class="subtitle is-4">{% trans "Get to know one of the many experts answering questions" %}</p>#}
+{#      </header>#}
+{#      {% include 'experts/includes/expert_block.html' with expert=expert_profile %}#}
+{#    </div>#}
+{#    <div class="container">#}
+{#      <a class="button is-active is-primary" href="{{ experts_page.url }}">{% trans "See all our experts" %}</a>#}
+{#    </div>#}
+{#  </div>#}
 {% endblock %}

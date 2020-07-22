@@ -1,0 +1,38 @@
+.logo-header {
+  position: relative;
+
+  .logo-header__wrapper {
+    @include grid-container;
+  }
+
+  .logo-header__logo {
+    grid-column: column 2 / span 9;
+
+    svg {
+      height: 70px;
+    }
+  }
+
+  .logo-header__subtitle {
+    grid-column: column 2 / span 9;
+    @include typography(introduction);
+  }
+
+  .logo-header__buttons {
+    grid-column: column 2 / span 9;
+  }
+
+  @include landscape {
+    .logo-header__logo {
+      grid-column: column 1 / span 5;
+    }
+
+    .logo-header__subtitle {
+      grid-column: column 1 / span 5;
+    }
+
+    .logo-header__buttons {
+      grid-column: column 1 / span 5;
+    }
+  }
+}

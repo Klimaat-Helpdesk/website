@@ -31,11 +31,9 @@
 
 {#{% block container-class %} smokedglass{% endblock %}#}
 {% block content %}
-  <main class=>
     <div class="content-link-list">
       <div class="content-link-list__links">
         {% for answer in answers %}
-          {% include 'core/includes/answer_block.html' with answer=answer %}
           {% include 'core/includes/answer_block.html' with answer=answer %}
         {% endfor %}
       </div>
@@ -49,10 +47,18 @@
           <span class="tag">water</span>
           <span class="tag">Een blik op de toekomst</span>
         </div>
-
       </div>
     </div>
-  </main>
+
+    <div class="sticky-link">
+      <div class="sticky-link__wrapper">
+          <h4 class="sticky-link__title">Heb je het antwoord dat je zocht niet gevonden? Stel je eigen vraag!</h4>
+          <button class="button">
+            <span class="button__text">Stel je vraag</span>
+           <span class="button__icon"></span>
+          </button>
+      </div>
+    </div>
 {#  <main class="section">#}
 {#    <div class="container">#}
 {#      <div class="columns">#}
