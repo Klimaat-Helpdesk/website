@@ -1,6 +1,6 @@
 .header {
   position: relative;
-  margin: var(--margin) 0;
+  margin: 0 0 50px 0;
 
   .header__wrapper {
     @include grid-container;
@@ -15,6 +15,21 @@
     grid-column: column 2 / span 10;
   }
 
+  .header__search-themes {
+    margin-bottom: 10px;
+  }
+
+  .header__search-button {
+    margin-bottom: 10px;
+  }
+
+  .header__author-tag {
+    margin-bottom: 30px;
+
+    .tag {
+      text-transform: capitalize;
+    }
+  }
 
   @include landscape {
     .header__title {

@@ -21,58 +21,77 @@
             <span class="button__icon"></span>
           </button>
         </div>
+        <div class="header__author-tag">
+          <span class="tag">Detlef van Vuuren</span>
+        </div>
       </div>
     </div>
   </div>
-
-
 {% endblock %}
-{% block container-class %} smokedglass{% endblock %}
+
+{#{% block container-class %} smokedglass{% endblock %}#}
 {% block content %}
-  <main class="section">
-    <div class="container">
-      <div class="columns">
-        <main class="column">
-          {% for answer in answers %}
-            {% include 'core/includes/answer_block.html' with answer=answer %}
-          {% endfor %}
-          {% if answers.paginator.num_pages > 1 %}
-            <nav class="pagination" role="navigation" aria-label="pagination">
-              {% if answers.has_previous %}
-                <a class="pagination-previous"
-                   href="?page={{ answers.previous_page_number }}">{% trans "Previous Page" %}</a>
-              {% endif %}
-              {% if answers.has_next %}
-                <a href="?page={{ answers.next_page_number }}" class="pagination-next">{% trans "Next page" %}</a>
-              {% endif %}
-              {% for page_num in answers.paginator.page_range %}
-                <li>
-                  <a href="?page={{ page_num }}" class="pagination-link">{{ page_num }}</a>
-                </li>
-              {% endfor %}
-            </nav>
-          {% endif %}
-        </main>
-        {% include 'core/includes/aside.html' %}
+  <main class=>
+    <div class="content-link-list">
+      <div class="content-link-list__links">
+        {% for answer in answers %}
+          {% include 'core/includes/answer_block.html' with answer=answer %}
+          {% include 'core/includes/answer_block.html' with answer=answer %}
+        {% endfor %}
       </div>
+    </div>
+
+    <div class="highlighted-link">
+      <p class="hightlighted-link__author"> <span class="highlighted-link__by">Door</span> <span class="highlighted-link__author-name">Dr. Leo Haberman</span> </p>
+      <h3 class="highlighted-link__title">Hoe ziet de wereld eruit over 50 jaar?</h3>
+      <span class="tag">water</span>
+      <span class="tag">Een blik op de toekomst</span>
     </div>
   </main>
-  <div class="section">
-    <div class="container">
-      <header class="header">
-        <div class="header-title"><h1 class="title">{% trans "Meet an expert" %}</h1></div>
-        <p class="subtitle is-4">Get to know one of the many experts answering questions</p>
-      </header>
-      <div class="boxed media">
-        <div class="media-left">
-          <figure class="image is-48x48"><img src="{% static 'images/portrait_placeholder.png' %}"
-                                              alt="Profile Picture"/></figure>
-        </div>
-        {% include 'experts/includes/expert_block.html' with expert=expert %}
-      </div>
-    </div>
-    <div class="container">
-      <a class="button is-active is-primary" href="{{ experts_page.url }}">{% trans "See all our experts" %}</a>
-    </div>
-  </div>
+{#  <main class="section">#}
+{#    <div class="container">#}
+{#      <div class="columns">#}
+{#        <main class="column">#}
+{#          {% for answer in answers %}#}
+{#            {% include 'core/includes/answer_block.html' with answer=answer %}#}
+{#          {% endfor %}#}
+{#          {% if answers.paginator.num_pages > 1 %}#}
+{#            <nav class="pagination" role="navigation" aria-label="pagination">#}
+{#              {% if answers.has_previous %}#}
+{#                <a class="pagination-previous"#}
+{#                   href="?page={{ answers.previous_page_number }}">{% trans "Previous Page" %}</a>#}
+{#              {% endif %}#}
+{#              {% if answers.has_next %}#}
+{#                <a href="?page={{ answers.next_page_number }}" class="pagination-next">{% trans "Next page" %}</a>#}
+{#              {% endif %}#}
+{#              {% for page_num in answers.paginator.page_range %}#}
+{#                <li>#}
+{#                  <a href="?page={{ page_num }}" class="pagination-link">{{ page_num }}</a>#}
+{#                </li>#}
+{#              {% endfor %}#}
+{#            </nav>#}
+{#          {% endif %}#}
+{#        </main>#}
+{#      </div>#}
+{#    </div>#}
+{#  </main>#}
+
+{#  <div class="section">#}
+{#    <div class="container">#}
+{#      <header class="header">#}
+{#        <div class="header-title"><h1 class="title">{% trans "Meet an expert" %}</h1></div>#}
+{#        <p class="subtitle is-4">Get to know one of the many experts answering questions</p>#}
+{#      </header>#}
+{#      <div class="boxed media">#}
+{#        <div class="media-left">#}
+{#          <figure class="image is-48x48"><img src="{% static 'images/portrait_placeholder.png' %}"#}
+{#                                              alt="Profile Picture"/></figure>#}
+{#        </div>#}
+{#        {% include 'experts/includes/expert_block.html' with expert=expert %}#}
+{#      </div>#}
+{#    </div>#}
+{#    <div class="container">#}
+{#      <a class="button is-active is-primary" href="{{ experts_page.url }}">{% trans "See all our experts" %}</a>#}
+{#    </div>#}
+{#  </div>#}
 {% endblock %}
