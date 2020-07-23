@@ -31,8 +31,8 @@
 
 {#{% block container-class %} smokedglass{% endblock %}#}
 {% block content %}
-    <div class="content-link-list">
-      <div class="content-link-list__links">
+    <div class="question-link-list">
+      <div class="question-link-list__links">
         {% for answer in answers %}
           {% include 'core/includes/answer_block.html' with answer=answer %}
         {% endfor %}

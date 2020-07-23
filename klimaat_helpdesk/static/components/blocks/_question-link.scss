@@ -1,27 +1,23 @@
-.link-list-link {
+.question-link {
   padding-bottom: 50px;
   border-bottom: 1px solid $color-true-black;
 
-  .link-list-link__title {
+  .question-link__title {
     @include typography(heading-3, true, true);
     margin-top: 45px;
   }
 
-  .link-list-link__author {
+  .question-link__author {
     @include typography(attribution);
     margin: 0 10px 10px 0;
   }
 
-  .link-list-link__by {
-    //
-  }
-
-  .link-list-link__author-name {
+  .question-link__author-name {
     font-weight: 600;
   }
 
   @include landscape {
-    .link-list-link__author {
+    .question-link__author {
       float: left;
     }
   }

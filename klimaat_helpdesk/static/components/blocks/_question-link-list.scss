@@ -1,14 +1,14 @@
-.content-link-list {
+.question-link-list {
   position: relative;
   margin: var(--margin) 0;
   @include grid-container;
 
-  .content-link-list__links {
+  .question-link-list__links {
     grid-column: column 2 / span 10;
   }
 
   @include landscape {
-   .content-link-list__links {
+   .question-link-list__links {
      grid-column: column 1 / span 9;
     }
   }

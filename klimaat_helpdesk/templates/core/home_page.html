@@ -22,15 +22,13 @@
 {% endblock %}
 {% block content %}
   <main class="section">
-    <div class="container">
-      <div class="columns">
-        <main class="column">
-          {% for answer in answers %}
-            {% include 'core/includes/answer_block.html' with answer=answer %}
-          {% endfor %}
-        </main>
-      </div>
-    </div>
+   <div class="question-link-list">
+     <div class="question-link-list__links">
+       {% for answer in answers %}
+         {% include 'core/includes/answer_block.html' with answer=answer %}
+       {% endfor %}
+     </div>
+   </div>
   </main>
 {#  <div class="section">#}
 {#    <div class="container">#}
