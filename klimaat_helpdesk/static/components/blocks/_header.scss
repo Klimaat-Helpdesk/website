@@ -11,7 +11,7 @@
     @include typography(heading-1, true, true);
   }
 
-  .header__search {
+  .header__buttons {
     grid-column: column 2 / span 10;
   }
 
@@ -36,7 +36,7 @@
       grid-column: column 1 / span 9;
     }
 
-    .header__search {
+    .header__buttons {
       grid-column: column 1 / span 9;
     }
   }

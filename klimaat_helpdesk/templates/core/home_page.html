@@ -1,21 +1,18 @@
 {% extends 'base.html' %}
 {% load static i18n %}
 {% block head %}
-  <div class="logo-header">
-    <div class="logo-header__wrapper">
-      <div class="logo-header__logo">
-        {% include 'svg/logo/logo.svg' %}
-      </div>
-      <div class="logo-header__subtitle">Antwoorden van wetenschappers op al je vragen over klimaatverandering </div>
-      <div class="logo-header__buttons">
-          <button class="button">
-            <span class="button__text">Vragenoverzicht</span>
-            <span class="button__icon"></span>
-          </button>
-          <button class="button button--secondary">
-            <span class="button__text">Wie we zijn</span>
-            <span class="button__icon"></span>
-          </button>
+  <div class="header">
+    <div class="header__wrapper">
+      <h1 class="header__title">Antwoorden van wetenschappers op al je vragen over klimaatverandering</h1>
+      <div class="header__buttons">
+        <button class="button">
+          <span class="button__text">Vragenoverzicht</span>
+          <span class="button__icon"></span>
+        </button>
+        <button class="button button--secondary">
+          <span class="button__text">Wie we zijn</span>
+          <span class="button__icon"></span>
+        </button>
       </div>
     </div>
   </div>
@@ -29,17 +26,74 @@
        {% endfor %}
      </div>
    </div>
+
+    <div class="sticky-link">
+      <div class="sticky-link__wrapper">
+          <h4 class="sticky-link__title">Heb je het antwoord dat je zocht niet gevonden? Stel je eigen vraag!</h4>
+          <button class="button">
+            <span class="button__text">Stel je vraag</span>
+           <span class="button__icon"></span>
+          </button>
+      </div>
+    </div>
+
+  <div class="footer">
+    <div class="footer__wrapper">
+      <div class="footer__top">
+      <h2 class="footer__top-title"> Hoe beantwoorden we jullie vragen?</h2>
+      <p class="footer__top-text">De bronnen worden onderzocht en worden door 2 experts nagekeken. De wachttijd voor ieder antwoord kan 1 maand duren.</p>
+      <img class="footer__top__image" src="{% static 'images/process.png' %}" alt="profile picture">
+    </div>
+
+    <div class="footer__bottom">
+      <h3 class="footer__bottom-title">Onze experts</h3>
+      <p class="footer__bottom-text">Het climaat-helpdesk bestaat uit wetenschappelijke klimaatexperts uit 10 van de 14 nederlandse universiteiten.
+        Wij zijn een onafhankelijke stichting…. </p>
+    </div>
+
+    <div class="footer__experts">
+      <a class="footer__expert" href="/">
+        <div class="footer__expert-image">
+          <img class="footer__expert-picture" src="{% static 'images/detlefvanvuren.png' %}" alt="profile picture">
+        </div>
+        <div class="footer__expert-content">
+          <h4 class="footer__expert-title">Jan Paul van Soest</h4>
+          <p class="footer__expert-text">Oprichter van het De Gemeynt</p>
+          <span class="tag">water</span>
+        </div>
+      </a>
+
+      <a class="footer__expert" href="/">
+        <div class="footer__expert-image">
+          <img class="footer__expert-picture" src="{% static 'images/detlefvanvuren.png' %}" alt="profile picture">
+        </div>
+        <div class="footer__expert-content">
+          <h4 class="footer__expert-title">Detlef van Vuuren</h4>
+          <p class="footer__expert-text">Klimaat expert Planbureau voor de Leefomgeving en de Universiteit Utrecht</p>
+          <span class="tag">water</span>
+        </div>
+      </a>
+
+      <a class="footer__expert" href="/">
+        <div class="footer__expert-image">
+          <img class="footer__expert-picture" src="{% static 'images/detlefvanvuren.png' %}" alt="profile picture">
+        </div>
+        <div class="footer__expert-content">
+          <h4 class="footer__expert-title">Jan Paul van Soest</h4>
+          <p class="footer__expert-text">Oprichter van het De Gemeynt</p>
+          <span class="tag">water</span>
+        </div>
+      </a>
+
+    </div>
+    <div class="footer__button" >
+      <button class="button button--secondary">
+        <span class="button__text">Maak kennis met alle experts</span>
+        <span class="button__icon"></span>
+      </button>
+    </div>
+  </div>
+
+  </div>
   </main>
-{#  <div class="section">#}
-{#    <div class="container">#}
-{#      <header class="header">#}
-{#        <div class="header-title"><h1 class="title">{% trans "Meet an expert" %}</h1></div>#}
-{#        <p class="subtitle is-4">{% trans "Get to know one of the many experts answering questions" %}</p>#}
-{#      </header>#}
-{#      {% include 'experts/includes/expert_block.html' with expert=expert_profile %}#}
-{#    </div>#}
-{#    <div class="container">#}
-{#      <a class="button is-active is-primary" href="{{ experts_page.url }}">{% trans "See all our experts" %}</a>#}
-{#    </div>#}
-{#  </div>#}
 {% endblock %}

@@ -1,0 +1,123 @@
+.footer {
+  position: relative;
+
+
+  &::before {
+    content: '';
+    background: linear-gradient(to bottom, rgba($color-orange-dark, 1), rgba($color-orange-light, 1));
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+  }
+
+  .footer__wrapper {
+    @include grid-container;
+    padding-top: 100px;
+    padding-bottom: 80px;
+  }
+
+  .footer__top {
+    grid-column: column 2 / span 10;
+    margin-bottom: 60px;
+  }
+
+  .footer__top-title {
+    @include typography(heading-2);
+    margin-bottom: 20px;
+  }
+
+  .footer__top-text {
+    @include typography(introduction);
+  }
+
+  .footer__top__image {
+    display: none;
+  }
+
+  .footer__bottom {
+    grid-column: column 2 / span 10;
+    margin-bottom: 10px;
+  }
+
+  .footer__bottom-title {
+    @include typography(heading-3);
+    margin-bottom: 20px;
+  }
+
+  .footer__bottom-text {
+    @include typography(introduction);
+  }
+
+  .footer__experts {
+    grid-column: column 2 / span 10;
+  }
+
+  .footer__expert {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
+  }
+
+  .footer__expert-picture {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+  }
+
+  .footer__expert-title {
+    @include typography(heading-4);
+    color: $color-true-black;
+  }
+
+  .footer__expert-text {
+    @include typography(paragraph);
+    color: $color-true-black;
+    margin-bottom: 20px;
+  }
+
+  .footer__button {
+    grid-column: column 2 / span 10;
+  }
+
+  @include landscape {
+    .footer__top {
+      grid-column: column 1 / span 8;
+    }
+
+   .footer__top__image {
+    display: none;
+  }
+
+    .footer__bottom {
+      grid-column: column 1 / span 8;
+    }
+
+    .footer__experts {
+      display: grid;
+      grid-column: column 1 / span 12;
+      grid-gap: calc(var(--grid-spacing) * 2) var(--grid-gutter);
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      margin: var(--grid-spacing) 0;
+  }
+
+    .footer__expert {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 0;
+    }
+
+    .footer__expert-image {
+      flex: 0 0 70px;
+      margin-right: 20px;
+    }
+
+    .footer__expert-text {
+      flex: 1 0 100%;
+    }
+
+    .footer__button {
+      grid-column: column 1 / span 8;
+    }
+  }
+}
