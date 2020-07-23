@@ -3,13 +3,33 @@
   margin: var(--margin) 0;
   @include grid-container;
 
+  .question-link-list__title {
+    @include typography(heading-4);
+    grid-column: column 2 / span 10;
+    padding-bottom: 10px;
+    border-bottom: 1px solid $color-true-black;
+  }
+
   .question-link-list__links {
     grid-column: column 2 / span 10;
   }
 
+  .question-link-list__button {
+    grid-column: column 2 /span 10;
+  }
+
   @include landscape {
+    .question-link-list__title {
+      @include typography(heading-4);
+      grid-column: column 1 / span 9;
+    }
+
    .question-link-list__links {
      grid-column: column 1 / span 9;
+    }
+
+    .question-link-list__button {
+      grid-column: column 1 /span 9;
     }
   }
 }

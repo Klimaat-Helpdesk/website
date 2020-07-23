@@ -5,14 +5,18 @@
     <div class="header__wrapper">
       <h1 class="header__title">Antwoorden van wetenschappers op al je vragen over klimaatverandering</h1>
       <div class="header__buttons">
-        <button class="button">
+        <div class="header__button">
+          <button class="button">
           <span class="button__text">Vragenoverzicht</span>
           <span class="button__icon"></span>
         </button>
-        <button class="button button--secondary">
+        </div>
+        <div class="header__button">
+         <button class="button button--secondary">
           <span class="button__text">Wie we zijn</span>
           <span class="button__icon"></span>
-        </button>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -20,10 +24,17 @@
 {% block content %}
   <main class="section">
    <div class="question-link-list">
-     <div class="question-link-list__links">
-       {% for answer in answers %}
-         {% include 'core/includes/answer_block.html' with answer=answer %}
-       {% endfor %}
+    <h4 class="question-link-list__title">Jullie meest gestelde vragen</h4>
+    <div class="question-link-list__links">
+      {% for answer in answers %}
+        {% include 'core/includes/answer_block.html' with answer=answer %}
+      {% endfor %}
+     </div>
+     <div class="question-link-list__button">
+       <button class="button">
+         <span class="button__text">Vragenoverzicht</span>
+         <span class="button__icon"></span>
+       </button>
      </div>
    </div>
 

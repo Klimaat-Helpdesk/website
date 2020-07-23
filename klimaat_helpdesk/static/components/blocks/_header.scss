@@ -15,6 +15,10 @@
     grid-column: column 2 / span 10;
   }
 
+  .header__button {
+    display: inline-block;
+  }
+
   .header__search-themes {
     margin-bottom: 10px;
   }
