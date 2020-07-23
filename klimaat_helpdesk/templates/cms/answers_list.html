@@ -59,6 +59,15 @@
           </button>
       </div>
     </div>
+
+    <div class="question-link-list">
+      <div class="question-link-list__links">
+        {% for answer in answers %}
+          {% include 'core/includes/answer_block.html' with answer=answer %}
+        {% endfor %}
+      </div>
+    </div>
+
 {#  <main class="section">#}
 {#    <div class="container">#}
 {#      <div class="columns">#}

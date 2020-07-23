@@ -1,12 +1,12 @@
 .question-link-list {
   position: relative;
-  margin: var(--margin) 0;
+  margin: 0 0 80px 0;
   @include grid-container;
 
   .question-link-list__title {
     @include typography(heading-4);
     grid-column: column 2 / span 10;
-    padding-bottom: 10px;
+    padding: 40px 0 10px 0;
     border-bottom: 1px solid $color-true-black;
   }
 
