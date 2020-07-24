@@ -11,8 +11,12 @@
     @include typography(heading-1, true, true);
   }
 
-  .header__search {
+  .header__buttons {
     grid-column: column 2 / span 10;
+  }
+
+  .header__button {
+    display: inline-block;
   }
 
   .header__search-themes {
@@ -36,7 +40,7 @@
       grid-column: column 1 / span 9;
     }
 
-    .header__search {
+    .header__buttons {
       grid-column: column 1 / span 9;
     }
   }

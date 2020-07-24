@@ -4,7 +4,7 @@
   <div class="header">
     <div class="header__wrapper">
       <h1 class="header__title">{{ page.title }}</h1>
-      <div class="header__search">
+      <div class="header__buttons">
         <div class="header__search-themes">
           <span class="tag">Maatschappij</span>
           <span class="tag">Blik op de toekomst</span>
@@ -15,7 +15,7 @@
           <span class="tag">Water</span>
           <span class="tag">Economie</span>
         </div>
-        <div class="header__search-button">
+        <div class="header__button">
           <button class="button">
             <span class="button__text">Filter</span>
             <span class="button__icon"></span>
@@ -57,6 +57,14 @@
             <span class="button__text">Stel je vraag</span>
            <span class="button__icon"></span>
           </button>
+      </div>
+    </div>
+
+    <div class="question-link-list">
+      <div class="question-link-list__links">
+        {% for answer in answers %}
+          {% include 'core/includes/answer_block.html' with answer=answer %}
+        {% endfor %}
       </div>
     </div>
 

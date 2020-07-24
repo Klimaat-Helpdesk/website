@@ -30,14 +30,14 @@
   .related-content__title {
     @include typography(heading-2, true, true);
     border-bottom: 1px solid $color-true-black;
-    padding-bottom: 10px;
-    margin-bottom: 30px;
+    padding-bottom: 20px;
   }
 
   .related-content__link {
     grid-column: column 2 / span 9;
     border-bottom: 1px solid black;
-    padding-bottom: 40px;
+    padding-bottom: 45px;
+    padding-top: 25px;
 
     &:last-child {
       border-bottom: 0;
@@ -46,11 +46,13 @@
 
   .related-content__link-title {
     @include typography(heading-3, true, true);
+    color: $color-true-black;
   }
 
   .related-content__link-author {
     @include typography(paragraph);
     margin: 0 10px 10px 0;
+    color: $color-true-black;
   }
 
   .related-content__auhtor-name {
@@ -71,7 +73,7 @@
     .related-content__link {
       grid-column: column 1 / span 9;
     }
-    
+
     .related-content__link-author {
       float: left;
     }

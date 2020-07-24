@@ -5,7 +5,7 @@
   <div class="answer-detail">
     <div class="content-header">
       <div class="content-header__container">
-        <a class="content-header__back-link">
+        <a class="content-header__back-link" href="/">
           <span class="content-header__back-link-icon"></span>
         </a>
         <div class="content-header__title-container">
@@ -45,10 +45,6 @@
   <div class="image">
     <div class="image__wrapper">
       <picture class="image__image">
-
-      {% if images.mobile %}<source srcset="{{ images.mobile }}">{% endif %}
-      {% if images.landscape %}<source srcset="{{ images.landscape }}" media="(min-width: 800px)">{% endif %}
-
       <img class="image__img" src="/static/images/golfstromen.jpg" alt="golfstromen"/>
         <figcaption class="image__caption">Caption. De oceanografie is een relatief jonge wetenschap.</figcaption>
     </picture>
@@ -113,26 +109,26 @@
         <h2 class="related-content__title">Gerelateerde items</h2>
       </div>
 
-      <div class="related-content__link">
+      <a class="related-content__link" href="/">
         <h3 class="related-content__link-title">Hoe reageren de oceanen op klimaatverandering?</h3>
         <p class="related-content__link-author"> <span class="related-content__link-by">Door</span> <span class="related-content__auhtor-name">Rolf Schuttenheim</span> </p>
         <span class="tag">water</span>
         <span class="tag">Een blik op de toekomst</span>
-      </div>
+      </a>
 
-      <div class="related-content__link">
+      <a class="related-content__link" href="/">
         <h3 class="related-content__link-title">Waar komt over tien jaar onze stroom vandaan?</h3>
         <p class="related-content__link-author"> <span class="related-content__link-by">Door</span> <span class="related-content__auhtor-name">Rolf Schuttenheim</span> </p>
         <span class="tag">Maatschappij</span>
         <span class="tag">Een blik op de toekomst</span>
-      </div>
+      </a>
 
-      <div class="related-content__link">
+      <a class="related-content__link" href="/">
         <h3 class="related-content__link-title">Hoe reageren de oceanen op klimaatverandering?</h3>
         <p class="related-content__link-author"> <span class="related-content__link-by">Door</span> <span class="related-content__auhtor-name">Rolf Schuttenheim</span> </p>
         <span class="tag">water</span>
         <span class="tag">Een blik op de toekomst</span>
-      </div>
+      </a>
 
     </div>
   </div>

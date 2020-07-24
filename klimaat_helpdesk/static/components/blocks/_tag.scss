@@ -1,5 +1,6 @@
 .tag {
   @include typography(thema);
+  color: $color-true-black;
   height: 32px;
   display: inline-flex;
   align-items: center;
