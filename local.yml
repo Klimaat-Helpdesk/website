@@ -20,6 +20,8 @@ services:
     ports:
       - "8000:8000"
     command: /start
+    expose:
+      - "8000"
 
   postgres:
     build:
@@ -41,7 +43,7 @@ services:
     depends_on:
       - redis
       - postgres
-      
+
     ports: []
     command: /start-celeryworker
 
@@ -51,7 +53,7 @@ services:
     depends_on:
       - redis
       - postgres
-      
+
     ports: []
     command: /start-celerybeat
 
