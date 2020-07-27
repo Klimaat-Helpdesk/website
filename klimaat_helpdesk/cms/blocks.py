@@ -34,7 +34,6 @@ class ScientificSourceBlock(blocks.StructBlock):
 class AnswerOriginBlock(blocks.StructBlock):
     title = blocks.CharBlock(max_length=255)
     content = blocks.RichTextBlock()
-    sources_title = blocks.CharBlock(max_length=255)
     sources = blocks.ListBlock(ScientificSourceBlock)
 
     class Meta:

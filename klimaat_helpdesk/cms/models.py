@@ -76,7 +76,7 @@ class Answer(Page):
     page_content = StreamField([
         ('richtext', AnswerRichTextBlock()),
         ('image', AnswerImageBlock()),
-        ('image', QuoteBlock()),
+        ('quote', QuoteBlock()),
     ])
 
     # Which experts and how was this answered?
