@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% load i18n static wagtailcore_tags %}
 
+<div class="answer-detail">
 {% block head %}
-  <div class="answer-detail">
     <div class="content-header">
       <div class="content-header__container">
         <a class="content-header__back-link" href="/">
@@ -26,110 +26,14 @@
         </div>
     </div>
   </div>
-
 {% endblock %}
-{% block content %}
-  <div class="answer-detail__content">
 
-  <div class="content">
-    <div class="content__container">
-        <div class="content__answer richtext">
-            {{ self.content|richtext }}
-        </div>
-    </div>
-  </div>
-
-  <div class="image">
-    <div class="image__wrapper">
-      <picture class="image__image">
-      <img class="image__img" src="/static/images/golfstromen.jpg" alt="golfstromen"/>
-        <figcaption class="image__caption">Caption. De oceanografie is een relatief jonge wetenschap.</figcaption>
-    </picture>
-
-
-    </div>
-  </div>
-
-  <div class="quote">
-    <div class="quote__wrapper">
-      <p class="quote__text">
-        "Bovendien wordt sinds het Parijsakkoord in verschillende landen ook gericht klimaatbeleid gevoerd.
-        Als gevolg van beide factoren hebben veel rijke landen al enige tijd een dalende CO2-uitstoot -
-        terwijl de economie gewoon groeit."
-      </p>
-    </div>
-  </div>
-  </div>
-
-  <div class="disclosure" data-controller="disclosure">
-    <div class="disclosure__wrapper">
-      <div class="disclosure__content">
-        <h2 class="disclosure__title">Hoe kwam dit antwoord tot stand?</h2>
-        <span class="disclosure__text">
-          De vraag is beantwoord door Detlef van Vuuren en geveriveerd door Loe L. - zij hebben hiervoor
-        50 wetenschappelijke teksten voorgelezen - in 8 boeken nageslagen en waren in totaal 3h bezig
-        om je vraag op een wetenschappelijk correct manier te beantwoorden.   Samenvattende introductie
-        en beantwoording van de vraag. Voor die beleidsomslag zijn de ingrediënten inmiddels wel aanwezig,
-        denkt Van Vuuren: de daling van de kosten van hernieuwbare energie, energieopslag en bijvoorbeeld
-        elektrisch vervoer heeft het mogelijk gemaakt om naar de toekomst de uitstoot te verlagen. "Maar
-        dan moeten we die kans dus wel benutten."
-        </span>
-      </div>
-
-      <div class="disclosure__disclosure">
-        <h4 class="disclosure__disclosure-title">
-          <button id="{{ button_id }}" class="disclosure__title-button" aria-controls="{{ content_id }}" aria-expanded="false">
-            <span class="disclosure__title-button-span">Bekijk de bronnen</span>
-            <span class="disclosure__title-button-icon">
-            </span>
-          </button>
-        </h4>
-
-        <div class="disclosure__disclosure-content richtext" role="region" aria-labelledby="{{ button_id }}" hidden>
-          <p>[1] NU.nl. (2019, April 26). Klimaatvraag: Hoe reageren de oceanen op klimaatverandering?
-            NU - Het Laatste Nieuws Het Eerst Op NU.Nl.
-            <b>https://www.nu.nl/weekend/5863554/klimaatvraag-hoe-reageren-de-oceanen-op-klimaatverandering.html</b>
-          </p>
-          <p>
-            [2] Hulme, M. (2017). WIREs Climate Change 2018: An editorial essay.
-            Wiley Interdisciplinary Reviews: Climate Change, 9(1), e503.
-            <b>https://doi.org/10.1002/wcc.503</b>
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="related-content">
-    <div class="related-content__wrapper">
-      <div class="related-content__title-wrapper">
-        <h2 class="related-content__title">Gerelateerde items</h2>
-      </div>
-
-      <a class="related-content__link" href="/">
-        <h3 class="related-content__link-title">Hoe reageren de oceanen op klimaatverandering?</h3>
-        <p class="related-content__link-author"> <span class="related-content__link-by">Door</span> <span class="related-content__auhtor-name">Rolf Schuttenheim</span> </p>
-        <span class="tag">water</span>
-        <span class="tag">Een blik op de toekomst</span>
-      </a>
-
-      <a class="related-content__link" href="/">
-        <h3 class="related-content__link-title">Waar komt over tien jaar onze stroom vandaan?</h3>
-        <p class="related-content__link-author"> <span class="related-content__link-by">Door</span> <span class="related-content__auhtor-name">Rolf Schuttenheim</span> </p>
-        <span class="tag">Maatschappij</span>
-        <span class="tag">Een blik op de toekomst</span>
-      </a>
-
-      <a class="related-content__link" href="/">
-        <h3 class="related-content__link-title">Hoe reageren de oceanen op klimaatverandering?</h3>
-        <p class="related-content__link-author"> <span class="related-content__link-by">Door</span> <span class="related-content__auhtor-name">Rolf Schuttenheim</span> </p>
-        <span class="tag">water</span>
-        <span class="tag">Een blik op de toekomst</span>
-      </a>
-
-    </div>
-  </div>
-
-{% endblock %}
+<div class="answer-detail__content">
+  {% block content %}
+    {% for block in self.page_content %}
+      {% include_block block %}
+    {% endfor %}
+  {% endblock %}
+</div>
 
 </div>

@@ -1,0 +1,40 @@
+{% load i18n static wagtailcore_tags %}
+
+<div class="disclosure" data-controller="disclosure">
+    <div class="disclosure__wrapper">
+      <div class="disclosure__content">
+        <h2 class="disclosure__title">Hoe kwam dit antwoord tot stand?</h2>
+        <span class="disclosure__text">
+          De vraag is beantwoord door Detlef van Vuuren en geveriveerd door Loe L. - zij hebben hiervoor
+        50 wetenschappelijke teksten voorgelezen - in 8 boeken nageslagen en waren in totaal 3h bezig
+        om je vraag op een wetenschappelijk correct manier te beantwoorden.   Samenvattende introductie
+        en beantwoording van de vraag. Voor die beleidsomslag zijn de ingrediënten inmiddels wel aanwezig,
+        denkt Van Vuuren: de daling van de kosten van hernieuwbare energie, energieopslag en bijvoorbeeld
+        elektrisch vervoer heeft het mogelijk gemaakt om naar de toekomst de uitstoot te verlagen. "Maar
+        dan moeten we die kans dus wel benutten."
+        </span>
+      </div>
+
+      <div class="disclosure__disclosure">
+        <h4 class="disclosure__disclosure-title">
+          <button id="{{ button_id }}" class="disclosure__title-button" aria-controls="{{ content_id }}" aria-expanded="false">
+            <span class="disclosure__title-button-span">Bekijk de bronnen</span>
+            <span class="disclosure__title-button-icon">
+            </span>
+          </button>
+        </h4>
+
+        <div class="disclosure__disclosure-content richtext" role="region" aria-labelledby="{{ button_id }}" hidden>
+          <p>[1] NU.nl. (2019, April 26). Klimaatvraag: Hoe reageren de oceanen op klimaatverandering?
+            NU - Het Laatste Nieuws Het Eerst Op NU.Nl.
+            <b>https://www.nu.nl/weekend/5863554/klimaatvraag-hoe-reageren-de-oceanen-op-klimaatverandering.html</b>
+          </p>
+          <p>
+            [2] Hulme, M. (2017). WIREs Climate Change 2018: An editorial essay.
+            Wiley Interdisciplinary Reviews: Climate Change, 9(1), e503.
+            <b>https://doi.org/10.1002/wcc.503</b>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
