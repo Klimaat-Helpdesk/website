@@ -3,8 +3,8 @@
 <div class="image">
   <div class="image__wrapper">
     <picture class="image__image">
-    <img class="image__img" src="/static/images/golfstromen.jpg" alt="golfstromen"/>
-      <figcaption class="image__caption">Caption. De oceanografie is een relatief jonge wetenschap.</figcaption>
+    <img class="image__img" src="{{ self.image.url }}" alt="{{ self.image.alt }}"/>
+      <figcaption class="image__caption">{{ self.caption }}</figcaption>
   </picture>
   </div>
 </div>

@@ -12,6 +12,7 @@ class AnswerRichTextBlock(blocks.StructBlock):
 
 class AnswerImageBlock(blocks.StructBlock):
     image = ImageChooserBlock()
+    caption = blocks.CharBlock(max_length=250)
 
     class Meta:
         icon = 'image'

@@ -84,7 +84,6 @@ class Answer(Page):
         ('origin', AnswerOriginBlock())
     ])
 
-
     parent_page_types = ['AnswerIndexPage']
 
     content_panels = Page.content_panels + [
