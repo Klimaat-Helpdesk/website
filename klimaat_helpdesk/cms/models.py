@@ -9,14 +9,15 @@ from modelcluster.contrib.taggit import ClusterTaggableManager
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from taggit.models import TaggedItemBase
 
-from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel
+from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, StreamFieldPanel
 from wagtail.contrib.routable_page.models import RoutablePageMixin, route
-from wagtail.core.fields import RichTextField
+from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Orderable, Page
 from wagtail.search import index
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet
 
+from klimaat_helpdesk.cms.blocks import AnswerRichTextBlock, QuoteBlock, AnswerImageBlock, AnswerOriginBlock
 from klimaat_helpdesk.experts.models import Expert
 
 
@@ -66,25 +67,29 @@ register_snippet(AnswerCategory)
 class Answer(Page):
     template = 'cms/answer_detail.html'
 
-    introduction = TextField(default='', blank=True, null=True)
-    content = RichTextField()
-
     excerpt = models.CharField(verbose_name=_('Short description'), max_length=255, blank=False, null=True)
+    introduction = TextField(default='', blank=True, null=True)
     category = models.ForeignKey(AnswerCategory, related_name='answers', on_delete=models.SET_NULL, null=True, default=None)
     tags = ClusterTaggableManager(through=AnswerTag, blank=True)
+
+    # Freeform content of answer
+    page_content = StreamField([
+        ('richtext', AnswerRichTextBlock()),
+        ('image', AnswerImageBlock()),
+        ('image', QuoteBlock()),
+    ])
+
+    # Which experts and how was this answered?
+    answer_origin = StreamField([
+        ('origin', AnswerOriginBlock())
+    ])
+
 
     parent_page_types = ['AnswerIndexPage']
 
     content_panels = Page.content_panels + [
         FieldPanel('excerpt', classname='full'),
         FieldPanel('introduction', classname='full'),
-        FieldPanel('content', classname='full'),
-        MultiFieldPanel(
-            [
-                InlinePanel('answer_expert_relationship', label=_('Expert(s)'), panels=None, min_num=1)
-            ],
-            heading=_('Expert(s)')
-        ),
         MultiFieldPanel(
             [
                 FieldPanel('category'),
@@ -92,6 +97,14 @@ class Answer(Page):
             heading=_("Categories")
         ),
         FieldPanel('tags'),
+        MultiFieldPanel(
+            [
+                InlinePanel('answer_expert_relationship', label=_('Expert(s)'), panels=None, min_num=1)
+            ],
+            heading=_('Expert(s)')
+        ),
+        StreamFieldPanel('page_content'),
+        StreamFieldPanel('answer_origin'),
     ]
 
     search_fields = Page.search_fields + [

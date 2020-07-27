@@ -2,7 +2,7 @@ from wagtail.core import blocks
 from wagtail.images.blocks import ImageChooserBlock
 
 
-class RichTextBlock(blocks.StructBlock):
+class AnswerRichTextBlock(blocks.StructBlock):
     content = blocks.RichTextBlock()
 
     class Meta:
@@ -10,7 +10,7 @@ class RichTextBlock(blocks.StructBlock):
         template = 'cms/blocks/rich_text.html'
 
 
-class ImageBlock(blocks.StructBlock):
+class AnswerImageBlock(blocks.StructBlock):
     image = ImageChooserBlock()
 
     class Meta:
