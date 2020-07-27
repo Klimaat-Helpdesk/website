@@ -129,6 +129,27 @@ class Answer(Page):
             ])
         return tags
 
+    def get_references(self):
+        """Build reference list, alphabetically to sort of comply with standards"""
+
+        ref_list = []
+        try:
+            component = self.answer_origin[0]
+        except IndexError:
+            return ref_list
+
+        # Access streamfield elements
+        for element in component.value['sources']:
+            ref_list.append({
+                'text' : element['reference_text'],
+                'url' : element['url_or_doi'],
+            })
+
+        # Sort by text starting letter, best we can do for now
+        ref_list.sort(key=lambda e: e['text'])
+        return ref_list
+
+
     def get_context(self, request, *args, **kwargs):
         context = super(Answer, self).get_context(request, *args, **kwargs)
 

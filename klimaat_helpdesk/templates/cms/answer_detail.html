@@ -33,6 +33,10 @@
     {% for block in self.page_content %}
       {% include_block block %}
     {% endfor %}
+
+    {% for block in self.answer_origin %}
+      {% include_block block %}
+    {% endfor %}
   {% endblock %}
 </div>
 
