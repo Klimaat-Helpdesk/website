@@ -43,5 +43,8 @@ class AnswerOriginBlock(blocks.StructBlock):
 
 
 class RelatedItemsBlock(blocks.StructBlock):
-    title = blocks.CharBlock(max_length=255)
     items = blocks.ListBlock(blocks.PageChooserBlock(page_type='cms.Answer'))
+
+    class Meta:
+        icon = 'text'
+        template = 'cms/blocks/related_content.html'

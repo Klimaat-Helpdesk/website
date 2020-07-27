@@ -3,6 +3,7 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db import models
 from django.db.models import TextField
 from django.shortcuts import redirect, render
+from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy as _
 from modelcluster.contrib.taggit import ClusterTaggableManager
 
@@ -17,7 +18,8 @@ from wagtail.search import index
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet
 
-from klimaat_helpdesk.cms.blocks import AnswerRichTextBlock, QuoteBlock, AnswerImageBlock, AnswerOriginBlock
+from klimaat_helpdesk.cms.blocks import AnswerRichTextBlock, QuoteBlock, AnswerImageBlock, AnswerOriginBlock, \
+    RelatedItemsBlock
 from klimaat_helpdesk.experts.models import Expert
 
 
@@ -84,6 +86,11 @@ class Answer(Page):
         ('origin', AnswerOriginBlock())
     ])
 
+    # Related items
+    related_items = StreamField([
+        ('related_items', RelatedItemsBlock())
+    ])
+
     parent_page_types = ['AnswerIndexPage']
 
     content_panels = Page.content_panels + [
@@ -104,6 +111,7 @@ class Answer(Page):
         ),
         StreamFieldPanel('page_content'),
         StreamFieldPanel('answer_origin'),
+        StreamFieldPanel('related_items')
     ]
 
     search_fields = Page.search_fields + [
@@ -148,6 +156,36 @@ class Answer(Page):
         ref_list.sort(key=lambda e: e['text'])
         return ref_list
 
+    def get_primary_expert(self):
+        """
+        Gets the first expert associated with this answer if it exists.
+        """
+        try:
+            first = self.experts[0]
+        except IndexError:
+            return _('Unknown')
+        else:
+            return str(first)
+
+    def get_all_themes(self):
+        """
+        TODO
+        """
+        return ['lijst', 'van', 'themas']
+
+    def get_as_row_card(self):
+        """
+        Returns the card that is rendered in all the overviews for this answer.
+        """
+        data = {
+            'title' : self.title,
+            'url' : self.url,
+            'author' : self.get_primary_expert(),
+            'themes': self.get_all_themes(),
+            'type': 'answer'
+        }
+
+        return render_to_string('cms/blocks/row.html', context=data)
 
     def get_context(self, request, *args, **kwargs):
         context = super(Answer, self).get_context(request, *args, **kwargs)

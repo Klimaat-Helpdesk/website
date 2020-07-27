@@ -1,0 +1,9 @@
+{% load i18n static wagtailcore_tags %}
+
+<a class="related-content__link" href="{{ url }}">
+  <h3 class="related-content__link-title">{{ title }}</h3>
+  <p class="related-content__link-author"> <span class="related-content__link-by">{% trans 'Door' %}</span> <span class="related-content__auhtor-name">{{ author }}</span> </p>
+  {% for theme in themes %}
+    <span class="tag">{{ theme }}</span>
+  {% endfor %}
+</a>

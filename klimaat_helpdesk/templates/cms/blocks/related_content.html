@@ -3,29 +3,12 @@
 <div class="related-content">
   <div class="related-content__wrapper">
     <div class="related-content__title-wrapper">
-      <h2 class="related-content__title">Gerelateerde items</h2>
+      <h2 class="related-content__title">{% trans 'Gerelateerde items' %}</h2>
     </div>
 
-    <a class="related-content__link" href="/">
-      <h3 class="related-content__link-title">Hoe reageren de oceanen op klimaatverandering?</h3>
-      <p class="related-content__link-author"> <span class="related-content__link-by">Door</span> <span class="related-content__auhtor-name">Rolf Schuttenheim</span> </p>
-      <span class="tag">water</span>
-      <span class="tag">Een blik op de toekomst</span>
-    </a>
-
-    <a class="related-content__link" href="/">
-      <h3 class="related-content__link-title">Waar komt over tien jaar onze stroom vandaan?</h3>
-      <p class="related-content__link-author"> <span class="related-content__link-by">Door</span> <span class="related-content__auhtor-name">Rolf Schuttenheim</span> </p>
-      <span class="tag">Maatschappij</span>
-      <span class="tag">Een blik op de toekomst</span>
-    </a>
-
-    <a class="related-content__link" href="/">
-      <h3 class="related-content__link-title">Hoe reageren de oceanen op klimaatverandering?</h3>
-      <p class="related-content__link-author"> <span class="related-content__link-by">Door</span> <span class="related-content__auhtor-name">Rolf Schuttenheim</span> </p>
-      <span class="tag">water</span>
-      <span class="tag">Een blik op de toekomst</span>
-    </a>
+    {% for item in self.items %}
+      {{ item.get_as_row_card }}
+    {% endfor %}
 
   </div>
 </div>
