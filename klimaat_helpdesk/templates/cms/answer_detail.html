@@ -14,18 +14,15 @@
           </h1>
         </div>
         <div class="content-header__theme">
-          <span class="content-header__subject-tag tag">Maatschappij</span>
+          <span class="content-header__subject-tag tag">{{ self.category }}</span>
         </div>
         <div class="content-header__introduction">
-          <p class="content-header__introduction-text">Als de CO2-uitstoot eenmaal daalt, gaat dan ook de wereldwijde temperatuur weer omlaag? Helaas, nee.
-            De temperatuur wordt niet direct beïnvloed door de uitstoot, maar door de concentratie van CO2, in de atmosfeer. En die is grotendeels
-            cumulatief: zolang de uitstoot hoog blijft, loopt dit niveau steeds verder op.</p>
+          <p class="content-header__introduction-text">{{ self.introduction }}</p>
         </div>
         <div class="content-header__tags">
-          <span class="content-header__tag">#Broeikasgas</span>
-          <span class="content-header__tag">#CO2 opslag</span>
-          <span class="content-header__tag">#CO2 opname</span>
-          <span class="content-header__tag">#CO2 balans</span>
+          {% for tag in self.tags.all %}
+          <span class="content-header__tag">#{{ tag }}</span>
+          {% endfor %}
         </div>
     </div>
   </div>

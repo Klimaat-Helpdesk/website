@@ -1,6 +1,7 @@
 from django import forms
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db import models
+from django.db.models import TextField
 from django.shortcuts import redirect, render
 from django.utils.translation import ugettext_lazy as _
 from modelcluster.contrib.taggit import ClusterTaggableManager
@@ -65,6 +66,7 @@ register_snippet(AnswerCategory)
 class Answer(Page):
     template = 'cms/answer_detail.html'
 
+    introduction = TextField(default='', blank=True, null=True)
     content = RichTextField()
 
     excerpt = models.CharField(verbose_name=_('Short description'), max_length=255, blank=False, null=True)
@@ -75,6 +77,7 @@ class Answer(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel('excerpt', classname='full'),
+        FieldPanel('introduction', classname='full'),
         FieldPanel('content', classname='full'),
         MultiFieldPanel(
             [
