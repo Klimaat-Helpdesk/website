@@ -331,3 +331,6 @@ klimaat_helpdesk/media/
 .env
 .envs/*
 !.envs/.local/
+/node_modules/
+/assets/bundles/
+/webpack-stats.json
