@@ -82,6 +82,10 @@ register_snippet(AnswerCategory)
 class Answer(Page):
     template = 'cms/answer_detail.html'
 
+    # Determins type and whether its highlighted in overviewlist
+    type = models.CharField(choices=[('anwswer', 'Antwoord'), ('column', 'Column')], max_length=100, default='answer')
+    featured = models.BooleanField(default=False)
+
     content = RichTextField()
     excerpt = models.CharField(verbose_name=_('Short description'), max_length=255, blank=False, null=True)
     introduction = TextField(default='', blank=True, null=True)
@@ -98,16 +102,18 @@ class Answer(Page):
     # Which experts and how was this answered?
     answer_origin = StreamField([
         ('origin', AnswerOriginBlock())
-    ])
+    ], blank=True)
 
     # Related items
     related_items = StreamField([
         ('related_items', RelatedItemsBlock())
-    ])
+    ], blank=True)
 
     parent_page_types = ['AnswerIndexPage']
 
     content_panels = Page.content_panels + [
+        FieldPanel('type'),
+        FieldPanel('featured'),
         FieldPanel('excerpt', classname='full'),
         FieldPanel('content', classname='full'),
         FieldPanel('introduction', classname='full'),
