@@ -1,10 +1,11 @@
 {% load i18n %}
-<a class="question-link" href="/">
-    <h3 class="question-link__title">Hoe reageren de oceanen op klimaatverandering?</h3>
-    <p class="question-link__author"> <span class="question-link__by">Door</span> <span class="question-link__author-name">Rolf Schuttenheim</span> </p>
-    <span class="tag">water</span>
-    <span class="tag">Een blik op de toekomst</span>
-</a>
+<div class="question-link">
+    <a href="{{ url }}"><h3 class="question-link__title">{{ title }}</h3></a>
+    <p class="question-link__author"> <span class="question-link__by">{% trans 'Door' %}</span> <span class="question-link__author-name">{{ author }}</span> </p>
+    {% for category in categories %}
+       <span class="tag"><a href="{{ category.url }}">{{ category.title }}</a></span>
+    {% endfor %}
+</div>
 
 
 {#<article class="media boxed">#}

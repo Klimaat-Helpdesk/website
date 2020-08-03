@@ -194,11 +194,9 @@ class Answer(Page):
         print(self.categories)
         return [ {'title': c.name, 'url': c.slug } for c in self.categories]
 
-    def get_as_row_card(self):
-        """
-        Returns the card that is rendered in all the overviews for this answer.
-        """
-        data = {
+
+    def get_card_data(self):
+        return {
             'title' : self.title,
             'url' : self.url,
             'author' : self.get_primary_expert(),
@@ -206,7 +204,14 @@ class Answer(Page):
             'type': 'answer'
         }
 
-        return render_to_string('cms/blocks/row.html', context=data)
+    # TODO there are two templates but this might not be necessary since 99% identical?
+    def get_as_overview_row_card(self):
+        return render_to_string('core/includes/answer_block.html',
+                                context=self.get_card_data())
+
+    def get_as_row_card(self):
+        return render_to_string('cms/blocks/row.html',
+                                context=self.get_card_data())
 
     def get_context(self, request, *args, **kwargs):
         context = super(Answer, self).get_context(request, *args, **kwargs)
