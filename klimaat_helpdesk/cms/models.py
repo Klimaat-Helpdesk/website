@@ -24,14 +24,27 @@ from klimaat_helpdesk.experts.models import Expert
 
 
 class ExpertAnswerRelationship(Orderable, models.Model):
-    """Intermediate table for holding the many-to-many relationship in case there are many experts working on the same
-    answer.
+    """
+    Intermediate table for holding the many-to-many relationship in case there are
+    many experts working on the same answer.
     """
     answer = ParentalKey('Answer', related_name='answer_expert_relationship', on_delete=models.CASCADE)
     expert = models.ForeignKey('experts.Expert', related_name='expert_answer_relationship', on_delete=models.CASCADE)
 
     panels = [
         SnippetChooserPanel('expert')
+    ]
+
+
+class CategoryAnswerRelationship(Orderable, models.Model):
+    """
+    Intermediate table for holding the many-to-many relationship between categories and answers
+    """
+    answer = ParentalKey('Answer', related_name='answer_category_relationship', on_delete=models.CASCADE)
+    category = models.ForeignKey('cms.AnswerCategory', related_name='category_answer_relationship', on_delete=models.CASCADE)
+
+    panels = [
+        SnippetChooserPanel('category')
     ]
 
 
@@ -100,9 +113,9 @@ class Answer(Page):
         FieldPanel('introduction', classname='full'),
         MultiFieldPanel(
             [
-                FieldPanel('category'),
+                InlinePanel('answer_category_relationship', label=_('Categorie(n)'), panels=None, min_num=1)
             ],
-            heading=_("Categories")
+            heading=_('Categorie(n)')
         ),
         FieldPanel('tags'),
         MultiFieldPanel(
@@ -128,6 +141,13 @@ class Answer(Page):
         return experts
 
     @property
+    def categories(self):
+        categories = [
+            n.category for n in self.answer_category_relationship.all()
+        ]
+        return categories
+
+    @property
     def get_tags(self):
         tags = self.tags.all()
         for tag in tags:
@@ -139,8 +159,9 @@ class Answer(Page):
         return tags
 
     def get_references(self):
-        """Build reference list, alphabetically to sort of comply with standards"""
-
+        """
+        Build reference list, alphabetically to sort of comply with standards
+        """
         ref_list = []
         try:
             component = self.answer_origin[0]
@@ -169,11 +190,9 @@ class Answer(Page):
         else:
             return str(first)
 
-    def get_all_themes(self):
-        """
-        TODO
-        """
-        return ['lijst', 'van', 'themas']
+    def get_all_categories(self):
+        print(self.categories)
+        return [ {'title': c.name, 'url': c.slug } for c in self.categories]
 
     def get_as_row_card(self):
         """
@@ -183,7 +202,7 @@ class Answer(Page):
             'title' : self.title,
             'url' : self.url,
             'author' : self.get_primary_expert(),
-            'themes': self.get_all_themes(),
+            'categories': self.get_all_categories(),
             'type': 'answer'
         }
 
