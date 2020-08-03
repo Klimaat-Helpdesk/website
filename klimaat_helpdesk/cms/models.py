@@ -246,14 +246,14 @@ class AnswerIndexPage(RoutablePageMixin, Page):
         context = super(AnswerIndexPage, self).get_context(request, *args, **kwargs)
 
         all_answers = Answer.objects.descendant_of(self).live()
-        paginator = Paginator(all_answers, 20)
-        page = request.GET.get('page')
-        try:
-            answers = paginator.page(page)
-        except PageNotAnInteger:
-            answers = paginator.page(1)
-        except EmptyPage:
-            answers = paginator.page(paginator.num_pages)
+        # paginator = Paginator(all_answers, 20)
+        # page = request.GET.get('page')
+        # try:
+        #     answers = paginator.page(page)
+        # except PageNotAnInteger:
+        #     answers = paginator.page(1)
+        # except EmptyPage:
+        #     answers = paginator.page(paginator.num_pages)
 
         categories = AnswerCategory.objects.all()
         expert = Expert.objects.last()
@@ -261,11 +261,11 @@ class AnswerIndexPage(RoutablePageMixin, Page):
         context.update({
             'answers_page': AnswerIndexPage.objects.first().url,
             'categories': categories,
-            'answers': answers,
+            'answers': all_answers,
             'subtitle': self.subtitle,
             'experts_page': ExpertIndexPage.objects.first(),
             'expert': expert,
-            'paginator': paginator
+            # 'paginator': paginator
         })
         print(context)
         return context
