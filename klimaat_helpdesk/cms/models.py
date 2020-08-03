@@ -69,6 +69,7 @@ register_snippet(AnswerCategory)
 class Answer(Page):
     template = 'cms/answer_detail.html'
 
+    content = RichTextField()
     excerpt = models.CharField(verbose_name=_('Short description'), max_length=255, blank=False, null=True)
     introduction = TextField(default='', blank=True, null=True)
     category = models.ForeignKey(AnswerCategory, related_name='answers', on_delete=models.SET_NULL, null=True, default=None)
@@ -95,6 +96,7 @@ class Answer(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel('excerpt', classname='full'),
+        FieldPanel('content', classname='full'),
         FieldPanel('introduction', classname='full'),
         MultiFieldPanel(
             [
