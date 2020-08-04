@@ -13,11 +13,12 @@ class AskQuestion(forms.ModelForm):
         fields = ['user_email', 'question']
 
 
-class ClimateQuestion(forms.Form):
+class ClimateQuestionForm(forms.Form):
     categories = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple,
-                              choices=AnswerCategory.objects.all())
+                              choices=[(c.name, c.name) for c in AnswerCategory.objects.all()])
     main_question = forms.CharField(max_length=1000)
     relevant_location = forms.CharField(max_length=1000)
     relevant_timespan = forms.CharField(max_length=1000)
     extra_info = forms.CharField(max_length=5000)
+    user_email = forms.EmailField()
     accept_terms = forms.BooleanField(label=_('Accept Terms & Conditions'), required=True)
