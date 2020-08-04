@@ -251,7 +251,10 @@ class AnswerIndexPage(RoutablePageMixin, Page):
     def get_context(self, request, *args, **kwargs):
         context = super(AnswerIndexPage, self).get_context(request, *args, **kwargs)
 
-        all_answers = Answer.objects.descendant_of(self).live()
+        all = Answer.objects.descendant_of(self).live()
+        all_answers = all.filter(type='answer')
+        all_columns = all.filter(type='column')
+
         # paginator = Paginator(all_answers, 20)
         # page = request.GET.get('page')
         # try:
@@ -260,6 +263,7 @@ class AnswerIndexPage(RoutablePageMixin, Page):
         #     answers = paginator.page(1)
         # except EmptyPage:
         #     answers = paginator.page(paginator.num_pages)
+        # chosen_categories = request.GET.get('categories')
 
         categories = AnswerCategory.objects.all()
         expert = Expert.objects.last()
