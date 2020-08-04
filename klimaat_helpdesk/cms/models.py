@@ -267,12 +267,12 @@ class AnswerIndexPage(RoutablePageMixin, Page):
 
         chosen_categories = []
         for filter in request.GET:
-            print("####################", filter)
-            print(type(filter))
-            #
-            # if category_id:
-            category = AnswerCategory.objects.get(name__iexact=filter)
-            if category:
+            try:
+                category = AnswerCategory.objects.get(name__iexact=filter)
+            except AnswerCategory.DoesNotExist:
+                # In case someone puts weird stuff in the url
+                pass
+            else:
                 chosen_categories.append(category)
 
         if len(chosen_categories) > 0:
