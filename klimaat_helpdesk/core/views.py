@@ -27,7 +27,25 @@ class HomePage(TemplateView):
 
 home_page = HomePage.as_view()
 
-# test commit
+
+class AskAQuestionPage(TemplateView):
+    template_name = 'core/ask_a_question_page.html'
+
+    def get_form(self):
+        return ClimateQuestionForm()
+
+    def get_context_data(self, **kwargs):
+        context = super(AskAQuestionPage, self).get_context_data(**kwargs)
+        context.update({
+            'form': self.get_form(),
+            'already_asked' : '' #TODO how does this behave?
+        })
+        return context
+
+
+ask_a_question_page = AskAQuestionPage.as_view()
+
+
 class NewQuestion(FormView):
     form_class = ClimateQuestionForm
     template_name = 'core/new_question.html'

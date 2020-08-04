@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+{% block head %}
+  <h1>{% trans 'Ask a question' %}</h1>
+  <p>{% blocktrans %}After you ask your question, we will review it and assign it to an expert to answer it.
+    The entire process may take up to a couple of weeks. If you would like to be informed about the progress, you
+    can leave us your e-mail.{% endblocktrans %}</p>
+{% endblock %}
+
+{% block content %}
+
+  <form class="form boxed" method="post" novalidate>
+    {% csrf_token %}
+
+    {{ form.non_field_errors }}
+
+    {{ form.source.errors }}
+    {{ form.source }}
+
+    <div class="form-step__one">
+      <div class="form-field">
+        {{ form.categories.label_tag }}
+        {{ form.categories.errors }}
+        {{ form.categories }}
+
+        <button type="button" id="form-step__continue" class="button is-primary">{% trans 'Continue' %}</button>
+      </div>
+    </div>
+
+    <div class="form-step__two">
+
+      <div>
+        <span>{% trans 'Ik heb een vraag over' %}</span><span id="form-step__selected-categories"></span>
+      </div>
+
+      <div class="form-field">
+        {{ form.main_question.label_tag }}
+        {{ form.main_question.errors }}
+        {{ form.main_question }}
+      </div>
+
+      <div class="form-field">
+        {{ form.relevant_location.label_tag }}
+        {{ form.relevant_location.errors }}
+        {{ form.relevant_location }}
+      </div>
+
+      <div class="form-field">
+        {{ form.relevant_timespan.label_tag }}
+        {{ form.relevant_timespan.errors }}
+        {{ form.relevant_timespan }}
+      </div>
+
+      <div class="form-field">
+        {{ form.extra_info.label_tag }}
+        {{ form.extra_info.errors }}
+        {{ form.extra_info }}
+      </div>
+
+      <div class="form-field">
+        {{ form.user_email.label_tag }}
+        {{ form.user_email.errors }}
+        {{ form.user_email }}
+      </div>
+
+      <div class="form-field">
+        {{ form.accept_terms.label_tag }}
+        <p>
+          <a href="/terms">{% trans "Our terms and conditions" %}</a>
+        </p>
+        {{ form.accept_terms.errors }}
+        {{ form.accept_terms }}
+      </div>
+
+      <button class="button is-primary">{% trans "Submit" %}</button>
+    </div>
+  </form>
+
+{% endblock %}
+
