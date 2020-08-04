@@ -286,10 +286,6 @@ class AnswerIndexPage(RoutablePageMixin, Page):
           } for c in categories
         ]
 
-        print("################################3")
-        print(categories_context)
-        print("################################")
-
         context.update({
             'answers_page': AnswerIndexPage.objects.first().url,
             'categories': categories_context,
