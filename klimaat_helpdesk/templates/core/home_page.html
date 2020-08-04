@@ -71,7 +71,9 @@
           <div class="footer__expert-content">
             <h4 class="footer__expert-title">{{ expert.name }}</h4>
             <p class="footer__expert-text">{{ expert.affiliation }}</p>
-            <span class="tag">water</span>
+            {% for expertise in expert.areas_expertise.all %}
+              <span class="tag">{{ expertise }}</span>
+            {% endfor %}
           </div>
         </a>
       {% endfor %}
