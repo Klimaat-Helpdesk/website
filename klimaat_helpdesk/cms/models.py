@@ -216,7 +216,7 @@ class Answer(Page):
                                 context=self.get_card_data())
 
     def get_as_row_card(self):
-        return render_to_string('cms/blocks/row.html',
+        return render_to_string('core/includes/related_item_block.html',
                                 context=self.get_card_data())
 
     def get_context(self, request, *args, **kwargs):
