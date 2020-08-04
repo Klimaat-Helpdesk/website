@@ -279,18 +279,25 @@ class AnswerIndexPage(RoutablePageMixin, Page):
             answers = answers.filter(category__in=chosen_categories)
 
         categories = AnswerCategory.objects.all()
-        # expert = Expert.objects.last()
+        categories_context = [
+          {
+                'category' : c,
+                'selected' : True if c in chosen_categories else False
+          } for c in categories
+        ]
+
+        print("################################3")
+        print(categories_context)
+        print("################################")
 
         context.update({
             'answers_page': AnswerIndexPage.objects.first().url,
-            'categories': categories,
+            'categories': categories_context,
             'answers': answers,
             'subtitle': self.subtitle,
             'experts_page': ExpertIndexPage.objects.first(),
-            # 'expert': expert,
             # 'paginator': paginator
         })
-        print(context)
         return context
 
     @route(r"^category/(?P<cat_slug>[-\w]*)/$", name="category_view")

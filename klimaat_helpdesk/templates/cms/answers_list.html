@@ -8,9 +8,9 @@
       <form name="filter" method="get">
         <div class="header__buttons">
           <div class="header__search-themes">
-            {% for category in categories %}
-              <input type="checkbox" id="{{ category }}" value="" name="{{ category }}">
-              <label for="{{ category }}" class="tag">{{ category }}</label>
+            {% for item in categories %}
+              <input type="checkbox" id="{{ item.category }}" value="" name="{{ item.category }}" {% if item.selected %}checked{% endif %}>
+              <label for="{{ item.category }}" class="tag">{{ item.category }}</label>
             {% endfor %}
           </div>
           <div class="header__button">
