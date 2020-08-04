@@ -27,7 +27,7 @@
     <h4 class="question-link-list__title">Jullie meest gestelde vragen</h4>
     <div class="question-link-list__links">
       {% for answer in answers %}
-        {% include 'core/includes/answer_block.html' with answer=answer %}
+        {{ answer.get_as_overview_row_card }}
       {% endfor %}
      </div>
      <div class="question-link-list__button">

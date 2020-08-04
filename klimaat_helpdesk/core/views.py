@@ -11,7 +11,7 @@ class HomePage(TemplateView):
     template_name = 'core/home_page.html'
 
     def get_context_data(self, **kwargs):
-        latest_answers = Answer.objects.live()[:10]
+        latest_answers = Answer.objects.live().filter(featured=True)[:10]
         categories = AnswerCategory.objects.all()
         expert_profile = Expert.objects.first()
         context = super(HomePage, self).get_context_data(**kwargs)
