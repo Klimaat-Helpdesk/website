@@ -1,3 +1,5 @@
+from random import random
+
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, FormView
 
@@ -34,11 +36,24 @@ class AskAQuestionPage(TemplateView):
     def get_form(self):
         return ClimateQuestionForm()
 
+    def get_random_category_and_questions(self):
+        """
+        We can use order by ? since its only 9 items.
+        Suggested category with answers. 
+        """
+        category = AnswerCategory.objects.order_by("?").first()
+        answers = Answer.objects.live().specific().filter(category=category)[:3]
+
+        return {
+            'category' : category,
+            'answers' : answers,
+        }
+
     def get_context_data(self, **kwargs):
         context = super(AskAQuestionPage, self).get_context_data(**kwargs)
         context.update({
             'form': self.get_form(),
-            'already_asked' : '' #TODO how does this behave?
+            'suggestion': self.get_random_category_and_questions()
         })
         return context
 

@@ -9,7 +9,7 @@
 
 {% block content %}
 
-  <form class="form boxed" method="post" novalidate>
+  <form class="" method="post" novalidate>
     {% csrf_token %}
 
     {{ form.non_field_errors }}
@@ -25,6 +25,18 @@
 
         <button type="button" id="form-step__continue" class="button is-primary">{% trans 'Continue' %}</button>
       </div>
+
+      <div class="">
+        <span>{% trans 'Voordat je een vraag stelt over ' %}</span><span>{{ suggestion.category }}</span>
+      </div>
+      <div class="">
+        {% for answer in suggestion.answers %}
+          <div>
+          <a href="{{ answer.url }}">{{ answer.title }}</a>
+          </div>
+        {% endfor %}
+      </div>
+
     </div>
 
     <div class="form-step__two">
