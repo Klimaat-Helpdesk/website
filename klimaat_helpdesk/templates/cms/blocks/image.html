@@ -1,9 +1,11 @@
-{% load i18n static wagtailcore_tags %}
+{% load i18n static wagtailcore_tags wagtailimages_tags %}
+
+{% image self.image max-1920x1080 as image %}
 
 <div class="image">
   <div class="image__wrapper">
     <picture class="image__image">
-    <img class="image__img" src="{{ self.image.url }}" alt="{{ self.image.alt }}"/>
+    <img class="image__img" src="{{ image.url }}" alt="{{ image.alt }}"/>
       <figcaption class="image__caption">{{ self.caption }}</figcaption>
   </picture>
   </div>

@@ -2,7 +2,7 @@ from django.urls import reverse_lazy
 from django.views.generic import TemplateView, FormView
 
 from klimaat_helpdesk.cms.models import Answer, AnswerCategory, AnswerIndexPage, ExpertIndexPage
-from klimaat_helpdesk.core.forms import AskQuestion
+from klimaat_helpdesk.core.forms import AskQuestion, ClimateQuestionForm
 from klimaat_helpdesk.core.models import Question
 from klimaat_helpdesk.experts.models import Expert
 
@@ -29,13 +29,13 @@ home_page = HomePage.as_view()
 
 # test commit
 class NewQuestion(FormView):
-    form_class = AskQuestion
+    form_class = ClimateQuestionForm
     template_name = 'core/new_question.html'
     success_url = reverse_lazy('core:new-question-thanks')
 
     def form_valid(self, form):
         Question.objects.create(
-            question=form.cleaned_data['question'],
+            question=form.cleaned_data['main_question'],
             user_email=form.cleaned_data.get('user_email', None),
             asked_by_ip=self.request.META.get('REMOTE_ADDR')
         )
