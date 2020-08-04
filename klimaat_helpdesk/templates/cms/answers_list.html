@@ -4,22 +4,26 @@
   <div class="header">
     <div class="header__wrapper">
       <h1 class="header__title">{{ page.title }}</h1>
-      <div class="header__buttons">
-        <div class="header__search-themes">
-          {% for category in categories %}
-            <span class="tag">{{ category }}</span>
-          {% endfor %}
+
+      <form name="filter" method="get">
+        <div class="header__buttons">
+          <div class="header__search-themes">
+            {% for category in categories %}
+              <input type="checkbox" id="{{ category }}" value="" name="{{ category }}">
+              <label for="{{ category }}" class="tag">{{ category }}</label>
+            {% endfor %}
+          </div>
+          <div class="header__button">
+            <button class="button">
+              <span class="button__text">Filter</span>
+              <span class="button__icon"></span>
+            </button>
+          </div>
+  {#        <div class="header__author-tag">#}
+  {#          <span class="tag">Detlef van Vuuren</span>#}
+  {#        </div>#}
         </div>
-        <div class="header__button">
-          <button class="button">
-            <span class="button__text">Filter</span>
-            <span class="button__icon"></span>
-          </button>
-        </div>
-{#        <div class="header__author-tag">#}
-{#          <span class="tag">Detlef van Vuuren</span>#}
-{#        </div>#}
-      </div>
+      </form>
     </div>
   </div>
 {% endblock %}
