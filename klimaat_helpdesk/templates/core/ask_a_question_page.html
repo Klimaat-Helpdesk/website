@@ -58,6 +58,11 @@
 
 {% extends 'base.html' %}
 {% load static i18n %}
+
+{% block navbar %}
+{#  only show title? not clicky things#}
+{% endblock %}
+
 {% block head %}
 
   <div id="form-step__back" class="form-step__two is-hidden">
