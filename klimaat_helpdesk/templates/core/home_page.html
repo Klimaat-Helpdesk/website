@@ -26,7 +26,7 @@
    <div class="question-link-list">
     <h4 class="question-link-list__title">Jullie meest gestelde vragen</h4>
     <div class="question-link-list__links">
-      {% for answer in answers %}
+      {% for answer in featured_answers %}
         {{ answer.get_as_overview_row_card }}
       {% endfor %}
      </div>
@@ -63,40 +63,20 @@
     </div>
 
     <div class="footer__experts">
-      <a class="footer__expert" href="/">
-        <div class="footer__expert-image">
-          <img class="footer__expert-picture" src="{% static 'images/detlefvanvuren.png' %}" alt="profile picture">
-        </div>
-        <div class="footer__expert-content">
-          <h4 class="footer__expert-title">Jan Paul van Soest</h4>
-          <p class="footer__expert-text">Oprichter van het De Gemeynt</p>
-          <span class="tag">water</span>
-        </div>
-      </a>
-
-      <a class="footer__expert" href="/">
-        <div class="footer__expert-image">
-          <img class="footer__expert-picture" src="{% static 'images/detlefvanvuren.png' %}" alt="profile picture">
-        </div>
-        <div class="footer__expert-content">
-          <h4 class="footer__expert-title">Detlef van Vuuren</h4>
-          <p class="footer__expert-text">Klimaat expert Planbureau voor de Leefomgeving en de Universiteit Utrecht</p>
-          <span class="tag">water</span>
-        </div>
-      </a>
-
-      <a class="footer__expert" href="/">
-        <div class="footer__expert-image">
-          <img class="footer__expert-picture" src="{% static 'images/detlefvanvuren.png' %}" alt="profile picture">
-        </div>
-        <div class="footer__expert-content">
-          <h4 class="footer__expert-title">Jan Paul van Soest</h4>
-          <p class="footer__expert-text">Oprichter van het De Gemeynt</p>
-          <span class="tag">water</span>
-        </div>
-      </a>
-
+      {% for expert in featured_experts %}
+        <a class="footer__expert" href="/">
+          <div class="footer__expert-image">
+            <img class="footer__expert-picture" src="{% static 'images/detlefvanvuren.png' %}" alt="profile picture">
+          </div>
+          <div class="footer__expert-content">
+            <h4 class="footer__expert-title">{{ expert.name }}</h4>
+            <p class="footer__expert-text">{{ expert.affiliation }}</p>
+            <span class="tag">water</span>
+          </div>
+        </a>
+      {% endfor %}
     </div>
+
     <div class="footer__button" >
       <button class="button button--secondary">
         <span class="button__text">Maak kennis met alle experts</span>
