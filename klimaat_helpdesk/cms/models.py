@@ -83,7 +83,7 @@ class Answer(Page):
     template = 'cms/answer_detail.html'
 
     # Determins type and whether its highlighted in overviewlist
-    type = models.CharField(choices=[('anwswer', 'Antwoord'), ('column', 'Column')], max_length=100, default='answer')
+    type = models.CharField(choices=[('answer', 'Antwoord'), ('column', 'Column')], max_length=100, default='answer')
     featured = models.BooleanField(default=False)
 
     content = RichTextField()
@@ -265,6 +265,7 @@ class AnswerIndexPage(RoutablePageMixin, Page):
         #     answers = paginator.page(paginator.num_pages)
         # chosen_categories = request.GET.get('categories')
 
+        # Filter categories based on GET params
         chosen_categories = []
         for filter in request.GET:
             try:
@@ -278,6 +279,7 @@ class AnswerIndexPage(RoutablePageMixin, Page):
         if len(chosen_categories) > 0:
             answers = answers.filter(category__in=chosen_categories)
 
+        # Adjust categories to maintain checked status
         categories = AnswerCategory.objects.all()
         categories_context = [
           {
@@ -286,10 +288,16 @@ class AnswerIndexPage(RoutablePageMixin, Page):
           } for c in categories
         ]
 
+        # Insert column about every 5 answers?
+        # TODO
+
+        print(answers)
+
         context.update({
             'answers_page': AnswerIndexPage.objects.first().url,
             'categories': categories_context,
             'answers': answers,
+            'columns': columns,
             'subtitle': self.subtitle,
             'experts_page': ExpertIndexPage.objects.first(),
             # 'paginator': paginator
