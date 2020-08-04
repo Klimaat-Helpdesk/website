@@ -1,0 +1,41 @@
+.highlighted-link {
+  position: relative;
+
+  &::before {
+    content: '';
+    background-color: $color-yellow-warm;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+  }
+
+  .highlighted-link__wrapper {
+    @include grid-container;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .highlighted-link__grid {
+    grid-column: column 2 / span 10;
+  }
+
+  .highlighted-link__author {
+    @include typography(attribution);
+  }
+
+  .highlighted-link__author-name {
+    font-weight: 600;
+  }
+
+  .highlighted-link__title {
+    @include typography(heading-3);
+    margin-bottom: 10px;
+  }
+
+  @include landscape {
+    .highlighted-link__grid {
+      grid-column: column 1 / span 9;
+    }
+  }
+}

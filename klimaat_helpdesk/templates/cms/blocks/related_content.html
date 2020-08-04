@@ -1,0 +1,14 @@
+{% load i18n static wagtailcore_tags %}
+
+<div class="related-content">
+  <div class="related-content__wrapper">
+    <div class="related-content__title-wrapper">
+      <h2 class="related-content__title">{% trans 'Gerelateerde items' %}</h2>
+    </div>
+
+    {% for item in self.items %}
+      {{ item.get_as_row_card }}
+    {% endfor %}
+
+  </div>
+</div>

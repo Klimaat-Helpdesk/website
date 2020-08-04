@@ -1,0 +1,47 @@
+.header {
+  position: relative;
+  margin: 0 0 50px 0;
+
+  .header__wrapper {
+    @include grid-container;
+  }
+
+  .header__title {
+    grid-column: column 2 / span 10;
+    @include typography(heading-1, true, true);
+  }
+
+  .header__buttons {
+    grid-column: column 2 / span 10;
+  }
+
+  .header__button {
+    display: inline-block;
+  }
+
+  .header__search-themes {
+    margin-bottom: 10px;
+  }
+
+  .header__search-button {
+    margin-bottom: 10px;
+  }
+
+  .header__author-tag {
+    margin-bottom: 30px;
+
+    .tag {
+      text-transform: capitalize;
+    }
+  }
+
+  @include landscape {
+    .header__title {
+      grid-column: column 1 / span 9;
+    }
+
+    .header__buttons {
+      grid-column: column 1 / span 9;
+    }
+  }
+}

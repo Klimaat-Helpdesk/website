@@ -1,0 +1,30 @@
+.question-link {
+  padding-bottom: 50px;
+  border-bottom: 1px solid $color-true-black;
+  display: block;
+  color: $color-true-black;
+
+   &:last-child {
+      border-bottom: 0;
+    }
+
+  .question-link__title {
+    @include typography(heading-3, true, true);
+    margin-top: 45px;
+  }
+
+  .question-link__author {
+    @include typography(attribution);
+    margin: 0 10px 10px 0;
+  }
+
+  .question-link__author-name {
+    font-weight: 600;
+  }
+
+  @include landscape {
+    .question-link__author {
+      float: left;
+    }
+  }
+}

@@ -1,0 +1,85 @@
+
+// Flexible webfont base file
+// NOTE: When using this file as a base, rename all $*-font variables.
+
+// Variable font settings
+$geomanist-font-name: 'Geomanist Webfont';
+$geomanist-font-cleanname: 'geomanist-webfont';
+$geomanist-font-path: '/static/fonts/' + $geomanist-font-cleanname + '/';
+$geomanist-font-stack: $geomanist-font-name, 'Arial', 'Helvetica', sans-serif;
+$geomanist-font-feature-settings: 'kern' 1, 'calt' 0, 'liga' 1, 'dlig' 0; //'dlig' 1; TURN DLIG ON FOR NICE oo LIGATURE
+
+// Weight names and their real values
+// Reference:
+// 100: thin,
+// 200 extra light
+// 300 light
+// 400 regular
+// 500 book
+// 600 medium
+// 700 bold
+// 800 black
+// 900 ultra
+
+$geomanist-font-weights: (
+  regular: (weight: normal, style: normal),
+  book: (weight: 500, style: normal),
+  medium: (weight: 600, style: normal),
+  bold: (weight: bold, style: normal),
+);
+
+// Automatically map weights
+@each $weight in map-keys($geomanist-font-weights) {
+  @if not (map-get($geomanist-font-weights, $weight)) {
+    @error 'Variant "' + $weight + '" not found in "' + $geomanist-font-name + '" definition.';
+  }
+
+  $properties: map-get($geomanist-font-weights, $weight);
+  $font-style: map-get($properties, style);
+  $font-weight: map-get($properties, weight);
+
+  @font-face {
+    //font-display: optional; property still buggy in chrome et al.
+    font-family: $geomanist-font-name;
+    font-style: $font-style;
+    font-weight: $font-weight;
+    src: url($geomanist-font-path + $geomanist-font-cleanname + '-' + $weight + '.woff2') format('woff2'), url($geomanist-font-path + $geomanist-font-cleanname + '-' + $weight + '.woff') format('woff');
+  }
+}
+
+// Font mixin whereby you can use the real font weights, such as 'book' or 'black'.
+@mixin font-geomanist($font-weight: null) {
+  // Set the basics
+  font-family: $geomanist-font-stack;
+  font-feature-settings: $geomanist-font-feature-settings;
+  font-size-adjust: initial;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+
+  @if ($font-weight) {
+    font-weight: get-geomanist-weight($font-weight);
+  }
+}
+
+// Get a real font weight value
+// For example: 'black' returns 900.
+@function get-geomanist-weight($font-weight) {
+  // Convert possible 'normal' font-weight strings to 'regular', which is the font's actual weight name
+  @if not $font-weight or $font-weight == 'normal' or $font-weight == 'roman' {
+    $font-weight: 'regular';
+  }
+
+  // Look up the actual weight
+  @if not (map-get($geomanist-font-weights, $font-weight)) {
+    @error 'Variant "' + $font-weight + '" not found in "' + $geomanist-font-name + '" definition.';
+  }
+
+  $mapped-weight: map-get($geomanist-font-weights, $font-weight);
+  $mapped-value-weight: map-get($mapped-weight, 'weight');
+
+  @if ($mapped-value-weight) {
+    $font-weight: $mapped-value-weight;
+  }
+
+  @return $font-weight;
+}

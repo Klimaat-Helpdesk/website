@@ -1,0 +1,20 @@
+.quote {
+  position: relative;
+  margin: var(--margin) 0;
+
+  .quote__wrapper {
+    @include grid-container;
+  }
+
+  .quote__text {
+    grid-column: column 2 / span 10;
+
+    @include typography(quote);
+  }
+
+  @include landscape {
+    .quote__text {
+      grid-column: column 4 / span 9;
+    }
+  }
+}

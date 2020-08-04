@@ -1,4 +1,6 @@
 {% load static i18n bulma_tags footer_tags menu_tags %}
+{% load render_bundle from webpack_loader %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,20 +13,23 @@
 
   <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
   <!--[if lt IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+{#  <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>#}
   <![endif]-->
 
   <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}">
 
-  {% block css %}
+{#  {% block css %}#}
+{##}
+{#    <!-- Latest compiled and minified Bootstrap CSS -->#}
+{#    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">#}
+{#    <link href="{% static 'css/project.css' %}" rel="stylesheet">#}
+{#  {% endblock %}#}
+{#  {% block head_js %}#}
+{#    <script src="{% static 'js/project.js' %}"></script>#}
+{#  {% endblock %}#}
 
-    <!-- Latest compiled and minified Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
-    <link href="{% static 'css/project.css' %}" rel="stylesheet">
-  {% endblock %}
-  {% block head_js %}
-    <script src="{% static 'js/project.js' %}"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  {% block css %}
+    {% render_bundle 'main' 'css' %}
   {% endblock %}
 
 </head>
@@ -32,7 +37,7 @@
 <body class="klimaat_helpdesk">
 {% include 'includes/navbar.html' %}
 <main class="klimaat_helpdesk-content">
-  <section class="section">
+  <section class="section smokedglass">
     {% block messages %}
       {% if messages %}
         <div class="messages columns is-desktop">
@@ -49,7 +54,7 @@
 
     {% block content_area %}
       {% block head %}{% endblock head %}
-      <div class="container">
+      <div class="container{% block container-class %}{% endblock %}">
         {% block content %}{% endblock content %}
       </div>
     {% endblock content_area %}
@@ -58,6 +63,9 @@
 </main>
 {% get_footer %}
 {% block footer_js %}
+{% endblock %}
+{% block js %}
+  {% render_bundle 'main' 'js' %}
 {% endblock %}
 </body>
 </html>

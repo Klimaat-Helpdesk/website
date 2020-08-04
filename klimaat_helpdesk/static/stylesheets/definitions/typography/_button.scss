@@ -1,0 +1,11 @@
+
+:root {
+  --button-font-size: 15px;
+  --button-font-style: normal;
+  --button-font-variant: normal;
+  --button-font-weight: #{get-geomanist-weight(book)};
+  --button-letter-spacing: 0;
+  --button-line-height: 15px;
+  --button-margin-bottom: 0;
+  --button-margin-top: 0;
+}

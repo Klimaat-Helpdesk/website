@@ -1,0 +1,39 @@
+@use 'sass:meta';
+
+// Typography
+// How to use:
+// 1. duplicate typography/_*.scss
+// 2. change values therein
+// 3. when applying, use @typography(name) (inside breakpoint is fine)
+
+@mixin typography($name: '', $margin-top: false, $margin-bottom: false, $adaptive-margins: true) {
+  @if mixin-exists($name) {
+    @warn 'Typography mixin "#{$name}" does not exist';
+  } @else {
+    font: var(--#{$name}-font-style) var(--#{$name}-font-variant) var(--#{$name}-font-weight) var(--#{$name}-font-size) / var(--#{$name}-line-height) $geomanist-font-stack;
+    letter-spacing: var(--#{$name}-letter-spacing);
+    text-transform: var(--#{$name}-text-transform);
+    word-spacing: var(--#{$name}-word-spacing);
+
+    @if $margin-top {
+      @if $adaptive-margins {
+        &:not(:first-child) {
+          margin-top: var(--#{$name}-margin-top);
+        }
+      } @else {
+        margin-top: var(--#{$name}-margin-top);
+      }
+    }
+
+    @if $margin-bottom {
+      @if $adaptive-margins {
+        &:not(:last-child) {
+          margin-bottom: var(--#{$name}-margin-bottom);
+        }
+      } @else {
+        margin-bottom: var(--#{$name}-margin-bottom);
+      }
+    }
+  }
+}
+

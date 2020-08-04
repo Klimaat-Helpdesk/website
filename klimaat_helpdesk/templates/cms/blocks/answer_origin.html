@@ -1,0 +1,30 @@
+{% load i18n static wagtailcore_tags %}
+
+<div class="disclosure" data-controller="disclosure">
+    <div class="disclosure__wrapper">
+      <div class="disclosure__content">
+        <h2 class="disclosure__title">{{ self.title }}</h2>
+        <span class="disclosure__text">
+         {{ self.content|richtext }}
+        </span>
+      </div>
+
+      <div class="disclosure__disclosure">
+        <h4 class="disclosure__disclosure-title">
+          <button id="{{ button_id }}" class="disclosure__title-button" aria-controls="{{ content_id }}" aria-expanded="false">
+            <span class="disclosure__title-button-span">{% trans 'Bronnen' %}</span>
+            <span class="disclosure__title-button-icon">
+            </span>
+          </button>
+        </h4>
+
+        <div class="disclosure__disclosure-content richtext" role="region" aria-labelledby="{{ button_id }}" hidden>
+          {% for ref in page.get_references %}
+            <p>
+              <span>[{{ forloop.counter }}] {{ ref.text }}</span> <span><b>{{ ref.url }}</b></span>
+            </p>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>

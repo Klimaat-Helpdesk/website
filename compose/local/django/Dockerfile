@@ -43,4 +43,6 @@ RUN chmod +x /start-flower
 
 WORKDIR /app
 
+EXPOSE 8000
+
 ENTRYPOINT ["/entrypoint"]

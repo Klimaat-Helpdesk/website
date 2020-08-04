@@ -1,0 +1,59 @@
+.button {
+  @include typography(button);
+  height: 45px;
+  background-color: $color-true-black;
+  color: $color-white;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 23px;
+  padding: 0 20px;
+  cursor: pointer;
+  margin-bottom: 5px;
+
+  &:hover {
+    background-color: $color-white;
+    color: $color-true-black;
+
+    &::before {
+      content: '';
+      width: 155px;
+      height: 155px;
+      position: absolute;
+      z-index: -1;
+      background-color: $color-orange-light;
+      filter: blur(35px);
+    }
+
+    .button__icon {
+      background-image: url('/static/icons/arrow-right.svg');
+    }
+  }
+
+  .button__icon {
+    background-image: url('/static/icons/arrow-right-white.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display: inline-block;
+    content: '';
+    height: 10px;
+    vertical-align: middle;
+    width: 20px;
+    margin-left: 30px;
+  }
+}
+
+.button--secondary {
+  height: 44px;
+  border: 1px solid $color-true-black;
+  background-color: $color-white;
+  color: $color-true-black;
+
+  .button__icon {
+    background-image: url('/static/icons/arrow-right.svg');
+  }
+
+  &:hover {
+  border: 1px solid $color-white;
+  }
+}

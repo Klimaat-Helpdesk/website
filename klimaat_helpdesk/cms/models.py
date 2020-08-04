@@ -1,33 +1,50 @@
 from django import forms
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db import models
+from django.db.models import TextField
 from django.shortcuts import redirect, render
+from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy as _
 from modelcluster.contrib.taggit import ClusterTaggableManager
 
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from taggit.models import TaggedItemBase
 
-from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel
+from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, StreamFieldPanel
 from wagtail.contrib.routable_page.models import RoutablePageMixin, route
-from wagtail.core.fields import RichTextField
+from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Orderable, Page
 from wagtail.search import index
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet
 
+from klimaat_helpdesk.cms.blocks import AnswerRichTextBlock, QuoteBlock, AnswerImageBlock, AnswerOriginBlock, \
+    RelatedItemsBlock
 from klimaat_helpdesk.experts.models import Expert
 
 
 class ExpertAnswerRelationship(Orderable, models.Model):
-    """Intermediate table for holding the many-to-many relationship in case there are many experts working on the same
-    answer.
+    """
+    Intermediate table for holding the many-to-many relationship in case there are
+    many experts working on the same answer.
     """
     answer = ParentalKey('Answer', related_name='answer_expert_relationship', on_delete=models.CASCADE)
     expert = models.ForeignKey('experts.Expert', related_name='expert_answer_relationship', on_delete=models.CASCADE)
 
     panels = [
         SnippetChooserPanel('expert')
+    ]
+
+
+class CategoryAnswerRelationship(Orderable, models.Model):
+    """
+    Intermediate table for holding the many-to-many relationship between categories and answers
+    """
+    answer = ParentalKey('Answer', related_name='answer_category_relationship', on_delete=models.CASCADE)
+    category = models.ForeignKey('cms.AnswerCategory', related_name='category_answer_relationship', on_delete=models.CASCADE)
+
+    panels = [
+        SnippetChooserPanel('category')
     ]
 
 
@@ -65,30 +82,57 @@ register_snippet(AnswerCategory)
 class Answer(Page):
     template = 'cms/answer_detail.html'
 
-    content = RichTextField()
+    # Determins type and whether its highlighted in overviewlist
+    type = models.CharField(choices=[('anwswer', 'Antwoord'), ('column', 'Column')], max_length=100, default='answer')
+    featured = models.BooleanField(default=False)
 
+    content = RichTextField()
     excerpt = models.CharField(verbose_name=_('Short description'), max_length=255, blank=False, null=True)
+    introduction = TextField(default='', blank=True, null=True)
     category = models.ForeignKey(AnswerCategory, related_name='answers', on_delete=models.SET_NULL, null=True, default=None)
     tags = ClusterTaggableManager(through=AnswerTag, blank=True)
+
+    # Freeform content of answer
+    page_content = StreamField([
+        ('richtext', AnswerRichTextBlock()),
+        ('image', AnswerImageBlock()),
+        ('quote', QuoteBlock()),
+    ])
+
+    # Which experts and how was this answered?
+    answer_origin = StreamField([
+        ('origin', AnswerOriginBlock())
+    ], blank=True)
+
+    # Related items
+    related_items = StreamField([
+        ('related_items', RelatedItemsBlock())
+    ], blank=True)
 
     parent_page_types = ['AnswerIndexPage']
 
     content_panels = Page.content_panels + [
+        FieldPanel('type'),
+        FieldPanel('featured'),
         FieldPanel('excerpt', classname='full'),
         FieldPanel('content', classname='full'),
+        FieldPanel('introduction', classname='full'),
+        MultiFieldPanel(
+            [
+                InlinePanel('answer_category_relationship', label=_('Categorie(n)'), panels=None, min_num=1)
+            ],
+            heading=_('Categorie(n)')
+        ),
+        FieldPanel('tags'),
         MultiFieldPanel(
             [
                 InlinePanel('answer_expert_relationship', label=_('Expert(s)'), panels=None, min_num=1)
             ],
             heading=_('Expert(s)')
         ),
-        MultiFieldPanel(
-            [
-                FieldPanel('category'),
-            ],
-            heading=_("Categories")
-        ),
-        FieldPanel('tags'),
+        StreamFieldPanel('page_content'),
+        StreamFieldPanel('answer_origin'),
+        StreamFieldPanel('related_items')
     ]
 
     search_fields = Page.search_fields + [
@@ -103,6 +147,13 @@ class Answer(Page):
         return experts
 
     @property
+    def categories(self):
+        categories = [
+            n.category for n in self.answer_category_relationship.all()
+        ]
+        return categories
+
+    @property
     def get_tags(self):
         tags = self.tags.all()
         for tag in tags:
@@ -112,6 +163,61 @@ class Answer(Page):
                 tag.slug
             ])
         return tags
+
+    def get_references(self):
+        """
+        Build reference list, alphabetically to sort of comply with standards
+        """
+        ref_list = []
+        try:
+            component = self.answer_origin[0]
+        except IndexError:
+            return ref_list
+
+        # Access streamfield elements
+        for element in component.value['sources']:
+            ref_list.append({
+                'text' : element['reference_text'],
+                'url' : element['url_or_doi'],
+            })
+
+        # Sort by text starting letter, best we can do for now
+        ref_list.sort(key=lambda e: e['text'])
+        return ref_list
+
+    def get_primary_expert(self):
+        """
+        Gets the first expert associated with this answer if it exists.
+        """
+        try:
+            first = self.experts[0]
+        except IndexError:
+            return _('Unknown')
+        else:
+            return str(first)
+
+    def get_all_categories(self):
+        print(self.categories)
+        return [ {'title': c.name, 'url': c.slug } for c in self.categories]
+
+
+    def get_card_data(self):
+        return {
+            'title' : self.title,
+            'url' : self.url,
+            'author' : self.get_primary_expert(),
+            'categories': self.get_all_categories(),
+            'type': 'answer'
+        }
+
+    # TODO there are two templates but this might not be necessary since 99% identical?
+    def get_as_overview_row_card(self):
+        return render_to_string('core/includes/answer_block.html',
+                                context=self.get_card_data())
+
+    def get_as_row_card(self):
+        return render_to_string('core/includes/related_item_block.html',
+                                context=self.get_card_data())
 
     def get_context(self, request, *args, **kwargs):
         context = super(Answer, self).get_context(request, *args, **kwargs)
@@ -145,29 +251,49 @@ class AnswerIndexPage(RoutablePageMixin, Page):
     def get_context(self, request, *args, **kwargs):
         context = super(AnswerIndexPage, self).get_context(request, *args, **kwargs)
 
-        all_answers = Answer.objects.descendant_of(self).live()
-        paginator = Paginator(all_answers, 20)
-        page = request.GET.get('page')
-        try:
-            answers = paginator.page(page)
-        except PageNotAnInteger:
-            answers = paginator.page(1)
-        except EmptyPage:
-            answers = paginator.page(paginator.num_pages)
+        all = Answer.objects.descendant_of(self).live()
+        answers = all.filter(type='answer')
+        columns = all.filter(type='column')
+
+        # paginator = Paginator(all_answers, 20)
+        # page = request.GET.get('page')
+        # try:
+        #     answers = paginator.page(page)
+        # except PageNotAnInteger:
+        #     answers = paginator.page(1)
+        # except EmptyPage:
+        #     answers = paginator.page(paginator.num_pages)
+        # chosen_categories = request.GET.get('categories')
+
+        chosen_categories = []
+        for filter in request.GET:
+            try:
+                category = AnswerCategory.objects.get(name__iexact=filter)
+            except AnswerCategory.DoesNotExist:
+                # In case someone puts weird stuff in the url
+                pass
+            else:
+                chosen_categories.append(category)
+
+        if len(chosen_categories) > 0:
+            answers = answers.filter(category__in=chosen_categories)
 
         categories = AnswerCategory.objects.all()
-        expert = Expert.objects.last()
+        categories_context = [
+          {
+                'category' : c,
+                'selected' : True if c in chosen_categories else False
+          } for c in categories
+        ]
 
         context.update({
             'answers_page': AnswerIndexPage.objects.first().url,
-            'categories': categories,
+            'categories': categories_context,
             'answers': answers,
             'subtitle': self.subtitle,
             'experts_page': ExpertIndexPage.objects.first(),
-            'expert': expert,
-            'paginator': paginator
+            # 'paginator': paginator
         })
-        print(context)
         return context
 
     @route(r"^category/(?P<cat_slug>[-\w]*)/$", name="category_view")

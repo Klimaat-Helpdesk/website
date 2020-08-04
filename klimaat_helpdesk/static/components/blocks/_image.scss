@@ -1,0 +1,23 @@
+.image {
+  position: relative;
+    margin: var(--margin) 0;
+
+  .image__wrapper {
+    @include grid-container;
+  }
+
+  .image__image {
+    grid-column: column 1 / span 12;
+  }
+
+  .image__img {
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+    width: 100%;
+  }
+
+  .image__caption {
+    @include typography(paragraph);
+  }
+}

@@ -1,0 +1,18 @@
+.content {
+  position: relative;
+  margin: var(--margin) 0;
+
+  .content__container {
+    @include grid-container;
+  }
+
+  .content__answer {
+    grid-column: column 2 / span 10;
+  }
+
+  @include landscape {
+    .content__answer {
+      grid-column: column 5 / span 8;
+    }
+  }
+}

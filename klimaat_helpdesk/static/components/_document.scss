@@ -1,0 +1,10 @@
+body {
+  color: $color-true-black;
+  font: inherit;
+  -webkit-font-smoothing: antialiased; // Prevent smudgy bold fonts on OSX
+  margin: 0 auto;
+  max-width: var(--document-max-width);
+  min-width: var(--document-min-width);
+  position: relative;
+  width: 100%;
+}

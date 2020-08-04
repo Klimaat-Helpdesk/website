@@ -1,0 +1,9 @@
+{% load i18n static wagtailcore_tags %}
+
+<div class="related-content__link">
+  <a href="{{ url }}"><h3 class="related-content__link-title">{{ title }}</h3></a>
+  <p class="related-content__link-author"> <span class="related-content__link-by">{% trans 'Door' %}</span> <span class="related-content__auhtor-name">{{ author }}</span> </p>
+  {% for category in categories %}
+    <span class="tag"><a href="{{ category.url }}">{{ category.title }}</a></span>
+  {% endfor %}
+</div>

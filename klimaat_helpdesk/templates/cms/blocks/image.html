@@ -1,0 +1,10 @@
+{% load i18n static wagtailcore_tags %}
+
+<div class="image">
+  <div class="image__wrapper">
+    <picture class="image__image">
+    <img class="image__img" src="{{ self.image.url }}" alt="{{ self.image.alt }}"/>
+      <figcaption class="image__caption">{{ self.caption }}</figcaption>
+  </picture>
+  </div>
+</div>

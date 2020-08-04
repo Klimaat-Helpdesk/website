@@ -1,0 +1,36 @@
+
+// Variables
+
+// Colors
+$color-white: #fff;
+$color-true-black: #000;
+
+$color-yellow-warm: #ffc300;
+$color-yellow: #FFCA01;
+$color-yellow-lighter: #FFD54C;
+$color-yellow-light: #FFF4D1;
+$color-yellow-background: #FFF9E7;
+
+$color-orange-dark: #FE9450;
+$color-orange-light: #FED36B;
+
+// Transparencies
+$transparency-overlay: rgba($color-white, .8);
+
+// Beziers
+$bezier-fancy: cubic-bezier(.26, .88, .57, .9);
+
+// Easings
+$easing-change: .15s $bezier-fancy;
+$easing-change-slower: .35s $bezier-fancy;
+$easing-change-faster: .05s $bezier-fancy;
+
+// Layers / z-indexes
+$z-index-website-min-width-overlay: 9999; // Biggest of 'em all
+$z-index-hide: -1;
+$z-index-hit-target: 100;
+$z-index-form-field-button: 10;
+$z-index-menu-overlay: 2048;
+
+$padding-mobile: 1.6rem; //.8rem;
+$padding-landscape: 2.35rem;
