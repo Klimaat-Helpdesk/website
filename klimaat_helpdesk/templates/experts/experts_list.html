@@ -1,26 +1,42 @@
 {% extends "base.html" %}
 {% load i18n static %}
 {% block head %}
-  <section class="hero is-primary is-bold">
-    <div class="hero-body">
-      <div class="container">
-        <h2 class="title is-size-2-desktop is-size-3-touch">{{ page.title }}</h2>
-        <h3 class="subtitle is-size-4-desktop is-size-5-touch">{{ page.subtitle }}</h3>
+    <div class="expert-header">
+    <div class="expert-header__wrapper">
+      <a class="expert-header__back-link" href="/">
+        <span class="expert-header__back-link-icon"></span>
+      </a>
+
+      <div class="expert-header__title-container">
+        <h1 class="expert-header__title">{{ page.title }}</h1>
       </div>
+
+      <div class="expert-header__introduction-container">
+        <p class="expert-header__introduction">
+          Het climaat-helpdesk bestaat uit wetenschappelijke klimaatexperts uit 10 van de 14 nederlandse universiteiten. Wij zijn een onafhankelijke stichting….
+        </p>
+      </div>
+
     </div>
-  </section>
+  </div>
 {% endblock %}
+
 {% block content %}
-  <main class="section">
-    <div class="container">
-      <div class="columns">
-        <main class="column">
-          {% for expert in experts %}
-            {% include 'experts/includes/expert_block.html' with expert=expert %}
-          {% endfor %}
-        </main>
-        {% include 'core/includes/aside.html' %}
-      </div>
-    </div>
-  </main>
+  <div class="expert-list">
+    {% for expert in experts %}
+      {% include 'experts/includes/expert_block.html' with expert=expert %}
+    {% endfor %}
+  </div>
+
+{#  <main class="section">#}
+{#    <div class="container">#}
+{#      <div class="columns">#}
+{#        <main class="column">#}
+{#          {% for expert in experts %}#}
+{#            {% include 'experts/includes/expert_block.html' with expert=expert %}#}
+{#          {% endfor %}#}
+{#        </main>#}
+{#      </div>#}
+{#    </div>#}
+{#  </main>#}
 {% endblock %}

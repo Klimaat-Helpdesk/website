@@ -12,7 +12,7 @@
     z-index: -1;
   }
 
-  .content-header__container {
+  .content-header__wrapper {
     @include grid-container;
     padding-top: 55px;
   }
@@ -72,7 +72,7 @@
   }
 
   @include landscape {
-    .content-header__container {
+    .content-header__wrapper {
       padding-top: 100px;
     }
     .content-header__title-container {
