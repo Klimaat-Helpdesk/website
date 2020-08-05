@@ -20,8 +20,9 @@
         <a class="expert__link-text" href="/">Bekijk de vragen die beantwoord zijn door Herman Russchenberg</a>
       </div>
       <div class="expert__themes">
-        <span class="tag">Maatschappij</span>
-        <span class="tag">Economie</span>
+        {% for category in expert.get_answer_categories %}
+          <a href="/answers{{ category.get_prefiltered_search_params }}"><span class="tag">{{ category }}</span></a>
+        {% endfor %}
       </div>
     </div>
 </div>
