@@ -23,9 +23,17 @@
 
 {% block content %}
   <div class="expert-list">
-    {% for expert in experts %}
-      {% include 'experts/includes/expert_block.html' with expert=expert %}
-    {% endfor %}
+    <div class="expert-list__wrapper">
+      <div class="expert-list__experts">
+        {% for expert in experts %}
+          {% include 'experts/includes/expert_block.html' with expert=expert %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <div>
+
   </div>
 
 {#  <main class="section">#}

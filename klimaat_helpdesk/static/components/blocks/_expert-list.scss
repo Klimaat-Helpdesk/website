@@ -2,11 +2,12 @@
   position: relative;
 
   &::before {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: calc(100% + 180px);
-      top: -100px;
-      background-color: $color-orange-light;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: calc(100% + 180px);
+    top: -100px;
+    background-color: $color-orange-light;
+    z-index: -1;
   }
 }

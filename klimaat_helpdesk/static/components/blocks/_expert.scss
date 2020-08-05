@@ -1,0 +1,74 @@
+.expert {
+  position: relative;
+  margin: 0 0 60px 0;
+  @include grid-container;
+
+  &:not(:last-child) {
+    padding-bottom: 60px;
+
+    &::before {
+      content: '';
+    }
+  }
+
+  .expert__image-container {
+    grid-column: column 2 / span 9;
+  }
+
+
+  .expert__image {
+    width: 133px;
+    height: 133px;
+    margin-bottom: 15px;
+  }
+
+  .expert__linkedin-icon {
+    background-image: url('/static/icons/linkedin.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display: inline-block;
+    height: 24px;
+    vertical-align: middle;
+    width: 24px;
+    margin-left: 10px;
+  }
+
+  .expert__content {
+    grid-column: column 2 / span 9;
+  }
+
+  .expert__title {
+    @include typography(heading-3);
+    display: inline-block;
+  }
+
+  .expert__text {
+    margin-bottom: 45px;
+  }
+
+  .expert__link {
+    margin-bottom: 20px;
+  }
+
+  .expert__link-text {
+    @include typography(paragraph);
+    color: $color-true-black;
+    text-decoration: underline;
+    font-weight: 600;
+  }
+
+  @include landscape {
+    .expert__image-container {
+      grid-column: column 3 / span 2;
+    }
+
+    .expert__content {
+      grid-column: column 5 / span 8;
+    }
+
+    .expert__title-container {
+      margin-bottom: 15px;
+    }
+  }
+}
