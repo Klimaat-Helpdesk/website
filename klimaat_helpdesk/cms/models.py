@@ -75,6 +75,9 @@ class AnswerCategory(models.Model):
     def __str__(self):
         return self.name
 
+    def get_prefiltered_search_url(self):
+        return "answers?{}=".format(self.name)
+
 
 register_snippet(AnswerCategory)
 
@@ -197,7 +200,7 @@ class Answer(Page):
             return str(first)
 
     def get_all_categories(self):
-        return [ {'title': c.name, 'url': c.slug } for c in self.categories]
+        return [ {'title': c.name, 'url': c.get_prefiltered_search_url() } for c in self.categories]
 
 
     def get_card_data(self):
