@@ -35,7 +35,9 @@
 </head>
 
 <body class="klimaat_helpdesk">
-{% include 'includes/navbar.html' %}
+{% block navbar %}
+  {% include 'includes/navbar.html' %}
+{% endblock %}
 <main class="klimaat_helpdesk-content">
   <section class="section smokedglass">
     {% block messages %}

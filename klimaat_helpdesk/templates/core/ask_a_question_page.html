@@ -1,0 +1,162 @@
+<script>
+
+  console.log('inline js woohooo');
+  window.onload = initializeButtons;
+
+  function initializeButtons() {
+    var continueButton = document.getElementById('form-step__continue');
+    var backButton = document.getElementById('form-step__back');
+
+    if(!continueButton || !backButton){
+      return;
+    }
+
+    continueButton.addEventListener("click", activateStepTwo);
+    backButton.addEventListener("click", activateStepOne);
+  }
+
+  function activateStepTwo() {
+    document.querySelectorAll(".form-step__one").forEach(e => e.classList.add('is-hidden'));
+    document.querySelectorAll(".form-step__one").forEach(e => e.classList.remove('is-visible'));
+
+    document.querySelectorAll(".form-step__two").forEach(e => e.classList.remove('is-hidden'));
+    document.querySelectorAll(".form-step__two").forEach(e => e.classList.add('is-visible'));
+
+    var categoriesSpan = document.getElementById("form-step__selected-categories");
+    console.log(categoriesSpan);
+    categoriesSpan.innerHTML = getSelectedCategories();
+  }
+
+  function activateStepOne() {
+    document.querySelectorAll(".form-step__two").forEach(e => e.classList.add('is-hidden'));
+    document.querySelectorAll(".form-step__two").forEach(e => e.classList.remove('is-visible'));
+
+    document.querySelectorAll(".form-step__one").forEach(e => e.classList.remove('is-hidden'));
+    document.querySelectorAll(".form-step__one").forEach(e => e.classList.add('is-visible'));
+  }
+
+  function getSelectedCategories() {
+    var selectedCategories = [];
+    var categoriesField = document.querySelector('.form-field__categories');
+    // Extract selected checkboxes
+    if(!categoriesField) {
+      return ['NIKS INGEVULD'] // Default value needed because design expects content?
+    }
+
+    // todo
+
+    selectedCategories = ['een', 'gekozen', 'set', 'onderwerpen'];
+    var htmlString = '';
+    // Im not sure this is best practice :D
+    selectedCategories.forEach(e => (htmlString += `<span class="button">${e}</span>`));
+    return htmlString;
+  }
+
+
+</script>
+
+
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block head %}
+
+  <div id="form-step__back" class="form-step__two is-hidden">
+  <-
+  </div>
+
+  <div class="form-step__one">
+    <h1>{% trans 'Ask a question' %}</h1>
+    <p>{% blocktrans %}After you ask your question, we will review it and assign it to an expert to answer it.
+      The entire process may take up to a couple of weeks. If you would like to be informed about the progress, you
+      can leave us your e-mail.{% endblocktrans %}</p>
+  </div>
+
+  <h1 class="form-step__one">{% trans 'Waar gaat je vraag over?' %}</h1>
+  <h1 class="form-step__two is-hidden">{% trans 'Formuleer je vraag' %}</h1>
+
+{% endblock %}
+
+{% block content %}
+
+  <form class="" method="post" novalidate>
+    {% csrf_token %}
+
+    {{ form.non_field_errors }}
+
+    {{ form.source.errors }}
+    {{ form.source }}
+
+    <div class="form-step__one">
+      <div class="form-field form-field__categories">
+        {{ form.categories.label_tag }}
+        {{ form.categories.errors }}
+        {{ form.categories }}
+
+        <button type="button" id="form-step__continue" class="button is-primary">{% trans 'Continue' %}</button>
+      </div>
+
+      <div class="">
+        <span>{% trans 'Voordat je een vraag stelt over ' %}</span><span>{{ suggestion.category }}</span>
+      </div>
+      <div class="">
+        {% for answer in suggestion.answers %}
+          <div>
+          <a href="{{ answer.url }}">{{ answer.title }}</a>
+          </div>
+        {% endfor %}
+      </div>
+
+    </div>
+
+    <div class="form-step__two is-hidden">
+
+      <div>
+        <span>{% trans 'Ik heb een vraag over ' %}</span><span id="form-step__selected-categories"></span>
+      </div>
+
+      <div class="form-field">
+        {{ form.main_question.label_tag }}
+        {{ form.main_question.errors }}
+        {{ form.main_question }}
+      </div>
+
+      <div class="form-field">
+        {{ form.relevant_location.label_tag }}
+        {{ form.relevant_location.errors }}
+        {{ form.relevant_location }}
+      </div>
+
+      <div class="form-field">
+        {{ form.relevant_timespan.label_tag }}
+        {{ form.relevant_timespan.errors }}
+        {{ form.relevant_timespan }}
+      </div>
+
+      <div class="form-field">
+        {{ form.extra_info.label_tag }}
+        {{ form.extra_info.errors }}
+        {{ form.extra_info }}
+      </div>
+
+      <div class="form-field">
+        {{ form.user_email.label_tag }}
+        {{ form.user_email.errors }}
+        {{ form.user_email }}
+      </div>
+
+      <div class="form-field">
+        {{ form.accept_terms.label_tag }}
+        <p>
+          <a href="/terms">{% trans "Our terms and conditions" %}</a>
+        </p>
+        {{ form.accept_terms.errors }}
+        {{ form.accept_terms }}
+      </div>
+
+      <button class="button is-primary">{% trans "Submit" %}</button>
+    </div>
+  </form>
+
+{% endblock %}
+

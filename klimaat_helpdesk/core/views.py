@@ -1,3 +1,5 @@
+from random import random
+
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, FormView
 
@@ -14,6 +16,7 @@ class HomePage(TemplateView):
         featured_answers = Answer.objects.live().filter(featured=True)[:10]
         categories = AnswerCategory.objects.all()
         featured_experts = Expert.objects.filter(featured=True)[:3]
+
         context = super(HomePage, self).get_context_data(**kwargs)
         context.update({
             'answers_page': AnswerIndexPage.objects.first().url,
@@ -27,7 +30,42 @@ class HomePage(TemplateView):
 
 home_page = HomePage.as_view()
 
-# test commit
+
+class AskAQuestionPage(TemplateView):
+    """
+    This is the page where users can submit a new question. It consists of a form
+    that is spread over two steps using JavaScript.
+    """
+    template_name = 'core/ask_a_question_page.html'
+
+    def get_form(self):
+        return ClimateQuestionForm()
+
+    def get_random_category_and_questions(self):
+        """
+        We can use order by ? since its only 9 items.
+        Suggested category with answers.
+        """
+        category = AnswerCategory.objects.order_by("?").first()
+        answers = Answer.objects.live().specific().filter(category=category)[:3]
+
+        return {
+            'category' : category,
+            'answers' : answers,
+        }
+
+    def get_context_data(self, **kwargs):
+        context = super(AskAQuestionPage, self).get_context_data(**kwargs)
+        context.update({
+            'form': self.get_form(),
+            'suggestion': self.get_random_category_and_questions()
+        })
+        return context
+
+
+ask_a_question_page = AskAQuestionPage.as_view()
+
+
 class NewQuestion(FormView):
     form_class = ClimateQuestionForm
     template_name = 'core/new_question.html'

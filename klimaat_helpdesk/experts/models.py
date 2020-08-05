@@ -44,3 +44,12 @@ class Expert(models.Model):
     def __str__(self):
         return f"{self.name}"
 
+    def get_answered_questions(self):
+        question_links = self.expert_answer_relationship.all()
+        return [l.answer for l in question_links]
+
+    def get_answer_categories(self):
+        answers = self.get_answered_questions()
+        return [a.category for a in answers]
+
+
