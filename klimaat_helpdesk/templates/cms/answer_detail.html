@@ -2,7 +2,7 @@
 {% load i18n static wagtailcore_tags %}
 
 <div class="answer-detail">
-{% block head %}
+  {% block head %}
     <div class="content-header">
       <div class="content-header__wrapper">
         <a class="content-header__back-link" href="/">
@@ -26,9 +26,10 @@
           <span class="content-header__tag">#{{ tag }}</span>
           {% endfor %}
         </div>
+      </div>
     </div>
-  </div>
 {% endblock %}
+
 
 <div class="answer-detail__content">
   {% block content %}
