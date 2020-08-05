@@ -11,6 +11,14 @@
     @include typography(heading-1, true, true);
   }
 
+  .header__form {
+    grid-column: column 2 / span 10;
+
+    input {
+      display: none;
+    }
+  }
+
   .header__buttons {
     grid-column: column 2 / span 10;
   }
@@ -37,6 +45,10 @@
 
   @include landscape {
     .header__title {
+      grid-column: column 1 / span 9;
+    }
+
+    .header__form {
       grid-column: column 1 / span 9;
     }
 

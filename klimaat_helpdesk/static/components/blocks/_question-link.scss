@@ -11,6 +11,7 @@
   .question-link__title {
     @include typography(heading-3, true, true);
     margin-top: 45px;
+    color: $color-true-black;
   }
 
   .question-link__author {
