@@ -72,7 +72,7 @@
 
     <div class="footer__experts">
       {% for expert in featured_experts %}
-        <a class="footer__expert" href="/experts">
+        <a class="footer__expert" href="/experts#{{ expert.pk }}">
           <div class="footer__expert-image">
             <img class="footer__expert-picture" src="{% static 'images/detlefvanvuren.png' %}" alt="profile picture">
           </div>
