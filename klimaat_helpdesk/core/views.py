@@ -16,6 +16,7 @@ class HomePage(TemplateView):
         featured_answers = Answer.objects.live().filter(featured=True)[:10]
         categories = AnswerCategory.objects.all()
         featured_experts = Expert.objects.filter(featured=True)[:3]
+
         context = super(HomePage, self).get_context_data(**kwargs)
         context.update({
             'answers_page': AnswerIndexPage.objects.first().url,
@@ -31,6 +32,10 @@ home_page = HomePage.as_view()
 
 
 class AskAQuestionPage(TemplateView):
+    """
+    This is the page where users can submit a new question. It consists of a form
+    that is spread over two steps using JavaScript.
+    """
     template_name = 'core/ask_a_question_page.html'
 
     def get_form(self):
@@ -39,7 +44,7 @@ class AskAQuestionPage(TemplateView):
     def get_random_category_and_questions(self):
         """
         We can use order by ? since its only 9 items.
-        Suggested category with answers. 
+        Suggested category with answers.
         """
         category = AnswerCategory.objects.order_by("?").first()
         answers = Answer.objects.live().specific().filter(category=category)[:3]

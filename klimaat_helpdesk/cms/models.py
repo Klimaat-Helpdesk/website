@@ -197,7 +197,6 @@ class Answer(Page):
             return str(first)
 
     def get_all_categories(self):
-        print(self.categories)
         return [ {'title': c.name, 'url': c.slug } for c in self.categories]
 
 
@@ -290,8 +289,6 @@ class AnswerIndexPage(RoutablePageMixin, Page):
 
         # Insert column about every 5 answers?
         # TODO
-
-        print(answers)
 
         context.update({
             'answers_page': AnswerIndexPage.objects.first().url,
