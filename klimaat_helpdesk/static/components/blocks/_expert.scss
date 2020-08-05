@@ -5,14 +5,20 @@
 
   &:not(:last-child) {
     padding-bottom: 60px;
+  }
 
+  &:not(:first-child) {
     &::before {
       content: '';
+      border-bottom: 1px solid $color-true-black;
+      position: relative;
+      grid-column: column 2/ span 10;
+      bottom: 60px;
     }
   }
 
   .expert__image-container {
-    grid-column: column 2 / span 9;
+    grid-column: column 2 / span 10;
   }
 
 
@@ -35,7 +41,7 @@
   }
 
   .expert__content {
-    grid-column: column 2 / span 9;
+    grid-column: column 2 / span 10;
   }
 
   .expert__title {
@@ -59,6 +65,15 @@
   }
 
   @include landscape {
+    &:not(:first-child) {
+      &::before {
+        content: '';
+        border-bottom: 1px solid $color-true-black;
+        position: relative;
+        grid-column: span 12;
+        bottom: 60px;
+    }
+  }
     .expert__image-container {
       grid-column: column 3 / span 2;
     }
