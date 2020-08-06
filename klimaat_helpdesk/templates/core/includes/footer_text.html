@@ -1,6 +1,21 @@
 {% load wagtailcore_tags %}
-<footer class="footer">
-  <div class="has-text-centered">
-      {{ footer_text|richtext }}
+<footer class="footer-bar">
+  <div class="footer-bar__wrapper">
+    <div class="footer-bar__logo-container">
+      <a class="footer-bar__logo-link" href="/">
+        {% include 'svg/logo/logo-white.svg' %}
+      </a>
+    </div>
+
+    <div class="footer-bar__links">
+      <span class="footer-bar__title">Een initief van
+        <a class="footer-bar__title-link" href="/">scientists for future</a> &
+        <a class="footer-bar__title-link" href="/">Utrecht Young Academy</a>
+      </span>
+
+      <a class="footer-bar__link" href="/">About</a>
+      <a class="footer-bar__link" href="/">Contact</a>
+    </div>
+
   </div>
 </footer>
