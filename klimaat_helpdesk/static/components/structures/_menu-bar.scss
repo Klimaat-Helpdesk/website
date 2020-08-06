@@ -1,17 +1,52 @@
 .menu-bar {
-  height: 90px;
+  height: 60px;
   display: flex;
+
+  .menu-bar__logo-container {
+    align-self: center;
+    width: 33%;
+  }
 
   .menu-bar__logo {
     display: inline-block;
-    width: 110px;
-    height: 40px;
+    width: 80px;
+    height: 100%;
     margin-left: 30px;
+  }
+
+  .menu-bar__expert-container {
     align-self: center;
+    text-align: center;
+    width: 33%;
+  }
+
+  .menu-bar__image {
+    width: 38px;
+    height: 38px;
+  }
+
+  .menu-bar__expert-name {
+    display: none;
+    @include typography(menu-bar);
+    margin-left: 20px;
+    font-weight: 600;
+    vertical-align: super;
+  }
+
+  .menu-bar__expert-title {
+    display: none;
+    @include typography(menu-bar);
+    margin-left: 20px;
+    vertical-align: super;
+  }
+
+  .menu-bar__icon-container {
+    align-self: center;
+    width: 33%;
+    text-align: right;
   }
 
   .menu-bar__icon-button {
-    margin-left: auto;
     margin-right: 30px;
     width: auto;
     height: auto;
@@ -30,6 +65,35 @@
   }
 
   @include landscape {
+    height: 90px;
+
+    .menu-bar__logo-container {
+      width: auto;
+    }
+
+    .menu-bar__logo {
+      width: 110px;
+      height: 40px;
+    }
+
+    .menu-bar__expert-container {
+      width: auto;
+      margin-left: 50px;
+    }
+
+    .menu-bar__expert-name {
+      display: inline-block;
+    }
+
+    .menu-bar__expert-title {
+      display: inline-block;
+    }
+
+    .menu-bar__icon-container {
+      width: auto;
+      margin-left: auto;
+    }
+
     .menu-bar__icon {
       width: 34px;
       height: 25px;
