@@ -28,7 +28,7 @@
 
   .footer-bar__title {
     color: $color-white;
-    @include typography(menu-bar);
+    @include typography(navigation);
     font-weight: 500;
     margin-bottom: 45px;
     display: inline-block;
@@ -36,7 +36,7 @@
 
   .footer-bar__link, .footer-bar__title-link {
     color: $color-yellow-warm;
-    @include typography(menu-bar);
+    @include typography(navigation);
     font-weight: 500;
   }
 

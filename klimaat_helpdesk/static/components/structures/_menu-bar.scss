@@ -27,7 +27,7 @@
 
   .menu-bar__expert-name {
     display: none;
-    @include typography(menu-bar);
+    @include typography(navigation);
     margin-left: 20px;
     font-weight: 600;
     vertical-align: super;
@@ -35,7 +35,7 @@
 
   .menu-bar__expert-title {
     display: none;
-    @include typography(menu-bar);
+    @include typography(navigation);
     margin-left: 20px;
     vertical-align: super;
   }
