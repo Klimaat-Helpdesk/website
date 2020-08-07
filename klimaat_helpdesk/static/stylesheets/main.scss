@@ -23,6 +23,7 @@
 @import 'definitions/typography/_heading-6';
 @import 'definitions/typography/_introduction';
 @import 'definitions/typography/_paragraph';
+@import 'definitions/typography/_navigation';
 @import 'definitions/typography/_quote';
 @import 'definitions/typography/_thema';
 @import 'definitions/typography';
@@ -54,6 +55,9 @@
 @import '../components/blocks/_related-content';
 @import '../components/blocks/_footer';
 
+@import '../components/structures/_menu-bar';
+@import '../components/structures/_footer-bar';
+@import '../components/structures/_menu-overlay';
 
 @import '../components/pages/_answer-detail';
 @import '../components/pages/_answer-overview';

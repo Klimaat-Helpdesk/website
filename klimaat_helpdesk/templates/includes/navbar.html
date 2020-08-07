@@ -1,23 +1,43 @@
-{% load i18n menu_tags %}
-<nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a class="navbar-item" href="/">
-      <h3>{% trans "Klimaat Helpdesk" %}</h3>
-    </a>
-
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
-       data-target="top-navbar">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
+{% load static i18n menu_tags %}
+<div class="menu-bar">
+  <div class="menu-bar__logo-container">
+    <a class="menu-bar__logo" href="/">
+      {% include 'svg/logo/logo.svg' %}
     </a>
   </div>
 
-  <div id="top-navbar" class="navbar-menu">
-    {% main_menu %}
+  <div class="menu-bar__expert-container">
+    <img class="menu-bar__image" src="{% static 'images/detlefvanvuren.png' %}" alt="profile picture">
+    <span class="menu-bar__expert-name">Detlef van Vuuren</span>
+    <span class="menu-bar__expert-title">Klimaatexpert van het Planbureau voor de Leefomgeving</span>
+  </div>
 
-    <div class="navbar-end">
-      <div class="navbar-item">
+  <div class="menu-bar__icon-container">
+    <button class="menu-bar__icon-button">
+      <span class="menu-bar__icon"></span>
+    </button>
+  </div>
+</div>
+
+{#<nav class="navbar" role="navigation" aria-label="main navigation">#}
+{#  <div class="navbar-brand">#}
+{#    <a class="navbar-item" href="/">#}
+{#      <h3>{% trans "Klimaat Helpdesk" %}</h3>#}
+{#    </a>#}
+{##}
+{#    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"#}
+{#       data-target="top-navbar">#}
+{#      <span aria-hidden="true"></span>#}
+{#      <span aria-hidden="true"></span>#}
+{#      <span aria-hidden="true"></span>#}
+{#    </a>#}
+{#  </div>#}
+{##}
+{#  <div id="top-navbar" class="navbar-menu">#}
+{#    {% main_menu %}#}
+{##}
+{#    <div class="navbar-end">#}
+{#      <div class="navbar-item">#}
 {#        <div class="buttons">#}
 {#          <a class="button is-primary" href="{% url 'core:ask' %}">#}
 {#            {% trans "Ask a Question" %}#}
@@ -26,7 +46,7 @@
 {#          <form action="/search" method="get"><input class="input" type="text" name="query"#}
 {#                                                     placeholder="{% trans 'Search' %}"></form>#}
 {#        </div>#}
-      </div>
-    </div>
-  </div>
-</nav>
+{#      </div>#}
+{#    </div>#}
+{#  </div>#}
+{#</nav>#}

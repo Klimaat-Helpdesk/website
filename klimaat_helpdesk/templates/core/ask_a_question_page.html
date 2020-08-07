@@ -72,12 +72,12 @@
       can leave us your e-mail.{% endblocktrans %}</p>
   </div>
 
-  <h1 class="form-step__one">{% trans 'Waar gaat je vraag over?' %}</h1>
-  <h1 class="form-step__two is-hidden">{% trans 'Formuleer je vraag' %}</h1>
-
 {% endblock %}
 
 {% block content %}
+
+  <h1 class="form-step__one">{% trans 'Waar gaat je vraag over?' %}</h1>
+  <h1 class="form-step__two is-hidden">{% trans 'Formuleer je vraag' %}</h1>
 
   <form class="" method="post" novalidate>
     {% csrf_token %}
