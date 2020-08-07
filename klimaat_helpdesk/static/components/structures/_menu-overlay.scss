@@ -2,12 +2,16 @@
   bottom: 0;
   background-color: rgba(255, 255, 255,.8)  ;
   color: $color-true-black;
- //display: none;
+  display: none;
   left: 0;
   position: fixed;
   right: 0;
   top: 0;
   z-index: 9999;
+
+  &.is-visible {
+    display: block;
+  }
 
   &::after {
     content: '';
@@ -77,7 +81,7 @@
 
     .menu-overlay__links {
       grid-column: column 8 / span 4;
-    margin: 125px 0 220px 0;
+      margin: 125px 0 220px 0;
     }
 
     .menu-overlay__close-icon {
