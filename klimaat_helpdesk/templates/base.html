@@ -66,6 +66,11 @@
 {% get_footer %}
 {% block footer_js %}
 {% endblock %}
+
+{% block overlays %}
+  {% include 'includes/menu_overlay.html' %}
+{% endblock %}
+
 {% block js %}
   {% render_bundle 'main' 'js' %}
 {% endblock %}
