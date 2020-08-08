@@ -65,19 +65,41 @@
   <-
   </div>
 
-  <div class="form-step__one">
-    <h1>{% trans 'Ask a question' %}</h1>
-    <p>{% blocktrans %}After you ask your question, we will review it and assign it to an expert to answer it.
-      The entire process may take up to a couple of weeks. If you would like to be informed about the progress, you
-      can leave us your e-mail.{% endblocktrans %}</p>
+    <div class="expert-header">
+    <div class="expert-header__wrapper">
+      <a class="expert-header__back-link" href="/">
+        <span class="expert-header__back-link-icon"></span>
+      </a>
+
+      <div class="expert-header__title-container">
+        <h1 class="expert-header__title">{% trans 'Ask a question' %}</h1>
+      </div>
+
+      <div class="expert-header__introduction-container">
+        <p class="expert-header__introduction">
+          {% blocktrans %}After you ask your question, we will review it and assign it to an expert to answer it.
+            The entire process may take up to a couple of weeks. If you would like to be informed about the progress, you
+            can leave us your e-mail.{% endblocktrans %}
+        </p>
+      </div>
+
+    </div>
   </div>
 
 {% endblock %}
 
 {% block content %}
 
-  <h1 class="form-step__one">{% trans 'Waar gaat je vraag over?' %}</h1>
-  <h1 class="form-step__two is-hidden">{% trans 'Formuleer je vraag' %}</h1>
+  <div class="form">
+    <div class="form__wrapper">
+      <div class="form__header__container">
+          <h1 class="form__header form-step__one">{% trans 'Waar gaat je vraag over?' %}</h1>
+          <h1 class="form__header form-step__two is-hidden">{% trans 'Formuleer je vraag' %}</h1>
+      </div>
+    </div>
+  </div>
+
+
 
   <form class="" method="post" novalidate>
     {% csrf_token %}

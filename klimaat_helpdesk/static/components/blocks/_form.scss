@@ -1,0 +1,21 @@
+.form {
+  position: relative;
+
+  .form__wrapper {
+    @include grid-container;
+  }
+
+  .form__header__container {
+    grid-column: column 2 / span 10;
+  }
+
+  .form__header {
+    @include typography(heading-1);
+  }
+
+  @include landscape {
+    .form__header__container {
+      grid-column: column 1 / span 12;
+    }
+  }
+}
