@@ -81,6 +81,53 @@
     width: 20px;
   }
 
+  .form__back-link {
+    position: relative;
+    top: 20px;
+    cursor: pointer;
+    height: 0;
+  }
+
+
+  .form__back-link-icon {
+    background-image: url('/static/icons/arrow-right.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display: inline-block;
+    height: 10px;
+    vertical-align: middle;
+    width: 20px;
+    transform: rotate(180deg);
+  }
+
+  .form__form-fields {
+    margin-bottom: 50px ;
+
+    .form-field {
+      margin: 0 0 55px 0;
+
+      label {
+        display: block;
+        @include typography(heading-4);
+      }
+
+      input {
+        background-color: transparent;
+        border-bottom: 2px solid $color-true-black;
+        width: 100%;
+        @include typography(heading-2);
+      }
+
+       #id_accept_terms, p {
+        @include typography(paragraph);
+        display: inline-block;
+         width: auto;
+         vertical-align: middle;
+      }
+    }
+  }
+
   @include landscape {
     .form__header__container {
       grid-column: column 1 / span 12;
@@ -93,6 +140,17 @@
     .form__link-icon {
       display: inline-block;
       margin-left: 10px;
+    }
+
+    .form__back-link-icon {
+      width: 30px;
+      height: 20px;
+    }
+
+    .form__back-link {
+      grid-column: column 1;
+      left: -160px;
+      top: 60px;
     }
   }
 }
