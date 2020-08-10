@@ -1,5 +1,5 @@
 .question-link {
-  padding-bottom: 50px;
+  padding-bottom: 15px;
   border-bottom: 1px solid $color-true-black;
   display: block;
   color: $color-true-black;
@@ -10,7 +10,8 @@
 
   .question-link__title {
     @include typography(heading-3, true, true);
-    margin-top: 45px;
+    margin-top: 35px;
+    margin-bottom: 15px;
     color: $color-true-black;
   }
 
@@ -24,6 +25,12 @@
   }
 
   @include landscape {
+     padding-bottom: 70px;
+
+    .question-link__title {
+      margin-top: 45px;
+    }
+
     .question-link__author {
       float: left;
     }
