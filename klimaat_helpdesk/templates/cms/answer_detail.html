@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n static wagtailcore_tags menu_tags  %}
+{% load i18n static wagtailcore_tags wagtailimages_tags menu_tags  %}
 
 {% block navbar %}
 <div class="menu-bar">
@@ -11,7 +11,8 @@
 
   <div class="menu-bar__expert-container">
     {% with self.get_primary_expert as expert %}
-      <img class="menu-bar__image" src="{% static 'images/detlefvanvuren.png' %}" alt="profile picture">
+      {% image expert.picture max-200x200 as image %}
+      <img class="menu-bar__image" src="{{ image.url }}" alt="{{ image.alt }}">
       <span class="menu-bar__expert-name">{{ expert.name }}</span>
       <span class="menu-bar__expert-title">{{ expert.affiliation }}</span>
     {% endwith %}

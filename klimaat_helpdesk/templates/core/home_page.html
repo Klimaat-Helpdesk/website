@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static i18n %}
+{% load static i18n wagtailimages_tags %}
 
 {% block head %}
   <div class="header">
@@ -74,7 +74,8 @@
       {% for expert in featured_experts %}
         <a class="footer__expert" href="/experts#{{ expert.pk }}">
           <div class="footer__expert-image">
-            <img class="footer__expert-picture" src="{% static 'images/detlefvanvuren.png' %}" alt="profile picture">
+            {% image expert.picture max-200x200 as image %}
+            <img class="footer__expert-picture" src="{{ image.url }}" alt="{{ image.alt }}">
           </div>
           <div class="footer__expert-content">
             <h4 class="footer__expert-title">{{ expert.name }}</h4>

@@ -289,7 +289,7 @@ class AnswerIndexPage(RoutablePageMixin, Page):
         # Insert column every 3 answers
         answers_and_columns = list(answers)
         if len(columns) > 0:
-            interspacing = len(answers) // len(columns)
+            # interspacing = len(answers) // len(columns) # Can be used to spread evenly if desired
             column_index = 0
             for index in range(len(answers)):
                 if index != 0 and index % 3 == 0:

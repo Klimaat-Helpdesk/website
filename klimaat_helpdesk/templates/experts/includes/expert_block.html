@@ -2,7 +2,8 @@
 
 <div class="expert" id="{{ expert.pk }}">
     <div class="expert__image-container">
-      <img class="expert__image" src="{% static 'images/detlefvanvuren.png' %}" alt="profile picture">
+      {% image expert.picture max-200x200 as image %}
+      <img class="expert__image" src="{{ image.url }}" alt="{{ image.alt }}">
     </div>
 
     <div class="expert__content">
