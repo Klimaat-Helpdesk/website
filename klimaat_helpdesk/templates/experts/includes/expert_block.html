@@ -10,11 +10,10 @@
         <span class="expert__linkedin-icon"></span>
       </div>
       <div class="expert__text richtext">
-        <p><strong>Klimaatexpert van het Planbureau voor de Leefomgeving en de Universiteit Utrecht</strong></p>
-        <p>Detlef van Vuuren is klimaatexpert van het Planbureau voor de Leefomgeving en de Universiteit Utrecht, en hoofdauteur bij het Intergovernmental Panel on Climate
-        Change (IPCC), een organisatie van de Verenigde Naties. </p>
-        <p><strong>Wat fascineert u het meest aan klimaat verandering?</strong></p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p><strong>{{ expert.affiliation }}</strong></p>
+
+        {{ expert.bio|richtext }}
+
       </div>
       <div class="expert__link">
         <a class="expert__link-text" href="/">Bekijk de vragen die beantwoord zijn door Herman Russchenberg</a>
