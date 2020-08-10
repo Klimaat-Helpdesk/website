@@ -15,7 +15,7 @@
         <p>{{ expert.bio }}</p>
       </div>
       <div class="expert__link">
-        <a class="expert__link-text" href="/">{%  trans 'Bekijk de vragen die beantwoord zijn door ' %} {{ expert.name }}</a>
+        <a class="expert__link-text" href="/answers_by/{{ expert.pk }}">{%  trans 'Bekijk de vragen die beantwoord zijn door ' %} {{ expert.name }}</a>
       </div>
 
       <div class="expert__themes">

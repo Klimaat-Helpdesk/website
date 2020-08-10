@@ -24,5 +24,5 @@ class ExpertAnswerOverviewPage(TemplateView):
 
         else:
             return HttpResponseNotFound()
-        
+
 expert_answer_overview_page = ExpertAnswerOverviewPage.as_view()
