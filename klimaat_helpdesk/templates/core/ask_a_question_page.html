@@ -23,7 +23,6 @@
     document.querySelectorAll(".form-step__two").forEach(e => e.classList.add('is-visible'));
 
     var categoriesSpan = document.getElementById("form-step__selected-categories");
-    console.log(categoriesSpan);
     categoriesSpan.innerHTML = getSelectedCategories();
   }
 
@@ -67,7 +66,7 @@
 
 {% block head %}
 
-    <div class="simple-header simple-header--yellow">
+    <div class="simple-header simple-header--yellow form-step__one">
     <div class="simple-header__wrapper">
       <a class="simple-header__back-link" href="/">
         <span class="simple-header__back-link-icon"></span>
