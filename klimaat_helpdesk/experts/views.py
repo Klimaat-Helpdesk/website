@@ -1,3 +1,5 @@
+from django.http import HttpResponseNotFound
+from django.shortcuts import get_object_or_404
 from django.views.generic import TemplateView
 
 from klimaat_helpdesk.experts.models import Expert
@@ -8,21 +10,19 @@ class ExpertAnswerOverviewPage(TemplateView):
 
     def get_context_data(self, **kwargs):
 
-        print(**kwargs)
+        expert_id = kwargs.pop('id')
 
-        expert_id = 1
         if expert_id:
-            expert = Expert.get_object_or_404(pk=id)
+            expert = get_object_or_404(Expert, pk=expert_id)
             answers = expert.get_answered_questions()
 
             context = super(ExpertAnswerOverviewPage, self).get_context_data(**kwargs)
             context.update({
-                'answers' : []
+                'answers' : answers
             })
             return context
 
         else:
-            return 'TODO HTTP 404'
-
-
+            return HttpResponseNotFound()
+        
 expert_answer_overview_page = ExpertAnswerOverviewPage.as_view()
