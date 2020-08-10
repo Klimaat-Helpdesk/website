@@ -327,9 +327,13 @@ class ExpertIndexPage(Page):
     """ List of experts on the website """
     template = 'experts/experts_list.html'
     subtitle = models.CharField(max_length=128, blank=False)
+    intro = RichTextField(blank=True)
+    outro = RichTextField(blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('subtitle'),
+        FieldPanel('intro'),
+        FieldPanel('outro'),
     ]
 
     def get_context(self, request, *args, **kwargs):

@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n static %}
+{% load i18n static wagtailcore_tags%}
 
 {% block smokedglass %}
 {% endblock %}
@@ -17,7 +17,7 @@
 
       <div class="simple-header__introduction-container">
         <p class="simple-header__introduction">
-          Het climaat-helpdesk bestaat uit wetenschappelijke klimaatexperts uit 10 van de 14 nederlandse universiteiten. Wij zijn een onafhankelijke stichting….
+          {{ page.intro|richtext }}
         </p>
       </div>
 
@@ -46,21 +46,14 @@
 
      <div class="link-block__text-container">
        <div class="link-block__text richtext">
-         <p>
-           Dit is dezelfde blok als - hoe weten we dit - hier kan een deel van de content vanuit de Wie zijn wij pagina herhaalt worden met een button die ernaar toe leid.
-         </p>
-         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          </p>
-         <p>
-          Ben je geinteresseerd in ons project of heb je de kennis om mee te doen als expert? Neem contact op met ….
-          </p>
+         {{ page.outro|richtext }}
        </div>
-        <button class="button">
-          <span class="button__text">Meer lezen over ons</span>
-          <span class="button__icon"></span>
-        </button>
+       <a href="/about">
+          <button class="button">
+            <span class="button__text">Meer lezen over ons</span>
+            <span class="button__icon"></span>
+          </button>
+       </a>
       </div>
     </div>
   </div>
