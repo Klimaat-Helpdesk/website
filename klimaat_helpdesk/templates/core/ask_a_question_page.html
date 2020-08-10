@@ -48,7 +48,7 @@
     selectedCategories = ['een', 'gekozen', 'set', 'onderwerpen'];
     var htmlString = '';
     // Im not sure this is best practice :D
-    selectedCategories.forEach(e => (htmlString += `<span class="button">${e}</span>`));
+    selectedCategories.forEach(e => (htmlString += `<span class="tag">${e}</span>`));
     return htmlString;
   }
 
@@ -90,11 +90,15 @@
 {% block content %}
 
   <div class="form">
-    <div id="form-step__back" class="form-step__two is-hidden">
-    <-
-    </div>
 
     <div class="form__wrapper">
+
+      <div id="form-step__back" class="form-step__two is-hidden">
+        <a class="form__back-link" href="/">
+          <span class="form__back-link-icon"></span>
+        </a>
+      </div>
+
       <div class="form__header__container">
           <h1 class="form__header form-step__one">{% trans 'Waar gaat je vraag over?' %}</h1>
           <h1 class="form__header form-step__two is-hidden">{% trans 'Formuleer je vraag' %}</h1>
@@ -137,51 +141,57 @@
 
     <div class="form-step__two is-hidden">
 
-      <div>
+      <div class="form__form-subtitle">
         <span>{% trans 'Ik heb een vraag over ' %}</span><span id="form-step__selected-categories"></span>
       </div>
 
-      <div class="form-field">
-        {{ form.main_question.label_tag }}
-        {{ form.main_question.errors }}
-        {{ form.main_question }}
+      <div class="form__form-fields">
+        <div class="form-field">
+          {{ form.main_question.label_tag }}
+          {{ form.main_question.errors }}
+          {{ form.main_question }}
+        </div>
+
+        <div class="form-field">
+          {{ form.relevant_location.label_tag }}
+          {{ form.relevant_location.errors }}
+          {{ form.relevant_location }}
+        </div>
+
+        <div class="form-field">
+          {{ form.relevant_timespan.label_tag }}
+          {{ form.relevant_timespan.errors }}
+          {{ form.relevant_timespan }}
+        </div>
+
+        <div class="form-field">
+          {{ form.extra_info.label_tag }}
+          {{ form.extra_info.errors }}
+          {{ form.extra_info }}
+        </div>
+
+        <div class="form-field">
+          {{ form.user_email.label_tag }}
+          {{ form.user_email.errors }}
+          {{ form.user_email }}
+        </div>
+
+        <div class="form-field">
+          {{ form.accept_terms.label_tag }}
+          {{ form.accept_terms }}
+          <p>
+            <a href="/terms">{% trans "Our terms and conditions" %}</a>
+          </p>
+          {{ form.accept_terms.errors }}
+        </div>
       </div>
 
-      <div class="form-field">
-        {{ form.relevant_location.label_tag }}
-        {{ form.relevant_location.errors }}
-        {{ form.relevant_location }}
+      <div class="form__button">
+        <button type="button" id="form-step__continue" class="button">
+          <span class="button__text">{% trans 'Submit' %}</span>
+          <span class="button__icon"></span>
+        </button>
       </div>
-
-      <div class="form-field">
-        {{ form.relevant_timespan.label_tag }}
-        {{ form.relevant_timespan.errors }}
-        {{ form.relevant_timespan }}
-      </div>
-
-      <div class="form-field">
-        {{ form.extra_info.label_tag }}
-        {{ form.extra_info.errors }}
-        {{ form.extra_info }}
-      </div>
-
-      <div class="form-field">
-        {{ form.user_email.label_tag }}
-        {{ form.user_email.errors }}
-        {{ form.user_email }}
-      </div>
-
-      <div class="form-field">
-        {{ form.accept_terms.label_tag }}
-        {{ form.accept_terms }}
-        <p>
-          <a href="/terms">{% trans "Our terms and conditions" %}</a>
-        </p>
-        {{ form.accept_terms.errors }}
-
-      </div>
-
-      <button class="button is-primary">{% trans "Submit" %}</button>
     </div>
   </form>
 
