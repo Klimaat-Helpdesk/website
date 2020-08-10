@@ -26,3 +26,8 @@ class ClimateQuestionForm(forms.Form):
     extra_info = forms.CharField(max_length=5000, required=False)
     user_email = forms.EmailField()
     accept_terms = forms.BooleanField(label=_('Accept Terms & Conditions'), required=True)
+
+
+class ClimateQuestionUserContactForm(forms.Form):
+    user_email = forms.EmailField(required=True)
+    # accept_terms = forms.BooleanField(label=_('Accept Terms & Conditions'), required=True)
