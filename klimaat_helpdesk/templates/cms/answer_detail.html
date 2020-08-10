@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% load i18n static wagtailcore_tags %}
 
-<div class="answer-detail">
+{% block smokedglass %}
+{% endblock %}
+
   {% block head %}
     <div class="content-header">
       <div class="content-header__wrapper">
@@ -30,8 +32,6 @@
     </div>
 {% endblock %}
 
-
-<div class="answer-detail__content">
   {% block content %}
     {% for block in self.page_content %}
       {% include_block block %}
@@ -46,6 +46,6 @@
     {% endfor %}
 
   {% endblock %}
-</div>
 
-</div>
+
+

@@ -2,15 +2,19 @@
   bottom: 0;
   background-color: rgba(255, 255, 255,.8)  ;
   color: $color-true-black;
-  display: none;
   left: 0;
   position: fixed;
   right: 0;
   top: 0;
   z-index: 9999;
+  opacity: 0;
+  overflow-y: scroll;
+  pointer-events: none;
+  transition: opacity 500ms cubic-bezier(0.26, 0.88, 0.57, 0.9);
 
   &.is-visible {
-    display: block;
+    opacity: 1;
+    pointer-events: auto;
   }
 
   &::after {
@@ -28,6 +32,8 @@
 
   .menu-overlay__wrapper {
     @include grid-container;
+    height: 75%;
+    overflow-y: auto;
   }
 
   .menu-overlay__button-container {
@@ -65,6 +71,7 @@
 
   .menu-overlay__footer-items {
     grid-column: column 2 / span 10;
+    margin-bottom: 30px;
   }
 
   .menu-overlay__footer-text {
@@ -77,6 +84,10 @@
     &::after {
       width: 50%;
       height: 100%;
+    }
+
+    .menu-overlay__wrapper {
+      height: calc(100% - 50px);
     }
 
     .menu-overlay__links {

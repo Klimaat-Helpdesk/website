@@ -59,51 +59,72 @@
 {% extends 'base.html' %}
 {% load static i18n %}
 
+{% block smokedglass %}
+{% endblock %}
+
 {% block head %}
 
-  <div id="form-step__back" class="form-step__two is-hidden">
-  <-
-  </div>
+    <div class="simple-header simple-header--yellow">
+    <div class="simple-header__wrapper">
+      <a class="simple-header__back-link" href="/">
+        <span class="simple-header__back-link-icon"></span>
+      </a>
 
-  <div class="form-step__one">
-    <h1>{% trans 'Ask a question' %}</h1>
-    <p>{% blocktrans %}After you ask your question, we will review it and assign it to an expert to answer it.
-      The entire process may take up to a couple of weeks. If you would like to be informed about the progress, you
-      can leave us your e-mail.{% endblocktrans %}</p>
+      <div class="simple-header__title-container">
+        <h1 class="simple-header__title">{% trans 'Ask a question' %}</h1>
+      </div>
+
+      <div class="simple-header__introduction-container">
+        <p class="simple-header__introduction">
+          {% blocktrans %}After you ask your question, we will review it and assign it to an expert to answer it.
+            The entire process may take up to a couple of weeks. If you would like to be informed about the progress, you
+            can leave us your e-mail.{% endblocktrans %}
+        </p>
+      </div>
+
+    </div>
   </div>
 
 {% endblock %}
 
 {% block content %}
 
-  <h1 class="form-step__one">{% trans 'Waar gaat je vraag over?' %}</h1>
-  <h1 class="form-step__two is-hidden">{% trans 'Formuleer je vraag' %}</h1>
+  <div class="form">
+    <div id="form-step__back" class="form-step__two is-hidden">
+    <-
+    </div>
 
-  <form class="" method="post" novalidate>
-    {% csrf_token %}
+    <div class="form__wrapper">
+      <div class="form__header__container">
+          <h1 class="form__header form-step__one">{% trans 'Waar gaat je vraag over?' %}</h1>
+          <h1 class="form__header form-step__two is-hidden">{% trans 'Formuleer je vraag' %}</h1>
+      </div>
 
-    {{ form.non_field_errors }}
+      <form class="form__form" method="post" novalidate>
+      {% csrf_token %}
 
-    {{ form.source.errors }}
-    {{ form.source }}
+      {{ form.non_field_errors }}
+
+      {{ form.source.errors }}
+      {{ form.source }}
 
     <div class="form-step__one">
       <div class="form-field form-field__categories">
+        <h2 class="form__form-subtitle">Kies een of meerdere categorieën waar je vraag aan relateert</h2>
         {{ form.categories.label_tag }}
         {{ form.categories.errors }}
         {{ form.categories }}
 
-        <button type="button" id="form-step__continue" class="button is-primary">{% trans 'Continue' %}</button>
+        <button type="button" id="form-step__continue" class="button">
+          <span class="button__text">{% trans 'Continue' %}</span>
+          <span class="button__icon"></span>
+        </button>
       </div>
 
-      <div class="">
-        <span>{% trans 'Voordat je een vraag stelt over ' %}</span><span>{{ suggestion.category }}</span>
-      </div>
-      <div class="">
+      <div class="form__tip">
+        <span class="form__tip-text">{% trans 'Voordat je een vraag stelt over ' %}</span><span class="form__tip-text">{{ suggestion.category }}</span>
         {% for answer in suggestion.answers %}
-          <div>
-          <a href="{{ answer.url }}">{{ answer.title }}</a>
-          </div>
+          <a class="form__link" href="{{ answer.url }}">{{ answer.title }}</a>
         {% endfor %}
       </div>
 
@@ -157,6 +178,10 @@
       <button class="button is-primary">{% trans "Submit" %}</button>
     </div>
   </form>
+
+    </div>
+  </div>
+
 
 {% endblock %}
 

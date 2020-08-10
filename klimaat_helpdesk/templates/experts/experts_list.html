@@ -1,18 +1,22 @@
 {% extends "base.html" %}
-{% load i18n static wagtailcore_tags %}
+{% load i18n static wagtailcore_tags%}
+
+{% block smokedglass %}
+{% endblock %}
+
 {% block head %}
-    <div class="expert-header">
-    <div class="expert-header__wrapper">
-      <a class="expert-header__back-link" href="/">
-        <span class="expert-header__back-link-icon"></span>
+  <div class="simple-header">
+    <div class="simple-header__wrapper">
+      <a class="simple-header__back-link" href="/">
+        <span class="simple-header__back-link-icon"></span>
       </a>
 
-      <div class="expert-header__title-container">
-        <h1 class="expert-header__title">{{ page.title }}</h1>
+      <div class="simple-header__title-container">
+        <h1 class="simple-header__title">{{ page.title }}</h1>
       </div>
 
-      <div class="expert-header__introduction-container">
-        <p class="expert-header__introduction">
+      <div class="simple-header__introduction-container">
+        <p class="simple-header__introduction">
           {{ page.intro|richtext }}
         </p>
       </div>

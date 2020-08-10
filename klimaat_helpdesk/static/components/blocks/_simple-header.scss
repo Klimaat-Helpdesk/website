@@ -1,4 +1,4 @@
-.expert-header {
+.simple-header {
   position: relative;
   margin: 0 0 100px 0;
 
@@ -12,12 +12,13 @@
     z-index: -1;
   }
 
-  .expert-header__wrapper {
+  .simple-header__wrapper {
     @include grid-container;
     padding-top: 55px;
+    padding-bottom: 80px;
   }
 
-  .expert-header__back-link {
+  .simple-header__back-link {
     position: relative;
     grid-column: column 2;
     top: -20px;
@@ -25,56 +26,65 @@
     height: 0;
   }
 
-  .expert-header__back-link-icon {
+  .simple-header__back-link-icon {
     background-image: url('/static/icons/arrow-right.svg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100%;
     display: inline-block;
-    content: '';
     height: 10px;
     vertical-align: middle;
     width: 20px;
     transform: rotate(180deg);
   }
 
-  .expert-header__title-container {
+  .simple-header__title-container {
     grid-column: column 2 / span 9;
   }
 
-  .expert-header__title {
+  .simple-header__title {
     @include typography(heading-1);
   }
 
-  .expert-header__introduction-container {
+  .simple-header__introduction-container {
     grid-column: column 2 / span 9;
   }
 
-  .expert-header__introduction {
+  .simple-header__introduction {
     @include typography(introduction);
   }
 
   @include landscape {
-    .expert-header__wrapper {
+    .simple-header__wrapper {
       padding-top: 100px;
     }
 
-    .expert-header__back-link {
+    .simple-header__back-link {
       grid-column: column 1;
       left: -160px;
       top: -60px;
     }
 
-    .expert-header__back-link-icon {
+    .simple-header__back-link-icon {
       width: 30px;
       height: 20px;
     }
-    .expert-header__title-container {
+    .simple-header__title-container {
       grid-column: column 1 / span 10;
     }
 
-    .expert-header__introduction-container {
+    .simple-header__introduction-container {
       grid-column: column 1 / span 10;
     }
   }
 }
+
+.simple-header--yellow {
+    margin: 0;
+
+    &::before {
+      background: $color-yellow-warm;
+    }
+  }
+
+
