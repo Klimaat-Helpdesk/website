@@ -1,4 +1,5 @@
 {% load static wagtailimages_tags i18n %}
+
 <div class="expert" id="{{ expert.pk }}">
     <div class="expert__image-container">
       <img class="expert__image" src="{% static 'images/detlefvanvuren.png' %}" alt="profile picture">
@@ -11,13 +12,12 @@
       </div>
       <div class="expert__text richtext">
         <p><strong>{{ expert.affiliation }}</strong></p>
-
-        {{ expert.bio|richtext }}
-
+        <p>{{ expert.bio }}</p>
       </div>
       <div class="expert__link">
-        <a class="expert__link-text" href="/">Bekijk de vragen die beantwoord zijn door Herman Russchenberg</a>
+        <a class="expert__link-text" href="/">{%  trans 'Bekijk de vragen die beantwoord zijn door ' %} {{ expert.name }}</a>
       </div>
+
       <div class="expert__themes">
         {% for category in expert.get_answer_categories %}
           <a href="/answers{{ category.get_prefiltered_search_params }}"><span class="tag">{{ category }}</span></a>
