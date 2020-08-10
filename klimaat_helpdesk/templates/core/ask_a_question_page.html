@@ -112,14 +112,18 @@
       <div class="form-field form-field__categories">
         <h2 class="form__form-subtitle">Kies een of meerdere categorieën waar je vraag aan relateert</h2>
         {{ form.categories.errors }}
-        {% for category in form.categories %}
-          <span class="tag">{{ category }}</span>
-        {% endfor %}
+        <div class="form__tag-container">
+          {% for category in form.categories %}
+          <span>{{ category }}</span>
+          {% endfor %}
+        </div>
 
-        <button type="button" id="form-step__continue" class="button">
-          <span class="button__text">{% trans 'Continue' %}</span>
-          <span class="button__icon"></span>
-        </button>
+        <div class="form__button">
+          <button type="button" id="form-step__continue" class="button">
+            <span class="button__text">{% trans 'Continue' %}</span>
+            <span class="button__icon"></span>
+          </button>
+        </div>
       </div>
 
       <div class="form__tip">

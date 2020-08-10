@@ -30,6 +30,15 @@
 
   .form__form-subtitle {
     @include typography(heading-2);
+    margin-bottom: 20px;
+  }
+
+  .form__tag-container {
+    margin-bottom: 50px;
+  }
+
+  .form__button {
+    margin-bottom: 50px;
   }
 
   .form__tip {
