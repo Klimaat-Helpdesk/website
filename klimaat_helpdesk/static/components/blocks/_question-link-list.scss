@@ -16,6 +16,7 @@
 
   .question-link-list__button {
     grid-column: column 2 /span 10;
+    margin-bottom: 75px;
   }
 
   @include landscape {
