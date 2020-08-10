@@ -2,7 +2,7 @@
 
 <div class="expert" id="{{ expert.pk }}">
     <div class="expert__image-container">
-      {% image expert.picture max-200x200 as image %}
+      {% image expert.picture fill-200x200 as image %}
       <img class="expert__image" src="{{ image.url }}" alt="{{ image.alt }}">
     </div>
 

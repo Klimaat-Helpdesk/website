@@ -9,8 +9,10 @@
         <div class="header__buttons">
           <div class="header__search-themes">
             {% for item in categories %}
-              <input type="checkbox" id="{{ item.category }}" value="" name="{{ item.category }}" {% if item.selected %}checked{% endif %}>
-              <label for="{{ item.category }}" class="tag">{{ item.category }}</label>
+              <span>
+                <input type="checkbox" id="{{ item.category }}" value="" name="{{ item.category }}" {% if item.selected %}checked{% endif %}>
+                <label for="{{ item.category }}" class="tag">{{ item.category }}</label>
+              </span>
             {% endfor %}
           </div>
           <div class="header__button">
