@@ -37,24 +37,48 @@
     margin-bottom: 50px;
   }
 
+  .form__tag {
+    input {
+      display: none;
+
+      &:checked ~ label {
+        background-color: $color-true-black;
+        color: $color-white;
+      }
+    }
+  }
+
   .form__button {
     margin-bottom: 50px;
   }
 
   .form__tip {
-    margin-bottom: 30px;
+    margin-bottom: 70px;
   }
 
   .form__tip-text {
     @include typography(paragraph);
     color: $color-true-black;
+    display: inline-block;
+    margin-bottom: 30px;
   }
 
   .form__link {
     @include typography(heading-4);
     color: $color-true-black;
     display: block;
-    text-decoration: underline;
+    margin-bottom: 30px;
+  }
+
+  .form__link-icon {
+    background-image: url('/static/icons/arrow-right.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display: block;
+    height: 10px;
+    vertical-align: middle;
+    width: 20px;
   }
 
   @include landscape {
@@ -64,6 +88,11 @@
 
     .form__form {
       grid-column: column 5 / span 8;
+    }
+
+    .form__link-icon {
+      display: inline-block;
+      margin-left: 10px;
     }
   }
 }
