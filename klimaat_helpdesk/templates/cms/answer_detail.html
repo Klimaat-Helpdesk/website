@@ -1,5 +1,27 @@
 {% extends "base.html" %}
-{% load i18n static wagtailcore_tags %}
+{% load i18n static wagtailcore_tags menu_tags  %}
+
+{% block navbar %}
+<div class="menu-bar">
+  <div class="menu-bar__logo-container">
+    <a class="menu-bar__logo" href="/">
+      {% include 'svg/logo/logo.svg' %}
+    </a>
+  </div>
+
+  <div class="menu-bar__expert-container">
+    <img class="menu-bar__image" src="{% static 'images/detlefvanvuren.png' %}" alt="profile picture">
+    <span class="menu-bar__expert-name">Detlef van Vuuren</span>
+    <span class="menu-bar__expert-title">Klimaatexpert van het Planbureau voor de Leefomgeving</span>
+  </div>
+
+  <div class="menu-bar__icon-container">
+    <button class="menu-bar__icon-button">
+      <span class="menu-bar__icon"></span>
+    </button>
+  </div>
+</div>
+{% endblock %}
 
 {% block smokedglass %}
 {% endblock %}
