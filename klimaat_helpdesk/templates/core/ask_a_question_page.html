@@ -40,19 +40,22 @@
     var categoriesField = document.querySelector('.form-field__categories');
     // Extract selected checkboxes
     if(!categoriesField) {
-      return ['NIKS INGEVULD'] // Default value needed because design expects content?
+      return;
+    }
+    else {
+      var checkboxes = categoriesField.querySelectorAll('input');
+      checkboxes.forEach(function(e){
+        if(e.checked) {
+          selectedCategories.push(e.value);
+        }
+      })
     }
 
-    // todo
-
-    selectedCategories = ['een', 'gekozen', 'set', 'onderwerpen'];
     var htmlString = '';
     // Im not sure this is best practice :D
     selectedCategories.forEach(e => (htmlString += `<span class="button">${e}</span>`));
     return htmlString;
   }
-
-
 </script>
 
 
