@@ -38,8 +38,15 @@
 {% block navbar %}
   {% include 'includes/navbar.html' %}
 {% endblock %}
+
 <main class="klimaat_helpdesk-content">
-  <section class="section smokedglass">
+
+  {% block smokedglass %}
+  <div class="sun">
+  </div>
+  {% endblock %}
+
+  <section class="section">
     {% block messages %}
       {% if messages %}
         <div class="messages columns is-desktop">
