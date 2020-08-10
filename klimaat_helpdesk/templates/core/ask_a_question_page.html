@@ -129,7 +129,12 @@
       </div>
 
       <div class="form__tip">
-        <span class="form__tip-text">{% trans 'Voordat je een vraag stelt over ' %}</span><span class="form__tip-text">{{ suggestion.category }}</span>
+        <span class="form__tip-text">
+          <strong>{% trans 'Tip:' %}</strong>
+          {% trans 'Check voordat je een vraag stelt over ' %}
+          <span class="form__tip-text"> #{{ suggestion.category }}</span>
+          {% trans 'of iemand anders je niet voor was' %}
+        </span>
         {% for answer in suggestion.answers %}
           <a class="form__link" href="{{ answer.url }}"><span class="form__link-text">{{ answer.title }}</span><span class="form__link-icon"></span></a>
         {% endfor %}
