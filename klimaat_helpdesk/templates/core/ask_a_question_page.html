@@ -111,9 +111,10 @@
     <div class="form-step__one">
       <div class="form-field form-field__categories">
         <h2 class="form__form-subtitle">Kies een of meerdere categorieën waar je vraag aan relateert</h2>
-        {{ form.categories.label_tag }}
         {{ form.categories.errors }}
-        {{ form.categories }}
+        {% for category in form.categories %}
+          <span class="tag">{{ category }}</span>
+        {% endfor %}
 
         <button type="button" id="form-step__continue" class="button">
           <span class="button__text">{% trans 'Continue' %}</span>
@@ -168,11 +169,12 @@
 
       <div class="form-field">
         {{ form.accept_terms.label_tag }}
+        {{ form.accept_terms }}
         <p>
           <a href="/terms">{% trans "Our terms and conditions" %}</a>
         </p>
         {{ form.accept_terms.errors }}
-        {{ form.accept_terms }}
+
       </div>
 
       <button class="button is-primary">{% trans "Submit" %}</button>
