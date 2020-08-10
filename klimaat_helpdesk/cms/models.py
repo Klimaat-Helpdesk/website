@@ -225,8 +225,12 @@ class Answer(Page):
                                 context=self.get_card_data())
 
     def get_as_related_row_card(self):
-        return render_to_string('core/includes/related_item_block.html',
-                                context=self.get_card_data())
+        if self.type =='answer':
+            return render_to_string('core/includes/related_item_block.html',
+                                    context=self.get_card_data())
+        else:
+            return None
+
 
     def get_context(self, request, *args, **kwargs):
         context = super(Answer, self).get_context(request, *args, **kwargs)
