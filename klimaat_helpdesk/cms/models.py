@@ -261,8 +261,8 @@ class AnswerIndexPage(RoutablePageMixin, Page):
     def get_context(self, request, *args, **kwargs):
         context = super(AnswerIndexPage, self).get_context(request, *args, **kwargs)
 
-        answers = Answer.objects.descendant_of(self).live().filter(type='answer')
-        columns = Answer.objects.live().filter(type='column')
+        answers = Answer.objects.descendant_of(self).live().filter(type='answer').specific().order_by('-first_published_at')
+        columns = Answer.objects.live().filter(type='column').specific().order_by('-first_published_at')
 
         # Filter categories based on GET params
         chosen_categories = []
