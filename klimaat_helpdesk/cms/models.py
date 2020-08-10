@@ -196,7 +196,7 @@ class Answer(Page):
         except IndexError:
             return _('Unknown')
         else:
-            return str(first)
+            return first
 
     def get_all_categories(self):
         return [ {'title': c.name, 'url': c.get_prefiltered_search_params() } for c in self.categories]

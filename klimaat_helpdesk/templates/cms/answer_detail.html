@@ -10,9 +10,11 @@
   </div>
 
   <div class="menu-bar__expert-container">
-    <img class="menu-bar__image" src="{% static 'images/detlefvanvuren.png' %}" alt="profile picture">
-    <span class="menu-bar__expert-name">Detlef van Vuuren</span>
-    <span class="menu-bar__expert-title">Klimaatexpert van het Planbureau voor de Leefomgeving</span>
+    {% with self.get_primary_expert as expert %}
+      <img class="menu-bar__image" src="{% static 'images/detlefvanvuren.png' %}" alt="profile picture">
+      <span class="menu-bar__expert-name">{{ expert.name }}</span>
+      <span class="menu-bar__expert-title">{{ expert.affiliation }}</span>
+    {% endwith %}
   </div>
 
   <div class="menu-bar__icon-container">
