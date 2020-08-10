@@ -46,10 +46,14 @@ class Expert(models.Model):
 
     def get_answered_questions(self):
         question_links = self.expert_answer_relationship.all()
-        return [l.answer for l in question_links]
+        return [l.answer for l in question_links if l.answer is not None]
 
     def get_answer_categories(self):
         answers = self.get_answered_questions()
-        return [a.category for a in answers]
+        categories = []
+        for a in answers:
+            categories += a.categories
+        return categories
+
 
 
