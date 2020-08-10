@@ -91,7 +91,7 @@ class Answer(Page):
     content = RichTextField()
     excerpt = models.CharField(verbose_name=_('Short description'), max_length=255, blank=False, null=True)
     introduction = TextField(default='', blank=True, null=True)
-    category = models.ForeignKey(AnswerCategory, related_name='answers', on_delete=models.SET_NULL, null=True, default=None)
+    category = models.ForeignKey(AnswerCategory, related_name='answers', on_delete=models.SET_NULL, null=True, blank=True, default=None)
     tags = ClusterTaggableManager(through=AnswerTag, blank=True)
 
     # Freeform content of answer
@@ -213,8 +213,12 @@ class Answer(Page):
 
     # TODO there are two templates but this might not be necessary since 99% identical?
     def get_as_overview_row_card(self):
-        return render_to_string('core/includes/answer_block.html',
-                                context=self.get_card_data())
+        if self.type == 'answer':
+            return render_to_string('core/includes/answer_block.html',
+                                    context=self.get_card_data())
+        else: # It's a column
+            return render_to_string('core/includes/column_block.html',
+                                    context=self.get_card_data())
 
     def get_as_home_row_card(self):
         return render_to_string('core/includes/answer_home_block.html',
@@ -256,19 +260,8 @@ class AnswerIndexPage(RoutablePageMixin, Page):
     def get_context(self, request, *args, **kwargs):
         context = super(AnswerIndexPage, self).get_context(request, *args, **kwargs)
 
-        all = Answer.objects.descendant_of(self).live()
-        answers = all.filter(type='answer')
-        columns = all.filter(type='column')
-
-        # paginator = Paginator(all_answers, 20)
-        # page = request.GET.get('page')
-        # try:
-        #     answers = paginator.page(page)
-        # except PageNotAnInteger:
-        #     answers = paginator.page(1)
-        # except EmptyPage:
-        #     answers = paginator.page(paginator.num_pages)
-        # chosen_categories = request.GET.get('categories')
+        answers = Answer.objects.descendant_of(self).live().filter(type='answer')
+        columns = Answer.objects.live().filter(type='column')
 
         # Filter categories based on GET params
         chosen_categories = []
@@ -293,17 +286,26 @@ class AnswerIndexPage(RoutablePageMixin, Page):
           } for c in categories
         ]
 
-        # Insert column about every 5 answers?
-        # TODO
+        # Insert column every 3 answers
+        answers_and_columns = list(answers)
+        if len(columns) > 0:
+            interspacing = len(answers) // len(columns)
+            column_index = 0
+            for index in range(len(answers)):
+                if index != 0 and index % 3 == 0:
+                    try:
+                        answers_and_columns.insert(index, columns[column_index])
+                    except IndexError:
+                        break
+                    else:
+                        column_index += 1
 
         context.update({
             'answers_page': AnswerIndexPage.objects.first().url,
             'categories': categories_context,
-            'answers': answers,
-            'columns': columns,
+            'answers_and_columns': answers_and_columns,
             'subtitle': self.subtitle,
             'experts_page': ExpertIndexPage.objects.first(),
-            # 'paginator': paginator
         })
         return context
 
