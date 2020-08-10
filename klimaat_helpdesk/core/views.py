@@ -1,3 +1,4 @@
+from http.client import HTTPResponse
 from random import random
 
 from django.urls import reverse_lazy
@@ -28,25 +29,8 @@ class HomePage(TemplateView):
         })
         return context
 
-
 home_page = HomePage.as_view()
 
-
-# class LoginView(FormView):
-#     template_name = 'members/login.html'
-#     form_class = LoginForm
-#
-#     def dispatch(self, *args, **kwargs):
-#         """Use this to check for 'user'."""
-#         if request.session.get('user'):
-#             return redirect('/dashboard/')
-#         return super(LoginView, self).dispatch(*args, **kwargs)
-#
-#     def get_context_data(self, **kwargs):
-#         """Use this to add extra context."""
-#         context = super(LoginView, self).get_context_data(**kwargs)
-#         context['message'] = self.request.session['message']
-#         return context
 
 class AskAQuestionPage(FormView):
     """
@@ -55,7 +39,7 @@ class AskAQuestionPage(FormView):
     """
     template_name = 'core/ask_a_question_page.html'
     form_class = ClimateQuestionForm
-    success_url = reverse_lazy('core:new-question-thanks')
+    success_url = reverse_lazy('core:post-question') # Forward with POST to the other view
 
     def get_random_category_and_questions(self):
         """
@@ -77,6 +61,28 @@ class AskAQuestionPage(FormView):
         })
         return context
 
+    def post(self, request, *args, **kwargs):
+        if self.form_valid(request.POST.get('form')):
+            print('post, is valid?')
+            form = request.POST.get('form')
+            # put in cookies?? what is smart
+
+            return super(AskAQuestionPage, self).form_valid(form)
+
+ask_a_question_page = AskAQuestionPage.as_view()
+
+
+class PostQuestionSubmitPage(FormView):
+    form_class = ClimateQuestionForm
+    template_name = 'core/question_submitted.html'
+    success_url = reverse_lazy('core:new-question-thanks')
+
+    def post(self, request, *args, **kwargs):
+        question_id = request.POST.get('question_id')
+
+    def get_context_data(self, **kwargs):
+        context = super(PostQuestionSubmitPage, self).get_context_data(**kwargs)
+        return context
 
     def form_valid(self, form):
         print(form)
@@ -84,26 +90,20 @@ class AskAQuestionPage(FormView):
 
         return super(AskAQuestionPage, self).form_valid(form)
 
+post_question_submit_page = PostQuestionSubmitPage.as_view()
 
 
-class PostQuestionSubmitPage(FormView):
-    pass
-
-ask_a_question_page = AskAQuestionPage.as_view()
-
-
-class NewQuestion(FormView):
-    form_class = ClimateQuestionForm
-    template_name = 'core/new_question.html'
-    success_url = reverse_lazy('core:new-question-thanks')
-
-    def form_valid(self, form):
-        Question.objects.create(
-            question=form.cleaned_data['main_question'],
-            user_email=form.cleaned_data.get('user_email', None),
-            asked_by_ip=self.request.META.get('REMOTE_ADDR')
-        )
-        return super(NewQuestion, self).form_valid(form)
-
-
-new_question = NewQuestion.as_view()
+# class NewQuestion(FormView):
+#     form_class = ClimateQuestionForm
+#     template_name = 'core/new_question.html'
+#     success_url = reverse_lazy('core:new-question-thanks')
+#
+#     def form_valid(self, form):
+#         Question.objects.create(
+#             question=form.cleaned_data['main_question'],
+#             user_email=form.cleaned_data.get('user_email', None),
+#             asked_by_ip=self.request.META.get('REMOTE_ADDR')
+#         )
+#         return super(NewQuestion, self).form_valid(form)
+#
+# new_question = NewQuestion.as_view()

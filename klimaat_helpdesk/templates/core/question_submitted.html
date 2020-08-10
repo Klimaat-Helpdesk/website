@@ -75,14 +75,34 @@
     <div class="form__wrapper">
 
       <div class="form__header__container">
-          <h1 class="form__header">{% trans 'Bedankt! We houden je op de hoogte.' %}</h1>
+          <h1 class="form__header">{% trans 'Bedankt voor je vraag!' %}</h1>
       </div>
 
-      <p>Content, dit is als je ook je email gaf</p>
+      <p>Content, hier komt de email form</p>
 
 {#      hier de tweede form met email#}
-      <form>
+      <form class="form__form" method="post" novalidate>
+        {% csrf_token %}
 
+        {{ form.non_field_errors }}
+
+        {{ form.source.errors }}
+        {{ form.source }}
+
+        <div class="form-field">
+          {{ form.user_email.label_tag }}
+          {{ form.user_email.errors }}
+          {{ form.user_email }}
+        </div>
+
+        <div class="form-field">
+          {{ form.accept_terms.label_tag }}
+          {{ form.accept_terms }}
+          <p>
+            <a href="/terms">{% trans "Our terms and conditions" %}</a>
+          </p>
+          {{ form.accept_terms.errors }}
+        </div>
       </form>
 
     </div>

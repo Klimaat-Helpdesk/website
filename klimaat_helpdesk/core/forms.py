@@ -30,4 +30,4 @@ class ClimateQuestionForm(forms.Form):
 
 class ClimateQuestionUserContactForm(forms.Form):
     user_email = forms.EmailField(required=True)
-    # accept_terms = forms.BooleanField(label=_('Accept Terms & Conditions'), required=True)
+    accept_terms = forms.BooleanField(label=_('Accept Terms & Conditions'), required=True)
