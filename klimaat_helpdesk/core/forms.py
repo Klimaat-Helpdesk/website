@@ -5,6 +5,10 @@ from klimaat_helpdesk.cms.models import AnswerCategory
 from klimaat_helpdesk.core.models import Question
 
 
+class TagWidget(forms.CheckboxSelectMultiple):
+    option_template_name = 'core/forms/tag_option.html'
+
+
 class AskQuestion(forms.ModelForm):
     accept_terms = forms.BooleanField(label=_('Accept Terms & Conditions'), required=True)
 
@@ -14,7 +18,7 @@ class AskQuestion(forms.ModelForm):
 
 
 class ClimateQuestionForm(forms.Form):
-    categories = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple,
+    categories = forms.MultipleChoiceField(widget=TagWidget,
                               choices=[(c.name, c.name) for c in AnswerCategory.objects.all()], required=False)
     main_question = forms.CharField(max_length=1000)
     relevant_location = forms.CharField(max_length=1000, required=False)
