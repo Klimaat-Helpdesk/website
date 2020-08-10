@@ -2,6 +2,7 @@ from random import random
 
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, FormView
+from django.views.generic.base import View
 
 from klimaat_helpdesk.cms.models import Answer, AnswerCategory, AnswerIndexPage, ExpertIndexPage
 from klimaat_helpdesk.core.forms import AskQuestion, ClimateQuestionForm
@@ -31,15 +32,30 @@ class HomePage(TemplateView):
 home_page = HomePage.as_view()
 
 
-class AskAQuestionPage(TemplateView):
+# class LoginView(FormView):
+#     template_name = 'members/login.html'
+#     form_class = LoginForm
+#
+#     def dispatch(self, *args, **kwargs):
+#         """Use this to check for 'user'."""
+#         if request.session.get('user'):
+#             return redirect('/dashboard/')
+#         return super(LoginView, self).dispatch(*args, **kwargs)
+#
+#     def get_context_data(self, **kwargs):
+#         """Use this to add extra context."""
+#         context = super(LoginView, self).get_context_data(**kwargs)
+#         context['message'] = self.request.session['message']
+#         return context
+
+class AskAQuestionPage(FormView):
     """
     This is the page where users can submit a new question. It consists of a form
     that is spread over two steps using JavaScript.
     """
     template_name = 'core/ask_a_question_page.html'
-
-    def get_form(self):
-        return ClimateQuestionForm()
+    form_class = ClimateQuestionForm
+    success_url = reverse_lazy('core:new-question-thanks')
 
     def get_random_category_and_questions(self):
         """
@@ -57,11 +73,21 @@ class AskAQuestionPage(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(AskAQuestionPage, self).get_context_data(**kwargs)
         context.update({
-            'form': self.get_form(),
             'suggestion': self.get_random_category_and_questions()
         })
         return context
 
+
+    def form_valid(self, form):
+        print(form)
+        print('VALID')
+
+        return super(AskAQuestionPage, self).form_valid(form)
+
+
+
+class PostQuestionSubmitPage(FormView):
+    pass
 
 ask_a_question_page = AskAQuestionPage.as_view()
 

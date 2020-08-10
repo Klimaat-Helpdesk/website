@@ -1,38 +1,93 @@
+<script>
+
+  console.log('inline js woohooo');
+  window.onload = initializeButtons;
+
+  function initializeButtons() {
+    var continueButton = document.getElementById('form-step__continue');
+    var backButton = document.getElementById('form-step__back');
+
+    if(!continueButton || !backButton){
+      return;
+    }
+
+    continueButton.addEventListener("click", activateStepTwo);
+    backButton.addEventListener("click", activateStepOne);
+  }
+
+  function activateStepTwo() {
+    document.querySelectorAll(".form-step__one").forEach(e => e.classList.add('is-hidden'));
+    document.querySelectorAll(".form-step__one").forEach(e => e.classList.remove('is-visible'));
+
+    document.querySelectorAll(".form-step__two").forEach(e => e.classList.remove('is-hidden'));
+    document.querySelectorAll(".form-step__two").forEach(e => e.classList.add('is-visible'));
+
+    var categoriesSpan = document.getElementById("form-step__selected-categories");
+    categoriesSpan.innerHTML = getSelectedCategories();
+  }
+
+  function activateStepOne() {
+    document.querySelectorAll(".form-step__two").forEach(e => e.classList.add('is-hidden'));
+    document.querySelectorAll(".form-step__two").forEach(e => e.classList.remove('is-visible'));
+
+    document.querySelectorAll(".form-step__one").forEach(e => e.classList.remove('is-hidden'));
+    document.querySelectorAll(".form-step__one").forEach(e => e.classList.add('is-visible'));
+  }
+
+  function getSelectedCategories() {
+    var selectedCategories = [];
+    var categoriesField = document.querySelector('.form-field__categories');
+    // Extract selected checkboxes
+    if(!categoriesField) {
+      return;
+    }
+    else {
+      var checkboxes = categoriesField.querySelectorAll('input');
+      checkboxes.forEach(function(e){
+        if(e.checked) {
+          selectedCategories.push(e.value);
+        }
+      })
+    }
+
+    var htmlString = '';
+    // Im not sure this is best practice :D
+    selectedCategories.forEach(e => (htmlString += `<span class="tag">${e}</span>`));
+    return htmlString;
+  }
+</script>
+
+
 {% extends 'base.html' %}
-{% load i18n static bulma_tags %}
+{% load static i18n %}
+
+{% block smokedglass %}
+{% endblock %}
+
 {% block head %}
-  <section class="hero is-primary is-bold">
-    <div class="hero-body">
-      <div class="container">
-        <h2 class="title is-size-2-desktop is-size-3-touch">Helpdesk Klimaat</h2>
-        <h3 class="subtitle is-size-4-desktop is-size-5-touch">{% blocktrans %}All the questions you may have
-          regarding climate breakdown, global warming, answered by experts.{% endblocktrans %}</h3>
-      </div>
-    </div>
-  </section>
+
 {% endblock %}
+
 {% block content %}
-  <section class="section">
-    <div class="container">
-      <section class="section question-intro">
-        <div class="title">{% trans "Thanks for submitting your question" %}</div>
-        <div><p>{% blocktrans %}We will review the question and send it to experts to answer it. If you gave us your
-          e-mail
-          in the previous step, we will keep you posted about the progress. If not, please check back this website
-          periodically.
-        {% endblocktrans %}</p>
-        </div>
-      </section>
-      <section class="section question-form">
-        <div class="columns">
-          <div class="column is-half is-offset-one-quarter">
-            <p class="boxed">{% blocktrans %}Remember that some questions are harder to answer, and therefore it may
-              take longer,
-              some are out of the scope of this website, or duplicated. We promise we will be as transparent as possible
-              regarding the decisions taken.{% endblocktrans %}</p>
-          </div>
-        </div>
-      </section>
+
+  <div class="form">
+
+    <div class="form__wrapper">
+
+      <div class="form__header__container">
+          <h1 class="form__header">{% trans 'Bedankt voor je vraag!' %}</h1>
+      </div>
+
+      <p>Content</p>
+
+{#      hier de tweede form met email#}
+      <form>
+
+      </form>
+
     </div>
-  </section>
+  </div>
+
+
 {% endblock %}
+
