@@ -7,17 +7,14 @@
     width: 100%;
     height: 100%;
     position: absolute;
-    z-index: -1;
+    z-index: 1;
   }
 
   .highlighted-link__wrapper {
-    @include grid-container;
     padding-top: 40px;
     padding-bottom: 40px;
-  }
-
-  .highlighted-link__grid {
-    grid-column: column 2 / span 10;
+    z-index: 1;
+    position: relative;
   }
 
   .highlighted-link__author {
@@ -33,9 +30,7 @@
     margin-bottom: 10px;
   }
 
-  @include landscape {
-    .highlighted-link__grid {
-      grid-column: column 1 / span 9;
-    }
+  .highlighted-link__link {
+    color: $color-true-black;
   }
 }
