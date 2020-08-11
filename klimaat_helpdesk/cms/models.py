@@ -91,7 +91,6 @@ class Answer(Page):
     content = RichTextField()
     excerpt = models.CharField(verbose_name=_('Short description'), max_length=255, blank=False, null=True)
     introduction = TextField(default='', blank=True, null=True)
-    category = models.ForeignKey(AnswerCategory, related_name='answers', on_delete=models.SET_NULL, null=True, blank=True, default=None)
     tags = ClusterTaggableManager(through=AnswerTag, blank=True)
 
     # Freeform content of answer
@@ -247,12 +246,6 @@ class AnswerIndexPage(RoutablePageMixin, Page):
     """
     template = 'cms/answers_list.html'
 
-    subtitle = models.TextField(help_text=_('Subtitle to show on the header of the page'))
-
-    content_panels = Page.content_panels + [
-        FieldPanel('subtitle', classname='full')
-    ]
-
     subpage_types = ['Answer']
 
     def children(self):
@@ -276,7 +269,7 @@ class AnswerIndexPage(RoutablePageMixin, Page):
                 chosen_categories.append(category)
 
         if len(chosen_categories) > 0:
-            answers = answers.filter(category__in=chosen_categories)
+            answers = answers.filter(answer_category_relationship__category__in=chosen_categories)
 
         # Adjust categories to maintain checked status
         categories = AnswerCategory.objects.all()
@@ -305,7 +298,6 @@ class AnswerIndexPage(RoutablePageMixin, Page):
             'answers_page': AnswerIndexPage.objects.first().url,
             'categories': categories_context,
             'answers_and_columns': answers_and_columns,
-            'subtitle': self.subtitle,
             'experts_page': ExpertIndexPage.objects.first(),
         })
         return context
