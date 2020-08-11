@@ -41,6 +41,19 @@
     margin-bottom: 10px;
   }
 
+  .header__reset-button {
+    @include typography(thema);
+    margin: 10px;
+
+    span {
+      color: $color-true-black;
+    }
+
+    :hover {
+      text-decoration: underline;
+    }
+  }
+
   .header__author-tag {
     margin-bottom: 30px;
 
