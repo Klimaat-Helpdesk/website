@@ -48,7 +48,7 @@ class AskAQuestionPage(FormView):
         Suggested category with answers.
         """
         category = AnswerCategory.objects.order_by("?").first()
-        answers = Answer.objects.live().specific().filter(category=category)[:3]
+        answers = Answer.objects.live().specific().filter(answer_category_relationship__category=category, type='answer')[:3]
 
         return {
             'category' : category,
