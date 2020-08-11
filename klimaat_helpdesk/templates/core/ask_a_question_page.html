@@ -8,7 +8,6 @@
 
   var selectedCategories = [];
 
-
   function initializeButtons() {
     var continueButton = document.getElementById('form-step__continue');
     var backButton = document.getElementById('form-step__back');
@@ -64,6 +63,12 @@
 
     suggestionDiv.classList.remove('is-hidden');
     suggestionDiv.classList.add('is-visible');
+
+    // Move to top
+    var parent = suggestionDiv.parentNode;
+    if (parent) {
+      suggestionDiv.parentNode.insertBefore(suggestionDiv, parent.firstChild);
+    }
   }
 
   function hideSuggestionCategory(category) {
@@ -202,14 +207,16 @@
           {% trans 'Check voordat je een vraag stelt of iemand anders je niet voor was' %}
         </span>
 
-        {% for category, content in suggestion_categories.items %}
-          <div id="suggestion-answers__{{ category }}" class="is-hidden">
-            <p class="form__tip-text">Beantwoorde vragen over #{{ content.name }}</p>
-            {% for answer in content.answers %}
-              <a class="form__link" href="{{ answer.url }}"><span class="form__link-text">{{ answer.title }}</span><span class="form__link-icon"></span></a>
-            {% endfor %}
-          </div>
-        {% endfor %}
+        <div class="suggestion-answers__list">
+          {% for category, content in suggestion_categories.items %}
+            <div id="suggestion-answers__{{ category }}" class="is-hidden">
+              <p class="suggestion-answers__title">#{{ content.name }}</p>
+              {% for answer in content.answers %}
+                <a class="form__link" href="{{ answer.url }}"><span class="form__link-text">{{ answer.title }}</span><span class="form__link-icon"></span></a>
+              {% endfor %}
+            </div>
+          {% endfor %}
+        </div>
       </div>
 
     </div>
