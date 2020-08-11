@@ -89,19 +89,21 @@
         {{ form.source.errors }}
         {{ form.source }}
 
-        <div class="form-field">
-          {{ form.user_email.label_tag }}
-          {{ form.user_email.errors }}
-          {{ form.user_email }}
-        </div>
+        <div class="form__form-fields">
+          <div class="form-field">
+            {{ form.user_email.label_tag }}
+            {{ form.user_email.errors }}
+            {{ form.user_email }}
+          </div>
 
-        <div class="form-field">
-          {{ form.accept_terms.label_tag }}
-          {{ form.accept_terms }}
-          <p>
-            <a href="/terms">{% trans "Our terms and conditions" %}</a>
-          </p>
-          {{ form.accept_terms.errors }}
+          <div class="form-field">
+            {{ form.accept_terms.label_tag }}
+            {{ form.accept_terms }}
+            <p>
+              <a href="/terms">{% trans "Our terms and conditions" %}</a>
+            </p>
+            {{ form.accept_terms.errors }}
+          </div>
         </div>
 
         <div class="form__button">
