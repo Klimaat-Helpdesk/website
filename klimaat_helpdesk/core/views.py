@@ -77,7 +77,6 @@ class AskAQuestionPage(FormView):
             form = ClimateQuestionForm(form_data)
 
             if form.is_valid():
-                print('extracting things')
                 data = (
                     form.cleaned_data['main_question'],
                     form.cleaned_data['relevant_location'],
