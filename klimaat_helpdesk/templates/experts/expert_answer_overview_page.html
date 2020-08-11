@@ -3,7 +3,7 @@
 {% block head %}
   <div class="header">
     <div class="header__wrapper">
-      <h1 class="header__title">{{ page.title }}</h1>
+      <h1 class="header__title">{% trans 'Antwoorden van ' %} {{ expert }}</h1>
     </div>
   </div>
 {% endblock %}
@@ -20,7 +20,7 @@
     <div class="question-link-list__button">
        <a href="/answers">
          <button class="button">
-           <span class="button__text">{% trans 'Vragenoverzicht' %}</span>
+           <span class="button__text">{% trans 'Bekijk alle antwoorden' %}</span>
            <span class="button__icon"></span>
          </button>
        </a>
