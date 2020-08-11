@@ -210,7 +210,6 @@ class Answer(Page):
             'type': 'answer'
         }
 
-    # TODO there are two templates but this might not be necessary since 99% identical?
     def get_as_overview_row_card(self):
         if self.type == 'answer':
             return render_to_string('core/includes/answer_block.html',
