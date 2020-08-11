@@ -23,6 +23,8 @@
 
   function initializeCheckboxes() {
     var categoriesField = document.querySelector('.form-field__categories');
+
+    // Whenever a change is detected, show relevant tips
     var checkboxes = categoriesField.querySelectorAll('input');
       checkboxes.forEach(function(e) {
         e.addEventListener('change', function() {
@@ -36,12 +38,26 @@
             console.log('unchecked' + this.value);
             hideSuggestionCategory(this.value);
           }
+
+          // Check whether to show suggestions at all
+          var tipsDiv = document.querySelector('.form__tip');
+          if(tipsDiv) {
+            if (selectedCategories.length === 0) {
+              tipsDiv.classList.add('is-hidden');
+              tipsDiv.classList.add('is-visible');
+            } else {
+              tipsDiv.classList.add('is-visible');
+              tipsDiv.classList.add('is-hidden');
+            }
+          }
         });
       });
   }
 
   function showSuggestionCategory(category) {
-    var suggestionDiv = document.querySelector('#suggestion-answers__' + category.replace(' ', '_'));
+    var idName = category.replaceAll(' ', '_');
+    console.log(idName);
+    var suggestionDiv = document.querySelector('#suggestion-answers__' + idName);
     if (!suggestionDiv) {
       return;
     }
@@ -51,7 +67,8 @@
   }
 
     function hideSuggestionCategory(category) {
-    var suggestionDiv = document.querySelector('#suggestion-answers__' + category.replace(' ', '_'));
+    var idName = category.replaceAll(' ', '_');
+    var suggestionDiv = document.querySelector('#suggestion-answers__' + idName);
     if (!suggestionDiv) {
       return;
     }
@@ -165,18 +182,16 @@
         </div>
       </div>
 
-      <div class="form__tip">
+      <div class="form__tip is-hidden">
         <span class="form__tip-text">
           <strong>{% trans 'Tip:' %}</strong>
-          {% trans 'Check voordat je een vraag stelt over ' %}
-          <span id="suggestion-selected" class="form__tip-text"></span>
-          {% trans 'of iemand anders je niet voor was' %}
+          {% trans 'Check voordat je een vraag stelt of iemand anders je niet voor was' %}
         </span>
 
-        {% for category, answers in suggestion_categories.items %}
+        {% for category, content in suggestion_categories.items %}
           <div id="suggestion-answers__{{ category }}" class="is-hidden">
-            <p>Beantwoorde vragen over #{{ category }}</p>
-            {% for answer in answers %}
+            <p class="form__tip-text">Beantwoorde vragen over #{{ content.name }}</p>
+            {% for answer in content.answers %}
               <a class="form__link" href="{{ answer.url }}"><span class="form__link-text">{{ answer.title }}</span><span class="form__link-icon"></span></a>
             {% endfor %}
           </div>
