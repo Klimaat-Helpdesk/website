@@ -76,7 +76,7 @@
       {% for expert in featured_experts %}
         <a class="footer__expert" href="/experts#{{ expert.pk }}">
           <div class="footer__expert-image">
-            {% image expert.picture max-200x200 as image %}
+            {% image expert.picture fill-200x200 as image %}
             <img class="footer__expert-picture" src="{{ image.url }}" alt="{{ image.alt }}">
           </div>
           <div class="footer__expert-content">
