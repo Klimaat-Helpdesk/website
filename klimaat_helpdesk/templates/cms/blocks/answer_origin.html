@@ -18,7 +18,7 @@
           </button>
         </h4>
 
-        <div class="disclosure__disclosure-content richtext" role="region" aria-labelledby="{{ button_id }}" hidden>
+        <div class="disclosure__disclosure-content richtext" role="region" aria-labelledby="{{ button_id }}"  aria-hidden="true">
           {% for ref in page.get_references %}
             <p>
               <span>[{{ forloop.counter }}] {{ ref.text }}</span> <span><b>{{ ref.url }}</b></span>

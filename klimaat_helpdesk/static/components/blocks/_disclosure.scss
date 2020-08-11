@@ -1,13 +1,13 @@
 .disclosure {
   position: relative;
-  margin: var(--margin) 0;
+  margin: 0;
 
   &::before {
     content: '';
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: $color-yellow-warm;
+    background: linear-gradient(to bottom, rgba($color-orange-dark, 1), rgba($color-orange-light, 1));
     z-index: -1;
   }
 
@@ -41,6 +41,14 @@
     padding-bottom: 5px;
   }
 
+  .disclosure__title-button {
+     &[aria-expanded='true'] {
+      .disclosure__title-button-icon {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
   .disclosure__title-button-icon {
     background-image: url('/static/icons/chevron-down.svg');
     background-position: center;
@@ -55,6 +63,10 @@
 
   .disclosure__disclosure-content {
     grid-column: column 2 / span 10;
+
+    &[aria-hidden='true'] {
+      display: none;
+    }
   }
 
   @include landscape {
