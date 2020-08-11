@@ -47,11 +47,12 @@ class AskAQuestionPage(FormView):
         We can use order by ? since its only 9 items.
         Suggested category with answers.
         """
-        category = AnswerCategory.objects.order_by("?").first()
-        answers = Answer.objects.live().specific().filter(answer_category_relationship__category=category, type='answer')[:3]
+        categories = AnswerCategory.objects.filter(category_answer_relationship__answer__live=True).distinct()
+        random_category = categories.order_by('?').first()
+        answers = Answer.objects.live().specific().filter(answer_category_relationship__category=random_category, type='answer')
 
         return {
-            'category' : category,
+            'category' : random_category,
             'answers' : answers,
         }
 
