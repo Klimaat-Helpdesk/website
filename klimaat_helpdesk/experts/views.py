@@ -18,6 +18,7 @@ class ExpertAnswerOverviewPage(TemplateView):
 
             context = super(ExpertAnswerOverviewPage, self).get_context_data(**kwargs)
             context.update({
+                'expert' : expert,
                 'answers' : answers
             })
             return context
