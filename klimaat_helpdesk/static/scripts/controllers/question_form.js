@@ -17,12 +17,16 @@ export default class NavigationController extends Controller {
       return;
     }
 
-    continueButton.addEventListener("click", this.activateStepTwo);
-    backButton.addEventListener("click", this.activateStepOne);
+    continueButton.addEventListener("click", this.activateStepTwo.bind(this));
+    backButton.addEventListener("click", this.activateStepOne.bind(this));
   }
 
   initializeCheckboxes() {
     var categoriesField = document.querySelector('.form-field__categories');
+
+    if(!categoriesField) {
+      return;
+    }
 
     // Whenever a change is detected, show relevant tips
     var checkboxes = categoriesField.querySelectorAll('input');
@@ -117,7 +121,7 @@ export default class NavigationController extends Controller {
       this.selectedCategories.forEach(e => (htmlString += `<span class="tag selected_category">${e}</span>`));
     }
     else {
-      htmlString = '<span class="tag selected_category">een nieuwe categorie</span>'
+      htmlString = '<span class="tag selected_category">een nieuwe categorie</span>';
     }
     return htmlString;
   }
