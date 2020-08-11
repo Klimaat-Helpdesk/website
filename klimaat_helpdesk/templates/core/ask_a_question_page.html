@@ -115,6 +115,13 @@
       {{ form.source }}
 
     <div class="form-step__one">
+
+      {% if form.errors %}
+        <div>
+          {% trans 'Het formulier kon niet worden verzonden, controleer de gegevens.' %}
+        </div>
+      {% endif %}
+
       <div class="form-field form-field__categories">
         <h2 class="form__form-subtitle">Kies een of meerdere categorieën waar je vraag aan relateert</h2>
         {{ form.categories.errors }}

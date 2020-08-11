@@ -19,7 +19,6 @@ class ClimateQuestionForm(forms.Form):
     relevant_location = forms.CharField(max_length=1000, required=False)
     relevant_timespan = forms.CharField(max_length=1000, required=False)
     extra_info = forms.CharField(max_length=5000, required=False)
-    user_email = forms.EmailField()
     accept_terms = forms.BooleanField(label=_('Accept Terms & Conditions'), required=True)
 
 

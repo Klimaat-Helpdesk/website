@@ -77,6 +77,7 @@ class AskAQuestionPage(FormView):
             form = ClimateQuestionForm(form_data)
 
             if form.is_valid():
+                print('extracting things')
                 data = (
                     form.cleaned_data['main_question'],
                     form.cleaned_data['relevant_location'],
@@ -99,7 +100,6 @@ class AskAQuestionPage(FormView):
 
                 # Store pk in cookies for next form
                 request.session['question_id'] = q.pk
-
                 return super(AskAQuestionPage, self).form_valid(form)
 
             else:
