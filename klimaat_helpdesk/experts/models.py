@@ -19,7 +19,7 @@ class Expert(models.Model):
     name = models.CharField(_('name'), max_length=255, null=False, blank=False)
     email = models.EmailField(_('email'), null=True, blank=True)
     bio = models.TextField(verbose_name=_('biography'), null=False, blank=False)
-    picture = models.ForeignKey('wagtailimages.Image', blank=True, null=True, related_name='+', on_delete=models.SET_NULL)
+    picture = models.ForeignKey('wagtailimages.Image', null=True, related_name='+', on_delete=models.SET_NULL)
     areas_expertise = TaggableManager(verbose_name=_('areas of expertise'))
     affiliation = models.CharField(_('Affiliation'), blank=False, max_length=128)
     website = models.URLField(_('Website'), blank=True)
