@@ -76,7 +76,7 @@ class AskAQuestionPage(FormView):
         if form_data:
             form = ClimateQuestionForm(form_data)
 
-            if self.form_valid(form):
+            if form.is_valid():
                 data = (
                     form.cleaned_data['main_question'],
                     form.cleaned_data['relevant_location'],
@@ -102,7 +102,7 @@ class AskAQuestionPage(FormView):
 
             return super(AskAQuestionPage, self).form_valid(form)
 
-        return super(AskAQuestionPage, self).form_valid(ClimateQuestionForm)
+        return super(AskAQuestionPage, self).form_valid(ClimateQuestionForm())
 
 ask_a_question_page = AskAQuestionPage.as_view()
 
@@ -122,7 +122,7 @@ class PostQuestionSubmitPage(FormView):
             form = ClimateQuestionUserContactForm(form_data)
 
             # Update the question with the email
-            if self.form_valid(form):
+            if form.is_valid():
                 question_id = request.session.get('question_id')
                 try:
                     question = Question.objects.get(pk=question_id)
