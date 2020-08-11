@@ -40,5 +40,9 @@
       background-color: $color-yellow-light;
       padding: 40px;
     }
+
+    .sticky-link__title {
+      @include typography(heading-5);
+    }
   }
 }

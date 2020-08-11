@@ -49,7 +49,7 @@
 
     <div class="sticky-link">
       <div class="sticky-link__wrapper">
-          <h4 class="sticky-link__title">{% trans 'Heb je het antwoord dat je zocht niet gevonden? Stel je eigen vraag!' %}</h4>
+          <h5 class="sticky-link__title">{% trans 'Heb je het antwoord dat je zocht niet gevonden? Stel je eigen vraag!' %}</h5>
           <a  class="sticky-link__link" href="/ask">
             <button class="button">
               <span class="button__text">{% trans 'Stel je vraag' %}</span>
@@ -74,22 +74,22 @@
 
     <div class="footer__experts">
       {% for expert in featured_experts %}
-        <a class="footer__expert" href="/experts#{{ expert.pk }}">
+        <div class="footer__expert">
           <div class="footer__expert-image">
             {% image expert.picture fill-200x200 as image %}
             <img class="footer__expert-picture" src="{{ image.url }}" alt="{{ image.alt }}">
           </div>
           <div class="footer__expert-content">
-            <h4 class="footer__expert-title">{{ expert.name }}</h4>
+            <h4 class="footer__expert-title"> <a class="footer__expert-link" href="/experts#{{ expert.pk }}">{{ expert.name }}</a></h4>
             <p class="footer__expert-text">{{ expert.affiliation }}</p>
+            {% for category in expert.get_answer_categories %}
+              <a href="/answers{{ category.get_prefiltered_search_params }}"><span class="tag">{{ category }}</span></a>
+            {% endfor %}
           </div>
-        </a>
-
-        <div class="footer__expert-categories">
-          {% for category in expert.get_answer_categories %}
-            <a href="/answers{{ category.get_prefiltered_search_params }}"><span class="tag">{{ category }}</span></a>
-          {% endfor %}
         </div>
+
+{#        <div class="footer__expert-categories">#}
+{#        </div>#}
 
       {% endfor %}
     </div>

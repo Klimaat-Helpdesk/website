@@ -70,6 +70,13 @@
 
   .footer__expert-title {
     @include typography(heading-4);
+  }
+
+  .footer__expert-link {
+    color: $color-true-black;
+  }
+
+  .footer__expert-link {
     color: $color-true-black;
   }
 
