@@ -2,14 +2,15 @@ import Controller from '../modules/controller';
 
 export default class NavigationController extends Controller {
 
-    init() {
-        this.initializeButtons();
-        this.initializeCheckboxes();
+  init() {
+      this.initializeButtons();
+      this.initializeCheckboxes();
 
-        this.selectedCategories = [];
-    }
+      // Repopulate in case of invalid form returned
+      this.selectedCategories = this.getSelectedCategories();
+  }
 
-    initializeButtons() {
+  initializeButtons() {
     var continueButton = document.getElementById('form-step__continue');
     var backButton = document.getElementById('form-step__back');
 
@@ -55,6 +56,21 @@ export default class NavigationController extends Controller {
           }
         });
     });
+  }
+
+  getSelectedCategories() {
+    var selectedCategories = []
+    var categoriesField = document.querySelector('.form-field__categories');
+    if(!categoriesField) {
+      return;
+    }
+    var checkboxes = categoriesField.querySelectorAll('input');
+    checkboxes.forEach(function(e) {
+      if(e.checked) {
+        selectedCategories.push(e.value);
+      }
+    });
+    return selectedCategories;
   }
 
   showSuggestionCategory(category) {
