@@ -16,7 +16,7 @@
 
       <div class="form__header__container">
           <h1 class="form__header">{% trans 'Bedankt voor je vraag!' %}</h1>
-          <p>{% trans 'Als je wilt, kun je hier je emailadres achterlaten om op de hoogte gehouden te worden.' %}</p>
+          <p class="form__header-text">{% trans 'Als je wilt, kun je hier je emailadres achterlaten om op de hoogte gehouden te worden.' %}</p>
       </div>
 
 {#      hier de tweede form met email#}
@@ -24,7 +24,7 @@
         {% csrf_token %}
 
         {% if form.errors %}
-          <div>
+          <div class="form__error">
             {% trans 'Het formulier kon niet worden verzonden, controleer de gegevens.' %}
             {{ form.non_field_errors }}
             {{ form.source.errors }}

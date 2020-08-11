@@ -25,6 +25,10 @@
     text-transform: lowercase;
   }
 
+  .form__header-text {
+    @include typography(introduction);
+  }
+
   .form__form {
     grid-column: column 2 / span 10;
   }
@@ -141,6 +145,17 @@
          vertical-align: middle;
       }
     }
+  }
+
+  .form__error {
+      color: $color-orange-dark;
+      @include typography(heading-5);
+      margin-bottom: 30px;
+    }
+
+  .errorlist {
+    @include typography(paragraph);
+    color: $color-orange-dark;
   }
 
   @include landscape {
