@@ -66,7 +66,7 @@
     suggestionDiv.classList.add('is-visible');
   }
 
-    function hideSuggestionCategory(category) {
+  function hideSuggestionCategory(category) {
     var idName = category.replaceAll(' ', '_');
     var suggestionDiv = document.querySelector('#suggestion-answers__' + idName);
     if (!suggestionDiv) {
@@ -86,6 +86,13 @@
 
     var categoriesSpan = document.getElementById("form-step__selected-categories");
     categoriesSpan.innerHTML = getSelectedCategoriesHTML();
+
+    var selectedCategoryButtons = document.querySelectorAll('.selected_category');
+    if(selectedCategoryButtons) {
+      selectedCategoryButtons.forEach(function(e){
+        e.addEventListener('click', activateStepOne);
+      });
+    }
   }
 
   function activateStepOne() {
@@ -99,7 +106,12 @@
   function getSelectedCategoriesHTML() {
     var htmlString = '';
     // Im not sure this is best practice :D
-    selectedCategories.forEach(e => (htmlString += `<span class="tag">${e}</span>`));
+    if (selectedCategories.length > 0) {
+      selectedCategories.forEach(e => (htmlString += `<span class="tag selected_category">${e}</span>`));
+    }
+    else {
+      htmlString = '<span class="tag">een nieuwe categorie</span>'
+    }
     return htmlString;
   }
 </script>
