@@ -66,7 +66,8 @@ class AskAQuestionPage(FormView):
             answers = Answer.objects.live().specific().filter(answer_category_relationship__category=category,
                                                               type='answer').distinct()
             if answers:
-                result[category] = answers
+                category_class = str(category).replace(" ", "_")
+                result[category_class] = { 'answers': answers, 'name' : str(category) }
         return result
 
     def get_context_data(self, **kwargs):

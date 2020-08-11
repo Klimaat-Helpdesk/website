@@ -29,14 +29,35 @@
           if(this.checked) {
             console.log('checked' + this.value);
             selectedCategories.push(this.value);
+            showSuggestionCategory(this.value);
           }
           else {
             selectedCategories.pop(this.value);
             console.log('unchecked' + this.value);
+            hideSuggestionCategory(this.value);
           }
         });
       });
+  }
 
+  function showSuggestionCategory(category) {
+    var suggestionDiv = document.querySelector('#suggestion-answers__' + category.replace(' ', '_'));
+    if (!suggestionDiv) {
+      return;
+    }
+
+    suggestionDiv.classList.remove('is-hidden');
+    suggestionDiv.classList.add('is-visible');
+  }
+
+    function hideSuggestionCategory(category) {
+    var suggestionDiv = document.querySelector('#suggestion-answers__' + category.replace(' ', '_'));
+    if (!suggestionDiv) {
+      return;
+    }
+
+    suggestionDiv.classList.remove('is-visible');
+    suggestionDiv.classList.add('is-hidden');
   }
 
   function activateStepTwo() {
@@ -153,7 +174,7 @@
         </span>
 
         {% for category, answers in suggestion_categories.items %}
-          <div id="suggestion-answers__{{ category }}">
+          <div id="suggestion-answers__{{ category }}" class="is-hidden">
             <p>Beantwoorde vragen over #{{ category }}</p>
             {% for answer in answers %}
               <a class="form__link" href="{{ answer.url }}"><span class="form__link-text">{{ answer.title }}</span><span class="form__link-icon"></span></a>
