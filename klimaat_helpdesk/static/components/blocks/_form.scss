@@ -31,6 +31,12 @@
   .form__form-subtitle {
     @include typography(heading-2);
     margin-bottom: 20px;
+
+    #form-step__selected-categories {
+      .tag {
+        margin-right: 5px;
+      }
+    }
   }
 
   .form__tag-container {
