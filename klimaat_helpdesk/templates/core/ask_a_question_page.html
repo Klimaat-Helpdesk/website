@@ -73,14 +73,14 @@
       </a>
 
       <div class="simple-header__title-container">
-        <h1 class="simple-header__title">{% trans 'Ask a question' %}</h1>
+        <h1 class="simple-header__title">{% trans 'Stel een vraag' %}</h1>
       </div>
 
       <div class="simple-header__introduction-container">
         <p class="simple-header__introduction">
-          {% blocktrans %}After you ask your question, we will review it and assign it to an expert to answer it.
-            The entire process may take up to a couple of weeks. If you would like to be informed about the progress, you
-            can leave us your e-mail.{% endblocktrans %}
+          {% blocktrans %}Nadat je je vraag hebt gesteld zullen wij deze bekijken en toewijzen aan een geschikte expert. Deze zal jouw vraag gaan beantwoorden.
+            Het hele proces kan een aantal weken duren. Als je op de hoogte gehouden wil worden, kan je aan het einde van dit formulier je emailadres achterlaten.
+          {% endblocktrans %}
         </p>
       </div>
 
@@ -102,8 +102,8 @@
       </div>
 
       <div class="form__header__container">
-          <h1 class="form__header form-step__one">{% trans 'Waar gaat je vraag over?' %}</h1>
-          <h1 class="form__header form-step__two is-hidden">{% trans 'Formuleer je vraag' %}</h1>
+          <h1 class="form__header form-step__one">1. {% trans 'Waar gaat je vraag over?' %}</h1>
+          <h1 class="form__header form-step__two is-hidden">2. {% trans 'Formuleer je vraag' %}</h1>
       </div>
 
       <form class="form__form" method="post" novalidate>
@@ -123,7 +123,7 @@
       {% endif %}
 
       <div class="form-field form-field__categories">
-        <h2 class="form__form-subtitle">Kies een of meerdere categorieën waar je vraag aan relateert</h2>
+        <h2 class="form__form-subtitle">Kies één of meerdere categorieën waar je vraag aan relateert</h2>
         {{ form.categories.errors }}
         <div class="form__tag-container">
           {% for category in form.categories %}
@@ -186,10 +186,10 @@
 
         <div class="form-field">
           {{ form.accept_terms.label_tag }}
-          {{ form.accept_terms }}
           <p>
-            <a href="/terms">{% trans "Our terms and conditions" %}</a>
+            <a href="/terms">{% trans "Lees hier onze voorwaarden." %}</a>
           </p>
+          {{ form.accept_terms }}
           {{ form.accept_terms.errors }}
         </div>
       </div>
