@@ -1,63 +1,3 @@
-<script>
-
-  console.log('inline js woohooo');
-  window.onload = initializeButtons;
-
-  function initializeButtons() {
-    var continueButton = document.getElementById('form-step__continue');
-    var backButton = document.getElementById('form-step__back');
-
-    if(!continueButton || !backButton){
-      return;
-    }
-
-    continueButton.addEventListener("click", activateStepTwo);
-    backButton.addEventListener("click", activateStepOne);
-  }
-
-  function activateStepTwo() {
-    document.querySelectorAll(".form-step__one").forEach(e => e.classList.add('is-hidden'));
-    document.querySelectorAll(".form-step__one").forEach(e => e.classList.remove('is-visible'));
-
-    document.querySelectorAll(".form-step__two").forEach(e => e.classList.remove('is-hidden'));
-    document.querySelectorAll(".form-step__two").forEach(e => e.classList.add('is-visible'));
-
-    var categoriesSpan = document.getElementById("form-step__selected-categories");
-    categoriesSpan.innerHTML = getSelectedCategories();
-  }
-
-  function activateStepOne() {
-    document.querySelectorAll(".form-step__two").forEach(e => e.classList.add('is-hidden'));
-    document.querySelectorAll(".form-step__two").forEach(e => e.classList.remove('is-visible'));
-
-    document.querySelectorAll(".form-step__one").forEach(e => e.classList.remove('is-hidden'));
-    document.querySelectorAll(".form-step__one").forEach(e => e.classList.add('is-visible'));
-  }
-
-  function getSelectedCategories() {
-    var selectedCategories = [];
-    var categoriesField = document.querySelector('.form-field__categories');
-    // Extract selected checkboxes
-    if(!categoriesField) {
-      return;
-    }
-    else {
-      var checkboxes = categoriesField.querySelectorAll('input');
-      checkboxes.forEach(function(e){
-        if(e.checked) {
-          selectedCategories.push(e.value);
-        }
-      })
-    }
-
-    var htmlString = '';
-    // Im not sure this is best practice :D
-    selectedCategories.forEach(e => (htmlString += `<span class="tag">${e}</span>`));
-    return htmlString;
-  }
-</script>
-
-
 {% extends 'base.html' %}
 {% load static i18n %}
 
@@ -73,14 +13,12 @@
       </a>
 
       <div class="simple-header__title-container">
-        <h1 class="simple-header__title">{% trans 'Ask a question' %}</h1>
+        <h1 class="simple-header__title">{% trans 'Stel een vraag' %}</h1>
       </div>
 
       <div class="simple-header__introduction-container">
         <p class="simple-header__introduction">
-          {% blocktrans %}After you ask your question, we will review it and assign it to an expert to answer it.
-            The entire process may take up to a couple of weeks. If you would like to be informed about the progress, you
-            can leave us your e-mail.{% endblocktrans %}
+          {% blocktrans %}Wij willen je vraag graag zo compleet en correct mogelijk beantwoorden en verifiëren. Daar hebben wij ongeveer 4 weken voor nodig en binnen deze tijd gaan twee van onze experts voor jou aan de slag. De een doorzoekt bronnen, verifiëert, en discussiëert, de ander gaat alles nog eens grondig controleren. Zo behalen we de wetenschappelijke standaard die nodig is voor een betrouwbaar antwoord.{% endblocktrans %}
         </p>
       </div>
 
@@ -91,19 +29,17 @@
 
 {% block content %}
 
-  <div class="form">
+  <div class="form" data-controller="question_form">
 
     <div class="form__wrapper">
 
       <div id="form-step__back" class="form-step__two is-hidden">
-        <a class="form__back-link" href="/">
           <span class="form__back-link-icon"></span>
-        </a>
       </div>
 
       <div class="form__header__container">
-          <h1 class="form__header form-step__one">{% trans 'Waar gaat je vraag over?' %}</h1>
-          <h1 class="form__header form-step__two is-hidden">{% trans 'Formuleer je vraag' %}</h1>
+          <h1 class="form__header form-step__one">1. {% trans 'Waar gaat je vraag over?' %}</h1>
+          <h1 class="form__header form-step__two is-hidden">2. {% trans 'Formuleer je vraag' %}</h1>
       </div>
 
       <form class="form__form" method="post" novalidate>
@@ -117,13 +53,13 @@
     <div class="form-step__one">
 
       {% if form.errors %}
-        <div>
+        <div class="form__error">
           {% trans 'Het formulier kon niet worden verzonden, controleer de gegevens.' %}
         </div>
       {% endif %}
 
       <div class="form-field form-field__categories">
-        <h2 class="form__form-subtitle">Kies een of meerdere categorieën waar je vraag aan relateert</h2>
+        <h2 class="form__form-subtitle">Kies één of meerdere categorieën waar je vraag aan relateert</h2>
         {{ form.categories.errors }}
         <div class="form__tag-container">
           {% for category in form.categories %}
@@ -139,16 +75,22 @@
         </div>
       </div>
 
-      <div class="form__tip">
+      <div class="form__tip is-hidden">
         <span class="form__tip-text">
           <strong>{% trans 'Tip:' %}</strong>
-          {% trans 'Check voordat je een vraag stelt over ' %}
-          <span class="form__tip-text"> #{{ suggestion.category }}</span>
-          {% trans 'of iemand anders je niet voor was' %}
+          {% trans 'Check voordat je een vraag stelt of iemand anders je niet voor was' %}
         </span>
-        {% for answer in suggestion.answers %}
-          <a class="form__link" href="{{ answer.url }}"><span class="form__link-text">{{ answer.title }}</span><span class="form__link-icon"></span></a>
-        {% endfor %}
+
+        <div class="suggestion-answers__list">
+          {% for category, content in suggestion_categories.items %}
+            <div id="suggestion-answers__{{ category }}" class="is-hidden">
+              <p class="suggestion-answers__title">#{{ content.name }}</p>
+              {% for answer in content.answers %}
+                <a class="form__link" href="{{ answer.url }}"><span class="form__link-text">{{ answer.title }}</span><span class="form__link-icon"></span></a>
+              {% endfor %}
+            </div>
+          {% endfor %}
+        </div>
       </div>
 
     </div>
@@ -186,10 +128,10 @@
 
         <div class="form-field">
           {{ form.accept_terms.label_tag }}
-          {{ form.accept_terms }}
           <p>
-            <a href="/terms">{% trans "Our terms and conditions" %}</a>
+            <a href="/terms">{% trans "Lees hier onze voorwaarden." %}</a>
           </p>
+          {{ form.accept_terms }}
           {{ form.accept_terms.errors }}
         </div>
       </div>

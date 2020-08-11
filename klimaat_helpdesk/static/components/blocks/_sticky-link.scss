@@ -7,7 +7,7 @@
     width: 100%;
     height: 100%;
     position: absolute;
-    z-index: -1;
+    z-index: 1;
   }
 
   .sticky-link__wrapper {
@@ -19,6 +19,13 @@
   .sticky-link__title {
     @include typography(heading-4);
     margin-bottom: 20px;
+    z-index: 2;
+    position: relative;
+  }
+
+  .sticky-link__link {
+    position: relative;
+    z-index: 2;
   }
 
   @include landscape {
@@ -32,6 +39,10 @@
       margin: 0;
       background-color: $color-yellow-light;
       padding: 40px;
+    }
+
+    .sticky-link__title {
+      @include typography(heading-5);
     }
   }
 }

@@ -91,7 +91,6 @@ class Answer(Page):
     content = RichTextField()
     excerpt = models.CharField(verbose_name=_('Short description'), max_length=255, blank=False, null=True)
     introduction = TextField(default='', blank=True, null=True)
-    category = models.ForeignKey(AnswerCategory, related_name='answers', on_delete=models.SET_NULL, null=True, blank=True, default=None)
     tags = ClusterTaggableManager(through=AnswerTag, blank=True)
 
     # Freeform content of answer
@@ -211,7 +210,6 @@ class Answer(Page):
             'type': 'answer'
         }
 
-    # TODO there are two templates but this might not be necessary since 99% identical?
     def get_as_overview_row_card(self):
         if self.type == 'answer':
             return render_to_string('core/includes/answer_block.html',
@@ -247,12 +245,6 @@ class AnswerIndexPage(RoutablePageMixin, Page):
     """
     template = 'cms/answers_list.html'
 
-    subtitle = models.TextField(help_text=_('Subtitle to show on the header of the page'))
-
-    content_panels = Page.content_panels + [
-        FieldPanel('subtitle', classname='full')
-    ]
-
     subpage_types = ['Answer']
 
     def children(self):
@@ -276,7 +268,8 @@ class AnswerIndexPage(RoutablePageMixin, Page):
                 chosen_categories.append(category)
 
         if len(chosen_categories) > 0:
-            answers = answers.filter(category__in=chosen_categories)
+            answers = answers.filter(answer_category_relationship__category__in=chosen_categories)
+            columns = columns.filter(answer_category_relationship__category__in=chosen_categories)
 
         # Adjust categories to maintain checked status
         categories = AnswerCategory.objects.all()
@@ -290,22 +283,26 @@ class AnswerIndexPage(RoutablePageMixin, Page):
         # Insert column every 3 answers
         answers_and_columns = list(answers)
         if len(columns) > 0:
-            # interspacing = len(answers) // len(columns) # Can be used to spread evenly if desired
-            column_index = 0
-            for index in range(len(answers)):
-                if index != 0 and index % 3 == 0:
-                    try:
-                        answers_and_columns.insert(index, columns[column_index])
-                    except IndexError:
-                        break
-                    else:
-                        column_index += 1
+            # INTERSPACING = len(answers) // len(columns) # Can be used to spread evenly if desired
+            INTERSPACING = 3
+            if len(answers) >= INTERSPACING:
+                column_index = 0
+                for index in range(len(answers)):
+                    if index != 0 and index % INTERSPACING == 0:
+                        try:
+                            answers_and_columns.insert(index + column_index, columns[column_index])
+                        except IndexError:
+                            break
+                        else:
+                            column_index += 1
+            # List is too short, cannot interspace, so just put them at the end
+            else:
+                answers_and_columns += list(columns)
 
         context.update({
             'answers_page': AnswerIndexPage.objects.first().url,
             'categories': categories_context,
             'answers_and_columns': answers_and_columns,
-            'subtitle': self.subtitle,
             'experts_page': ExpertIndexPage.objects.first(),
         })
         return context

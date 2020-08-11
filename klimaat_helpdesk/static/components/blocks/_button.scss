@@ -14,16 +14,6 @@
     background-color: $color-white;
     color: $color-true-black;
 
-    &::before {
-      content: '';
-      width: 155px;
-      height: 155px;
-      position: absolute;
-      z-index: -1;
-      background-color: $color-orange-light;
-      filter: blur(35px);
-    }
-
     .button__icon {
       background-image: url('/static/icons/arrow-right.svg');
     }

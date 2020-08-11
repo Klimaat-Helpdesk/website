@@ -15,11 +15,11 @@ class ClimateQuestionForm(forms.Form):
     """
     categories = forms.MultipleChoiceField(widget=TagWidget,
                               choices=[(c.name, c.name) for c in AnswerCategory.objects.all()], required=False)
-    main_question = forms.CharField(max_length=1000, required=True)
-    relevant_location = forms.CharField(max_length=1000, required=False)
-    relevant_timespan = forms.CharField(max_length=1000, required=False)
-    extra_info = forms.CharField(max_length=5000, required=False)
-    accept_terms = forms.BooleanField(label=_('Accept Terms & Conditions'), required=True)
+    main_question = forms.CharField(max_length=1000, required=True, label='Mijn vraag is')
+    relevant_location = forms.CharField(max_length=1000, required=False, label='Locatie (bijvoorbeeld Europa)')
+    relevant_timespan = forms.CharField(max_length=1000, required=False, label='Tijdperk (bijvoorbeeld de komende 10 jaar)')
+    extra_info = forms.CharField(max_length=5000, required=False, label='Aanvullende informatie')
+    accept_terms = forms.BooleanField(label=_('Ik ga ermee akkoord dat mijn vraag op klimaathelpdesk.nl gepubliceerd wordt.'), required=True)
 
 
 class ClimateQuestionUserContactForm(forms.Form):

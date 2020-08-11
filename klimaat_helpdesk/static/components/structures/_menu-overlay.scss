@@ -91,8 +91,8 @@
     }
 
     .menu-overlay__links {
-      grid-column: column 8 / span 4;
-      margin: 125px 0 220px 0;
+      grid-column: column 8 / span 5;
+      margin: 125px 0 0 0;
     }
 
     .menu-overlay__button-container {
@@ -106,7 +106,7 @@
     }
 
     .menu-overlay__footer-items {
-      grid-column: column 8 / span 4;
+      grid-column: column 8 / span 5;
     }
   }
 }

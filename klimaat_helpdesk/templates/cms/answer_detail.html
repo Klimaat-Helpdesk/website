@@ -2,20 +2,23 @@
 {% load i18n static wagtailcore_tags wagtailimages_tags menu_tags  %}
 
 {% block navbar %}
-<div class="menu-bar">
-  <div class="menu-bar__logo-container">
+<div class="menu-bar menu-bar--inverted">
+  <div class="menu-bar__bar">
+    <div class="menu-bar__logo-container">
     <a class="menu-bar__logo" href="/">
-      {% include 'svg/logo/logo.svg' %}
+      {% include 'svg/logo/logo-white.svg' %}
     </a>
   </div>
 
   <div class="menu-bar__expert-container">
-    {% with self.get_primary_expert as expert %}
-      {% image expert.picture fill-200x200 as image %}
-      <img class="menu-bar__image" src="{{ image.url }}" alt="{{ image.alt }}">
-      <span class="menu-bar__expert-name">{{ expert.name }}</span>
-      <span class="menu-bar__expert-title">{{ expert.affiliation }}</span>
-    {% endwith %}
+    <a class="menu-bar__expert-link" href="/experts#{{ expert.pk }}">
+      {% with self.get_primary_expert as expert %}
+        {% image expert.picture fill-200x200 as image %}
+        <img class="menu-bar__image" src="{{ image.url }}" alt="{{ image.alt }}">
+        <span class="menu-bar__expert-name">{{ expert.name }}</span>
+        <span class="menu-bar__expert-title">{{ expert.affiliation }}</span>
+      {% endwith %}
+    </a>
   </div>
 
   <div class="menu-bar__icon-container">
@@ -23,16 +26,17 @@
       <span class="menu-bar__icon"></span>
     </button>
   </div>
+  </div>
 </div>
 {% endblock %}
-
-{% block smokedglass %}
-{% endblock %}
+{##}
+{#{% block smokedglass %}#}
+{#{% endblock %}#}
 
   {% block head %}
     <div class="content-header">
       <div class="content-header__wrapper">
-        <a class="content-header__back-link" href="/">
+        <a class="content-header__back-link" href="/answers">
           <span class="content-header__back-link-icon"></span>
         </a>
         <div class="content-header__title-container">
