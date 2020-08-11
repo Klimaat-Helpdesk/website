@@ -8,6 +8,7 @@ export default class NavigationController extends Controller {
 
       // Repopulate in case of invalid form returned
       this.selectedCategories = this.getSelectedCategories();
+      this.toggleSuggestionsDiv();
   }
 
   initializeButtons() {
@@ -44,30 +45,36 @@ export default class NavigationController extends Controller {
           }
 
           // Check whether to show suggestions at all
-          var tipsDiv = document.querySelector('.form__tip');
-          if(tipsDiv) {
-            if (thisRef.selectedCategories.length === 0) {
-              tipsDiv.classList.add('is-hidden');
-              tipsDiv.classList.add('is-visible');
-            } else {
-              tipsDiv.classList.add('is-visible');
-              tipsDiv.classList.add('is-hidden');
-            }
-          }
+          thisRef.toggleSuggestionsDiv();
         });
     });
   }
 
+  toggleSuggestionsDiv() {
+    var tipsDiv = document.querySelector('.form__tip');
+    if(tipsDiv) {
+      if (this.selectedCategories.length === 0) {
+        tipsDiv.classList.add('is-hidden');
+        tipsDiv.classList.add('is-visible');
+      } else {
+        tipsDiv.classList.add('is-visible');
+        tipsDiv.classList.add('is-hidden');
+      }
+    }
+  }
+
   getSelectedCategories() {
-    var selectedCategories = []
+    var selectedCategories = [];
     var categoriesField = document.querySelector('.form-field__categories');
     if(!categoriesField) {
       return;
     }
     var checkboxes = categoriesField.querySelectorAll('input');
+    var thisRef = this;
     checkboxes.forEach(function(e) {
       if(e.checked) {
         selectedCategories.push(e.value);
+        thisRef.showSuggestionCategory(e.value);
       }
     });
     return selectedCategories;
