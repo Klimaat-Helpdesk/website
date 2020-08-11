@@ -13,13 +13,13 @@
 
   .disclosure__content {
     @include grid-container;
+    padding-top: 80px;
     margin-bottom: 40px;
   }
 
   .disclosure__title {
     @include typography(heading-2, false, false);
     grid-column: column 2 / span 10;
-    margin-top: 80px;
   }
 
   .disclosure__text {
@@ -70,13 +70,20 @@
   }
 
   @include landscape {
+    .disclosure__content {
+      padding-top: 100px;
+    }
+
+    .disclosure__disclosure {
+      padding-bottom: 100px;
+    }
+
     .disclosure__title {
       grid-column: column 1 / span 3;
     }
 
     .disclosure__text {
       grid-column: column 5 / span 8;
-      margin-top: 80px;
     }
 
     .disclosure__disclosure-title {
