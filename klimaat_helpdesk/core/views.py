@@ -47,13 +47,28 @@ class AskAQuestionPage(FormView):
         We can use order by ? since its only 9 items.
         Suggested category with answers.
         """
-        category = AnswerCategory.objects.order_by("?").first()
-        answers = Answer.objects.live().specific().filter(answer_category_relationship__category=category, type='answer')[:3]
+        categories = AnswerCategory.objects.filter(category_answer_relationship__answer__live=True).distinct()
+        random_category = categories.order_by('?').first()
+        answers = Answer.objects.live().specific().filter(answer_category_relationship__category=random_category, type='answer')
 
         return {
-            'category' : category,
+            'category' : random_category,
             'answers' : answers,
         }
+
+    def get_questions_per_category(self):
+        """
+        Retrieve all and filter in JS later.
+        """
+        result = {}
+        categories = AnswerCategory.objects.filter(category_answer_relationship__answer__live=True).distinct()
+        for category in categories:
+            answers = Answer.objects.live().specific().filter(answer_category_relationship__category=category,
+                                                              type='answer').distinct()
+            if answers:
+                category_class = str(category).replace(" ", "_")
+                result[category_class] = { 'answers': answers, 'name' : str(category) }
+        return result
 
     def get_context_data(self, **kwargs):
         """
@@ -62,7 +77,8 @@ class AskAQuestionPage(FormView):
         """
         context = super(AskAQuestionPage, self).get_context_data(**kwargs)
         context.update({
-            'suggestion': self.get_random_category_and_questions()
+            # 'suggestion': self.get_random_category_and_questions(),
+            'suggestion_categories': self.get_questions_per_category()
         })
         return context
 

@@ -1,7 +1,13 @@
 <script>
 
   console.log('inline js woohooo');
-  window.onload = initializeButtons;
+  window.onload = function() {
+    initializeButtons();
+    initializeCheckboxes();
+  };
+
+  var selectedCategories = [];
+
 
   function initializeButtons() {
     var continueButton = document.getElementById('form-step__continue');
@@ -15,6 +21,62 @@
     backButton.addEventListener("click", activateStepOne);
   }
 
+  function initializeCheckboxes() {
+    var categoriesField = document.querySelector('.form-field__categories');
+
+    // Whenever a change is detected, show relevant tips
+    var checkboxes = categoriesField.querySelectorAll('input');
+      checkboxes.forEach(function(e) {
+        e.addEventListener('change', function() {
+          if(this.checked) {
+            console.log('checked' + this.value);
+            selectedCategories.push(this.value);
+            showSuggestionCategory(this.value);
+          }
+          else {
+            selectedCategories.pop(this.value);
+            console.log('unchecked' + this.value);
+            hideSuggestionCategory(this.value);
+          }
+
+          // Check whether to show suggestions at all
+          var tipsDiv = document.querySelector('.form__tip');
+          if(tipsDiv) {
+            if (selectedCategories.length === 0) {
+              tipsDiv.classList.add('is-hidden');
+              tipsDiv.classList.add('is-visible');
+            } else {
+              tipsDiv.classList.add('is-visible');
+              tipsDiv.classList.add('is-hidden');
+            }
+          }
+        });
+      });
+  }
+
+  function showSuggestionCategory(category) {
+    var idName = category.replaceAll(' ', '_');
+    console.log(idName);
+    var suggestionDiv = document.querySelector('#suggestion-answers__' + idName);
+    if (!suggestionDiv) {
+      return;
+    }
+
+    suggestionDiv.classList.remove('is-hidden');
+    suggestionDiv.classList.add('is-visible');
+  }
+
+  function hideSuggestionCategory(category) {
+    var idName = category.replaceAll(' ', '_');
+    var suggestionDiv = document.querySelector('#suggestion-answers__' + idName);
+    if (!suggestionDiv) {
+      return;
+    }
+
+    suggestionDiv.classList.remove('is-visible');
+    suggestionDiv.classList.add('is-hidden');
+  }
+
   function activateStepTwo() {
     document.querySelectorAll(".form-step__one").forEach(e => e.classList.add('is-hidden'));
     document.querySelectorAll(".form-step__one").forEach(e => e.classList.remove('is-visible'));
@@ -22,8 +84,17 @@
     document.querySelectorAll(".form-step__two").forEach(e => e.classList.remove('is-hidden'));
     document.querySelectorAll(".form-step__two").forEach(e => e.classList.add('is-visible'));
 
+    // Set the category tags/buttons in step 2
     var categoriesSpan = document.getElementById("form-step__selected-categories");
-    categoriesSpan.innerHTML = getSelectedCategories();
+    categoriesSpan.innerHTML = getSelectedCategoriesHTML();
+
+    // Categories in step 2 function as a back button
+    var selectedCategoryButtons = document.querySelectorAll('.selected_category');
+    if(selectedCategoryButtons) {
+      selectedCategoryButtons.forEach(function(e){
+        e.addEventListener('click', activateStepOne);
+      });
+    }
   }
 
   function activateStepOne() {
@@ -34,25 +105,15 @@
     document.querySelectorAll(".form-step__one").forEach(e => e.classList.add('is-visible'));
   }
 
-  function getSelectedCategories() {
-    var selectedCategories = [];
-    var categoriesField = document.querySelector('.form-field__categories');
-    // Extract selected checkboxes
-    if(!categoriesField) {
-      return;
-    }
-    else {
-      var checkboxes = categoriesField.querySelectorAll('input');
-      checkboxes.forEach(function(e){
-        if(e.checked) {
-          selectedCategories.push(e.value);
-        }
-      })
-    }
-
+  function getSelectedCategoriesHTML() {
     var htmlString = '';
     // Im not sure this is best practice :D
-    selectedCategories.forEach(e => (htmlString += `<span class="tag">${e}</span>`));
+    if (selectedCategories.length > 0) {
+      selectedCategories.forEach(e => (htmlString += `<span class="tag selected_category">${e}</span>`));
+    }
+    else {
+      htmlString = '<span class="tag">een nieuwe categorie</span>'
+    }
     return htmlString;
   }
 </script>
@@ -73,14 +134,12 @@
       </a>
 
       <div class="simple-header__title-container">
-        <h1 class="simple-header__title">{% trans 'Ask a question' %}</h1>
+        <h1 class="simple-header__title">{% trans 'Stel een vraag' %}</h1>
       </div>
 
       <div class="simple-header__introduction-container">
         <p class="simple-header__introduction">
-          {% blocktrans %}After you ask your question, we will review it and assign it to an expert to answer it.
-            The entire process may take up to a couple of weeks. If you would like to be informed about the progress, you
-            can leave us your e-mail.{% endblocktrans %}
+          {% blocktrans %}Wij willen je vraag graag zo compleet en correct mogelijk beantwoorden en verifiëren. Daar hebben wij ongeveer 4 weken voor nodig en binnen deze tijd gaan twee van onze experts voor jou aan de slag. De een doorzoekt bronnen, verifiëert, en discussiëert, de ander gaat alles nog eens grondig controleren. Zo behalen we de wetenschappelijke standaard die nodig is voor een betrouwbaar antwoord.{% endblocktrans %}
         </p>
       </div>
 
@@ -96,14 +155,12 @@
     <div class="form__wrapper">
 
       <div id="form-step__back" class="form-step__two is-hidden">
-        <a class="form__back-link" href="/">
           <span class="form__back-link-icon"></span>
-        </a>
       </div>
 
       <div class="form__header__container">
-          <h1 class="form__header form-step__one">{% trans 'Waar gaat je vraag over?' %}</h1>
-          <h1 class="form__header form-step__two is-hidden">{% trans 'Formuleer je vraag' %}</h1>
+          <h1 class="form__header form-step__one">1. {% trans 'Waar gaat je vraag over?' %}</h1>
+          <h1 class="form__header form-step__two is-hidden">2. {% trans 'Formuleer je vraag' %}</h1>
       </div>
 
       <form class="form__form" method="post" novalidate>
@@ -123,7 +180,7 @@
       {% endif %}
 
       <div class="form-field form-field__categories">
-        <h2 class="form__form-subtitle">Kies een of meerdere categorieën waar je vraag aan relateert</h2>
+        <h2 class="form__form-subtitle">Kies één of meerdere categorieën waar je vraag aan relateert</h2>
         {{ form.categories.errors }}
         <div class="form__tag-container">
           {% for category in form.categories %}
@@ -139,15 +196,19 @@
         </div>
       </div>
 
-      <div class="form__tip">
+      <div class="form__tip is-hidden">
         <span class="form__tip-text">
           <strong>{% trans 'Tip:' %}</strong>
-          {% trans 'Check voordat je een vraag stelt over ' %}
-          <span class="form__tip-text"> #{{ suggestion.category }}</span>
-          {% trans 'of iemand anders je niet voor was' %}
+          {% trans 'Check voordat je een vraag stelt of iemand anders je niet voor was' %}
         </span>
-        {% for answer in suggestion.answers %}
-          <a class="form__link" href="{{ answer.url }}"><span class="form__link-text">{{ answer.title }}</span><span class="form__link-icon"></span></a>
+
+        {% for category, content in suggestion_categories.items %}
+          <div id="suggestion-answers__{{ category }}" class="is-hidden">
+            <p class="form__tip-text">Beantwoorde vragen over #{{ content.name }}</p>
+            {% for answer in content.answers %}
+              <a class="form__link" href="{{ answer.url }}"><span class="form__link-text">{{ answer.title }}</span><span class="form__link-icon"></span></a>
+            {% endfor %}
+          </div>
         {% endfor %}
       </div>
 
@@ -186,10 +247,10 @@
 
         <div class="form-field">
           {{ form.accept_terms.label_tag }}
-          {{ form.accept_terms }}
           <p>
-            <a href="/terms">{% trans "Our terms and conditions" %}</a>
+            <a href="/terms">{% trans "Lees hier onze voorwaarden." %}</a>
           </p>
+          {{ form.accept_terms }}
           {{ form.accept_terms.errors }}
         </div>
       </div>
