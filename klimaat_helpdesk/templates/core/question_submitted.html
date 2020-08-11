@@ -78,8 +78,6 @@
           <h1 class="form__header">{% trans 'Bedankt voor je vraag!' %}</h1>
       </div>
 
-      <p>Content, hier komt de email form</p>
-
 {#      hier de tweede form met email#}
       <form class="form__form" method="post" novalidate>
         {% csrf_token %}
@@ -113,12 +111,15 @@
           </button>
         </div>
 
-        <a href="/">
+        <div class="form__button">
+          <a href="/">
            <button type="button" class="button button--secondary">
               <span class="button__text">{% trans 'Terug naar de homepage' %}</span>
               <span class="button__icon"></span>
             </button>
          </a>
+        </div>
+
       </form>
 
     </div>
