@@ -15,7 +15,7 @@ class ClimateQuestionForm(forms.Form):
     """
     categories = forms.MultipleChoiceField(widget=TagWidget,
                               choices=[(c.name, c.name) for c in AnswerCategory.objects.all()], required=False)
-    main_question = forms.CharField(max_length=1000)
+    main_question = forms.CharField(max_length=1000, required=True)
     relevant_location = forms.CharField(max_length=1000, required=False)
     relevant_timespan = forms.CharField(max_length=1000, required=False)
     extra_info = forms.CharField(max_length=5000, required=False)

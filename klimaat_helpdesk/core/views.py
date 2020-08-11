@@ -100,9 +100,12 @@ class AskAQuestionPage(FormView):
                 # Store pk in cookies for next form
                 request.session['question_id'] = q.pk
 
-            return super(AskAQuestionPage, self).form_valid(form)
+                return super(AskAQuestionPage, self).form_valid(form)
 
-        return super(AskAQuestionPage, self).form_valid(ClimateQuestionForm())
+            else:
+                return super(AskAQuestionPage, self).form_invalid(form)
+
+        return super(AskAQuestionPage, self).form_invalid(ClimateQuestionForm())
 
 ask_a_question_page = AskAQuestionPage.as_view()
 
@@ -134,8 +137,10 @@ class PostQuestionSubmitPage(FormView):
                     question.save()
                     request.session['question_id'] = None
 
-            return super(PostQuestionSubmitPage, self).form_valid(form)
+                return super(PostQuestionSubmitPage, self).form_valid(form)
+            else:
+                return super(PostQuestionSubmitPage, self).form_invalid(form)
 
-        return super(PostQuestionSubmitPage, self).form_valid(ClimateQuestionUserContactForm())
+        return super(PostQuestionSubmitPage, self).form_invalid(ClimateQuestionUserContactForm())
 
 post_question_submit_page = PostQuestionSubmitPage.as_view()
