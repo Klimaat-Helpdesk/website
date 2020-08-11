@@ -295,7 +295,7 @@ class AnswerIndexPage(RoutablePageMixin, Page):
             for index in range(len(answers)):
                 if index != 0 and index % 3 == 0:
                     try:
-                        answers_and_columns.insert(index, columns[column_index])
+                        answers_and_columns.insert(index + column_index, columns[column_index])
                     except IndexError:
                         break
                     else:
