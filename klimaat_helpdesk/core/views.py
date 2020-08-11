@@ -74,9 +74,7 @@ class AskAQuestionPage(FormView):
         form_data = request.POST
 
         if form_data:
-            print('data present')
             form = ClimateQuestionForm(form_data)
-            print(form)
 
             if self.form_valid(form):
                 data = (
@@ -101,7 +99,6 @@ class AskAQuestionPage(FormView):
 
                 # Store pk in cookies for next form
                 request.session['question_id'] = q.pk
-                print(request.COOKIES)
 
             return super(AskAQuestionPage, self).form_valid(form)
 
@@ -122,9 +119,7 @@ class PostQuestionSubmitPage(FormView):
         """
         form_data = request.POST
         if form_data:
-            print('data present')
             form = ClimateQuestionUserContactForm(form_data)
-            print(form)
 
             # Update the question with the email
             if self.form_valid(form):
