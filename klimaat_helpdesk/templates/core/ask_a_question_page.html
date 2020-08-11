@@ -84,9 +84,11 @@
     document.querySelectorAll(".form-step__two").forEach(e => e.classList.remove('is-hidden'));
     document.querySelectorAll(".form-step__two").forEach(e => e.classList.add('is-visible'));
 
+    // Set the category tags/buttons in step 2
     var categoriesSpan = document.getElementById("form-step__selected-categories");
     categoriesSpan.innerHTML = getSelectedCategoriesHTML();
 
+    // Categories in step 2 function as a back button
     var selectedCategoryButtons = document.querySelectorAll('.selected_category');
     if(selectedCategoryButtons) {
       selectedCategoryButtons.forEach(function(e){
