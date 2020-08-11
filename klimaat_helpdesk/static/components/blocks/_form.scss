@@ -22,6 +22,7 @@
   .form__header {
     @include typography(heading-1);
     padding: 40px 0 100px 0;
+    text-transform: lowercase;
   }
 
   .form__header-text {
@@ -64,6 +65,11 @@
 
   .form__tip {
     margin-bottom: 70px;
+  }
+
+  .suggestion-answers__title {
+    @include typography(heading-3);
+    margin-top: 20px;
   }
 
   .form__tip-text {
