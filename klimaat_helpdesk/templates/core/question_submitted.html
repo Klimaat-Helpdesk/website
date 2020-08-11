@@ -91,20 +91,34 @@
 
         <div class="form__form-fields">
           <div class="form-field">
-          {{ form.user_email.label_tag }}
-          {{ form.user_email.errors }}
-          {{ form.user_email }}
+            {{ form.user_email.label_tag }}
+            {{ form.user_email.errors }}
+            {{ form.user_email }}
+          </div>
+
+          <div class="form-field">
+            {{ form.accept_terms.label_tag }}
+            {{ form.accept_terms }}
+            <p>
+              <a href="/terms">{% trans "Our terms and conditions" %}</a>
+            </p>
+            {{ form.accept_terms.errors }}
+          </div>
         </div>
 
-        <div class="form-field">
-          {{ form.accept_terms.label_tag }}
-          {{ form.accept_terms }}
-          <p>
-            <a href="/terms">{% trans "Our terms and conditions" %}</a>
-          </p>
-          {{ form.accept_terms.errors }}
+        <div class="form__button">
+          <button id="form-step__continue" class="button">
+            <span class="button__text">{% trans 'Submit' %}</span>
+            <span class="button__icon"></span>
+          </button>
         </div>
-        </div>
+
+        <a href="/">
+           <button type="button" class="button button--secondary">
+              <span class="button__text">{% trans 'Terug naar de homepage' %}</span>
+              <span class="button__icon"></span>
+            </button>
+         </a>
       </form>
 
     </div>

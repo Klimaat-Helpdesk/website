@@ -30,11 +30,13 @@
   <main class="section">
    <div class="question-link-list">
     <h4 class="question-link-list__title">Jullie meest gestelde vragen</h4>
-    <div class="question-link-list__links">
+
+     <div class="question-link-list__links">
       {% for answer in featured_answers %}
         {{ answer.get_as_home_row_card }}
       {% endfor %}
      </div>
+
      <div class="question-link-list__button">
        <a href="/answers">
          <button class="button">
