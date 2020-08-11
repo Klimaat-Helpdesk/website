@@ -10,12 +10,14 @@
   </div>
 
   <div class="menu-bar__expert-container">
-    {% with self.get_primary_expert as expert %}
-      {% image expert.picture fill-200x200 as image %}
-      <img class="menu-bar__image" src="{{ image.url }}" alt="{{ image.alt }}">
-      <span class="menu-bar__expert-name">{{ expert.name }}</span>
-      <span class="menu-bar__expert-title">{{ expert.affiliation }}</span>
-    {% endwith %}
+    <a href="/experts#{{ expert.pk }}">
+      {% with self.get_primary_expert as expert %}
+        {% image expert.picture fill-200x200 as image %}
+        <img class="menu-bar__image" src="{{ image.url }}" alt="{{ image.alt }}">
+        <span class="menu-bar__expert-name">{{ expert.name }}</span>
+        <span class="menu-bar__expert-title">{{ expert.affiliation }}</span>
+      {% endwith %}
+    </a>
   </div>
 
   <div class="menu-bar__icon-container">
