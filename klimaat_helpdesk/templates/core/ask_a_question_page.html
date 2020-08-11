@@ -1,7 +1,13 @@
 <script>
 
   console.log('inline js woohooo');
-  window.onload = initializeButtons;
+  window.onload = function() {
+    initializeButtons();
+    initializeCheckboxes();
+  };
+
+  var selectedCategories = [];
+
 
   function initializeButtons() {
     var continueButton = document.getElementById('form-step__continue');
@@ -15,6 +21,24 @@
     backButton.addEventListener("click", activateStepOne);
   }
 
+  function initializeCheckboxes() {
+    var categoriesField = document.querySelector('.form-field__categories');
+    var checkboxes = categoriesField.querySelectorAll('input');
+      checkboxes.forEach(function(e) {
+        e.addEventListener('change', function() {
+          if(this.checked) {
+            console.log('checked' + this.value);
+            selectedCategories.push(this.value);
+          }
+          else {
+            selectedCategories.pop(this.value);
+            console.log('unchecked' + this.value);
+          }
+        });
+      });
+
+  }
+
   function activateStepTwo() {
     document.querySelectorAll(".form-step__one").forEach(e => e.classList.add('is-hidden'));
     document.querySelectorAll(".form-step__one").forEach(e => e.classList.remove('is-visible'));
@@ -23,7 +47,7 @@
     document.querySelectorAll(".form-step__two").forEach(e => e.classList.add('is-visible'));
 
     var categoriesSpan = document.getElementById("form-step__selected-categories");
-    categoriesSpan.innerHTML = getSelectedCategories();
+    categoriesSpan.innerHTML = getSelectedCategoriesHTML();
   }
 
   function activateStepOne() {
@@ -34,22 +58,7 @@
     document.querySelectorAll(".form-step__one").forEach(e => e.classList.add('is-visible'));
   }
 
-  function getSelectedCategories() {
-    var selectedCategories = [];
-    var categoriesField = document.querySelector('.form-field__categories');
-    // Extract selected checkboxes
-    if(!categoriesField) {
-      return;
-    }
-    else {
-      var checkboxes = categoriesField.querySelectorAll('input');
-      checkboxes.forEach(function(e){
-        if(e.checked) {
-          selectedCategories.push(e.value);
-        }
-      })
-    }
-
+  function getSelectedCategoriesHTML() {
     var htmlString = '';
     // Im not sure this is best practice :D
     selectedCategories.forEach(e => (htmlString += `<span class="tag">${e}</span>`));
@@ -94,9 +103,7 @@
     <div class="form__wrapper">
 
       <div id="form-step__back" class="form-step__two is-hidden">
-        <a class="form__back-link" href="/">
           <span class="form__back-link-icon"></span>
-        </a>
       </div>
 
       <div class="form__header__container">
@@ -141,11 +148,17 @@
         <span class="form__tip-text">
           <strong>{% trans 'Tip:' %}</strong>
           {% trans 'Check voordat je een vraag stelt over ' %}
-          <span class="form__tip-text"> #{{ suggestion.category }}</span>
+          <span id="suggestion-selected" class="form__tip-text"></span>
           {% trans 'of iemand anders je niet voor was' %}
         </span>
-        {% for answer in suggestion.answers %}
-          <a class="form__link" href="{{ answer.url }}"><span class="form__link-text">{{ answer.title }}</span><span class="form__link-icon"></span></a>
+
+        {% for category, answers in suggestion_categories.items %}
+          <div id="suggestion-answers__{{ category }}">
+            <p>Beantwoorde vragen over #{{ category }}</p>
+            {% for answer in answers %}
+              <a class="form__link" href="{{ answer.url }}"><span class="form__link-text">{{ answer.title }}</span><span class="form__link-icon"></span></a>
+            {% endfor %}
+          </div>
         {% endfor %}
       </div>
 

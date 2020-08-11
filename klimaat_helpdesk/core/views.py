@@ -56,6 +56,19 @@ class AskAQuestionPage(FormView):
             'answers' : answers,
         }
 
+    def get_questions_per_category(self):
+        """
+        Retrieve all and filter in JS later.
+        """
+        result = {}
+        categories = AnswerCategory.objects.filter(category_answer_relationship__answer__live=True).distinct()
+        for category in categories:
+            answers = Answer.objects.live().specific().filter(answer_category_relationship__category=category,
+                                                              type='answer').distinct()
+            if answers:
+                result[category] = answers
+        return result
+
     def get_context_data(self, **kwargs):
         """
         Add the random item we retrieved. Form is handled automagically since
@@ -63,7 +76,8 @@ class AskAQuestionPage(FormView):
         """
         context = super(AskAQuestionPage, self).get_context_data(**kwargs)
         context.update({
-            'suggestion': self.get_random_category_and_questions()
+            # 'suggestion': self.get_random_category_and_questions(),
+            'suggestion_categories': self.get_questions_per_category()
         })
         return context
 
