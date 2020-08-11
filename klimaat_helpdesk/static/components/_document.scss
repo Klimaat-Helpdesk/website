@@ -1,3 +1,11 @@
+html {
+  &.prevent-scrolling {
+    body {
+      overflow: hidden;
+    }
+  }
+}
+
 body {
   color: $color-true-black;
   font: inherit;
