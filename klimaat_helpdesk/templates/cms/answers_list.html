@@ -5,12 +5,14 @@
     <div class="header__wrapper">
       <h1 class="header__title">{{ page.title }}</h1>
 
-      <form name="filter" method="get">
+      <form class="header__form" name="filter" method="get">
         <div class="header__buttons">
           <div class="header__search-themes">
             {% for item in categories %}
-              <input type="checkbox" id="{{ item.category }}" value="" name="{{ item.category }}" {% if item.selected %}checked{% endif %}>
-              <label for="{{ item.category }}" class="tag">{{ item.category }}</label>
+              <span>
+                <input type="checkbox" id="{{ item.category }}" value="" name="{{ item.category }}" {% if item.selected %}checked{% endif %}>
+                <label for="{{ item.category }}" class="tag">{{ item.category }}</label>
+              </span>
             {% endfor %}
           </div>
           <div class="header__button">
@@ -19,9 +21,6 @@
               <span class="button__icon"></span>
             </button>
           </div>
-  {#        <div class="header__author-tag">#}
-  {#          <span class="tag">Detlef van Vuuren</span>#}
-  {#        </div>#}
         </div>
       </form>
     </div>
@@ -32,85 +31,22 @@
 {% block content %}
     <div class="question-link-list">
       <div class="question-link-list__links">
-        {% for answer in answers|slice:"0:10" %}
+        {% for answer in answers_and_columns %}
           {{ answer.get_as_overview_row_card }}
         {% endfor %}
-      </div>
-    </div>
-
-    <div class="highlighted-link">
-      <div class="highlighted-link__wrapper">
-        <div class="highlighted-link__grid">
-          <p class="highlighted-link__author"> <span class="highlighted-link__by">Column van</span> <span class="highlighted-link__author-name">Dr. Leo Haberman</span> </p>
-          <h3 class="highlighted-link__title">Hoe ziet de wereld eruit over 50 jaar?</h3>
-          <span class="tag">water</span>
-          <span class="tag">Een blik op de toekomst</span>
-        </div>
       </div>
     </div>
 
     <div class="sticky-link">
       <div class="sticky-link__wrapper">
           <h4 class="sticky-link__title">{% trans 'Heb je het antwoord dat je zocht niet gevonden? Stel je eigen vraag!' %}</h4>
-          <button class="button">
-            <span class="button__text">{% trans 'Stel je vraag' %}</span>
-           <span class="button__icon"></span>
-          </button>
+          <a href="/ask">
+            <button class="button">
+              <span class="button__text">{% trans 'Stel je vraag' %}</span>
+              <span class="button__icon"></span>
+            </button>
+          </a>
       </div>
     </div>
 
-    <div class="question-link-list">
-      <div class="question-link-list__links">
-        {% for answer in answers|slice:"10:" %}
-          {{ answer.get_as_overview_row_card }}
-        {% endfor %}
-      </div>
-    </div>
-
-{#  <main class="section">#}
-{#    <div class="container">#}
-{#      <div class="columns">#}
-{#        <main class="column">#}
-{#          {% for answer in answers %}#}
-{#            {% include 'core/includes/answer_block.html' with answer=answer %}#}
-{#          {% endfor %}#}
-{#          {% if answers.paginator.num_pages > 1 %}#}
-{#            <nav class="pagination" role="navigation" aria-label="pagination">#}
-{#              {% if answers.has_previous %}#}
-{#                <a class="pagination-previous"#}
-{#                   href="?page={{ answers.previous_page_number }}">{% trans "Previous Page" %}</a>#}
-{#              {% endif %}#}
-{#              {% if answers.has_next %}#}
-{#                <a href="?page={{ answers.next_page_number }}" class="pagination-next">{% trans "Next page" %}</a>#}
-{#              {% endif %}#}
-{#              {% for page_num in answers.paginator.page_range %}#}
-{#                <li>#}
-{#                  <a href="?page={{ page_num }}" class="pagination-link">{{ page_num }}</a>#}
-{#                </li>#}
-{#              {% endfor %}#}
-{#            </nav>#}
-{#          {% endif %}#}
-{#        </main>#}
-{#      </div>#}
-{#    </div>#}
-{#  </main>#}
-
-{#  <div class="section">#}
-{#    <div class="container">#}
-{#      <header class="header">#}
-{#        <div class="header-title"><h1 class="title">{% trans "Meet an expert" %}</h1></div>#}
-{#        <p class="subtitle is-4">Get to know one of the many experts answering questions</p>#}
-{#      </header>#}
-{#      <div class="boxed media">#}
-{#        <div class="media-left">#}
-{#          <figure class="image is-48x48"><img src="{% static 'images/portrait_placeholder.png' %}"#}
-{#                                              alt="Profile Picture"/></figure>#}
-{#        </div>#}
-{#        {% include 'experts/includes/expert_block.html' with expert=expert %}#}
-{#      </div>#}
-{#    </div>#}
-{#    <div class="container">#}
-{#      <a class="button is-active is-primary" href="{{ experts_page.url }}">{% trans "See all our experts" %}</a>#}
-{#    </div>#}
-{#  </div>#}
 {% endblock %}

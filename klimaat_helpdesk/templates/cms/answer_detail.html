@@ -1,10 +1,37 @@
 {% extends "base.html" %}
-{% load i18n static wagtailcore_tags %}
+{% load i18n static wagtailcore_tags wagtailimages_tags menu_tags  %}
 
-<div class="answer-detail">
-{% block head %}
+{% block navbar %}
+<div class="menu-bar">
+  <div class="menu-bar__logo-container">
+    <a class="menu-bar__logo" href="/">
+      {% include 'svg/logo/logo.svg' %}
+    </a>
+  </div>
+
+  <div class="menu-bar__expert-container">
+    {% with self.get_primary_expert as expert %}
+      {% image expert.picture fill-200x200 as image %}
+      <img class="menu-bar__image" src="{{ image.url }}" alt="{{ image.alt }}">
+      <span class="menu-bar__expert-name">{{ expert.name }}</span>
+      <span class="menu-bar__expert-title">{{ expert.affiliation }}</span>
+    {% endwith %}
+  </div>
+
+  <div class="menu-bar__icon-container">
+    <button class="menu-bar__icon-button">
+      <span class="menu-bar__icon"></span>
+    </button>
+  </div>
+</div>
+{% endblock %}
+
+{% block smokedglass %}
+{% endblock %}
+
+  {% block head %}
     <div class="content-header">
-      <div class="content-header__container">
+      <div class="content-header__wrapper">
         <a class="content-header__back-link" href="/">
           <span class="content-header__back-link-icon"></span>
         </a>
@@ -15,7 +42,7 @@
         </div>
         <div class="content-header__theme">
           {% for category in self.get_all_categories %}
-            <span class="content-header__subject-tag tag"><a href="{{ category.url }}">{{ category.title }}</a></span>
+            <a href="{{ category.url }}"><span class="content-header__subject-tag tag">{{ category.title }}</span></a>
           {% endfor %}
         </div>
         <div class="content-header__introduction">
@@ -26,11 +53,10 @@
           <span class="content-header__tag">#{{ tag }}</span>
           {% endfor %}
         </div>
+      </div>
     </div>
-  </div>
 {% endblock %}
 
-<div class="answer-detail__content">
   {% block content %}
     {% for block in self.page_content %}
       {% include_block block %}
@@ -45,6 +71,6 @@
     {% endfor %}
 
   {% endblock %}
-</div>
 
-</div>
+
+

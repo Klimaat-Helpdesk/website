@@ -1,10 +1,13 @@
+from http.client import HTTPResponse
 from random import random
 
+from django.template.response import SimpleTemplateResponse
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, FormView
+from django.views.generic.base import View
 
 from klimaat_helpdesk.cms.models import Answer, AnswerCategory, AnswerIndexPage, ExpertIndexPage
-from klimaat_helpdesk.core.forms import AskQuestion, ClimateQuestionForm
+from klimaat_helpdesk.core.forms import ClimateQuestionForm, ClimateQuestionUserContactForm
 from klimaat_helpdesk.core.models import Question
 from klimaat_helpdesk.experts.models import Expert
 
@@ -27,19 +30,17 @@ class HomePage(TemplateView):
         })
         return context
 
-
 home_page = HomePage.as_view()
 
 
-class AskAQuestionPage(TemplateView):
+class AskAQuestionPage(FormView):
     """
     This is the page where users can submit a new question. It consists of a form
     that is spread over two steps using JavaScript.
     """
     template_name = 'core/ask_a_question_page.html'
-
-    def get_form(self):
-        return ClimateQuestionForm()
+    form_class = ClimateQuestionForm
+    success_url = reverse_lazy('core:post-question') # Forward with POST to the other view
 
     def get_random_category_and_questions(self):
         """
@@ -55,29 +56,91 @@ class AskAQuestionPage(TemplateView):
         }
 
     def get_context_data(self, **kwargs):
+        """
+        Add the random item we retrieved. Form is handled automagically since
+        this is a FormView subclass.
+        """
         context = super(AskAQuestionPage, self).get_context_data(**kwargs)
         context.update({
-            'form': self.get_form(),
             'suggestion': self.get_random_category_and_questions()
         })
         return context
 
+    def post(self, request, *args, **kwargs):
+        """
+        We need access to the request object, so we do things here in post rather
+        than in the form_valid method.
+        """
+        form_data = request.POST
+
+        if form_data:
+            form = ClimateQuestionForm(form_data)
+
+            if form.is_valid():
+                print('extracting things')
+                data = (
+                    form.cleaned_data['main_question'],
+                    form.cleaned_data['relevant_location'],
+                    form.cleaned_data['relevant_timespan'],
+                    form.cleaned_data['extra_info'],
+                    form.cleaned_data['categories']
+                )
+
+                question_str = """Question: {}
+                            Relevant location: {}
+                            Relevant timespan: {}
+                            Extra info: {}
+                            Categories: {}
+                            """.format(*data)
+
+                q = Question.objects.create(
+                    question=question_str,
+                    asked_by_ip=self.request.META.get('REMOTE_ADDR')
+                )
+
+                # Store pk in cookies for next form
+                request.session['question_id'] = q.pk
+                return super(AskAQuestionPage, self).form_valid(form)
+
+            else:
+                return super(AskAQuestionPage, self).form_invalid(form)
+
+        return super(AskAQuestionPage, self).form_invalid(ClimateQuestionForm())
 
 ask_a_question_page = AskAQuestionPage.as_view()
 
 
-class NewQuestion(FormView):
-    form_class = ClimateQuestionForm
-    template_name = 'core/new_question.html'
+class PostQuestionSubmitPage(FormView):
+    form_class = ClimateQuestionUserContactForm
+    template_name = 'core/question_submitted.html'
     success_url = reverse_lazy('core:new-question-thanks')
 
-    def form_valid(self, form):
-        Question.objects.create(
-            question=form.cleaned_data['main_question'],
-            user_email=form.cleaned_data.get('user_email', None),
-            asked_by_ip=self.request.META.get('REMOTE_ADDR')
-        )
-        return super(NewQuestion, self).form_valid(form)
+    def post(self, request, *args, **kwargs):
+        """
+        We need access to the request object, so we do things here in post rather
+        than in the form_valid method.
+        """
+        form_data = request.POST
+        if form_data:
+            form = ClimateQuestionUserContactForm(form_data)
 
+            # Update the question with the email
+            if form.is_valid():
+                question_id = request.session.get('question_id')
+                try:
+                    question = Question.objects.get(pk=question_id)
+                # This should be exceedingly rare, but just in case :D
+                except Question.DoesNotExist:
+                    return SimpleTemplateResponse('core/new_question_failure.html')
+                else:
+                    question.user_email = form.cleaned_data['user_email']
+                    question.save()
+                    request.session['question_id'] = None
 
-new_question = NewQuestion.as_view()
+                return super(PostQuestionSubmitPage, self).form_valid(form)
+            else:
+                return super(PostQuestionSubmitPage, self).form_invalid(form)
+
+        return super(PostQuestionSubmitPage, self).form_invalid(ClimateQuestionUserContactForm())
+
+post_question_submit_page = PostQuestionSubmitPage.as_view()

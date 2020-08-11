@@ -12,7 +12,7 @@
     z-index: -1;
   }
 
-  .content-header__container {
+  .content-header__wrapper {
     @include grid-container;
     padding-top: 55px;
   }
@@ -31,7 +31,6 @@
     background-repeat: no-repeat;
     background-size: 100%;
     display: inline-block;
-    content: '';
     height: 10px;
     vertical-align: middle;
     width: 20px;
@@ -72,7 +71,7 @@
   }
 
   @include landscape {
-    .content-header__container {
+    .content-header__wrapper {
       padding-top: 100px;
     }
     .content-header__title-container {

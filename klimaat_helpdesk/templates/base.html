@@ -34,12 +34,19 @@
 
 </head>
 
-<body class="klimaat_helpdesk">
+<body class="klimaat_helpdesk" data-controller="navigation">
 {% block navbar %}
   {% include 'includes/navbar.html' %}
 {% endblock %}
+
 <main class="klimaat_helpdesk-content">
-  <section class="section smokedglass">
+
+  {% block smokedglass %}
+  <div class="sun">
+  </div>
+  {% endblock %}
+
+  <section class="section">
     {% block messages %}
       {% if messages %}
         <div class="messages columns is-desktop">
@@ -66,6 +73,11 @@
 {% get_footer %}
 {% block footer_js %}
 {% endblock %}
+
+{% block overlays %}
+  {% include 'includes/menu_overlay.html' %}
+{% endblock %}
+
 {% block js %}
   {% render_bundle 'main' 'js' %}
 {% endblock %}

@@ -1,6 +1,7 @@
 .header {
   position: relative;
   margin: 0 0 50px 0;
+  padding: 30px 0 0 0;
 
   .header__wrapper {
     @include grid-container;
@@ -8,7 +9,20 @@
 
   .header__title {
     grid-column: column 2 / span 10;
-    @include typography(heading-1, true, true);
+    @include typography(heading-1);
+  }
+
+  .header__form {
+    grid-column: column 2 / span 10;
+
+    input {
+      display: none;
+
+      &:checked ~ label {
+        background-color: $color-true-black;
+        color: $color-white;
+      }
+    }
   }
 
   .header__buttons {
@@ -37,6 +51,10 @@
 
   @include landscape {
     .header__title {
+      grid-column: column 1 / span 9;
+    }
+
+    .header__form {
       grid-column: column 1 / span 9;
     }
 

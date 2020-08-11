@@ -1,19 +1,30 @@
 {% load static wagtailimages_tags i18n %}
-<div class="boxed media">
-  <div class="media-left">
-    <figure class="image is-48x48">
-      {% if expert.picture %}
-        {% image expert.picture fill-48x48 %}
-    {% else %}
-          <img src="{% static 'images/portrait_placeholder.png' %}" alt="Profile Picture"/>
-    {% endif %}
-  </figure>
-  </div>
-  <div class="media-content content">
-    <div class="expert-title">
-      <strong>{{ expert.name }}</strong>
+
+<div class="expert" id="{{ expert.pk }}">
+    <div class="expert__image-container">
+      {% image expert.picture fill-200x200 as image %}
+      <img class="expert__image" src="{{ image.url }}" alt="{{ image.alt }}">
     </div>
-    <div class="expert-bio">{{ expert.bio }}
+
+    <div class="expert__content">
+      <div class="expert__title-container">
+        <h3 class="expert__title">{{ expert.name }}</h3>
+        {% if expert.linkedin_profile %}
+          <a class="exper__linkedinlink" href="{{ expert.linkedin_profile }}"><span class="expert__linkedin-icon"></span></a>
+        {% endif %}
+      </div>
+      <div class="expert__text richtext">
+        <p><strong>{{ expert.affiliation }}</strong></p>
+        <p>{{ expert.bio }}</p>
+      </div>
+      <div class="expert__link">
+        <a class="expert__link-text" href="/answers_by/{{ expert.pk }}">{%  trans 'Bekijk de vragen die beantwoord zijn door ' %} {{ expert.name }}</a>
+      </div>
+
+      <div class="expert__themes">
+        {% for category in expert.get_answer_categories %}
+          <a href="/answers{{ category.get_prefiltered_search_params }}"><span class="tag">{{ category }}</span></a>
+        {% endfor %}
+      </div>
     </div>
-  </div>
 </div>

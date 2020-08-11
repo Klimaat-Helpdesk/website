@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block smokedglass %}
+{% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="form">
+
+    <div class="form__wrapper">
+
+      <div class="form__header__container">
+          <h1 class="form__header">{% trans 'Bedankt voor je vraag!' %}</h1>
+          <p>{% trans 'Als je wilt, kun je hier je emailadres achterlaten om op de hoogte gehouden te worden.' %}</p>
+      </div>
+
+{#      hier de tweede form met email#}
+      <form class="form__form" method="post" novalidate>
+        {% csrf_token %}
+
+        {% if form.errors %}
+          <div>
+            {% trans 'Het formulier kon niet worden verzonden, controleer de gegevens.' %}
+            {{ form.non_field_errors }}
+            {{ form.source.errors }}
+            {{ form.source }}
+          </div>
+        {% endif %}
+
+        <div class="form__form-fields">
+          <div class="form-field">
+            {{ form.user_email.label_tag }}
+            {{ form.user_email.errors }}
+            {{ form.user_email }}
+          </div>
+
+          <div class="form-field">
+            {{ form.accept_terms.label_tag }}
+            {{ form.accept_terms }}
+            <p>
+              <a href="/terms">{% trans "Our terms and conditions" %}</a>
+            </p>
+            {{ form.accept_terms.errors }}
+          </div>
+        </div>
+
+        <div class="form__button">
+          <button id="form-step__continue" class="button">
+            <span class="button__text">{% trans 'Submit' %}</span>
+            <span class="button__icon"></span>
+          </button>
+        </div>
+
+        <div class="form__button">
+          <a href="/">
+           <button type="button" class="button button--secondary">
+              <span class="button__text">{% trans 'Terug naar de homepage' %}</span>
+              <span class="button__icon"></span>
+            </button>
+         </a>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+
+{% endblock %}
+

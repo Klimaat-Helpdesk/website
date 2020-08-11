@@ -1,26 +1,61 @@
 {% extends "base.html" %}
-{% load i18n static %}
-{% block head %}
-  <section class="hero is-primary is-bold">
-    <div class="hero-body">
-      <div class="container">
-        <h2 class="title is-size-2-desktop is-size-3-touch">{{ page.title }}</h2>
-        <h3 class="subtitle is-size-4-desktop is-size-5-touch">{{ page.subtitle }}</h3>
-      </div>
-    </div>
-  </section>
+{% load i18n static wagtailcore_tags%}
+
+{% block smokedglass %}
 {% endblock %}
+
+{% block head %}
+  <div class="simple-header">
+    <div class="simple-header__wrapper">
+      <a class="simple-header__back-link" href="/">
+        <span class="simple-header__back-link-icon"></span>
+      </a>
+
+      <div class="simple-header__title-container">
+        <h1 class="simple-header__title">{{ page.title }}</h1>
+      </div>
+
+      <div class="simple-header__introduction-container">
+        <p class="simple-header__introduction">
+          {{ page.intro|richtext }}
+        </p>
+      </div>
+
+    </div>
+  </div>
+{% endblock %}
+
 {% block content %}
-  <main class="section">
-    <div class="container">
-      <div class="columns">
-        <main class="column">
-          {% for expert in experts %}
-            {% include 'experts/includes/expert_block.html' with expert=expert %}
-          {% endfor %}
-        </main>
-        {% include 'core/includes/aside.html' %}
+  <div class="expert-list">
+    <div class="expert-list__wrapper">
+      <div class="expert-list__experts">
+        {% for expert in experts %}
+          {% include 'experts/includes/expert_block.html' with expert=expert %}
+        {% endfor %}
       </div>
     </div>
-  </main>
+  </div>
+
+  <div class="link-block">
+   <div class="link-block__wrapper">
+     <div class="link-block__title-container">
+      <h2 class="link-block__title">
+        Wie is klimaat helpdesk?
+      </h2>
+     </div>
+
+     <div class="link-block__text-container">
+       <div class="link-block__text richtext">
+         {{ page.outro|richtext }}
+       </div>
+       <a href="/about">
+          <button class="button">
+            <span class="button__text">Meer lezen over ons</span>
+            <span class="button__icon"></span>
+          </button>
+       </a>
+      </div>
+    </div>
+  </div>
+
 {% endblock %}

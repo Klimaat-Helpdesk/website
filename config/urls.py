@@ -10,6 +10,7 @@ from wagtail.core import urls as wagtail_urls
 
 urlpatterns = [
     path("", include('klimaat_helpdesk.core.urls', namespace='kh')),
+    path("", include('klimaat_helpdesk.experts.urls', namespace='experts')),
     url(r'^search/$', search_views, name='search'),
     path(settings.ADMIN_URL, admin.site.urls),
     re_path(r'^cms/', include(wagtailadmin_urls)),

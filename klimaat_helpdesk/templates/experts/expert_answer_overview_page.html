@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load i18n static %}
+{% block head %}
+  <div class="header">
+    <div class="header__wrapper">
+      <h1 class="header__title">{% trans 'Antwoorden van ' %} {{ expert }}</h1>
+    </div>
+  </div>
+{% endblock %}
+
+{#{% block container-class %} smokedglass{% endblock %}#}
+{% block content %}
+  <div class="question-link-list">
+    <div class="question-link-list__links">
+      {% for answer in answers %}
+        {{ answer.get_as_overview_row_card }}
+      {% endfor %}
+    </div>
+
+    <div class="question-link-list__button">
+       <a href="/answers">
+         <button class="button">
+           <span class="button__text">{% trans 'Bekijk alle antwoorden' %}</span>
+           <span class="button__icon"></span>
+         </button>
+       </a>
+    </div>
+  </div>
+{% endblock %}

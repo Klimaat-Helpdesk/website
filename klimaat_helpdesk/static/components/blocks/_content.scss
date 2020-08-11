@@ -2,6 +2,15 @@
   position: relative;
   margin: var(--margin) 0;
 
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: calc(100% + 180px);
+    top: -100px;
+    background-color: $color-yellow-background;
+  }
+
   .content__container {
     @include grid-container;
   }

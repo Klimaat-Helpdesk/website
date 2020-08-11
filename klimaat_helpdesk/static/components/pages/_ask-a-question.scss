@@ -5,5 +5,10 @@
 
 .is-visible {
   display: block;
+  grid-column: column 2;
+
+  @include landscape {
+    grid-column: column 1;
+  }
 }
 

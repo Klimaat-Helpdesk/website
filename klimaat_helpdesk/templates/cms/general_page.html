@@ -1,23 +1,38 @@
 {% extends "base.html" %}
 {% load i18n static wagtailcore_tags %}
-{% block head %}
-  <section class="hero is-primary is-bold">
-    <div class="hero-body">
-      <div class="container">
-        <h2 class="title is-size-2-desktop is-size-3-touch">{{ page.title }}</h2>
-        <h3 class="subtitle is-size-4-desktop is-size-5-touch">{{ page.subtitle }}</h3>
+
+{% block smokedglass %}
+{% endblock %}
+
+  {% block head %}
+    <div class="content-header">
+      <div class="content-header__wrapper">
+        <a class="content-header__back-link" href="/">
+          <span class="content-header__back-link-icon"></span>
+        </a>
+        <div class="content-header__title-container">
+          <h1 class="content-header__title">
+            {{ self.title }}
+          </h1>
+        </div>
+
+        <div class="content-header__introduction">
+          <p class="content-header__introduction-text">Antwoorden van wetenschappers op al je vragen over klimaatverandering. We answer. Rightaway. Yes, no or partly.
+            In that way we keep the reader focused and engaged. It will be the trigger to read on. We help. People have questions and we have answers, but they are only
+            worthwhile when we write as clear as possible, without scientific jargon and with the use of bullet points.
+          </p>
+        </div>
       </div>
     </div>
-  </section>
-{% endblock %}
+  {% endblock %}
+
 {% block content %}
-  <main class="section">
-    <div class="container">
-      <div class="columns">
-        <main class="column">
-          {{ page.content|richtext }}
-        </main>
+    <div class="content">
+      <div class="content__container">
+        <div class="content__answer richtext">
+          {{ self.content|richtext }}
+        </div>
       </div>
     </div>
-  </main>
 {% endblock %}
+
