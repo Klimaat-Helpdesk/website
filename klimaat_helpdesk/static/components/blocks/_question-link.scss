@@ -4,9 +4,9 @@
   display: block;
   color: $color-true-black;
 
-   &:last-child {
-      border-bottom: 0;
-    }
+  &:last-child {
+    border-bottom: 0;
+  }
 
   .question-link__title {
     @include typography(heading-3, true, true);

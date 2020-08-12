@@ -4,10 +4,13 @@
   &::before {
     content: '';
     background-color: $color-yellow-warm;
-    width: 100%;
+    width: 100vw;
     height: 100%;
+    top: 0;
+    right: 0;
     position: absolute;
     z-index: 1;
+    box-shadow: 47vw 0 0 0 $color-yellow-warm;
   }
 
   .highlighted-link__wrapper {
