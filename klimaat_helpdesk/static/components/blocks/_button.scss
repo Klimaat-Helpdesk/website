@@ -11,7 +11,7 @@
   margin-bottom: 5px;
 
   &:hover {
-    background-color: $color-white;
+    background-color: $color-yellow-lighter;
     color: $color-true-black;
 
     .button__icon {
@@ -43,6 +43,8 @@
   }
 
   &:hover {
-  border: 1px solid $color-white;
+    background-color: $color-yellow-lighter;
+    border: 1px solid $color-yellow-lighter;
+
   }
 }
