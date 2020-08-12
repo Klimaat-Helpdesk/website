@@ -4,6 +4,9 @@
 {% block smokedglass %}
 {% endblock %}
 
+{% block content_area %}
+  <div {% block smokedglass-class %}{% endblock %}>
+
   {% block head %}
     <div class="content-header">
       <div class="content-header__wrapper">
@@ -35,3 +38,5 @@
     </div>
 {% endblock %}
 
+  </div>
+{% endblock content_area %}

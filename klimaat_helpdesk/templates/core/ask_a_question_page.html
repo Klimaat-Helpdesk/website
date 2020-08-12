@@ -4,6 +4,8 @@
 {% block smokedglass %}
 {% endblock %}
 
+{% block content_area %}
+  <div {% block smokedglass-class %}{% endblock %}>
 {% block head %}
 
     <div class="simple-header simple-header--yellow form-step__one">
@@ -151,3 +153,5 @@
 
 {% endblock %}
 
+  </div>
+{% endblock content_area %}
