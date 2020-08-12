@@ -1,11 +1,9 @@
 <div class="highlighted-link">
   <div class="highlighted-link__wrapper">
-    <div class="highlighted-link__grid">
       <p class="highlighted-link__author"> <span class="highlighted-link__by">Column van</span> <span class="highlighted-link__author-name">{{ author }}</span> </p>
-      <a href="{{ url }}"><h3 class="highlighted-link__title">{{ title }}</h3></a>
+      <a class="highlighted-link__link" href="{{ url }}"><h3 class="highlighted-link__title">{{ title }}</h3></a>
       {% for category in categories %}
-        <span class="tag"><a href="{{ category.url }}">{{ category.title }}</a></span>
+        <a href="{{ category.url }}"><span class="tag">{{ category.title }}</span></a>
       {% endfor %}
-    </div>
   </div>
 </div>

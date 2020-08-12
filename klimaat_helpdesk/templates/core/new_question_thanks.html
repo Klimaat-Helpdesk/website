@@ -4,23 +4,21 @@
 {% block smokedglass %}
 {% endblock %}
 
-{% block head %}
+{% block content_area %}
+  <div {% block smokedglass-class %}{% endblock %}>
 
-{% endblock %}
+  {% block head %}
+  {% endblock %}
 
-{% block content %}
-
-  <div class="form">
-
-    <div class="form__wrapper">
-
-      <div class="form__header__container">
+  {% block content %}
+    <div class="form">
+      <div class="form__wrapper">
+        <div class="form__header__container">
           <h1 class="form__header">{% trans 'Bedankt! We houden je op de hoogte.' %}</h1>
-      </div>
-
+        </div>
     </div>
   </div>
+  {% endblock %}
 
-
-{% endblock %}
-
+  </div>
+{% endblock content_area %}

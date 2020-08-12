@@ -14,7 +14,7 @@
   &.is-visible {
     opacity: 1;
     pointer-events: auto;
-    overflow-y: hidden;
+    overflow: hidden;
   }
 
   &::after {
