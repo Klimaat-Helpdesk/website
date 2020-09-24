@@ -28,7 +28,7 @@
               {% csrf_token %}
               {{ form|bulma }}
               <p>
-                <a href="/terms">{% trans "Our terms and conditions" %}</a>
+                <a href="/terms" target="_blank">{% trans "Our terms and conditions" %}</a>
               </p>
               <button class="button is-primary">{% trans "Submit" %}</button>
             </form>
