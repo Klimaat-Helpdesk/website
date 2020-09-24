@@ -7,8 +7,10 @@ from django.views import defaults as default_views
 from klimaat_helpdesk.search.views import search as search_views
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
+from wagtail.contrib.sitemaps.views import sitemap
 
 urlpatterns = [
+    url('^sitemap\.xml$', sitemap),
     path("", include('klimaat_helpdesk.core.urls', namespace='kh')),
     path("", include('klimaat_helpdesk.experts.urls', namespace='experts')),
     url(r'^search/$', search_views, name='search'),
