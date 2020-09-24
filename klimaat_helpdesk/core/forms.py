@@ -19,7 +19,7 @@ class ClimateQuestionForm(forms.Form):
     relevant_location = forms.CharField(max_length=1000, required=False, label='Locatie (bijvoorbeeld Amsterdam of Europa)')
     relevant_timespan = forms.CharField(max_length=1000, required=False, label='Tijdperk (bijvoorbeeld de komende 10 jaar)')
     extra_info = forms.CharField(max_length=5000, required=False, label='Aanvullende informatie')
-    accept_terms = forms.BooleanField(label=_('Ik ga ermee akkoord dat mijn vraag op klimaathelpdesk.nl gepubliceerd wordt.'), required=True)
+    # accept_terms = forms.BooleanField(label=_('Ik ga ermee akkoord dat mijn vraag op klimaathelpdesk.nl gepubliceerd wordt.'), required=True)
 
 
 class ClimateQuestionUserContactForm(forms.Form):
