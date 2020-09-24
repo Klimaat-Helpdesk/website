@@ -22,7 +22,6 @@
           <p class="form__header-text">{% trans 'Als je wilt, kun je hier je emailadres achterlaten om op de hoogte gehouden te worden.' %}</p>
       </div>
 
-{#      hier de tweede form met email#}
       <form class="form__form" method="post" novalidate>
         {% csrf_token %}
 
@@ -46,7 +45,7 @@
             {{ form.accept_terms.label_tag }}
             {{ form.accept_terms }}
             <p>
-              <a href="/terms" taget="_blank">{% trans "Our terms and conditions" %}</a>
+              <a href="/terms" target="_blank">{% trans "Our terms and conditions" %}</a>
             </p>
             {{ form.accept_terms.errors }}
           </div>
