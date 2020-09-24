@@ -120,6 +120,14 @@
     transform: rotate(180deg);
   }
 
+  .form-step__two {
+    &.is-visible {
+      .form__back-link-icon {
+        margin-top: 30px;
+      }
+    }
+  }
+
   .form__form-fields {
     margin-bottom: 50px ;
 
