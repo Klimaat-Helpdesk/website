@@ -51,7 +51,9 @@
   }
 
   .simple-header__introduction {
-    @include typography(introduction);
+    .rich-text {
+      @include typography(introduction);
+    }
   }
 
   @include landscape {
