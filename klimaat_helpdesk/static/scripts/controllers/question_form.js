@@ -109,6 +109,8 @@ export default class NavigationController extends Controller {
   }
 
   activateStepTwo() {
+
+    window.scrollTo(0, 0);
     document.querySelectorAll(".form-step__one").forEach(e => e.classList.add('is-hidden'));
     document.querySelectorAll(".form-step__one").forEach(e => e.classList.remove('is-visible'));
 

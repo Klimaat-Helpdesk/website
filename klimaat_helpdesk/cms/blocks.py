@@ -12,7 +12,7 @@ class AnswerRichTextBlock(blocks.StructBlock):
 
 class AnswerImageBlock(blocks.StructBlock):
     image = ImageChooserBlock()
-    caption = blocks.CharBlock(max_length=250)
+    caption = blocks.CharBlock(max_length=2500)
 
     class Meta:
         icon = 'image'
@@ -28,8 +28,8 @@ class QuoteBlock(blocks.StructBlock):
 
 
 class ScientificSourceBlock(blocks.StructBlock):
-    reference_text = blocks.TextBlock(max_length=500)
-    url_or_doi = blocks.TextBlock(max_length=500)
+    reference_text = blocks.TextBlock(max_length=2500)
+    url_or_doi = blocks.TextBlock(max_length=2500)
 
 
 class AnswerOriginBlock(blocks.StructBlock):
