@@ -77,7 +77,7 @@ msgstr ""
 
 #: klimaat_helpdesk/core/forms.py:8
 msgid "Accept Terms & Conditions"
-msgstr "Algemene voorwaarden accepteren"
+msgstr "Ik ga akkoord met de algemene voorwaarden"
 
 #: klimaat_helpdesk/core/models.py:15
 msgid "Your Question"
@@ -487,10 +487,9 @@ msgstr ""
 "kun je je e-mail invullen"
 
 #: klimaat_helpdesk/templates/core/new_question.html:31
-#, fuzzy
 #| msgid "Accept Terms & Conditions"
 msgid "Our terms and conditions"
-msgstr "Algemene voorwaarden accepteren"
+msgstr "Lees hier onze algemene voorwaarden"
 
 #: klimaat_helpdesk/templates/core/new_question.html:33
 msgid "Submit"
