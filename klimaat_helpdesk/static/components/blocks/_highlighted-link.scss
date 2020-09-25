@@ -1,6 +1,9 @@
 .highlighted-link {
   position: relative;
 
+  // To hide question-link border bottom
+  margin-top: -1px;
+
   &::before {
     content: '';
     background-color: $color-yellow-warm;
