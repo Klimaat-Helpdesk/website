@@ -1,10 +1,6 @@
-from http.client import HTTPResponse
-from random import random
-
 from django.template.response import SimpleTemplateResponse
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, FormView
-from django.views.generic.base import View
 
 from klimaat_helpdesk.cms.models import Answer, AnswerCategory, AnswerIndexPage, ExpertIndexPage
 from klimaat_helpdesk.core.forms import ClimateQuestionForm, ClimateQuestionUserContactForm
