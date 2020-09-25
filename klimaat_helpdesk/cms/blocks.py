@@ -11,7 +11,7 @@ class AnswerRichTextBlock(blocks.StructBlock):
 
 
 class AnswerImageBlock(blocks.StructBlock):
-    image = ImageChooserBlock()
+    image = ImageChooserBlock(help_text="The recommended aspect ratio is landscape with a size of of 1920x1080. Portrait images not recommended.")
     caption = blocks.CharBlock(max_length=2500)
 
     class Meta:
@@ -34,7 +34,7 @@ class ScientificSourceBlock(blocks.StructBlock):
 
 class AnswerOriginBlock(blocks.StructBlock):
     title = blocks.CharBlock(max_length=255)
-    content = blocks.RichTextBlock()
+    content = blocks.RichTextBlock(help_text="Clarification of the answer's origin")
     sources = blocks.ListBlock(ScientificSourceBlock)
 
     class Meta:
