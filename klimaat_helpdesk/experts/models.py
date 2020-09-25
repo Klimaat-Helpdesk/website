@@ -1,11 +1,8 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from modelcluster.fields import ParentalKey
 from taggit.managers import TaggableManager
 from wagtail.admin.edit_handlers import FieldPanel
-from wagtail.core.models import Orderable
 from wagtail.images.edit_handlers import ImageChooserPanel
-from wagtail.snippets.edit_handlers import SnippetChooserPanel
 
 from wagtail.snippets.models import register_snippet
 
@@ -29,13 +26,13 @@ class Expert(models.Model):
     last_updated = models.DateTimeField(auto_now_add=True)
 
     panels = [
-        FieldPanel('featured'),
+        FieldPanel('featured', heading="Show this expert on the home page, 3 experts recommended"),
         FieldPanel('name'),
-        ImageChooserPanel('picture'),
+        ImageChooserPanel('picture', heading="Expert's photo, 1:1 aspect ratio (square) works best"),
         FieldPanel('email'),
         FieldPanel('bio'),
         FieldPanel('affiliation'),
-        FieldPanel('areas_expertise'),
+        FieldPanel('areas_expertise', heading="Areas of expertise. A maximum of 16 characters per word is recommended for optimal mobile display"),
         FieldPanel('website'),
         FieldPanel('twitter_profile'),
         FieldPanel('linkedin_profile'),

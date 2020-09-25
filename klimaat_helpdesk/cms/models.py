@@ -1,5 +1,3 @@
-from django import forms
-from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db import models
 from django.db.models import TextField
 from django.shortcuts import redirect, render
@@ -7,7 +5,7 @@ from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy as _
 from modelcluster.contrib.taggit import ClusterTaggableManager
 
-from modelcluster.fields import ParentalKey, ParentalManyToManyField
+from modelcluster.fields import ParentalKey
 from taggit.models import TaggedItemBase
 
 from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, StreamFieldPanel
@@ -88,7 +86,7 @@ class Answer(Page):
     type = models.CharField(choices=[('answer', 'Antwoord'), ('column', 'Column')], max_length=100, default='answer')
     featured = models.BooleanField(default=False)
 
-    content = RichTextField()
+    content = RichTextField(blank=True)
     excerpt = models.CharField(verbose_name=_('Short description'), max_length=255, blank=False, null=True)
     introduction = TextField(default='', blank=True, null=True)
     tags = ClusterTaggableManager(through=AnswerTag, blank=True)
@@ -114,9 +112,9 @@ class Answer(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel('type'),
-        FieldPanel('featured'),
+        FieldPanel('featured', heading="Show this answer on the home page"),
         FieldPanel('excerpt', classname='full'),
-        FieldPanel('content', classname='full'),
+        FieldPanel('content', classname='full', heading="Original content of old site"),
         FieldPanel('introduction', classname='full'),
         MultiFieldPanel(
             [
@@ -124,7 +122,7 @@ class Answer(Page):
             ],
             heading=_('Categorie(n)')
         ),
-        FieldPanel('tags'),
+        FieldPanel('tags', heading="Please use tags with a maximum length of 16 characters per single word to avoid overlap in the mobile view."),
         MultiFieldPanel(
             [
                 InlinePanel('answer_expert_relationship', label=_('Expert(s)'), panels=None, min_num=1)

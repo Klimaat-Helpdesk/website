@@ -15,95 +15,93 @@
           </a>
         </div>
         <div class="header__button">
-         <a href="/about">
-           <button class="button button--secondary">
+          <a href="/about">
+            <button class="button button--secondary">
               <span class="button__text">Wie we zijn</span>
               <span class="button__icon"></span>
             </button>
-         </a>
+          </a>
         </div>
       </div>
     </div>
   </div>
 {% endblock %}
+
 {% block content %}
   <main class="section">
-   <div class="question-link-list">
-    <h4 class="question-link-list__title">Jullie meest gestelde vragen</h4>
+    <div class="question-link-list">
+      <h4 class="question-link-list__title">Jullie meest gestelde vragen</h4>
 
-     <div class="question-link-list__links">
-      {% for answer in featured_answers %}
-        {{ answer.get_as_home_row_card }}
-      {% endfor %}
-     </div>
+      <div class="question-link-list__links">
+        {% for answer in featured_answers %}
+          {{ answer.get_as_home_row_card }}
+        {% endfor %}
+      </div>
 
-     <div class="question-link-list__button">
-       <a href="/answers">
-         <button class="button">
-           <span class="button__text">{% trans 'Vragenoverzicht' %}</span>
-           <span class="button__icon"></span>
-         </button>
-       </a>
-     </div>
-   </div>
-
-    <div class="sticky-link">
-      <div class="sticky-link__wrapper">
-          <h5 class="sticky-link__title">{% trans 'Heb je het antwoord dat je zocht niet gevonden? Stel je eigen vraag!' %}</h5>
-          <a  class="sticky-link__link" href="/ask">
-            <button class="button">
-              <span class="button__text">{% trans 'Stel je vraag' %}</span>
-              <span class="button__icon"></span>
-            </button>
-          </a>
+      <div class="question-link-list__button">
+        <a href="/answers">
+          <button class="button">
+            <span class="button__text">{% trans 'Vragenoverzicht' %}</span>
+            <span class="button__icon"></span>
+          </button>
+        </a>
       </div>
     </div>
 
-  <div class="footer">
-    <div class="footer__wrapper">
-      <div class="footer__top">
-      <h2 class="footer__top-title">{% trans 'Hoe beantwoorden we jullie vragen?' %}</h2>
-      <p class="footer__top-text">{% trans 'De bronnen worden onderzocht en worden door 2 experts nagekeken. De wachttijd voor ieder antwoord kan 1 maand duren.' %}</p>
-      <img class="footer__top__image" src="{% static 'images/process.png' %}" alt="profile picture">
+    <div class="sticky-link">
+      <div class="sticky-link__wrapper">
+        <h5 class="sticky-link__title">{% trans 'Heb je het antwoord dat je zocht niet gevonden? Stel je eigen vraag!' %}</h5>
+        <a class="sticky-link__link" href="/ask">
+          <button class="button">
+            <span class="button__text">{% trans 'Stel je vraag' %}</span>
+            <span class="button__icon"></span>
+          </button>
+        </a>
+      </div>
     </div>
 
-    <div class="footer__bottom">
-      <h3 class="footer__bottom-title">{% trans 'Onze experts' %}</h3>
-      <p class="footer__bottom-text">{% trans 'Het climaat-helpdesk bestaat uit wetenschappelijke klimaatexperts uit 10 van de 14 nederlandse universiteiten. Wij zijn een onafhankelijke stichting...' %} </p>
-    </div>
-
-    <div class="footer__experts">
-      {% for expert in featured_experts %}
-        <div class="footer__expert">
-          <div class="footer__expert-image">
-            {% image expert.picture fill-200x200 as image %}
-            <img class="footer__expert-picture" src="{{ image.url }}" alt="{{ image.alt }}">
-          </div>
-          <div class="footer__expert-content">
-            <h4 class="footer__expert-title"> <a class="footer__expert-link" href="/experts#{{ expert.pk }}">{{ expert.name }}</a></h4>
-            <p class="footer__expert-text">{{ expert.affiliation }}</p>
-            {% for category in expert.get_answer_categories %}
-              <a href="/answers{{ category.get_prefiltered_search_params }}"><span class="tag">{{ category }}</span></a>
-            {% endfor %}
-          </div>
+    <div class="footer">
+      <div class="footer__wrapper">
+        <div class="footer__top">
+          <h2 class="footer__top-title">{% trans 'Hoe beantwoorden we jullie vragen?' %}</h2>
+          <p class="footer__top-text">{% trans 'De bronnen worden onderzocht en worden door 2 experts nagekeken. De wachttijd voor ieder antwoord kan 1 maand duren.' %}</p>
+          <img class="footer__top__image" src="{% static 'images/process.png' %}" alt="profile picture">
         </div>
 
-{#        <div class="footer__expert-categories">#}
-{#        </div>#}
+        <div class="footer__bottom">
+          <h3 class="footer__bottom-title">{% trans 'Onze experts' %}</h3>
+          <p class="footer__bottom-text">{% trans 'Het climaat-helpdesk bestaat uit wetenschappelijke klimaatexperts uit 10 van de 14 nederlandse universiteiten. Wij zijn een onafhankelijke stichting...' %} </p>
+        </div>
 
-      {% endfor %}
+        <div class="footer__experts">
+          {% for expert in featured_experts %}
+            <div class="footer__expert">
+              <div class="footer__expert-image">
+                {% image expert.picture fill-200x200 as image %}
+                <img class="footer__expert-picture" src="{{ image.url }}" alt="{{ image.alt }}">
+              </div>
+              <div class="footer__expert-content">
+                <h4 class="footer__expert-title"><a class="footer__expert-link"
+                                                    href="/experts#{{ expert.pk }}">{{ expert.name }}</a></h4>
+                <p class="footer__expert-text">{{ expert.affiliation }}</p>
+                {% for category in expert.get_answer_categories %}
+                  <a href="/answers{{ category.get_prefiltered_search_params }}"><span class="tag">{{ category }}</span></a>
+                {% endfor %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+
+        <div class="footer__button">
+          <a href="/experts">
+            <button class="button button--secondary">
+              <span class="button__text">{% trans 'Maak kennis met alle experts' %}</span>
+              <span class="button__icon"></span>
+            </button>
+          </a>
+        </div>
+      </div>
+
     </div>
-
-    <div class="footer__button" >
-      <a href="/experts">
-        <button class="button button--secondary">
-          <span class="button__text">{%  trans 'Maak kennis met alle experts' %}</span>
-          <span class="button__icon"></span>
-        </button>
-      </a>
-    </div>
-  </div>
-
-  </div>
   </main>
 {% endblock %}
