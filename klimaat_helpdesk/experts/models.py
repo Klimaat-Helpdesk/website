@@ -35,7 +35,7 @@ class Expert(models.Model):
         FieldPanel('email'),
         FieldPanel('bio'),
         FieldPanel('affiliation'),
-        FieldPanel('areas_expertise'),
+        FieldPanel('areas_expertise', heading="Areas of expertise. A maximum of 16 characters per word is recommended for optimal mobile display"),
         FieldPanel('website'),
         FieldPanel('twitter_profile'),
         FieldPanel('linkedin_profile'),
