@@ -51,7 +51,7 @@
   }
 
   .simple-header__introduction {
-    .rich-text {
+    .richtext {
       @include typography(introduction);
     }
   }

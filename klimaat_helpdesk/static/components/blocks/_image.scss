@@ -29,5 +29,6 @@
 
   .image__caption {
     @include typography(paragraph);
+    padding: 20px;
   }
 }
