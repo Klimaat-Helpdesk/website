@@ -5,7 +5,7 @@
   &::before {
     content: '';
     width: 100%;
-    height: 100%;
+    height: calc(100% + 100px);
     background: linear-gradient(to bottom, rgba($color-yellow-warm, 1), rgba($color-yellow-background, 1));
     position: absolute;
     top: 0;
