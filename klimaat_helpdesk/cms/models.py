@@ -88,7 +88,7 @@ class Answer(Page):
     type = models.CharField(choices=[('answer', 'Antwoord'), ('column', 'Column')], max_length=100, default='answer')
     featured = models.BooleanField(default=False)
 
-    content = RichTextField()
+    content = RichTextField(blank=True)
     excerpt = models.CharField(verbose_name=_('Short description'), max_length=255, blank=False, null=True)
     introduction = TextField(default='', blank=True, null=True)
     tags = ClusterTaggableManager(through=AnswerTag, blank=True)
@@ -114,9 +114,9 @@ class Answer(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel('type'),
-        FieldPanel('featured'),
+        FieldPanel('featured', heading="Show this answer on the home page"),
         FieldPanel('excerpt', classname='full'),
-        FieldPanel('content', classname='full'),
+        FieldPanel('content', classname='full', heading="Original content of old site"),
         FieldPanel('introduction', classname='full'),
         MultiFieldPanel(
             [
@@ -124,7 +124,7 @@ class Answer(Page):
             ],
             heading=_('Categorie(n)')
         ),
-        FieldPanel('tags'),
+        FieldPanel('tags', heading="Please use tags with a maximum length of 16 characters per single word to avoid overlap in the mobile view."),
         MultiFieldPanel(
             [
                 InlinePanel('answer_expert_relationship', label=_('Expert(s)'), panels=None, min_num=1)
