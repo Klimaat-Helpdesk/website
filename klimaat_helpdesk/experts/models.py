@@ -29,9 +29,9 @@ class Expert(models.Model):
     last_updated = models.DateTimeField(auto_now_add=True)
 
     panels = [
-        FieldPanel('featured'),
+        FieldPanel('featured', heading="Show this expert on the home page, 3 experts recommended"),
         FieldPanel('name'),
-        ImageChooserPanel('picture'),
+        ImageChooserPanel('picture', heading="Expert's photo, 1:1 aspect ratio (square) works best"),
         FieldPanel('email'),
         FieldPanel('bio'),
         FieldPanel('affiliation'),
