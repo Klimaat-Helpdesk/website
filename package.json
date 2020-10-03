@@ -9,6 +9,7 @@
   "public": false,
   "license": "MIT",
   "scripts": {
+    "build": "yarn webpack",
     "start": "npm run watch & npm run server",
     "watch": "webpack --watch",
     "dev": "webpack --mode development"
