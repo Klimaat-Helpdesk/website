@@ -36,30 +36,3 @@ services:
 
   redis:
     image: redis:5.0
-
-  celeryworker:
-    <<: *django
-    image: klimaat_helpdesk_local_celeryworker
-    depends_on:
-      - redis
-      - postgres
-
-    ports: []
-    command: /start-celeryworker
-
-  celerybeat:
-    <<: *django
-    image: klimaat_helpdesk_local_celerybeat
-    depends_on:
-      - redis
-      - postgres
-
-    ports: []
-    command: /start-celerybeat
-
-  flower:
-    <<: *django
-    image: klimaat_helpdesk_local_flower
-    ports:
-      - "5555:5555"
-    command: /start-flower
