@@ -1,6 +1,6 @@
 # Climate helpdesk
 
-This repository holds the code for https://helpdesk-climate.org, a website aimed at answering questions regarding climate
+This repository holds the code for https://www.klimaathelpdesk.org, a website aimed at answering questions regarding climate
 change, global warming, and related. This project was built using Django & Wagtail.
 
 This is the 2020 redesign variant by Fabrique.

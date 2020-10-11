@@ -314,7 +314,7 @@ SOCIALACCOUNT_ADAPTER = "klimaat_helpdesk.users.adapters.SocialAccountAdapter"
 # Wagtail
 
 WAGTAIL_SITE_NAME = 'Klimaat Helpdesk'
-BASE_URL = 'https://www.helpdesk-climate.org'
+BASE_URL = 'https://www.klimaathelpdesk.org'
 
 WAGTAILMENUS_FLAT_MENUS_HANDLE_CHOICES = (
     ('header', 'Header Menu'),
