@@ -17,7 +17,7 @@
         <div class="header__button">
           <a href="/about">
             <button class="button button--secondary">
-              <span class="button__text">Wie we zijn</span>
+              <span class="button__text">Wie zijn wij?</span>
               <span class="button__icon"></span>
             </button>
           </a>
@@ -30,7 +30,7 @@
 {% block content %}
   <main class="section">
     <div class="question-link-list">
-      <h4 class="question-link-list__title">Jullie meest gestelde vragen</h4>
+      <h4 class="question-link-list__title">Jullie meestgestelde vragen</h4>
 
       <div class="question-link-list__links">
         {% for answer in featured_answers %}
@@ -64,13 +64,13 @@
       <div class="footer__wrapper">
         <div class="footer__top">
           <h2 class="footer__top-title">{% trans 'Hoe beantwoorden we jullie vragen?' %}</h2>
-          <p class="footer__top-text">{% trans 'De bronnen worden onderzocht en worden door 2 experts nagekeken. De wachttijd voor ieder antwoord kan 1 maand duren.' %}</p>
+          <p class="footer__top-text">{% trans 'De vraag wordt doorgestuurd naar een expert, die aan de hand van verschillende bronnen een antwoord schrijft. Dit antwoord wordt door een tweede expert nagekeken en wordt dan als artikel gepubliceerd op de website. [<a href="https://www.klimaathelpdesk.org/workflow/">lees verder</a>]' %}</p>
           <img class="footer__top__image" src="{% static 'images/process.png' %}" alt="profile picture">
         </div>
 
         <div class="footer__bottom">
           <h3 class="footer__bottom-title">{% trans 'Onze experts' %}</h3>
-          <p class="footer__bottom-text">{% trans 'Het climaat-helpdesk bestaat uit wetenschappelijke klimaatexperts uit 10 van de 14 nederlandse universiteiten. Wij zijn een onafhankelijke stichting...' %} </p>
+          <p class="footer__bottom-text">{% trans 'Elke vraag wordt beantwoord door een actieve wetenschapper of deskundige die expert is op dat vakgebied' %} </p>
         </div>
 
         <div class="footer__experts">

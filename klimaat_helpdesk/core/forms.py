@@ -28,4 +28,4 @@ class ClimateQuestionUserContactForm(forms.Form):
     update the question they asked before. Not a required step.
     """
     user_email = forms.EmailField(required=True)
-    accept_terms = forms.BooleanField(label=_('Accept Terms & Conditions'), required=True)
+    accept_terms = forms.BooleanField(label=_('Ik heb de algemene voorwaarden gelezen en ga er mee akkoord'), required=True)

@@ -329,9 +329,13 @@ klimaat_helpdesk/media/
 
 .ipython/
 .env
+.idea/*
 .envs/*
 !.envs/.local/
 /node_modules/
 /assets/bundles/
 /webpack-stats.json
 /webpack-stats.json
+*.xml
+*.iml
+.idea/klimaat_helpdesk.iml
