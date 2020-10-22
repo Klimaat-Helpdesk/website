@@ -19,7 +19,7 @@
 
       <div class="form__header__container">
           <h1 class="form__header">{% trans 'Bedankt voor je vraag!' %}</h1>
-          <p class="form__header-text">{% trans 'Als je wilt, kun je hier je emailadres achterlaten om op de hoogte gehouden te worden.' %}</p>
+          <p class="form__header-text">{% trans 'Laat je mailadres achter als je op de hoogte gehouden wilt worden [optioneel].' %}</p>
       </div>
 
       <form class="form__form" method="post" novalidate>
@@ -45,7 +45,7 @@
             {{ form.accept_terms.label_tag }}
             {{ form.accept_terms }}
             <p>
-              <a href="/terms" target="_blank">{% trans "Our terms and conditions" %}</a>
+              <a href="/terms" target="_blank">{% trans 'Onze voorwaarden' %}</a>
             </p>
             {{ form.accept_terms.errors }}
           </div>
