@@ -7,7 +7,7 @@
       <h1 class="header__title">Antwoorden van wetenschappers op al je vragen over klimaatverandering</h1>
       <div class="header__buttons">
         <div class="header__button">
-          <a href="/answers">
+          <a href="/vragen">
             <button class="button">
               <span class="button__text">Vragenoverzicht</span>
               <span class="button__icon"></span>
@@ -39,7 +39,7 @@
       </div>
 
       <div class="question-link-list__button">
-        <a href="/answers">
+        <a href="/vragen">
           <button class="button">
             <span class="button__text">{% trans 'Vragenoverzicht' %}</span>
             <span class="button__icon"></span>
@@ -85,7 +85,7 @@
                                                     href="/experts#{{ expert.pk }}">{{ expert.name }}</a></h4>
                 <p class="footer__expert-text">{{ expert.affiliation }}</p>
                 {% for category in expert.get_answer_categories %}
-                  <a href="/answers{{ category.get_prefiltered_search_params }}"><span class="tag">{{ category }}</span></a>
+                  <a href="/vragen{{ category.get_prefiltered_search_params }}"><span class="tag">{{ category }}</span></a>
                 {% endfor %}
               </div>
             </div>
