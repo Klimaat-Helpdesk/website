@@ -16,6 +16,7 @@ from wagtail.search import index
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet
 
+from config import settings
 from klimaat_helpdesk.cms.blocks import AnswerRichTextBlock, QuoteBlock, AnswerImageBlock, AnswerOriginBlock, \
     RelatedItemsBlock
 from klimaat_helpdesk.experts.models import Expert
@@ -196,7 +197,10 @@ class Answer(Page):
             return first
 
     def get_all_categories(self):
-        return [ {'title': c.name, 'url': c.get_prefiltered_search_params() } for c in self.categories]
+        return [{
+            'title': c.name,
+            'url': c.get_prefiltered_search_params()
+        } for c in self.categories]
 
 
     def get_card_data(self):
