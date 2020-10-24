@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   viewBox="0 0 36 36"
+   x="0px"
+   y="0px"
+   version="1.1"
+   id="svg12"
+   sodipodi:docname="link.svg"
+   width="36"
+   height="36"
+   inkscape:version="1.0.1 (0767f8302a, 2020-10-17)">
+  <metadata
+     id="metadata18">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Монтажная область 93</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs16" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1536"
+     inkscape:window-height="836"
+     id="namedview14"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="2.8183875"
+     inkscape:cx="21.6804"
+     inkscape:cy="83.060422"
+     inkscape:window-x="64"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg12" />
+  <title
+     id="title2">Монтажная область 93</title>
+  <g
+     data-name="Слой 3"
+     id="g6">
+    <path
+       d="M 18,0 A 18,18 0 1 0 36,18 18.00144,18.00144 0 0 0 18,0 Z M 14.98,28.46 A 5.2608745,5.2608745 0 0 1 7.54,21.02 l 5.58,-5.58 a 5.01934,5.01934 0 0 1 1.35,-0.97 5.94738,5.94738 0 0 1 1.36,-0.48 l 0.26,-0.03 h 0.02 a 4.89261,4.89261 0 0 1 0.66,-0.05 2.01137,2.01137 0 0 1 0.49,0.02 h 0.01 a 2.44,2.44 0 0 1 0.3,0.04 1.08206,1.08206 0 0 1 0.36,0.05 2.694,2.694 0 0 1 0.27,0.07 5.22241,5.22241 0 0 1 2.36,1.35 6.141,6.141 0 0 1 0.81,1.05 l -1.28,1.28 a 1.30113,1.30113 0 0 1 -0.76,0.37 c -0.02,0 -0.05,0.0099 -0.07,0.0099 a 2.46552,2.46552 0 0 0 -0.56,-0.85 2.86811,2.86811 0 0 0 -1.03,-0.64 2.68951,2.68951 0 0 0 -1.06,-0.12 2.2301,2.2301 0 0 0 -0.45,0.08 1.304,1.304 0 0 0 -0.33,0.12 2.5676,2.5676 0 0 0 -0.85,0.56 L 9.4,22.88 a 2.6304372,2.6304372 0 0 0 3.72,3.72 l 3.65,-3.65 a 4.96129,4.96129 0 0 0 0.68,0.23 6.733,6.733 0 0 0 2.64,0.17 z m 13.48,-13.48 -5.11,5.11 -0.47,0.47 c -0.12,0.12 -0.26,0.24 -0.39,0.35 l -0.01,0.01 a 4.79332,4.79332 0 0 1 -0.95,0.61 5.20048,5.20048 0 0 1 -3.73,0.38 3.44413,3.44413 0 0 1 -0.68,-0.24 3.64071,3.64071 0 0 1 -0.63,-0.3 5.18148,5.18148 0 0 1 -1.86,-1.86 l 1.28,-1.28 a 1.33165,1.33165 0 0 1 0.83,-0.38 2.52618,2.52618 0 0 0 1.41,1.41 1.8974,1.8974 0 0 0 0.63,0.17 2.51073,2.51073 0 0 0 0.67,0.02 2.63335,2.63335 0 0 0 1.57,-0.75 l 0.89,-0.9 0.53,-0.53 0.52,-0.52 3.64,-3.63 A 2.63044,2.63044 0 1 0 22.88,9.4 l -3.63,3.64 a 6.7991,6.7991 0 0 0 -3.34,-0.39 l 5.11,-5.11 a 5.2608745,5.2608745 0 1 1 7.44,7.44 z"
+       id="path4" />
+  </g>
+</svg>

@@ -39,6 +39,17 @@
     margin-left: 10px;
   }
 
+  .expert__link-icon {
+    background-image: url('/static/icons/link.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+    margin-left: 10px;
+  }
+
   .expert__content {
     grid-column: column 2 / span 10;
   }
