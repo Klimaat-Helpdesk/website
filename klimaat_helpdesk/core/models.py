@@ -17,7 +17,7 @@ class Question(models.Model):
     asked_by_ip = models.GenericIPAddressField(null=True, blank=True)
 
     date_asked = models.DateTimeField(auto_now_add=True)
-    approved = models.NullBooleanField(default=None)
+    approved = models.BooleanField(default=None, null=True)
 
     def save(self, **kwargs):
         try:
