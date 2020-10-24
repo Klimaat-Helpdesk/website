@@ -1,6 +1,7 @@
 {% load static i18n bulma_tags footer_tags menu_tags %}
 {% load render_bundle from webpack_loader %}
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +19,16 @@
   {% endblock %}
 
 </head>
+
+ <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EZ555D7QSW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EZ555D7QSW');
+ </script>
 
 <body class="klimaat_helpdesk" data-controller="navigation">
 {% block navbar %}
