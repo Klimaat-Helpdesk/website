@@ -52,5 +52,7 @@ class Expert(models.Model):
             categories += a.categories
         return categories
 
+    class Meta:
+        ordering = ['name', ]
 
 
