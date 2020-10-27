@@ -169,3 +169,4 @@ klimaat_helpdesk/media/
 *.iml
 .idea/*
 
+.idea/runConfigurations/*
