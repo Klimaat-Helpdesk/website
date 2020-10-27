@@ -1,4 +1,5 @@
 from django import forms
+from django.db import ProgrammingError
 from django.utils.translation import gettext_lazy as _
 
 from klimaat_helpdesk.cms.models import AnswerCategory
@@ -13,8 +14,12 @@ class ClimateQuestionForm(forms.Form):
     Form used when users ask a new question. Fields are combined into
     one field for the GitLab integration.
     """
+    try:
+        choices = [(c.name, c.name) for c in AnswerCategory.objects.all()]
+    except ProgrammingError as e:
+        choices = ['general',]
     categories = forms.MultipleChoiceField(widget=TagWidget,
-                              choices=[(c.name, c.name) for c in AnswerCategory.objects.all()], required=False)
+                              choices=choices, required=False)
     main_question = forms.CharField(max_length=1000, required=True, label='Mijn vraag is*')
     relevant_location = forms.CharField(max_length=1000, required=False, label='Locatie (bijvoorbeeld Amsterdam of Europa)')
     relevant_timespan = forms.CharField(max_length=1000, required=False, label='Tijdperk (bijvoorbeeld de komende 10 jaar)')
