@@ -27,5 +27,5 @@ class ClimateQuestionUserContactForm(forms.Form):
     Form used to allow users to give their email address, this will
     update the question they asked before. Not a required step.
     """
-    user_email = forms.EmailField(required=True)
+    user_email = forms.EmailField(required=False)
     accept_terms = forms.BooleanField(label=_('Ik heb de algemene voorwaarden gelezen en ga er mee akkoord'), required=True)
