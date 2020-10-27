@@ -41,8 +41,9 @@ class GitlabIssues(models.Model):
                 template_issue = project.files.get(
                     file_path='Templates/template_question_issue.md', ref='master').decode().decode('utf-8')
 
+                issue_title = f'Question: {self.question.question}'
                 issue = project.issues.create({
-                    'title': f'Question: {self.question.question}',
+                    'title': issue_title[:254],
                     'description': template_issue
                 })
                 issue.labels = ['Answer in progress']
