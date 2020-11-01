@@ -115,7 +115,7 @@ class Answer(Page):
         FieldPanel('type'),
         FieldPanel('featured', heading="Show this answer on the home page"),
         FieldPanel('excerpt', classname='full'),
-        FieldPanel('content', classname='full', heading="Original content of old site"),
+        # FieldPanel('content', classname='full', heading="Original content of old site"),
         FieldPanel('introduction', classname='full'),
         MultiFieldPanel(
             [
@@ -136,7 +136,7 @@ class Answer(Page):
     ]
 
     search_fields = Page.search_fields + [
-        index.SearchField('content'),
+        index.SearchField('page_content'),
     ]
 
     @property

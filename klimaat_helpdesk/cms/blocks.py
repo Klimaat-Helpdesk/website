@@ -3,7 +3,21 @@ from wagtail.images.blocks import ImageChooserBlock
 
 
 class AnswerRichTextBlock(blocks.StructBlock):
-    content = blocks.RichTextBlock()
+    content = blocks.RichTextBlock(features=(
+        'h2',
+        'h3',
+        'h4',
+        'bold',
+        'italic',
+        'ol',
+        'ul',
+        'hr',
+        'link',
+        'document-link',
+        'embed',
+        'superscript',
+        'subscript',
+    ))
 
     class Meta:
         icon = 'text'
