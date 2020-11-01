@@ -20,8 +20,8 @@ class Expert(models.Model):
     areas_expertise = TaggableManager(verbose_name=_('areas of expertise'))
     affiliation = models.CharField(_('Affiliation'), blank=False, max_length=128)
     website = models.URLField(_('Website'), blank=True)
-    twitter_profile = models.CharField(_('Twitter Profile'), blank=True, null=True, max_length=50)
-    linkedin_profile = models.CharField(_('LinkedIn Profile'), blank=True, null=True, max_length=50)
+    twitter_profile = models.URLField(_('Twitter Profile'), blank=True, null=True)
+    linkedin_profile = models.URLField(_('LinkedIn Profile'), blank=True, null=True)
     creation_date = models.DateTimeField(auto_now_add=True)
     last_updated = models.DateTimeField(auto_now_add=True)
 
