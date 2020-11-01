@@ -7,6 +7,7 @@ class AnswerRichTextBlock(blocks.StructBlock):
         'h2',
         'h3',
         'h4',
+        'image',
         'bold',
         'italic',
         'ol',
