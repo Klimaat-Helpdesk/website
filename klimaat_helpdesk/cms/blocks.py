@@ -3,7 +3,21 @@ from wagtail.images.blocks import ImageChooserBlock
 
 
 class AnswerRichTextBlock(blocks.StructBlock):
-    content = blocks.RichTextBlock()
+    content = blocks.RichTextBlock(features=(
+        'h2',
+        'h3',
+        'h4',
+        'bold',
+        'italic',
+        'ol',
+        'ul',
+        'hr',
+        'link',
+        'document-link',
+        'embed',
+        'superscript',
+        'subscript',
+    ))
 
     class Meta:
         icon = 'text'
@@ -34,7 +48,12 @@ class ScientificSourceBlock(blocks.StructBlock):
 
 class AnswerOriginBlock(blocks.StructBlock):
     title = blocks.CharBlock(max_length=255)
-    content = blocks.RichTextBlock(help_text="Clarification of the answer's origin")
+    content = blocks.RichTextBlock(help_text="Clarification of the answer's origin", features=(
+        'bold',
+        'italic',
+        'link',
+        'document-link',
+    ))
     sources = blocks.ListBlock(ScientificSourceBlock)
 
     class Meta:
