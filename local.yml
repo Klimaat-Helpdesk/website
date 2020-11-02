@@ -20,8 +20,8 @@ services:
     ports:
       - "8000:8000"
     command: /start
-    expose:
-      - "8000"
+    environment:
+      - NODE_PATH=/node_modules/
 
   postgres:
     build:
