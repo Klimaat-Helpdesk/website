@@ -14,7 +14,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the docker image
-    - name: Install Dependencies
       run: docker-compose -f local.yml build
     - name: Run Tests
       run: docker-compose -f local.yml run --rm django pytest
