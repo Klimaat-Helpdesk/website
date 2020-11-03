@@ -11,7 +11,7 @@ There are some changes.
     
 This project uses docker and docker-compose. 
 
-To build the containers with the right dependencies and also install the pip requirements, use:
+To build the containers with the right dependencies, install the node dependencies (for the style of the templates) and the pip requirements (for the django applications), use:
 
     $ docker-compose -f local.yml build
 
@@ -19,19 +19,27 @@ Once this has been done, you can start the containers/services using the followi
 
     $ docker-compose -f local.yml up -d
 
-If you remove the ``-d``, you will see the logs on screen, but the containers will run only while your terminal is open.
-In this version, the Django process is not run automatically, instead you have to start the server yourself.
+This will take care of starting the database container and the webserver. You'll be able to load the website on your browser by visiting [localhost:8000](http://localhost:8000)
 
-The following command will start the django server at port 8000 in the container and mirror it to your host machine.
+If you remove the ``-d``, you will see the logs on screen, but the containers will run only while your terminal is open. 
 
-    $ docker-compose -f local.yml run --publish 127.0.0.1:8000:8000 django python manage.py runserver 0.0.0.0:8000
-    
+To stop the containers you can use:
+
+    $ docker-compose -f local.yml down
     
 You can run the other manage commands with: 
 
-    $ docker-compose -f local.yml run django python manage.py command_name
+    $ docker-compose -f local.yml run --rm django python3 manage.py command_name
     
 For the frontend, we use webpack. 
-To now run webpack you can use the following command in the src dir:
 
-    $ yarn webpack
+If you are running a container, webpack can be run with:
+
+    $ docker-compose -f local.yml run --rm django /node_modules/.bin/webpack --mode=production
+    
+You can change the ``--mode`` to ``--mode=development``. 
+
+You can also watch for design changes using:
+
+    $ docker-compose -f local.yml run --rm django /node_modules/.bin/webpack --mode=development --watch
+ 
