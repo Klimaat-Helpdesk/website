@@ -66,7 +66,7 @@
     display: block;
     @include typography(heading-1);
     color: $color-true-black;
-    margin-bottom: 55px;
+    margin-bottom: 45px;
   }
 
   .menu-overlay__footer-items {
@@ -92,7 +92,7 @@
 
     .menu-overlay__links {
       grid-column: column 8 / span 5;
-      margin: 125px 0 0 0;
+      margin: 100px 0 0 0;
     }
 
     .menu-overlay__button-container {
