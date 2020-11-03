@@ -35,7 +35,7 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN sh -c 'echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list'
 
 RUN apt-get update && \
- apt-get -y install -y yarn
+ apt-get -y install yarn
 
 # Requirements are installed here to ensure they will be cached.
 COPY ./requirements /requirements
@@ -49,10 +49,12 @@ COPY ./compose/local/django/start /start
 RUN sed -i 's/\r$//g' /start
 RUN chmod +x /start
 
+COPY ./yarn.lock /yarn.lock
+COPY ./package.json /package.json
+RUN yarn install
+
 WORKDIR /app
+
 
 ENTRYPOINT ["/entrypoint"]
 
-COPY ./yarn.lock /app/yarn.lock
-COPY ./package.json /app/package.json
-RUN yarn install
