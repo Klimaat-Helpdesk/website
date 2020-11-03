@@ -26,3 +26,6 @@ python-gitlab==2.5.0
 
 # Webpack
 django-webpack-loader==0.7.0
+
+# Whitenoise
+whitenoise==5.2.0
