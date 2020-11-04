@@ -47,9 +47,9 @@ class Expert(models.Model):
 
     def get_answer_categories(self):
         answers = self.get_answered_questions()
-        categories = []
+        categories = set()
         for a in answers:
-            categories += a.categories
+            categories |= set(a.categories)  # Using sets to avoid duplicates
         return categories
 
     class Meta:
