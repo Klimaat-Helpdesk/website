@@ -12,7 +12,7 @@ class HomePage(TemplateView):
     template_name = 'core/home_page.html'
 
     def get_context_data(self, **kwargs):
-        featured_answers = Answer.objects.live().filter(featured=True)[:10]
+        featured_answers = Answer.objects.live().filter(featured=True).order_by('-first_published_at')[:10]
         categories = AnswerCategory.objects.all()
         featured_experts = Expert.objects.filter(featured=True)[:3]
 
