@@ -202,7 +202,6 @@ class Answer(Page):
             'url': c.get_prefiltered_search_params()
         } for c in self.categories]
 
-
     def get_card_data(self):
         return {
             'title' : self.title,
@@ -228,7 +227,6 @@ class Answer(Page):
         return render_to_string('core/includes/related_item_block.html',
                                 context=self.get_card_data())
 
-
     def get_context(self, request, *args, **kwargs):
         context = super(Answer, self).get_context(request, *args, **kwargs)
 
@@ -240,6 +238,9 @@ class Answer(Page):
             'experts_page': ExpertIndexPage.objects.first(),
         })
         return context
+
+    class Meta:
+        ordering = ['-first_published_at']
 
 
 class AnswerIndexPage(RoutablePageMixin, Page):
