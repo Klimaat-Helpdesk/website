@@ -240,7 +240,7 @@ class Answer(Page):
         return context
 
     class Meta:
-        ordering = ['-first_published_at']
+        ordering = ['-first_published_at', ]
 
 
 class AnswerIndexPage(RoutablePageMixin, Page):
