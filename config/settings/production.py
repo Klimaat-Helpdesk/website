@@ -64,7 +64,8 @@ AWS_ACCESS_KEY_ID = env("DJANGO_AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = env("DJANGO_AWS_SECRET_ACCESS_KEY")
 # https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
 AWS_STORAGE_BUCKET_NAME = env("DJANGO_AWS_STORAGE_BUCKET_NAME")
-AWS_S3_CUSTOM_DOMAIN = 'media.klimaathelpdesk.org'
+# TODO: Change this on NOV 8
+# AWS_S3_CUSTOM_DOMAIN = 'media.klimaathelpdesk.org'
 # https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
 AWS_QUERYSTRING_AUTH = False
 # DO NOT change these unless you know what you're doing.
@@ -106,7 +107,10 @@ class MediaRootS3Boto3Storage(S3Boto3Storage):
 
 # endregion
 DEFAULT_FILE_STORAGE = "config.settings.production.MediaRootS3Boto3Storage"
-MEDIA_URL = f"https://media.klimaathelpdesk.org/media/"
+MEDIA_URL = f"https://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/media/"
+
+# TODO: Change this on Nov 8
+# MEDIA_URL = f"https://media.klimaathelpdesk.org/media/"
 
 # TEMPLATES
 # ------------------------------------------------------------------------------
