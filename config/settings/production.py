@@ -41,8 +41,7 @@ SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 # https://docs.djangoproject.com/en/dev/topics/security/#ssl-https
 # https://docs.djangoproject.com/en/dev/ref/settings/#secure-hsts-seconds
-# TODO: set this to 60 seconds first and then to 518400 once you prove the former works
-SECURE_HSTS_SECONDS = 60
+SECURE_HSTS_SECONDS = 518400
 # https://docs.djangoproject.com/en/dev/ref/settings/#secure-hsts-include-subdomains
 SECURE_HSTS_INCLUDE_SUBDOMAINS = env.bool(
     "DJANGO_SECURE_HSTS_INCLUDE_SUBDOMAINS", default=True
@@ -64,8 +63,7 @@ AWS_ACCESS_KEY_ID = env("DJANGO_AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = env("DJANGO_AWS_SECRET_ACCESS_KEY")
 # https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
 AWS_STORAGE_BUCKET_NAME = env("DJANGO_AWS_STORAGE_BUCKET_NAME")
-# TODO: Change this on NOV 8
-# AWS_S3_CUSTOM_DOMAIN = 'media.klimaathelpdesk.org'
+AWS_S3_CUSTOM_DOMAIN = 'media.klimaathelpdesk.org'
 # https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
 AWS_QUERYSTRING_AUTH = False
 # DO NOT change these unless you know what you're doing.
@@ -109,8 +107,7 @@ class MediaRootS3Boto3Storage(S3Boto3Storage):
 DEFAULT_FILE_STORAGE = "config.settings.production.MediaRootS3Boto3Storage"
 MEDIA_URL = f"https://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/media/"
 
-# TODO: Change this on Nov 8
-# MEDIA_URL = f"https://media.klimaathelpdesk.org/media/"
+MEDIA_URL = f"https://media.klimaathelpdesk.org/media/"
 
 # TEMPLATES
 # ------------------------------------------------------------------------------
