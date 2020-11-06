@@ -52,6 +52,15 @@ class Expert(models.Model):
             categories |= set(a.categories)  # Using sets to avoid duplicates
         return categories
 
+    @property
+    def twitter_username(self):
+        if self.twitter_profile:
+            if self.twitter_profile.endswith('/'):
+                self.twitter_profile = self.twitter_profile[:-1]
+                self.save()
+            twitter_username = self.twitter_profile.split('/')[-1]
+            return twitter_username
+
     class Meta:
         ordering = ['name', ]
 
