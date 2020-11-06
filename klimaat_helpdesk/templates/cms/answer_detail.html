@@ -4,6 +4,49 @@
 {% block title %}
   {{ self.title }} | KlimaatHelpdesk
 {% endblock title %}
+
+{% block extra_head %}
+  <link rel="canonical" href="{{ self.full_url }}">
+  <meta property="og:title" content="{{ self.title }}">
+  <meta property="og:type" content="article">
+  <meta property="twitter:site" content="@KlimaatHelpdesk">
+  <meta property="twitter:card" content="summary">
+  {% with self.get_primary_expert as expert %}
+    <meta name="author" content="{{ expert.name }}">
+    <meta property="og:article:author" content="{{ expert.name }}">
+    {% if expert.twitter_profile %}
+      <meta property="twitter:creator" content="@{{ expert.twitter_username }}">
+    {% endif %}
+  {% endwith %}
+  <meta name="keywords" content="{% for tag in self.tags.all %}{{ tag }}, {% endfor %}">
+
+  <meta property="og:locale" content="nl_NL">
+  <meta property="og:site_name" content="KlimaatHelpdesk">
+{% endblock extra_head %}
+{% block schema %}
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Article",
+  "headline": "{{ self.title }}",
+  "datePublished": "{{ self.first_published_at|date:"c" }}",
+  "dateModified": "{{ self.last_published_at|date:"c" }}",
+  "abstract": "{% if self.excerpt %}
+    {{ self.excerpt }}
+  {% elif self.introduction %}
+    {{ self.introduction }}
+  {% endif %}",
+  "author": { {% with self.get_primary_expert as expert %}
+    "@type": "Person",
+    "name": "{{ expert.name }}",
+    "affiliation": "{{ expert.affiliation }}",
+    "description": "{{ expert.bio }}",
+    "url": "{{ expert.url }}"
+  {% endwith %}},
+  "url": "{{ self.full_url }}"
+}
+</script>
+{% endblock schema %}
 {% block description %}
   {% if self.excerpt %}
     {{ self.excerpt }}
