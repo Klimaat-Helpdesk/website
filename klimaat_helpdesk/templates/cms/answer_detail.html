@@ -28,9 +28,9 @@
 {
   "@context": "https://schema.org/",
   "@type": "Article",
-  "headline": {{ self.title }},
-  "datePublished": {{ self.first_published_at }},
-  "dateModified": {{ self.last_published_at }},
+  "headline": "{{ self.title }}",
+  "datePublished": "{{ self.first_published_at }}",
+  "dateModified": "{{ self.last_published_at }}",
   "abstract": "{% if self.excerpt %}
     {{ self.excerpt }}
   {% elif self.introduction %}
