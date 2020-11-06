@@ -29,8 +29,8 @@
   "@context": "https://schema.org/",
   "@type": "Article",
   "headline": "{{ self.title }}",
-  "datePublished": "{{ self.first_published_at }}",
-  "dateModified": "{{ self.last_published_at }}",
+  "datePublished": "{{ self.first_published_at|date:"c" }}",
+  "dateModified": "{{ self.last_published_at|date:"c" }}",
   "abstract": "{% if self.excerpt %}
     {{ self.excerpt }}
   {% elif self.introduction %}
@@ -43,7 +43,7 @@
     "description": "{{ expert.bio }}",
     "url": "{{ expert.url }}"
   {% endwith %}},
-  "url": "{{ self.full_url }}",
+  "url": "{{ self.full_url }}"
 }
 </script>
 {% endblock schema %}
