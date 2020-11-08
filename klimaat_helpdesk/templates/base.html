@@ -1,4 +1,4 @@
-{% load static i18n bulma_tags footer_tags menu_tags %}
+{% load static i18n  %}
 {% load render_bundle from webpack_loader %}
 
 
@@ -9,8 +9,6 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>{% block title %}KlimaatHelpdesk{% endblock title %}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="{% block description %}{% endblock %}">
-
   <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}">
 
   {% block css %}
@@ -56,7 +54,26 @@
   </section>
 </main>
 
-{% get_footer %}
+<footer class="footer-bar">
+  <div class="footer-bar__wrapper">
+    <div class="footer-bar__logo-container">
+      <a class="footer-bar__logo-link" href="/">
+        {% include 'svg/logo/logo-white.svg' %}
+      </a>
+    </div>
+
+    <div class="footer-bar__links">
+      <span class="footer-bar__title">Een initiatief van
+        <a class="footer-bar__title-link" href="https://scientists4future.nl/">Scientists4Future NL</a> &
+        <a class="footer-bar__title-link" href="https://www.uu.nl/en/research/utrecht-young-academy">Utrecht Young Academy</a>
+      </span>
+
+      <a class="footer-bar__link" href="/about">Over ons</a>
+      <a class="footer-bar__link" href="/contact">Contact</a>
+    </div>
+
+  </div>
+</footer>
 {% block footer_js %}
 {% endblock %}
 

@@ -53,18 +53,3 @@ class GitlabIssues(models.Model):
             else:
                 self.issue_id = 1234
         super().save(force_insert=force_insert, force_update=force_update, using=using, update_fields=update_fields)
-
-
-@register_snippet
-class FooterText(models.Model):
-    text = RichTextField(blank=False)
-
-    panels = [
-        FieldPanel('text'),
-    ]
-
-    class Meta:
-        verbose_name_plural = 'Footer Text'
-
-    def __str__(self):
-        return "Footer Text"
