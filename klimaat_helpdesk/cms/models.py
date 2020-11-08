@@ -8,7 +8,8 @@ from modelcluster.contrib.taggit import ClusterTaggableManager
 from modelcluster.fields import ParentalKey
 from taggit.models import TaggedItemBase
 
-from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, StreamFieldPanel
+from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, StreamFieldPanel, HelpPanel
+from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.contrib.routable_page.models import RoutablePageMixin, route
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Orderable, Page
@@ -83,14 +84,40 @@ register_snippet(AnswerCategory)
 class Answer(Page):
     template = 'cms/answer_detail.html'
 
-    # Determins type and whether its highlighted in overviewlist
-    type = models.CharField(choices=[('answer', 'Antwoord'), ('column', 'Column')], max_length=100, default='answer')
+    # Determines type and whether its highlighted in overview list
+    type = models.CharField(
+        choices=[('answer', 'Antwoord'), ('column', 'Column')],
+        max_length=100,
+        default='answer',
+        help_text=_('Choose between answer or discussion piece with a more prominent look')
+    )
     featured = models.BooleanField(default=False)
 
     content = RichTextField(blank=True)
-    excerpt = models.CharField(verbose_name=_('Short description'), max_length=255, blank=False, null=True)
-    introduction = TextField(default='', blank=True, null=True)
+    excerpt = models.CharField(
+        verbose_name=_('Short description'),
+        max_length=255,
+        blank=False,
+        null=True,
+        help_text=_('This helps with search engines and when sharing on social media'),
+    )
+    introduction = TextField(
+        verbose_name=_('Introduction'),
+        default='',
+        blank=True,
+        null=True,
+        help_text=_('This text is displayed above the tags, useful as a TLDR section'),
+    )
     tags = ClusterTaggableManager(through=AnswerTag, blank=True)
+
+    social_image =  models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        help_text=_('This is the image that will be displayed when sharing on social media'),
+    )
 
     # Freeform content of answer
     page_content = StreamField([
@@ -113,15 +140,20 @@ class Answer(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel('type'),
-        FieldPanel('featured', heading="Show this answer on the home page"),
-        FieldPanel('excerpt', classname='full'),
-        # FieldPanel('content', classname='full', heading="Original content of old site"),
+
+        FieldPanel('featured',
+                   heading=_("Show this answer on the home page")),
+
+        FieldPanel('excerpt',
+                   classname='full',),
+
         FieldPanel('introduction', classname='full'),
+
         MultiFieldPanel(
             [
                 InlinePanel('answer_category_relationship', label=_('Categorie(n)'), panels=None, min_num=1)
             ],
-            heading=_('Categorie(n)')
+            heading=_('Categorie(s)')
         ),
         FieldPanel('tags', heading="Please use tags with a maximum length of 16 characters per single word to avoid overlap in the mobile view."),
         MultiFieldPanel(
@@ -132,7 +164,8 @@ class Answer(Page):
         ),
         StreamFieldPanel('page_content'),
         StreamFieldPanel('answer_origin'),
-        StreamFieldPanel('related_items')
+        StreamFieldPanel('related_items'),
+        ImageChooserPanel('social_image', help_text=_('Image to be used when sharing on social media')),
     ]
 
     search_fields = Page.search_fields + [

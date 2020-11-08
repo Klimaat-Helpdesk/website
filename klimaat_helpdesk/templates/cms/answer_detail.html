@@ -8,7 +8,18 @@
 {% block extra_head %}
   <link rel="canonical" href="{{ self.full_url }}">
   <meta property="og:title" content="{{ self.title }}">
+  <meta property="twitter:title" content="{{ self.title }}">
   <meta property="og:type" content="article">
+  {% if self.social_image %}
+    {% image self.social_image width-400 as tmp_photo %}
+    <meta property="og:image" content="{{ tmp_photo.url }}">
+    <meta property="twitter:image" content="{{ tmp_photo.url }}">
+  {% endif %}
+  {% if self.excerpt %}
+    <meta name="description" content="{{ self.excerpt }}">
+    <meta name="og:description" content="{{ self.excerpt }}">
+    <meta name="twitter:description" content="{{ self.excerpt }}">
+  {% endif %}
   <meta property="twitter:site" content="@KlimaatHelpdesk">
   <meta property="twitter:card" content="summary">
   {% with self.get_primary_expert as expert %}

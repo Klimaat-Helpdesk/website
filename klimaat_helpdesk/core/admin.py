@@ -21,9 +21,10 @@ modeladmin_register(QuestionAdmin)
 class AnswerCategoryAdmin(ModelAdmin):
     model = AnswerCategory
     menu_label = _('Categories')
-    menu_icon = 'help'
+    menu_icon = 'list-ul'
     menu_order = 290
     add_to_settings_menu = False
     exclude_from_explorer = False
+    list_display = ('name', 'slug', 'description')
 
 modeladmin_register(AnswerCategoryAdmin)
