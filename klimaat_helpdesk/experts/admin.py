@@ -12,7 +12,8 @@ class ExpertAdmin(ModelAdmin):
     menu_order = 280
     add_to_settings_menu = False
     exclude_from_explorer = False
-    list_display = ('name', 'affiliation')
+    list_display = ('name', 'affiliation', 'email')
+    list_filter = ('featured', 'affiliation')
     search_fields = ('name', 'affiliation')
 
 
