@@ -46,6 +46,10 @@
     @include typography(heading-1);
   }
 
+  .simple-header__introduction{
+    @include typography(heading-3);
+  }
+
   .simple-header__introduction-container {
     grid-column: column 2 / span 9;
   }
