@@ -47,7 +47,7 @@
   }
 
   .simple-header__introduction{
-    @include typography(heading-3);
+    @include typography(paragraph);
   }
 
   .simple-header__introduction-container {
