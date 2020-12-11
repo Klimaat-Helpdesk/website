@@ -21,7 +21,7 @@
         <div class="disclosure__disclosure-content richtext" role="region" aria-labelledby="{{ button_id }}"  aria-hidden="false">
           {% for ref in page.get_references %}
             <p>
-              <span>[{{ forloop.counter }}] {{ ref.text }}</span> <span><b>{{ ref.url }}</b></span>
+              <span>[{{ forloop.counter }}] {{ ref.text }}</span> <span><b><a href="{{ ref.url }}">{{ ref.url }}</a></b></span>
             </p>
           {% endfor %}
         </div>
