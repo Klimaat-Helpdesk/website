@@ -129,12 +129,12 @@ class Answer(Page):
     # Which experts and how was this answered?
     answer_origin = StreamField([
         ('origin', AnswerOriginBlock())
-    ], blank=True)
+        ], blank=True)
 
     # Related items
     related_items = StreamField([
         ('related_items', RelatedItemsBlock())
-    ], blank=True)
+        ], blank=True)
 
     parent_page_types = ['AnswerIndexPage']
 
@@ -199,7 +199,12 @@ class Answer(Page):
 
     def get_references(self):
         """
-        Build reference list, alphabetically to sort of comply with standards
+        Build reference list, in the order Wagtail returns them.  ### , alphabetically to sort of comply with standards
+
+        TODO: References for articles can be separated from the origin and make them a proper ListBlock that can be
+            handled by editors as they see fit. Having the references within a StreamField of 'origins' seems counter
+            intuitive.
+            
         """
         ref_list = []
         try:
@@ -215,7 +220,7 @@ class Answer(Page):
             })
 
         # Sort by text starting letter, best we can do for now
-        ref_list.sort(key=lambda e: e['text'])
+        # ref_list.sort(key=lambda e: e['text'])
         return ref_list
 
     def get_primary_expert(self):
