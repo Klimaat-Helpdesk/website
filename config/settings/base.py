@@ -77,7 +77,6 @@ THIRD_PARTY_APPS = [
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
-    "rest_framework",
     "webpack_loader",
 ]
 
@@ -97,7 +96,6 @@ WAGTAIL_APPS = [
     'wagtail.core',
     'modelcluster',
     'taggit',
-    'wagtailmenus',
 ]
 
 LOCAL_APPS = [
@@ -220,7 +218,6 @@ TEMPLATES = [
                 "django.template.context_processors.tz",
                 "django.contrib.messages.context_processors.messages",
                 "klimaat_helpdesk.utils.context_processors.settings_context",
-                'wagtailmenus.context_processors.wagtailmenus',
             ],
         },
     }
@@ -317,13 +314,6 @@ SOCIALACCOUNT_ADAPTER = "klimaat_helpdesk.users.adapters.SocialAccountAdapter"
 
 WAGTAIL_SITE_NAME = 'KlimaatHelpdesk'
 BASE_URL = 'https://www.klimaathelpdesk.org'
-
-WAGTAILMENUS_FLAT_MENUS_HANDLE_CHOICES = (
-    ('header', 'Header Menu'),
-    ('sidebar', 'Sidebar Menu'),
-    ('footer', 'Footer Menu'),
-)
-
 
 # Taggit
 TAGGIT_CASE_INSENSITIVE = True
