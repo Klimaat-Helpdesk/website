@@ -1,29 +1,54 @@
 from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
+from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy as _
 import gitlab
-from wagtail.admin.edit_handlers import FieldPanel
-from wagtail.core.fields import RichTextField
-from wagtail.snippets.models import register_snippet
 
 
 class Question(models.Model):
     """Main element to drive the flow of the website. Questions are what the user can ask and which will trigger the
     rest of the actions on the website
     """
+    UNDECIDED = 0
+    APPROVED = 1
+    ANSWERED = 2
+    REJECTED = 3
+
+    STATUS_CHOICES = (
+        (UNDECIDED, _('Undecided')),
+        (APPROVED, _('Approved')),
+        (ANSWERED, _('Answered')),
+        (REJECTED, _('Rejected'))
+    )
+
     question = models.TextField(verbose_name=_('Your Question'), blank=False, null=False)
+    relevant_timespan = models.TextField(verbose_name=_('Relevant timespan'), blank=True, null=True)
+    relevant_location = models.TextField(verbose_name=_('Relevant location'), blank=True, null=True)
+    extra_info = models.TextField(verbose_name=_('Extra information'), blank=True, null=True)
+    categories = models.TextField(verbose_name=_('Categories'), blank=True, null=True)
+
     user_email = models.EmailField(verbose_name=_('User Email'), blank=True, null=True)
     asked_by_ip = models.GenericIPAddressField(null=True, blank=True)
 
     date_asked = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=None, null=True)
+    status = models.IntegerField(choices=STATUS_CHOICES, default=UNDECIDED)
+
+    def get_card_data(self):
+        return {
+            'title': self.question,
+        }
+
+    def get_as_home_row_card(self):
+        return render_to_string('core/includes/question_list_block.html',
+                                context=self.get_card_data())
 
     def save(self, **kwargs):
         try:
             self.issue
         except ObjectDoesNotExist:
-            if self.approved:
+            if self.approved or self.status == self.APPROVED:
                 GitlabIssues.objects.create(question=self)
         super().save(**kwargs)
 
@@ -41,7 +66,12 @@ class GitlabIssues(models.Model):
                 template_issue = project.files.get(
                     file_path='Templates/template_question_issue.md', ref='master').decode().decode('utf-8')
 
-                issue_body = f"# Question\n{self.question.question}\n\n{template_issue}"
+                issue_body = f"""# Question\n{self.question.question}
+                Categories: {self.question.categories}
+                Timespan: {self.question.relevant_timespan}
+                Location: {self.question.relevant_location}
+                Extra information: {self.question.extra_info}
+                \n\n{template_issue}"""
                 issue_title = self.question.question
                 issue = project.issues.create({
                     'title': issue_title[:254],
