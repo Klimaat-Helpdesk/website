@@ -29,6 +29,25 @@ class HomePage(TemplateView):
 home_page = HomePage.as_view()
 
 
+class QuestionsInProgress(TemplateView):
+    template_name = 'core/questions_in_progress.html'
+
+    def get_context_data(self, **kwargs):
+        featured_experts = Expert.objects.filter(featured=True)[:3]
+        questions = Question.objects.filter(status=Question.APPROVED)
+        for q in questions:
+            print(q)
+        context = super(QuestionsInProgress, self).get_context_data(**kwargs)
+        context.update({
+            'answers_page': AnswerIndexPage.objects.first().url,
+            'experts_page': ExpertIndexPage.objects.first(),
+            'featured_experts': featured_experts,
+            'questions_in_progress': questions
+            })
+        return context
+
+questions_in_progress = QuestionsInProgress.as_view()
+
 class AskAQuestionPage(FormView):
     """
     This is the page where users can submit a new question. It consists of a form
@@ -97,15 +116,19 @@ class AskAQuestionPage(FormView):
                     form.cleaned_data['categories']
                 )
 
-                question_str = """Question: {}
-                            Relevant location: {}
-                            Relevant timespan: {}
-                            Extra info: {}
-                            Categories: {}
-                            """.format(*data)
+                # question_str = """Question: {}
+                #             Relevant location: {}
+                #             Relevant timespan: {}
+                #             Extra info: {}
+                #             Categories: {}
+                #             """.format(*data)
 
                 q = Question.objects.create(
-                    question=question_str,
+                    question=form.cleaned_data['main_question'],
+                    relevant_location=form.cleaned_data['relevant_location'],
+                    relevant_timespan=form.cleaned_data['relevant_timespan'],
+                    extra_info=form.cleaned_data['extra_info'],
+                    categories=f"{form.cleaned_data['categories']}",
                     asked_by_ip=self.request.META.get('REMOTE_ADDR')
                 )
 

@@ -12,7 +12,7 @@ class QuestionAdmin(ModelAdmin):
     menu_order = 290
     add_to_settings_menu = False
     exclude_from_explorer = False
-    list_display = ('question', 'user_email', 'date_asked', 'approved')
+    list_display = ('question', 'user_email', 'date_asked', 'status')
     search_fields = ("user_email", "question")
 
 modeladmin_register(QuestionAdmin)
