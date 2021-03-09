@@ -23,6 +23,7 @@ class Question(models.Model):
     )
 
     question = models.TextField(verbose_name=_('Your Question'), blank=False, null=False)
+    original_question = models.TextField(verbose_name=_('Backup information'), blank=True, null=True)
     relevant_timespan = models.TextField(verbose_name=_('Relevant timespan'), blank=True, null=True)
     relevant_location = models.TextField(verbose_name=_('Relevant location'), blank=True, null=True)
     extra_info = models.TextField(verbose_name=_('Extra information'), blank=True, null=True)
@@ -45,6 +46,7 @@ class Question(models.Model):
                                 context=self.get_card_data())
 
     def save(self, **kwargs):
+        super().save(**kwargs)
         try:
             self.issue
         except ObjectDoesNotExist:

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-17 12:35+0000\n"
+"POT-Creation-Date: 2021-03-09 19:34+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,68 +22,149 @@ msgstr ""
 msgid "Dutch"
 msgstr "Nederlands"
 
+#: klimaat_helpdesk/cms/admin.py:10
+msgid "Answers"
+msgstr ""
+
+#: klimaat_helpdesk/cms/admin.py:22
+msgid "General Pages"
+msgstr ""
+
 #: klimaat_helpdesk/cms/apps.py:7
 msgid "Q&A CMS"
 msgstr ""
 
-#: klimaat_helpdesk/cms/models.py:39 klimaat_helpdesk/experts/models.py:15
+#: klimaat_helpdesk/cms/models.py:56 klimaat_helpdesk/experts/models.py:16
 msgid "name"
 msgstr "Naam"
 
-#: klimaat_helpdesk/cms/models.py:41
+#: klimaat_helpdesk/cms/models.py:58
 msgid "slug"
 msgstr ""
 
-#: klimaat_helpdesk/cms/models.py:44
+#: klimaat_helpdesk/cms/models.py:61
 msgid "A slug to identify the category"
 msgstr ""
 
-#: klimaat_helpdesk/cms/models.py:45
+#: klimaat_helpdesk/cms/models.py:62
 msgid "description"
 msgstr "Omschrijving"
 
-#: klimaat_helpdesk/cms/models.py:54
+#: klimaat_helpdesk/cms/models.py:71
 msgid "Answer Category"
 msgstr "Antwoord categorie"
 
-#: klimaat_helpdesk/cms/models.py:55
+#: klimaat_helpdesk/cms/models.py:72
 msgid "Answer Categories"
 msgstr "Antwoord categoriën"
 
-#: klimaat_helpdesk/cms/models.py:70
+#: klimaat_helpdesk/cms/models.py:92
+msgid "Choose between answer or discussion piece with a more prominent look"
+msgstr ""
+
+#: klimaat_helpdesk/cms/models.py:98
 msgid "Short description"
 msgstr "Korte omschrijving"
 
-#: klimaat_helpdesk/cms/models.py:81 klimaat_helpdesk/cms/models.py:83
+#: klimaat_helpdesk/cms/models.py:102
+msgid "This helps with search engines and when sharing on social media"
+msgstr ""
+
+#: klimaat_helpdesk/cms/models.py:105
+msgid "Introduction"
+msgstr ""
+
+#: klimaat_helpdesk/cms/models.py:109
+msgid "This text is displayed above the tags, useful as a TLDR section"
+msgstr ""
+
+#: klimaat_helpdesk/cms/models.py:119
+msgid "This is the image that will be displayed when sharing on social media"
+msgstr ""
+
+#: klimaat_helpdesk/cms/models.py:145
+msgid "Show this answer on the home page"
+msgstr ""
+
+#: klimaat_helpdesk/cms/models.py:154
+#, fuzzy
+#| msgid "Categories"
+msgid "Categorie(n)"
+msgstr "Categoriën"
+
+#: klimaat_helpdesk/cms/models.py:156
+#, fuzzy
+#| msgid "Categories"
+msgid "Categorie(s)"
+msgstr "Categoriën"
+
+#: klimaat_helpdesk/cms/models.py:161 klimaat_helpdesk/cms/models.py:163
 msgid "Expert(s)"
 msgstr "Experts"
 
-#: klimaat_helpdesk/cms/models.py:89
-msgid "Categories"
-msgstr "Categoriën"
+#: klimaat_helpdesk/cms/models.py:168
+msgid "Image to be used when sharing on social media"
+msgstr ""
 
-#: klimaat_helpdesk/cms/models.py:134
-msgid "Subtitle to show on the header of the page"
-msgstr "Subtitel voor op de header van de pagina"
+#: klimaat_helpdesk/cms/models.py:233
+msgid "Unknown"
+msgstr ""
 
-#: klimaat_helpdesk/core/admin.py:9
-#: klimaat_helpdesk/templates/cms/answer_detail.html:20
+#: klimaat_helpdesk/core/admin.py:10
 msgid "Questions"
 msgstr "Vragen"
+
+#: klimaat_helpdesk/core/admin.py:23 klimaat_helpdesk/core/models.py:30
+msgid "Categories"
+msgstr "Categoriën"
 
 #: klimaat_helpdesk/core/apps.py:7
 msgid "Core App"
 msgstr ""
 
-#: klimaat_helpdesk/core/forms.py:8
-msgid "Accept Terms & Conditions"
-msgstr "Ik ga akkoord met de algemene voorwaarden"
+#: klimaat_helpdesk/core/forms.py:36
+msgid "Ik heb de algemene voorwaarden gelezen en ga er mee akkoord"
+msgstr ""
 
-#: klimaat_helpdesk/core/models.py:15
+#: klimaat_helpdesk/core/models.py:19
+msgid "Undecided"
+msgstr ""
+
+#: klimaat_helpdesk/core/models.py:20
+msgid "Approved"
+msgstr ""
+
+#: klimaat_helpdesk/core/models.py:21
+#, fuzzy
+#| msgid "Answer Category"
+msgid "Answered"
+msgstr "Antwoord categorie"
+
+#: klimaat_helpdesk/core/models.py:22
+msgid "Rejected"
+msgstr ""
+
+#: klimaat_helpdesk/core/models.py:25
 msgid "Your Question"
 msgstr "Jouw vraag"
 
-#: klimaat_helpdesk/core/models.py:16
+#: klimaat_helpdesk/core/models.py:26
+msgid "Backup information"
+msgstr ""
+
+#: klimaat_helpdesk/core/models.py:27
+msgid "Relevant timespan"
+msgstr ""
+
+#: klimaat_helpdesk/core/models.py:28
+msgid "Relevant location"
+msgstr ""
+
+#: klimaat_helpdesk/core/models.py:29
+msgid "Extra information"
+msgstr ""
+
+#: klimaat_helpdesk/core/models.py:32
 msgid "User Email"
 msgstr "Gebruikers e-mail"
 
@@ -91,36 +172,35 @@ msgstr "Gebruikers e-mail"
 msgid "Experts"
 msgstr "Deskundigen"
 
-#: klimaat_helpdesk/experts/models.py:16
+#: klimaat_helpdesk/experts/models.py:17
 msgid "email"
 msgstr "e-mail"
 
-#: klimaat_helpdesk/experts/models.py:17
+#: klimaat_helpdesk/experts/models.py:18
 msgid "biography"
 msgstr "biografie"
 
-#: klimaat_helpdesk/experts/models.py:19
+#: klimaat_helpdesk/experts/models.py:20
 msgid "areas of expertise"
 msgstr "expertisegebieden"
 
-#: klimaat_helpdesk/experts/models.py:20
+#: klimaat_helpdesk/experts/models.py:21
 msgid "Affiliation"
 msgstr "Werkzaam bij"
 
-#: klimaat_helpdesk/experts/models.py:21
+#: klimaat_helpdesk/experts/models.py:22
 msgid "Website"
 msgstr "Website"
 
-#: klimaat_helpdesk/experts/models.py:22
+#: klimaat_helpdesk/experts/models.py:23
 msgid "Twitter Profile"
 msgstr "op Twitter"
 
-#: klimaat_helpdesk/experts/models.py:23
+#: klimaat_helpdesk/experts/models.py:24
 msgid "LinkedIn Profile"
 msgstr "op LinkedIn"
 
 #: klimaat_helpdesk/search/apps.py:7
-#: klimaat_helpdesk/templates/includes/navbar.html:27
 #: klimaat_helpdesk/templates/search/search.html:7
 msgid "Search"
 msgstr "Zoeken"
@@ -412,54 +492,129 @@ msgid ""
 "mail address</a>."
 msgstr "Je kunt je <a href=\"%(email_url)s\">e-mailadres aanpassen</a>."
 
-# ## English must be Helpdesk Klimaat or Helpdesk Climate
-#: klimaat_helpdesk/templates/cms/answer_detail.html:9
-#: klimaat_helpdesk/templates/core/home_page.html:8
-#: klimaat_helpdesk/templates/core/new_question.html:8
-#: klimaat_helpdesk/templates/core/new_question_thanks.html:8
-msgid ""
-"All the questions you may have\n"
-"          regarding climate breakdown, global warming, answered by experts."
-msgstr ""
-"Al je vragen over de klimaatverandering en de gevolgen daarvan beantwoord "
-"door actieve wetenschappers"
-
-#: klimaat_helpdesk/templates/cms/answer_detail.html:22
-#, fuzzy
-#| msgid "Questions"
-msgid "Specific Question"
-msgstr "Vragen"
-
-#: klimaat_helpdesk/templates/cms/answers_list.html:25
-msgid "Previous Page"
-msgstr "Vorige pagina"
-
-#: klimaat_helpdesk/templates/cms/answers_list.html:28
-msgid "Next page"
-msgstr "Volgende pagina"
-
 #: klimaat_helpdesk/templates/cms/answers_list.html:45
-#: klimaat_helpdesk/templates/core/home_page.html:30
-msgid "Meet an expert"
-msgstr "Maak kennis met een deskundige"
+#: klimaat_helpdesk/templates/core/home_page.html:53
+#: klimaat_helpdesk/templates/core/questions_in_progress.html:18
+msgid ""
+"Heb je het antwoord dat je zocht niet gevonden? Check de vragen in "
+"behandeling of stel je eigen vraag!"
+msgstr ""
 
-#: klimaat_helpdesk/templates/cms/answers_list.html:57
-#: klimaat_helpdesk/templates/core/home_page.html:36
+#: klimaat_helpdesk/templates/cms/answers_list.html:48
+#: klimaat_helpdesk/templates/core/home_page.html:56
+#: klimaat_helpdesk/templates/core/questions_in_progress.html:21
+msgid "Stel je vraag"
+msgstr ""
+
+#: klimaat_helpdesk/templates/cms/answers_list.html:54
+#: klimaat_helpdesk/templates/core/home_page.html:62
+#: klimaat_helpdesk/templates/core/questions_in_progress.html:27
+msgid "In Behandeling"
+msgstr ""
+
+#: klimaat_helpdesk/templates/cms/blocks/answer_origin.html:15
+msgid "Bronnen"
+msgstr ""
+
+#: klimaat_helpdesk/templates/cms/blocks/related_content.html:6
+msgid "Gerelateerde items"
+msgstr ""
+
+#: klimaat_helpdesk/templates/core/ask_a_question_page.html:18
+msgid "Stel een vraag"
+msgstr ""
+
+#: klimaat_helpdesk/templates/core/ask_a_question_page.html:24
+msgid ""
+"Wij willen je vraag graag zo compleet en correct mogelijk beantwoorden en "
+"verifiëren. Daar hebben wij gemiddeld twee weken voor nodig en binnen deze "
+"tijd gaan twee van onze experts voor jou aan de slag. De een doorzoekt "
+"bronnen, verifiëert, en discussiëert, de ander gaat alles nog eens grondig "
+"controleren. Zo behalen we de wetenschappelijke standaard die nodig is voor "
+"een betrouwbaar antwoord."
+msgstr ""
+
+#: klimaat_helpdesk/templates/core/ask_a_question_page.html:45
+msgid "Waar gaat je vraag over?"
+msgstr ""
+
+#: klimaat_helpdesk/templates/core/ask_a_question_page.html:46
+msgid "Formuleer je vraag"
+msgstr ""
+
+#: klimaat_helpdesk/templates/core/ask_a_question_page.html:61
+#: klimaat_helpdesk/templates/core/question_submitted.html:30
+msgid "Het formulier kon niet worden verzonden, controleer de gegevens."
+msgstr ""
+
+#: klimaat_helpdesk/templates/core/ask_a_question_page.html:76
+msgid "Continue"
+msgstr ""
+
+#: klimaat_helpdesk/templates/core/ask_a_question_page.html:84
+msgid "Tip:"
+msgstr ""
+
+#: klimaat_helpdesk/templates/core/ask_a_question_page.html:85
+msgid "Check voordat je een vraag stelt of iemand anders je niet voor was"
+msgstr ""
+
+#: klimaat_helpdesk/templates/core/ask_a_question_page.html:105
+msgid "Ik heb een vraag over "
+msgstr ""
+
+#: klimaat_helpdesk/templates/core/ask_a_question_page.html:145
+#: klimaat_helpdesk/templates/core/question_submitted.html:56
+msgid "Submit"
+msgstr "Verstuur"
+
+#: klimaat_helpdesk/templates/core/home_page.html:44
+msgid "Vragenoverzicht"
+msgstr ""
+
+#: klimaat_helpdesk/templates/core/home_page.html:72
+#: klimaat_helpdesk/templates/core/questions_in_progress.html:37
+msgid "Hoe beantwoorden we jullie vragen?"
+msgstr ""
+
+#: klimaat_helpdesk/templates/core/home_page.html:73
+#: klimaat_helpdesk/templates/core/questions_in_progress.html:38
+msgid ""
+"De vraag wordt doorgestuurd naar een expert, die aan de hand van "
+"verschillende bronnen een antwoord schrijft. Dit antwoord wordt door een "
+"tweede expert nagekeken en wordt dan als artikel gepubliceerd op de website. "
+"[<a href=\"https://www.klimaathelpdesk.org/workflow/\">lees verder</a>]"
+msgstr ""
+
+# ## in English, this should actually be Helpdesk-Climate (or use the dutch name for all languages)
+#: klimaat_helpdesk/templates/core/home_page.html:78
+#: klimaat_helpdesk/templates/core/questions_in_progress.html:43
+#, fuzzy
+#| msgid "Our Experts"
+msgid "Onze experts"
+msgstr "Onze deskundigen"
+
+#: klimaat_helpdesk/templates/core/home_page.html:79
+#: klimaat_helpdesk/templates/core/questions_in_progress.html:44
+msgid ""
+"Elke vraag wordt beantwoord door een actieve wetenschapper of deskundige die "
+"expert is op dat vakgebied"
+msgstr ""
+
+#: klimaat_helpdesk/templates/core/home_page.html:104
+#: klimaat_helpdesk/templates/core/questions_in_progress.html:69
 #, fuzzy
 #| msgid "Meet an expert"
-msgid "See all our experts"
-msgstr "Maak kenis met onze deskundigen"
+msgid "Maak kennis met alle experts"
+msgstr "Maak kennis met een deskundige"
 
-#: klimaat_helpdesk/templates/core/home_page.html:31
-msgid "Get to know one of the many experts answering questions"
-msgstr "Maak kennis met een van de vele deskundigen die je vragen beantwoorden"
-
-#: klimaat_helpdesk/templates/core/includes/answer_block.html:8
-msgid "read more"
-msgstr "lees meer"
+#: klimaat_helpdesk/templates/core/includes/answer_block.html:4
+#: klimaat_helpdesk/templates/core/includes/answer_home_block.html:4
+#: klimaat_helpdesk/templates/core/includes/related_item_block.html:5
+msgid "Beantwoord door"
+msgstr ""
 
 #: klimaat_helpdesk/templates/core/includes/aside.html:12
-#: klimaat_helpdesk/templates/core/new_question.html:18
 msgid "Ask your question"
 msgstr "Stel je vraag"
 
@@ -468,67 +623,57 @@ msgid "Didn't find the answer you were looking for? Submit your own question!"
 msgstr "Heb je het antwoord dat je zocht niet gevonden? Stel je eigen vraag!"
 
 #: klimaat_helpdesk/templates/core/includes/aside.html:14
-#: klimaat_helpdesk/templates/includes/navbar.html:23
 msgid "Ask a Question"
 msgstr "Stel je vraag"
 
-#: klimaat_helpdesk/templates/core/new_question.html:19
-msgid ""
-"After you ask your question, we will review it and assign it to an expert to "
-"answer it.\n"
-"          The entire process may take up to a couple of weeks. If you would "
-"like to be informed about the progress, you\n"
-"          can leave us your e-mail."
+#: klimaat_helpdesk/templates/core/new_question_failure.html:18
+msgid "Sorry.. Er is iets misgegaan"
 msgstr ""
-"Nadat wij je vraag hebben ontvangen, zullen we deze beoordelen en toewijzen "
-"aan een van onze deskundigen om te beantwoorden. Het hele proces kan enkele "
-"weken duren. Als je graag op de hoogte wilt worden gehouden van de "
-"voortgang, \n"
-"kun je je e-mail invullen"
 
-#: klimaat_helpdesk/templates/core/new_question.html:31
-#| msgid "Accept Terms & Conditions"
-msgid "Our terms and conditions"
-msgstr "Lees hier onze algemene voorwaarden"
-
-#: klimaat_helpdesk/templates/core/new_question.html:33
-msgid "Submit"
-msgstr "Verstuur"
-
-#: klimaat_helpdesk/templates/core/new_question_thanks.html:18
-msgid "Thanks for submitting your question"
-msgstr "Bedankt voor het stellen van je vraag"
-
-#: klimaat_helpdesk/templates/core/new_question_thanks.html:19
+#: klimaat_helpdesk/templates/core/new_question_thanks.html:17
 msgid ""
-"We will review the question and send it to experts to answer it. If you gave "
-"us your\n"
-"          e-mail\n"
-"          in the previous step, we will keep you posted about the progress. "
-"If not, please check back this website\n"
-"          periodically.\n"
-"        "
+"Bedankt voor het stellen van je vraag. We nemen je vraag in behandeling en "
+"proberen zo snel mogelijk een expert te vinden die je vraag kan "
+"beantwoorden.."
 msgstr ""
-"We zullen de vraag beoordelen en naar deskundigen sturen om deze te "
-"beantwoorden. Als je je e-mail in de vorige stap hebt ingevoerd,houden we je "
-"op de hoogte van de voortgang. Heb je dit niet gedaan, houd dan deze website "
-"in de gaten"
 
-# ## not clear for me what to do exactly with multi-line messages, I hope the show up correctly
-#: klimaat_helpdesk/templates/core/new_question_thanks.html:29
+#: klimaat_helpdesk/templates/core/question_submitted.html:21
+msgid "Bedankt voor je vraag!"
+msgstr ""
+
+#: klimaat_helpdesk/templates/core/question_submitted.html:22
 msgid ""
-"Remember that some questions are harder to answer, and therefore it may\n"
-"              take longer,\n"
-"              some are out of the scope of this website, or duplicated. We "
-"promise we will be as transparent as possible\n"
-"              regarding the decisions taken."
+"Laat je mailadres achter als je op de hoogte gehouden wilt worden "
+"[optioneel]."
 msgstr ""
-"Onthoud dat sommige vragen moeilijker te beantwoorden zijn en daarom kan "
-"langer duren. "
 
-#: klimaat_helpdesk/templates/includes/navbar.html:5
-msgid "Klimaat Helpdesk"
-msgstr "Helpdesk Klimaat"
+#: klimaat_helpdesk/templates/core/question_submitted.html:48
+msgid "Onze voorwaarden"
+msgstr ""
+
+#: klimaat_helpdesk/templates/core/question_submitted.html:64
+msgid "Terug naar de homepage"
+msgstr ""
+
+#: klimaat_helpdesk/templates/experts/expert_answer_overview_page.html:6
+msgid "Antwoorden van "
+msgstr ""
+
+#: klimaat_helpdesk/templates/experts/expert_answer_overview_page.html:23
+msgid "Bekijk alle antwoorden"
+msgstr ""
+
+#: klimaat_helpdesk/templates/experts/experts_list.html:46
+msgid "Wie zijn de mensen achter de KlimaatHelpdesk"
+msgstr ""
+
+#: klimaat_helpdesk/templates/experts/experts_list.html:56
+msgid "Wie zijn wij?"
+msgstr ""
+
+#: klimaat_helpdesk/templates/experts/includes/expert_block.html:25
+msgid "Bekijk de vragen die beantwoord zijn door "
+msgstr ""
 
 #: klimaat_helpdesk/templates/search/search.html:23
 msgid "No answers found"
@@ -566,40 +711,6 @@ msgstr "E-mail"
 msgid "Update"
 msgstr "Bijwerken"
 
-#: klimaat_helpdesk/templates/wagtail_review/email/request_review.txt:3
-#, python-format
-msgid "Dear %(full_name)s,"
-msgstr "Beste %(full_name)s"
-
-#: klimaat_helpdesk/templates/wagtail_review/email/request_review.txt:3
-msgid "Dear"
-msgstr "Beste"
-
-#: klimaat_helpdesk/templates/wagtail_review/email/request_review.txt:4
-#, python-format
-msgid ""
-"\n"
-"%(full_name)s has requested a review from you on the page \"%(page_title)s"
-"\". To review the page and provide your feedback, please visit the link "
-"below. You can add notes on individual paragraphs just by highlighting them "
-"and entering a message. Once you are ready, you can submit your review and "
-"overall opinion by clicking on the button at the bottom-right of the page:"
-msgstr ""
-"\n"
-"%(full_name)s heeft je verzocht om de pagina \"%(page_title)s\" te reviewen. "
-"Om de pagina te reviewen en je commentaar in te vullen, bezoek de link hier "
-"onder. Om notities op individule paragrafen achter te laten, highlight de "
-"paragraaf en vul je commentaar in. Zodra je klaar bent, kun je je review en "
-"je meningsubmitten door op de knop rechtsonder te klikken:"
-
-#: klimaat_helpdesk/templates/wagtail_review/email/request_review.txt:9
-msgid ""
-"Please do not share this link - it is personal to you, and anyone else with "
-"the link will be able to respond to the review under your name. "
-msgstr ""
-"Deel deze link niet - deze is voor jouw persoonlijk, en iemand anders met "
-"dezelink zal als jouw de review kunnen beantwoorden."
-
 #: klimaat_helpdesk/users/apps.py:7
 msgid "Users"
 msgstr "Gebruikers"
@@ -617,6 +728,121 @@ msgstr "Gebruikersnaam"
 msgid "Infos successfully updated"
 msgstr "Info succesvol bijgewerkt"
 
+#~ msgid "Subtitle to show on the header of the page"
+#~ msgstr "Subtitel voor op de header van de pagina"
+
+#~ msgid "Accept Terms & Conditions"
+#~ msgstr "Ik ga akkoord met de algemene voorwaarden"
+
+# ## English must be Helpdesk Klimaat or Helpdesk Climate
+#~ msgid ""
+#~ "All the questions you may have\n"
+#~ "          regarding climate breakdown, global warming, answered by "
+#~ "experts."
+#~ msgstr ""
+#~ "Al je vragen over de klimaatverandering en de gevolgen daarvan beantwoord "
+#~ "door actieve wetenschappers"
+
+#, fuzzy
+#~| msgid "Questions"
+#~ msgid "Specific Question"
+#~ msgstr "Vragen"
+
+#~ msgid "Previous Page"
+#~ msgstr "Vorige pagina"
+
+#~ msgid "Next page"
+#~ msgstr "Volgende pagina"
+
+#, fuzzy
+#~| msgid "Meet an expert"
+#~ msgid "See all our experts"
+#~ msgstr "Maak kenis met onze deskundigen"
+
+#~ msgid "Get to know one of the many experts answering questions"
+#~ msgstr ""
+#~ "Maak kennis met een van de vele deskundigen die je vragen beantwoorden"
+
+#~ msgid "read more"
+#~ msgstr "lees meer"
+
+#~ msgid ""
+#~ "After you ask your question, we will review it and assign it to an expert "
+#~ "to answer it.\n"
+#~ "          The entire process may take up to a couple of weeks. If you "
+#~ "would like to be informed about the progress, you\n"
+#~ "          can leave us your e-mail."
+#~ msgstr ""
+#~ "Nadat wij je vraag hebben ontvangen, zullen we deze beoordelen en "
+#~ "toewijzen aan een van onze deskundigen om te beantwoorden. Het hele "
+#~ "proces kan enkele weken duren. Als je graag op de hoogte wilt worden "
+#~ "gehouden van de voortgang, \n"
+#~ "kun je je e-mail invullen"
+
+#~| msgid "Accept Terms & Conditions"
+#~ msgid "Our terms and conditions"
+#~ msgstr "Lees hier onze algemene voorwaarden"
+
+#~ msgid "Thanks for submitting your question"
+#~ msgstr "Bedankt voor het stellen van je vraag"
+
+#~ msgid ""
+#~ "We will review the question and send it to experts to answer it. If you "
+#~ "gave us your\n"
+#~ "          e-mail\n"
+#~ "          in the previous step, we will keep you posted about the "
+#~ "progress. If not, please check back this website\n"
+#~ "          periodically.\n"
+#~ "        "
+#~ msgstr ""
+#~ "We zullen de vraag beoordelen en naar deskundigen sturen om deze te "
+#~ "beantwoorden. Als je je e-mail in de vorige stap hebt ingevoerd,houden we "
+#~ "je op de hoogte van de voortgang. Heb je dit niet gedaan, houd dan deze "
+#~ "website in de gaten"
+
+# ## not clear for me what to do exactly with multi-line messages, I hope the show up correctly
+#~ msgid ""
+#~ "Remember that some questions are harder to answer, and therefore it may\n"
+#~ "              take longer,\n"
+#~ "              some are out of the scope of this website, or duplicated. "
+#~ "We promise we will be as transparent as possible\n"
+#~ "              regarding the decisions taken."
+#~ msgstr ""
+#~ "Onthoud dat sommige vragen moeilijker te beantwoorden zijn en daarom kan "
+#~ "langer duren. "
+
+#~ msgid "Klimaat Helpdesk"
+#~ msgstr "Helpdesk Klimaat"
+
+#~ msgid "Dear %(full_name)s,"
+#~ msgstr "Beste %(full_name)s"
+
+#~ msgid "Dear"
+#~ msgstr "Beste"
+
+#~ msgid ""
+#~ "\n"
+#~ "%(full_name)s has requested a review from you on the page \"%(page_title)s"
+#~ "\". To review the page and provide your feedback, please visit the link "
+#~ "below. You can add notes on individual paragraphs just by highlighting "
+#~ "them and entering a message. Once you are ready, you can submit your "
+#~ "review and overall opinion by clicking on the button at the bottom-right "
+#~ "of the page:"
+#~ msgstr ""
+#~ "\n"
+#~ "%(full_name)s heeft je verzocht om de pagina \"%(page_title)s\" te "
+#~ "reviewen. Om de pagina te reviewen en je commentaar in te vullen, bezoek "
+#~ "de link hier onder. Om notities op individule paragrafen achter te laten, "
+#~ "highlight de paragraaf en vul je commentaar in. Zodra je klaar bent, kun "
+#~ "je je review en je meningsubmitten door op de knop rechtsonder te klikken:"
+
+#~ msgid ""
+#~ "Please do not share this link - it is personal to you, and anyone else "
+#~ "with the link will be able to respond to the review under your name. "
+#~ msgstr ""
+#~ "Deel deze link niet - deze is voor jouw persoonlijk, en iemand anders met "
+#~ "dezelink zal als jouw de review kunnen beantwoorden."
+
 #~ msgid "<strong>Klimaat Helpdesk</strong> by Scientists for Future."
 #~ msgstr "Helpdesk Klimaat is mogelijk gemaakt door Scientists for Future NL"
 
@@ -627,13 +853,8 @@ msgstr "Info succesvol bijgewerkt"
 #~ msgid "New"
 #~ msgstr "Nieuw"
 
-#, python-format
 #~ msgid "Answering questions since %(expert.creation_date|date:\"F Y\")s"
 #~ msgstr "Beantwoordt vragen sinds %(expert.creation_date|date:\"F Y\")s"
-
-# ## in English, this should actually be Helpdesk-Climate (or use the dutch name for all languages)
-#~ msgid "Our Experts"
-#~ msgstr "Onze deskundigen"
 
 #~ msgid "Become an Expert"
 #~ msgstr "Word lid van ons deskundigenteam"
