@@ -4,7 +4,7 @@
 {% block content %}
   <main class="section">
     <div class="question-link-list">
-      <h4 class="question-link-list__title">Jullie recente vragen</h4>
+      <h4 class="question-link-list__title">Op dit moment zijn de volgende vragen in behandeling</h4>
 
       <div class="question-link-list__links">
         {% for question in questions_in_progress %}
@@ -15,10 +15,16 @@
 
     <div class="sticky-link">
       <div class="sticky-link__wrapper">
-        <h5 class="sticky-link__title">{% trans 'Heb je het antwoord dat je zocht niet gevonden? Stel je eigen vraag!' %}</h5>
+        <h5 class="sticky-link__title">{% trans 'Heb je het antwoord dat je zocht niet gevonden? Check de vragen in behandeling of stel je eigen vraag!' %}</h5>
         <a class="sticky-link__link" href="/ask">
           <button class="button">
             <span class="button__text">{% trans 'Stel je vraag' %}</span>
+            <span class="button__icon"></span>
+          </button>
+        </a>
+        <a class="sticky-link__link" href="/in_behandeling">
+          <button class="button">
+            <span class="button__text">{% trans 'In Behandeling' %}</span>
             <span class="button__icon"></span>
           </button>
         </a>
