@@ -77,7 +77,7 @@ class GitlabIssues(models.Model):
                              f"\n\n{template_issue}"
                 issue_title = f"Question: {self.question.question}"
                 issue = project.issues.create({
-                    'title': issue_title[:254],
+                    'title': issue_title[:244],
                     'description': issue_body,
                 })
                 issue.labels = ['Editor needed', ]
