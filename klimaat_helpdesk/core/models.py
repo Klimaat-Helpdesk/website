@@ -52,7 +52,7 @@ class Question(models.Model):
         except ObjectDoesNotExist:
             if self.approved or self.status == self.APPROVED:
                 GitlabIssues.objects.create(question=self)
-        super().save(**kwargs)
+
 
 
 class GitlabIssues(models.Model):
