@@ -68,7 +68,8 @@ class GitlabIssues(models.Model):
                 template_issue = project.files.get(
                     file_path='Templates/template_question_issue.md', ref='master').decode().decode('utf-8')
 
-                issue_body = f"Original Question: {self.question.original_question}\n" \
+                issue_body = f"Question: {self.question.question}\n" \
+                             f"Original Question: {self.question.original_question}\n\n" \
                              f"- Categories: {self.question.categories}\n" \
                              f"- Timespan: {self.question.relevant_timespan}\n" \
                              f"- Location: {self.question.relevant_location}\n" \
@@ -77,7 +78,7 @@ class GitlabIssues(models.Model):
                              f"\n\n{template_issue}"
                 issue_title = f"Question: {self.question.question}"
                 issue = project.issues.create({
-                    'title': issue_title[:244],
+                    'title': issue_title[:254],
                     'description': issue_body,
                 })
                 issue.labels = ['Editor needed', ]
