@@ -68,13 +68,15 @@ class GitlabIssues(models.Model):
                 template_issue = project.files.get(
                     file_path='Templates/template_question_issue.md', ref='master').decode().decode('utf-8')
 
-                issue_body = f"""# Question\n{self.question.question}\n
-                Categories: {self.question.categories}\n
-                Timespan: {self.question.relevant_timespan}\n
-                Location: {self.question.relevant_location}\n
-                Extra information: {self.question.extra_info}
-                \n\n{template_issue}"""
-                issue_title = self.question.question
+                issue_body = f"Question: {self.question.question}\n" \
+                             f"Original Question: {self.question.original_question}\n\n" \
+                             f"- Categories: {self.question.categories}\n" \
+                             f"- Timespan: {self.question.relevant_timespan}\n" \
+                             f"- Location: {self.question.relevant_location}\n" \
+                             f"- Extra information: {self.question.extra_info}\n" \
+                             f"- Asked by: {self.question.user_email}\n" \
+                             f"\n\n{template_issue}"
+                issue_title = f"Question: {self.question.question}"
                 issue = project.issues.create({
                     'title': issue_title[:254],
                     'description': issue_body,
