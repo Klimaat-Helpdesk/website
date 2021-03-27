@@ -1,5 +1,16 @@
 {% extends 'base.html' %}
 {% load static i18n wagtailimages_tags %}
+{% block extra_head %}
+  <meta property="og:title" content="KlimaatHelpdesk">
+  <meta property="twitter:title" content="KlimaatHelpdesk">
+  <meta name="description" content="Antwoorden van wetenschappers op al je vragen over klimaatverandering">
+  <meta name="og:description" content="Antwoorden van wetenschappers op al je vragen over klimaatverandering">
+  <meta name="twitter:description" content="Antwoorden van wetenschappers op al je vragen over klimaatverandering">
+  <meta property="twitter:site" content="@KlimaatHelpdesk">
+  <meta property="twitter:card" content="summary">
+  <meta property="og:locale" content="nl_NL">
+  <meta property="og:site_name" content="KlimaatHelpdesk">
+{% endblock extra_head %}
 
 {% block head %}
   <div class="header">
