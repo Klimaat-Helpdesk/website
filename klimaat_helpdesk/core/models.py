@@ -33,7 +33,6 @@ class Question(models.Model):
     asked_by_ip = models.GenericIPAddressField(null=True, blank=True)
 
     date_asked = models.DateTimeField(auto_now_add=True)
-    approved = models.BooleanField(default=None, null=True)
     status = models.IntegerField(choices=STATUS_CHOICES, default=UNDECIDED)
 
     def get_card_data(self):
