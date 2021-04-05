@@ -20,7 +20,7 @@ class Question(models.Model):
         (APPROVED, _('Approved')),
         (ANSWERED, _('Answered')),
         (REJECTED, _('Rejected'))
-    )
+        )
 
     question = models.TextField(verbose_name=_('Your Question'), blank=False, null=False)
     original_question = models.TextField(verbose_name=_('Backup information'), blank=True, null=True)
@@ -38,7 +38,7 @@ class Question(models.Model):
     def get_card_data(self):
         return {
             'title': self.question,
-        }
+            }
 
     def get_as_home_row_card(self):
         return render_to_string('core/includes/question_list_block.html',
@@ -49,9 +49,8 @@ class Question(models.Model):
         try:
             self.issue
         except ObjectDoesNotExist:
-            if self.approved or self.status == self.APPROVED:
+            if self.status == self.APPROVED:
                 GitlabIssues.objects.create(question=self)
-
 
 
 class GitlabIssues(models.Model):
@@ -79,7 +78,7 @@ class GitlabIssues(models.Model):
                 issue = project.issues.create({
                     'title': issue_title[:254],
                     'description': issue_body,
-                })
+                    })
                 issue.labels = ['Editor needed', ]
                 issue.save()
                 self.issue_id = issue.get_id()
