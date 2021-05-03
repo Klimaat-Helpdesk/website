@@ -1,6 +1,7 @@
 .related-content {
   position: relative;
   margin:  0;
+  background: $color-yellow-light;
 
   //&::before {
   //  content: '';
@@ -15,7 +16,7 @@
   //  top: 0;
   //  left: 0;
   //  right: 0;
-  //  margin: auto;
+  //  margin: qqauto;
   //  opacity: 0.7;
   //}
 
@@ -29,16 +30,16 @@
   }
 
   .related-content__title {
-    @include typography(heading-2, true, true);
-    border-bottom: 1px solid $color-true-black;
+    @include typography(heading-1, true, true);
+    border-bottom: 2px solid $color-true-black;
     padding-bottom: 20px;
   }
 
   .related-content__link {
     grid-column: column 2 / span 9;
     border-bottom: 1px solid black;
-    padding-bottom: 45px;
-    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-top: 15px;
 
     &:last-child {
       border-bottom: 0;
