@@ -63,9 +63,15 @@
   }
 
   img {
-    max-width: 85%;
+    display: block;
+    max-width: 95%;
     height: auto;
-    box-shadow: 5px 10px $color-orange-dark;
+    box-shadow: 5px 10px 7px $color-orange-light;
+    margin-left: auto;
+    margin-right: auto;
+    @include landscape{
+      max-width: 75%;
+    }
   }
 }
 
