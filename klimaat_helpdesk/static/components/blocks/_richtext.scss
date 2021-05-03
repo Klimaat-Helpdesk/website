@@ -58,10 +58,16 @@
       &:active,
       &:visited {
         text-decoration: underline;
-        }
       }
     }
   }
+
+  img {
+    max-width: 85%;
+    height: auto;
+    box-shadow: 5px 10px $color-orange-dark;
+  }
+}
 
 
 
