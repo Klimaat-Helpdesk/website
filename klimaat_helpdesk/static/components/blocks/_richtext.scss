@@ -69,8 +69,10 @@
     box-shadow: 5px 10px 7px $color-orange-light;
     margin-left: auto;
     margin-right: auto;
+    max-height: 100vh;
     @include landscape{
       max-width: 75%;
+      max-height: 75vh;
     }
   }
 }
