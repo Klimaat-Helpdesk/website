@@ -22,7 +22,7 @@
   .form__header {
     @include typography(heading-1);
     padding: 40px 0 100px 0;
-    text-transform: lowercase;
+    //text-transform: lowercase;
   }
 
   .form__header-text {
