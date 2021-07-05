@@ -22,6 +22,7 @@ class Expert(models.Model):
     website = models.URLField(_('Website'), blank=True)
     twitter_profile = models.URLField(_('Twitter Profile'), blank=True, null=True)
     linkedin_profile = models.URLField(_('LinkedIn Profile'), blank=True, null=True)
+    orcid_profile = models.URLField(_('OrcID Link'), blank=True, null=True)
     creation_date = models.DateTimeField(auto_now_add=True)
     last_updated = models.DateTimeField(auto_now_add=True)
 
@@ -36,6 +37,7 @@ class Expert(models.Model):
         FieldPanel('website'),
         FieldPanel('twitter_profile'),
         FieldPanel('linkedin_profile'),
+        FieldPanel('orcid_profile'),
     ]
 
     def __str__(self):
