@@ -15,6 +15,9 @@
       {% if expert.website %}
         <a class="exper__linkedinlink" href="{{ expert.website }}"><span class="expert__link-icon"></span></a>
       {% endif %}
+      {% if expert.orcid_profile %}
+        <a class="exper__linkedinlink" href="{{ expert.orcid_profile }}"><span class="expert__orcid-icon"></span></a>
+      {% endif %}
     </div>
     <div class="expert__text richtext">
       <p><strong>{{ expert.affiliation }}</strong></p>
