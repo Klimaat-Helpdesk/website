@@ -21,6 +21,7 @@ from config import settings
 from klimaat_helpdesk.cms.blocks import AnswerRichTextBlock, QuoteBlock, AnswerImageBlock, AnswerOriginBlock, \
     RelatedItemsBlock
 from klimaat_helpdesk.experts.models import Expert
+from klimaat_helpdesk.volunteers.models import Volunteer
 
 
 class ExpertAnswerRelationship(Orderable, models.Model):
@@ -204,7 +205,7 @@ class Answer(Page):
         TODO: References for articles can be separated from the origin and make them a proper ListBlock that can be
             handled by editors as they see fit. Having the references within a StreamField of 'origins' seems counter
             intuitive.
-            
+
         """
         ref_list = []
         try:
@@ -387,6 +388,30 @@ class ExpertIndexPage(Page):
             'answers_page': AnswerIndexPage.objects.first().url,
             'categories': categories,
 
+        })
+        return context
+
+
+class VolunteerIndexPage(Page):
+    """ List of volunteers on the website """
+    template = 'volunteers/volunteers_list.html'
+    subtitle = models.CharField(max_length=128, blank=False)
+    intro = RichTextField(blank=True)
+    outro = RichTextField(blank=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('subtitle'),
+        FieldPanel('intro'),
+        FieldPanel('outro'),
+    ]
+
+    def get_context(self, request, *args, **kwargs):
+        context = super(VolunteerIndexPage, self).get_context(request, *args, **kwargs)
+        volunteers = Volunteer.objects.all()
+
+        context.update({
+            'volunteers': volunteers,
+            'answers_page': AnswerIndexPage.objects.first().url,
         })
         return context
 
