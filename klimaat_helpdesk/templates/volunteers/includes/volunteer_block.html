@@ -10,26 +10,21 @@
     <div class="expert__title-container">
       <h3 class="expert__title">{{ volunteer.name }}</h3>
       {% if volunteer.website %}
-        <a class="exper__linkedinlink" href="{{ volunteer.website }}"><span class="expert__link-icon"></span></a>
+        <a class="expert__linkedinlink" href="{{ volunteer.website }}"><span class="expert__link-icon"></span></a>
       {% endif %}
       {% if volunteer.linkedin_profile %}
-        <a class="exper__linkedinlink" href="{{ volunteer.linkedin_profile }}"><span class="expert__linkedin-icon"></span></a>
+        <a class="expert__linkedinlink" href="{{ volunteer.linkedin_profile }}"><span class="expert__linkedin-icon"></span></a>
       {% endif %}
       {% if volunteer.twitter_profile %}
-        <a class="exper__linkedinlink" href="{{ volunteer.twitter_profile }}"><span class="expert__twitter-icon"></span></a>
+        <a class="expert__linkedinlink" href="{{ volunteer.twitter_profile }}"><span class="expert__twitter-icon"></span></a>
     {% endif %}
       {% if volunteer.orcid_profile %}
-        <a class="exper__linkedinlink" href="{{ volunteer.orcid_profile }}"><span class="expert__orcid-icon"></span></a>
+        <a class="expert__linkedinlink" href="{{ volunteer.orcid_profile }}"><span class="expert__orcid-icon"></span></a>
       {% endif %}
     </div>
     <div class="expert__text richtext">
       <p><strong>{{ volunteer.affiliation }}</strong></p>
       <p>{{ volunteer.bio }}</p>
     </div>
-    <div class="expert__link">
-      <a class="expert__link-text"
-         href="/answers_by/{{ volunteer.pk }}">{% trans 'Bekijk de vragen die beantwoord zijn door ' %} {{ volunteer.name }}</a>
-    </div>
-
   </div>
 </div>
