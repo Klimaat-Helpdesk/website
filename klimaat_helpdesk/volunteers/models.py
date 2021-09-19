@@ -14,10 +14,10 @@ class Volunteer(models.Model):
 
     name = models.CharField(_('name'), max_length=255, null=False, blank=False)
     email = models.EmailField(_('email'), null=True, blank=True)
-    bio = models.TextField(verbose_name=_('biography'), null=False, blank=False)
+    bio = models.TextField(verbose_name=_('biography'), null=True, blank=True)
     picture = models.ForeignKey('wagtailimages.Image', null=True, related_name='+', on_delete=models.SET_NULL)
     areas_expertise = TaggableManager(verbose_name=_('areas of expertise'))
-    affiliation = models.CharField(_('Affiliation'), blank=False, max_length=128)
+    affiliation = models.CharField(_('Affiliation'), blank=True, max_length=128)
     website = models.URLField(_('Website'), blank=True)
     twitter_profile = models.URLField(_('Twitter Profile'), blank=True, null=True)
     linkedin_profile = models.URLField(_('LinkedIn Profile'), blank=True, null=True)
@@ -37,6 +37,7 @@ class Volunteer(models.Model):
         FieldPanel('twitter_profile'),
         FieldPanel('linkedin_profile'),
         FieldPanel('orcid_profile'),
+        FieldPanel('active_since'),
     ]
 
     def __str__(self):
