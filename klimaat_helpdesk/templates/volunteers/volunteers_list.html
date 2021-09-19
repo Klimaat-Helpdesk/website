@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load i18n static wagtailcore_tags %}
+
+{% block smokedglass %}
+{% endblock %}
+
+{% block content_area %}
+  <div {% block smokedglass-class %}{% endblock %}>
+
+    {% block head %}
+      <div class="simple-header">
+        <div class="simple-header__wrapper">
+          <a class="simple-header__back-link" href="/">
+            <span class="simple-header__back-link-icon"></span>
+          </a>
+
+          <div class="simple-header__title-container">
+            <h1 class="simple-header__title">{{ page.title }}</h1>
+          </div>
+
+          <div class="simple-header__introduction-container">
+            <div class="simple-header__introduction">
+              {{ page.intro|richtext }}
+            </div>
+          </div>
+
+        </div>
+      </div>
+    {% endblock %}
+
+    {% block content %}
+      <div class="expert-list">
+        <div class="expert-list__wrapper">
+          <div class="expert-list__experts">
+            {% for volunteer in volunteers %}
+              {% include 'volunteers/includes/volunteer_block.html' with volunteer=volunteer %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <div class="link-block">
+        <div class="link-block__wrapper">
+          <div class="link-block__title-container">
+            <h2 class="link-block__title">
+              {% trans 'Wie zijn de mensen achter de KlimaatHelpdesk' %}
+            </h2>
+          </div>
+
+          <div class="link-block__text-container">
+            <div class="link-block__text richtext">
+              {{ page.outro|richtext }}
+            </div>
+            <a href="/about">
+              <button class="button">
+                <span class="button__text">{% trans 'Wie zijn wij?' %}</span>
+                <span class="button__icon"></span>
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    {% endblock %}
+  </div>
+{% endblock content_area %}

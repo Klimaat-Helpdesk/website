@@ -102,6 +102,7 @@ LOCAL_APPS = [
     "klimaat_helpdesk.users.apps.UsersConfig",
     "klimaat_helpdesk.core.apps.CoreConfig",
     "klimaat_helpdesk.experts.apps.ExpertsConfig",
+    "klimaat_helpdesk.volunteers.apps.VolunteersConfig",
     "klimaat_helpdesk.cms.apps.CmsConfig",
     "klimaat_helpdesk.search.apps.SearchConfig",
 ]
