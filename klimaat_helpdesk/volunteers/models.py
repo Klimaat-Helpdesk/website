@@ -24,7 +24,7 @@ class Volunteer(models.Model):
     orcid_profile = models.URLField(_('OrcID Link'), blank=True, null=True)
     creation_date = models.DateTimeField(auto_now_add=True)
     last_updated = models.DateTimeField(auto_now_add=True)
-    active_since = models.DateTimeField(null=True, auto_now=False, default=None)
+    active_since = models.DateTimeField(null=True, auto_now_add=False, default=None)
 
     panels = [
         FieldPanel('name'),
