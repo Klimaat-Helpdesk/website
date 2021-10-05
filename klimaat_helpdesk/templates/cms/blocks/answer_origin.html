@@ -8,23 +8,29 @@
          {{ self.content|richtext }}
         </span>
       </div>
+      
+      {% if page.get_references %} 
+        <div class="disclosure__disclosure">
+          <h4 class="disclosure__disclosure-title">
+            <button id="{{ button_id }}" class="disclosure__title-button" aria-controls="{{ content_id }}" aria-expanded="true">
+              <span class="disclosure__title-button-span">{% trans 'Bronnen' %}</span>
+              <span class="disclosure__title-button-icon">
+              </span>
+            </button>
+          </h4>
 
-      <div class="disclosure__disclosure">
-        <h4 class="disclosure__disclosure-title">
-          <button id="{{ button_id }}" class="disclosure__title-button" aria-controls="{{ content_id }}" aria-expanded="true">
-            <span class="disclosure__title-button-span">{% trans 'Bronnen' %}</span>
-            <span class="disclosure__title-button-icon">
-            </span>
-          </button>
-        </h4>
-
-        <div class="disclosure__disclosure-content richtext" role="region" aria-labelledby="{{ button_id }}"  aria-hidden="false">
-          {% for ref in page.get_references %}
-            <p>
-              <span>[{{ forloop.counter }}] {{ ref.text }}</span> <span><b><a href="{{ ref.url }}">{{ ref.url }}</a></b></span>
-            </p>
-          {% endfor %}
+          <div class="disclosure__disclosure-content richtext" role="region" aria-labelledby="{{ button_id }}"  aria-hidden="false">
+              {% for ref in page.get_references %}
+                <p>
+                  <span>[{{ forloop.counter }}] {{ ref.text }}</span> <span><b><a href="{{ ref.url }}">{{ ref.url }}</a></b></span>
+                </p>
+              {% endfor %}
+          </div>
         </div>
-      </div>
+      {% else %}
+        <div class="disclosure__disclosure" style="padding-bottom:0px">
+        </div>
+      {% endif %}
+          
     </div>
   </div>
