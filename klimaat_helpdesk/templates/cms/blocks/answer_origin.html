@@ -1,30 +1,39 @@
 {% load i18n static wagtailcore_tags %}
 
 <div class="disclosure" data-controller="disclosure">
-    <div class="disclosure__wrapper">
-      <div class="disclosure__content">
-        <h2 class="disclosure__title">{{ self.title }}</h2>
-        <span class="disclosure__text">
+  <div class="disclosure__wrapper">
+    <div class="disclosure__content">
+      <h2 class="disclosure__title">{{ self.title }}</h2>
+      <span class="disclosure__text">
          {{ self.content|richtext }}
         </span>
-      </div>
+    </div>
 
-      <div class="disclosure__disclosure">
-        <h4 class="disclosure__disclosure-title">
-          <button id="{{ button_id }}" class="disclosure__title-button" aria-controls="{{ content_id }}" aria-expanded="true">
-            <span class="disclosure__title-button-span">{% trans 'Bronnen' %}</span>
-            <span class="disclosure__title-button-icon">
+    <div class="disclosure__disclosure">
+      <h4 class="disclosure__disclosure-title">
+        <button id="{{ button_id }}" class="disclosure__title-button" aria-controls="{{ content_id }}"
+                aria-expanded="true">
+          <span class="disclosure__title-button-span">{% trans 'Bronnen' %}</span>
+          <span class="disclosure__title-button-icon">
             </span>
-          </button>
-        </h4>
+        </button>
+      </h4>
 
-        <div class="disclosure__disclosure-content richtext" role="region" aria-labelledby="{{ button_id }}"  aria-hidden="false">
-          {% for ref in page.get_references %}
-            <p>
-              <span>[{{ forloop.counter }}] {{ ref.text }}</span> <span><b><a href="{{ ref.url }}">{{ ref.url }}</a></b></span>
-            </p>
-          {% endfor %}
-        </div>
+      <div class="disclosure__disclosure-content richtext" role="region" aria-labelledby="{{ button_id }}"
+           aria-hidden="false">
+        {% for ref in page.get_references %}
+          <p>
+            <span>[{{ forloop.counter }}] {{ ref.text }}</span> <span><b><a
+            href="{{ ref.url }}">{{ ref.url }}</a></b></span>
+          </p>
+        {% endfor %}
+      </div>
+      <div class="disclosure__disclosure-content richtext">
+        <p>©<em>De tekst is beschikbaar onder de licentie <a
+          href="https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.nl">Creative Commons
+          Naamsvermelding-NietCommercieel-GelijkDelen 4.0 Internationaal</a>, er kunnen aanvullende voorwaarden van
+          toepassing zijn. Zie de <a href="https://www.klimaathelpdesk.org/voorwaarden">gebruiksvoorwaarden</a> voor meer informatie.</em></p>
       </div>
     </div>
   </div>
+</div>

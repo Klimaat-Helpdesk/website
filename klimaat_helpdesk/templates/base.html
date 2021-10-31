@@ -1,4 +1,4 @@
-{% load static i18n  %}
+{% load static i18n %}
 {% load render_bundle from webpack_loader %}
 
 
@@ -23,14 +23,18 @@
   {% endblock schema %}
 </head>
 
- <!-- Global site tag (gtag.js) - Google Analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EZ555D7QSW"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+
   gtag('js', new Date());
-  gtag('config', 'G-EZ555D7QSW', { 'anonymize_ip': true, 'allow_ad_personalization_signals': false  });
- </script>
+  gtag('config', 'G-EZ555D7QSW', {'anonymize_ip': true, 'allow_ad_personalization_signals': false});
+</script>
 
 <body class="klimaat_helpdesk" data-controller="navigation">
 {% block navbar %}
@@ -40,8 +44,8 @@
 <main class="klimaat_helpdesk-content">
 
   {% block smokedglass %}
-  <div class="sun">
-  </div>
+    <div class="sun">
+    </div>
   {% endblock %}
 
   <section class="section">
@@ -67,10 +71,15 @@
         <a class="footer-bar__title-link" href="https://scientists4future.nl/">Scientists4Future NL</a> &
         <a class="footer-bar__title-link" href="https://www.uu.nl/en/research/utrecht-young-academy">Utrecht Young Academy</a>
       </span>
-
+    </div>
+    <div class="footer-bar__links">
       <a class="footer-bar__link" href="/about">Over ons</a>
       <a class="footer-bar__link" href="/voorwaarden">Voorwaarden</a>
       <a class="footer-bar__link" href="/contact">Contact</a>
+      <a class="footer-bar__link" href="/vrijwilligers">Vrijwilligers</a>
+    </div>
+    <div class="footer-bar__links">
+      <span class="footer-bar__kvk">Klimaathelpdesk.org is in beheer van de Stichting KlimaatHelpdesk, een organisatie zonder winstoogmerk, geregistreerd onder Kamer Van Koophandel nummer 83377646</span>
     </div>
 
   </div>
