@@ -31,6 +31,15 @@
     display: inline-block;
   }
 
+  .footer-bar__kvk {
+    color: $color-white;
+    @include typography(navigation);
+    font-weight: 500;
+    font-size: small;
+    margin: 0 30px 45px 0;
+    display: inline-block;
+  }
+
   .footer-bar__link, .footer-bar__title-link {
     color: $color-yellow-warm;
     @include typography(navigation);
