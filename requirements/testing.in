@@ -1,0 +1,10 @@
+django-webtest
+pytest-cov
+pytest-django
+safety
+black
+isort
+flake8
+flake8-black
+flake8-debugger
+flake8-isort

@@ -1,0 +1,3 @@
+-r base.in
+psycopg2
+sentry-sdk

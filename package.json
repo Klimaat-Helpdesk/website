@@ -1,0 +1,71 @@
+{
+    "name": "klimaat-helpdesk",
+    "private": true,
+    "author": "Four Digits <info@fourdigits.nl>",
+    "engines": {
+        "node": "^18"
+    },
+    "scripts": {
+        "start": "webpack --mode=development --watch --progress",
+        "build": "webpack --mode=production",
+        "lint": "prettier --check ./apps/frontend/static_src/ && eslint ./apps/frontend/static_src/js/ && stylelint ./apps/frontend/static_src/scss/",
+        "lint:fix": "prettier --write ./apps/frontend/static_src/ && eslint ./apps/frontend/static_src/js/ --fix && stylelint ./apps/frontend/static_src/scss/ --fix"
+    },
+    "devDependencies": {
+        "@babel/cli": "^7.19.3",
+        "@babel/core": "^7.19.6",
+        "@babel/eslint-parser": "^7.19.1",
+        "@babel/preset-env": "^7.19.4",
+        "babel-loader": "^8.2.5",
+        "copy-webpack-plugin": "^11.0.0",
+        "css-loader": "^6.7.1",
+        "eslint": "^8.26.0",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-webpack-plugin": "^3.2.0",
+        "mini-css-extract-plugin": "^2.6.1",
+        "postcss": "^8.4.18",
+        "postcss-loader": "^7.0.1",
+        "postcss-preset-env": "^7.8.2",
+        "postcss-scss": "^4.0.5",
+        "prettier": "^2.7.1",
+        "sass": "^1.55.0",
+        "sass-loader": "^13.1.0",
+        "stylelint": "^14.14.0",
+        "stylelint-config-prettier-scss": "^0.0.1",
+        "stylelint-config-standard": "^29.0.0",
+        "stylelint-config-standard-scss": "^6.0.0",
+        "stylelint-webpack-plugin": "^3.3.0",
+        "webpack": "^5.74.0",
+        "webpack-cli": "^4.10.0",
+        "webpack-manifest-plugin": "^5.0.0"
+    },
+    "browserslist": [
+        "defaults",
+        "not IE 11"
+    ],
+    "babel": {
+        "presets": ["@babel/preset-env"]
+    },
+    "eslintConfig": {
+        "env": {
+            "browser": true,
+            "node": true,
+            "es2021": true
+        },
+        "extends": ["eslint:recommended", "prettier"],
+        "parser": "@babel/eslint-parser"
+    },
+    "stylelint": {
+        "extends": [
+          "stylelint-config-standard",
+          "stylelint-config-standard-scss",
+          "stylelint-config-prettier-scss"
+        ],
+        "customSyntax": "postcss-scss",
+        "ignoreFiles": ["!apps/frontend/static_src/scss/**/*"],
+        "rules": {
+          "selector-class-pattern": null,
+          "selector-id-pattern": null
+        }
+    }
+}
