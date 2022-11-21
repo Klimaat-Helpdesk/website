@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     "wagtail_helpdesk.utils",
     "wagtail_helpdesk.volunteers",
     # "manifest_loader",
-    "webpack_loader",
 
     "wagtail.contrib.modeladmin",
     "wagtail.contrib.table_block",
