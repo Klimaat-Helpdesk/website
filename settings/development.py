@@ -2,11 +2,11 @@ from .base import *  # NOQA
 
 
 INSTALLED_APPS += [
-    "debug_toolbar",
+    # "debug_toolbar",
 ]
 
 MIDDLEWARE += [
-    "debug_toolbar.middleware.DebugToolbarMiddleware",
+    # "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 # SECURITY WARNING: keep the secret key used in production secret!

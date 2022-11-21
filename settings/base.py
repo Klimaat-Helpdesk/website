@@ -34,9 +34,18 @@ DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 # Application definition
 
 INSTALLED_APPS = [
-    "apps.core",
-    "apps.frontend",
-    "manifest_loader",
+    "wagtail_helpdesk",
+    "wagtail_helpdesk.cms",
+    "wagtail_helpdesk.users",
+    "wagtail_helpdesk.contrib",
+    "wagtail_helpdesk.core",
+    "wagtail_helpdesk.experts",
+    "wagtail_helpdesk.search",
+    "wagtail_helpdesk.utils",
+    "wagtail_helpdesk.volunteers",
+    # "manifest_loader",
+    "webpack_loader",
+
     "wagtail.contrib.modeladmin",
     "wagtail.contrib.table_block",
     "wagtail.contrib.forms",
@@ -97,6 +106,8 @@ TEMPLATES = [
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+
+AUTH_USER_MODEL = "users.User"
 
 DATABASES = {
     "default": {
