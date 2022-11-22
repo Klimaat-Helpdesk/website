@@ -188,9 +188,9 @@ urllib3==1.26.12 \
     # via
     #   requests
     #   sentry-sdk
-wagtail==2.13.5 \
-    --hash=sha256:549ee14af34f0803956907769a7d8470310498689670f63b5085b094320f9fd5 \
-    --hash=sha256:9f006c09cdb0f3e388518b6a7cf856697513048a07295a127ee2c255e38775f0
+wagtail==2.14.2 \
+    --hash=sha256:c13283dd19dc4fc6c46867bff21bf1813ccd42a8faa322db4ac711715bc3af44 \
+    --hash=sha256:fe6632e6e232977ea59d5c2ac5197691596095d9771ff35b5294a481126fe901
     # via -r requirements/base.in
 webencodings==0.5.1 \
     --hash=sha256:a0af1213f3c2226497a97e2b3aa01a7e4bee4f403f95be16fc9acd2947514a78 \
