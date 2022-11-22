@@ -1,6 +1,6 @@
 ENV = env
 BIN = $(ENV)/bin
-PYTHON_VERSION = 3
+PYTHON_VERSION = 3.9
 PYTHON = $(BIN)/python
 GIT_STATUS = "$(shell git status --porcelain)"
 
