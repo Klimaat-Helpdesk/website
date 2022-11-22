@@ -110,7 +110,7 @@ AUTH_USER_MODEL = "users.User"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "ENGINE": "django.db.backends.postgresql",
         "NAME": "klimaat-helpdesk",
         "CONN_MAX_AGE": 600,
         # number of seconds database connections should persist for
