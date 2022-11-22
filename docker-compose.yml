@@ -1,0 +1,16 @@
+version: '2.1'
+
+services:
+  db:
+    image: postgres:14-alpine
+    environment:
+      - POSTGRES_USER=klimaat-helpdesk
+      - POSTGRES_PASSWORD=klimaat-helpdesk
+      - POSTGRES_DB=klimaat-helpdesk
+    ports:
+         - "5432:5432"
+    volumes:
+         - pgdata:/var/lib/postgresql/data
+         - ./config/initdb.d:/docker-entrypoint-initdb.d/
+volumes:
+  pgdata: {}
