@@ -27,7 +27,7 @@ build_frontend:
 
 test:
   stage: test
-  image: python:3.9-buster
+  image: python:3.10-buster
   needs:
     - build_frontend
   dependencies:
@@ -52,7 +52,7 @@ test:
 
 .deploy:
   stage: deploy
-  image: python:3.9-buster
+  image: python:3.10-buster
   needs:
     - build_frontend
     - test
