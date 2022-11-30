@@ -101,7 +101,7 @@ deploy_tst:
     - fab deploy test
   environment:
     name: test
-    url: https://klimaat-helpdesk-tst.fourdigits.nl
+    url: https://klimaathelpdesk-tst.fourdigits.nl
 
 deploy_acc:
   extends: .deploy
@@ -113,7 +113,7 @@ deploy_acc:
     - fab deploy acceptance
   environment:
     name: acceptance
-    url: https://klimaat-helpdesk-acc.fourdigits.nl
+    url: https://klimaathelpdesk-acc.fourdigits.nl
 
 deploy_prd:
   extends: .deploy
@@ -125,4 +125,4 @@ deploy_prd:
     - fab deploy production
   environment:
     name: production
-    url: https://klimaat-helpdesk-prd.fourdigits.nl
+    url: https://klimaathelpdesk-prd.fourdigits.nl
