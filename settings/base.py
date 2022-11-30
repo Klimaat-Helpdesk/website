@@ -7,7 +7,6 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -40,11 +39,9 @@ INSTALLED_APPS = [
     "wagtail_helpdesk.contrib",
     "wagtail_helpdesk.core",
     "wagtail_helpdesk.experts",
-    "wagtail_helpdesk.search",
     "wagtail_helpdesk.utils",
     "wagtail_helpdesk.volunteers",
     # "manifest_loader",
-
     "wagtail.contrib.modeladmin",
     "wagtail.contrib.table_block",
     "wagtail.contrib.forms",
