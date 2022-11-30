@@ -39,8 +39,7 @@ fix-codestyle: requirements.txt.done
 
 test: requirements.txt.done
 	$(PYTHON) -m pip check
-	# Temporarily disable safety checks to ensure we run all other tests
-	#$(BIN)/safety check --bare
+	$(BIN)/safety check --bare
 	$(BIN)/flake8 apps
 	$(PYTHON) -X dev -m pytest $(ARGS)
 
