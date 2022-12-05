@@ -33,9 +33,9 @@ DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 # Application definition
 
 INSTALLED_APPS = [
+    "apps.users",
     "wagtail_helpdesk",
     "wagtail_helpdesk.cms",
-    "wagtail_helpdesk.users",
     "wagtail_helpdesk.contrib",
     "wagtail_helpdesk.core",
     "wagtail_helpdesk.experts",
