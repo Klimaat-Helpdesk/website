@@ -1,7 +1,7 @@
 import pytest
 
-from wagtail_helpdesk.users.forms import UserCreationForm
-from wagtail_helpdesk.users.tests.factories import UserFactory
+from apps.users.forms import UserCreationForm
+from apps.users.tests.factories import UserFactory
 
 pytestmark = pytest.mark.django_db
 
