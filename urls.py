@@ -6,6 +6,8 @@ from wagtail.core import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 from wagtail_helpdesk.urls import urlpatterns as helpdesk_urlpatterns
 
+from apps.users.urls import urlpatterns as users_urlpatterns
+
 urlpatterns = [
     path("django-admin/", admin.site.urls),
     path("admin/", include(wagtailadmin_urls)),
@@ -30,4 +32,5 @@ if settings.DEBUG:
 urlpatterns += [
     path("", include(wagtail_urls)),
     path("", include(helpdesk_urlpatterns)),
+    path("", include(users_urlpatterns)),
 ]
