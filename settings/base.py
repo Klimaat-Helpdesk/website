@@ -36,7 +36,6 @@ INSTALLED_APPS = [
     "apps.users",
     "wagtail_helpdesk",
     "wagtail_helpdesk.cms",
-    "wagtail_helpdesk.contrib",
     "wagtail_helpdesk.core",
     "wagtail_helpdesk.experts",
     "wagtail_helpdesk.utils",
@@ -95,7 +94,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-                "wagtail_helpdesk.utils.context_processors.defaults"
+                "wagtail_helpdesk.utils.context_processors.defaults",
             ],
         },
     },

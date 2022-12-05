@@ -384,8 +384,8 @@ wagtail==4.1.1 \
     # via
     #   -r requirements/base.in
     #   wagtail-helpdesk
-wagtail-helpdesk @ https://github.com/fourdigits/wagtail-helpdesk/archive/5980f45cd948db675123dd5b74592e145e07514c.zip \
-    --hash=sha256:ce2cf438bf3fb15c52dbdfecbb6bb72d36023e880e3bbfbfb85f10d26fa6c273
+wagtail-helpdesk @ https://github.com/fourdigits/wagtail-helpdesk/archive/2da0220c8c4347359ed48a7f1f0f7e126271880c.zip \
+    --hash=sha256:aad41f21bfb6a4668950d9b017a8bab27eafaed0422b40ce7bfeec4d734abafb
     # via -r requirements/base.in
 webencodings==0.5.1 \
     --hash=sha256:a0af1213f3c2226497a97e2b3aa01a7e4bee4f403f95be16fc9acd2947514a78 \
