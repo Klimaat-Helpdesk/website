@@ -788,8 +788,8 @@ wagtail-factories==4.0.0 \
     --hash=sha256:3e39ec1cc13b61c6e467f1bf223ce2d134e823fa9fe4dc7e32d0222cc8d350ec \
     --hash=sha256:f59f9af283da79b3ddab7b2ca95d6a14b5bbbb929a697563e4f7143948693f53
     # via -r requirements/testing.in
-wagtail-helpdesk @ https://github.com/fourdigits/wagtail-helpdesk/archive/5980f45cd948db675123dd5b74592e145e07514c.zip \
-    --hash=sha256:ce2cf438bf3fb15c52dbdfecbb6bb72d36023e880e3bbfbfb85f10d26fa6c273
+wagtail-helpdesk @ https://github.com/fourdigits/wagtail-helpdesk/archive/2da0220c8c4347359ed48a7f1f0f7e126271880c.zip \
+    --hash=sha256:aad41f21bfb6a4668950d9b017a8bab27eafaed0422b40ce7bfeec4d734abafb
     # via -r requirements/base.in
 waitress==2.1.2 \
     --hash=sha256:7500c9625927c8ec60f54377d590f67b30c8e70ef4b8894214ac6e4cad233d2a \
