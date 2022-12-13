@@ -1,5 +1,5 @@
 django>=3.2,<3.3
 wagtail>=4.1,<4.2
-wagtail-helpdesk @ https://github.com/fourdigits/wagtail-helpdesk/archive/2da0220c8c4347359ed48a7f1f0f7e126271880c.zip
+wagtail-helpdesk @ https://github.com/fourdigits/wagtail-helpdesk/archive/cf220fdb1dae1a14abf5f83e6bd516937566fb98.zip
 
 django-manifest-loader
