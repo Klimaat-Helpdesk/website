@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     "wagtail_helpdesk.experts",
     "wagtail_helpdesk.utils",
     "wagtail_helpdesk.volunteers",
-    # "manifest_loader",
     "wagtail.contrib.modeladmin",
     "wagtail.contrib.table_block",
     "wagtail.contrib.forms",
