@@ -665,6 +665,7 @@ requests==2.28.1 \
     #   python-gitlab
     #   requests-oauthlib
     #   requests-toolbelt
+    #   responses
     #   safety
     #   wagtail
 requests-oauthlib==1.3.1 \
@@ -675,6 +676,10 @@ requests-toolbelt==0.10.1 \
     --hash=sha256:18565aa58116d9951ac39baa288d3adb5b3ff975c4f25eee78555d89e8f247f7 \
     --hash=sha256:62e09f7ff5ccbda92772a29f394a49c3ad6cb181d568b1337626b2abb628a63d
     # via python-gitlab
+responses==0.22.0 \
+    --hash=sha256:396acb2a13d25297789a5866b4881cf4e46ffd49cc26c43ab1117f40b973102e \
+    --hash=sha256:dcf294d204d14c436fddcc74caefdbc5764795a40ff4e6a7740ed8ddbf3294be
+    # via -r requirements/testing.in
 ruamel-yaml==0.17.21 \
     --hash=sha256:742b35d3d665023981bd6d16b3d24248ce5df75fdb4e2924e93a05c1f8b61ca7 \
     --hash=sha256:8b7ce697a2f212752a35c1ac414471dc16c424c9573be4926b56ff3f5d23b7af
@@ -752,7 +757,9 @@ termcolor==2.1.1 \
 toml==0.10.2 \
     --hash=sha256:806143ae5bfb6a3c6e736a764057db0e6a0e05e338b5630894a5f779cabb4f9b \
     --hash=sha256:b3bda1d108d5dd99f4a20d24d9c348e91c4db7ab1b749200bded2f839ccbe68f
-    # via dparse
+    # via
+    #   dparse
+    #   responses
 tomli==2.0.1 \
     --hash=sha256:939de3e7a6161af0c887ef91b7d41a53e7c5a1ca976325f429cb46ea9bc30ecc \
     --hash=sha256:de526c12914f0c550d15924c62d72abc48d6fe7364aa87328337a31007fe8a4f
@@ -761,10 +768,16 @@ tomli==2.0.1 \
     #   coverage
     #   flake8-black
     #   pytest
+types-toml==0.10.8.1 \
+    --hash=sha256:171bdb3163d79a520560f24ba916a9fc9bff81659c5448a9fea89240923722be \
+    --hash=sha256:b7b5c4977f96ab7b5ac06d8a6590d17c0bf252a96efc03b109c2711fb3e0eafd
+    # via responses
 urllib3==1.26.13 \
     --hash=sha256:47cc05d99aaa09c9e72ed5809b60e7ba354e64b59c9c173ac3018642d8bb41fc \
     --hash=sha256:c083dd0dce68dbfbe1129d5271cb90f9447dea7d52097c6e0126120c521ddea8
-    # via requests
+    # via
+    #   requests
+    #   responses
 wagtail==4.1.1 \
     --hash=sha256:9df6bfe5637ebe5b9e96cd0174cb812d3bb9200913100b6f8007ef31bdc02f70 \
     --hash=sha256:fe164fa5bb5f62fa8fa35cb456d523b3f263b6bcc0a5e0b688e2c6c1760bc095
