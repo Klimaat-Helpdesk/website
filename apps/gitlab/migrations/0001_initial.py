@@ -9,7 +9,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('core', '0012_delete_gitlabissues'),
+        ('core', '0011_auto_20221128_1453'),
     ]
 
     operations = [
