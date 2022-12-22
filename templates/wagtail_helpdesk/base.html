@@ -1,4 +1,5 @@
 {% extends "wagtail_helpdesk/base.html" %}
+{% load static %}
 
 {% block extra_head %}
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -13,4 +14,6 @@
   gtag('js', new Date());
   gtag('config', 'G-EZ555D7QSW', {'anonymize_ip': true, 'allow_ad_personalization_signals': false});
 </script>
+
+<link rel="icon" href="{% static "images/favicons/favicon.ico" %}">
 {% endblock extra_head %}
