@@ -35,13 +35,13 @@ argon2-cffi-bindings==21.2.0 \
     --hash=sha256:f1152ac548bd5b8bcecfb0b0371f082037e47128653df2e8ba6e914d384f3c3e \
     --hash=sha256:f9f8b450ed0547e3d473fdc8612083fd08dd2120d6ac8f73828df9b7d45bb351
     # via argon2-cffi
-asgiref==3.5.2 \
-    --hash=sha256:1d2880b792ae8757289136f1db2b7b99100ce959b2aa57fd69dab783d05afac4 \
-    --hash=sha256:4a29362a6acebe09bf1d6640db38c1dc3d9217c68e6f9f6204d72667fc19a424
+asgiref==3.6.0 \
+    --hash=sha256:71e68008da809b957b7ee4b43dbccff33d1b23519fb8344e33f049897077afac \
+    --hash=sha256:9567dfe7bd8d3c8c892227827c41cce860b368104c3431da67a0c5a65a949506
     # via django
-attrs==22.1.0 \
-    --hash=sha256:29adc2665447e5191d0e7c568fde78b21f9672d344281d0c6e1ab085429b22b6 \
-    --hash=sha256:86efa402f67bf2df34f51a335487cf46b1ec130d02b8d39fd248abfd30da551c
+attrs==22.2.0 \
+    --hash=sha256:29e95c7f6778868dbd49170f98f8818f78f3dc5e0e37c0b1f474e3561b240836 \
+    --hash=sha256:c9227bfc2f01993c03f68db37d1d15c9690188323c067c641f1a35ca58185f99
     # via pytest
 bcrypt==4.0.1 \
     --hash=sha256:089098effa1bc35dc055366740a067a2fc76987e8ec75349eb9484061c54f535 \
@@ -347,9 +347,9 @@ flake8==6.0.0 \
     #   flake8-black
     #   flake8-debugger
     #   flake8-isort
-flake8-black==0.3.5 \
-    --hash=sha256:4948a579fdddd98fbf935fd94255dfcfce560c4ddc1ceee08e3f12d6114c8619 \
-    --hash=sha256:9e93252b1314a8eb3c2f55dec54a07239e502b12f57567f2c105f2202714b15e
+flake8-black==0.3.6 \
+    --hash=sha256:0dfbca3274777792a5bcb2af887a4cad72c72d0e86c94e08e3a3de151bb41c34 \
+    --hash=sha256:fe8ea2eca98d8a504f22040d9117347f6b367458366952862ac3586e7d4eeaca
     # via -r requirements/testing.in
 flake8-debugger==4.1.2 \
     --hash=sha256:0a5e55aeddcc81da631ad9c8c366e7318998f83ff00985a49e6b3ecf61e571bf \
@@ -379,17 +379,17 @@ iniconfig==1.1.1 \
     --hash=sha256:011e24c64b7f47f6ebd835bb12a743f2fbe9a26d4cecaa7f53bc4f35ee9da8b3 \
     --hash=sha256:bc3af051d7d14b2ee5ef9969666def0cd1a000e121eaea580d4a313df4b37f32
     # via pytest
-inquirer==3.1.0 \
-    --hash=sha256:2a9fd16e30fc23e12af887556de4ffef92bf5a9874ddb0f6f5ad81f4b7dfdcae \
-    --hash=sha256:33bb086b982dcda4b5560efbe8f3eb00f891f89d37990629bf2adad2260e5d3b
+inquirer==3.1.1 \
+    --hash=sha256:1a644cfb6a4e09a5bd82f9944274eabaa798aa920331c70a8a7550dda299943b \
+    --hash=sha256:e43ce52cde7f66e73cc24e2dda9afc686ca1c1e8df5b0b3277691083f07cdccc
     # via -r requirements/development.in
 invoke==1.7.3 \
     --hash=sha256:41b428342d466a82135d5ab37119685a989713742be46e42a3a399d685579314 \
     --hash=sha256:d9694a865764dd3fd91f25f7e9a97fb41666e822bbb00e670091e3f43933574d
     # via fabric
-isort==5.11.3 \
-    --hash=sha256:83155ffa936239d986b0f190347a3f2285f42a9b9e1725c89d865b27dd0627e5 \
-    --hash=sha256:a8ca25fbfad0f7d5d8447a4314837298d9f6b23aed8618584c894574f626b64b
+isort==5.11.4 \
+    --hash=sha256:6db30c5ded9815d813932c04c2f85a360bcdd35fed496f4d8f35495ef0a261b6 \
+    --hash=sha256:c033fd0edb91000a7f09527fe5c75321878f98322a77ddcc81adbd83724afb7b
     # via
     #   -r requirements/testing.in
     #   flake8-isort
