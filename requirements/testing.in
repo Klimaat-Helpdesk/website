@@ -9,3 +9,4 @@ flake8
 flake8-black
 flake8-debugger
 flake8-isort
+responses
