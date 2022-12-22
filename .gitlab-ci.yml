@@ -89,7 +89,7 @@ test:
 
     # Install private deployment utils
     - apt-get install curl
-    - curl --get --output fabfile.py https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.com/fourdigits/klimaat-helpdesk/-/raw/ci-tools/fabfile.py
+    - curl --get --output fabfile.py https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.com/fourdigits/klimaat-helpdesk/-/raw/ci-utils/fabfile.py
     - fab --list
 
 deploy_tst:
