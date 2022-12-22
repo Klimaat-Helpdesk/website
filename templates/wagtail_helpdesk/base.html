@@ -17,3 +17,9 @@
 
 <link rel="icon" href="{% static "images/favicons/favicon.ico" %}">
 {% endblock extra_head %}
+
+{% block footer_logo %}
+<a class="footer-bar__logo-link" href="/">
+  {% include 'svg/logo/logo-white.svg' %}
+</a>
+{% endblock footer_logo %}
