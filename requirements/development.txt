@@ -789,8 +789,8 @@ wagtail-factories==4.0.0 \
     --hash=sha256:3e39ec1cc13b61c6e467f1bf223ce2d134e823fa9fe4dc7e32d0222cc8d350ec \
     --hash=sha256:f59f9af283da79b3ddab7b2ca95d6a14b5bbbb929a697563e4f7143948693f53
     # via -r requirements/testing.in
-wagtail-helpdesk @ https://github.com/Klimaat-Helpdesk/wagtail-helpdesk/archive/7ac01b47ba90af0eda087c0c4c8f8d30a2b3a0f1.zip \
-    --hash=sha256:4b8076906fa44a7bb472814fb0c3d2afa6555c2579821529cef2f93db9cedaf3
+wagtail-helpdesk @ https://github.com/Klimaat-Helpdesk/wagtail-helpdesk/archive/d26802ee0c0aa47c6880228f4e286344b60b31f5.zip \
+    --hash=sha256:14080cfd62d276328ac4d4096f5b8b80efb8e03dc42b7b88995e327083989473
     # via -r requirements/base.in
 waitress==2.1.2 \
     --hash=sha256:7500c9625927c8ec60f54377d590f67b30c8e70ef4b8894214ac6e4cad233d2a \
