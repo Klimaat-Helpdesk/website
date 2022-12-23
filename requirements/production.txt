@@ -379,8 +379,8 @@ wagtail==4.1.1 \
     # via
     #   -r requirements/base.in
     #   wagtail-helpdesk
-wagtail-helpdesk @ https://github.com/Klimaat-Helpdesk/wagtail-helpdesk/archive/d26802ee0c0aa47c6880228f4e286344b60b31f5.zip \
-    --hash=sha256:14080cfd62d276328ac4d4096f5b8b80efb8e03dc42b7b88995e327083989473
+wagtail-helpdesk @ https://github.com/Klimaat-Helpdesk/wagtail-helpdesk/archive/1aed3f668cd5d62965859f3be54a8071285be0ef.zip \
+    --hash=sha256:335ac41e3b02da1b8ed2718d60ee3baaf00839fe7fd420a66411d0c59d48bb7f
     # via -r requirements/base.in
 webencodings==0.5.1 \
     --hash=sha256:a0af1213f3c2226497a97e2b3aa01a7e4bee4f403f95be16fc9acd2947514a78 \
