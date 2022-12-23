@@ -1,4 +1,4 @@
 django>=3.2,<3.3
 wagtail>=4.1,<4.2
-wagtail-helpdesk @ https://github.com/Klimaat-Helpdesk/wagtail-helpdesk/archive/d26802ee0c0aa47c6880228f4e286344b60b31f5.zip
+wagtail-helpdesk @ https://github.com/Klimaat-Helpdesk/wagtail-helpdesk/archive/1aed3f668cd5d62965859f3be54a8071285be0ef.zip
 python-gitlab
