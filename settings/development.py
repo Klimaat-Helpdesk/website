@@ -12,7 +12,7 @@ MIDDLEWARE += [
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "CHANGEME!!!"
 
-BASE_URL = "http://localhost:8000"
+BASE_URL = WAGTAILADMIN_BASE_URL = "http://localhost:8000"
 
 LOGGING = {
     "version": 1,
