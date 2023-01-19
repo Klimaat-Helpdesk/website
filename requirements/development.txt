@@ -418,9 +418,9 @@ factory-boy==3.2.1 \
     --hash=sha256:a98d277b0c047c75eb6e4ab8508a7f81fb03d2cb21986f627913546ef7a2a55e \
     --hash=sha256:eb02a7dd1b577ef606b75a253b9818e6f9eaf996d94449c9d5ebb124f90dc795
     # via wagtail-factories
-faker==16.4.0 \
-    --hash=sha256:5420467fad3fa582094057754e5e81326cb1f51ab822bf9df96c077cfb35ae49 \
-    --hash=sha256:dcffdca8ec9a715982bcd5f53ee688dc4784cd112f9910f8f7183773eb3ec276
+faker==16.6.0 \
+    --hash=sha256:0a74514d654db0a3d37b9ca681f2d9182d2ec556f78b4f1a842a2ccc944660cd \
+    --hash=sha256:dc8b2a8bf0d852d26eacf7763afd5e7d6e9e50d80ec648b51b8ecd3c505435fd
     # via factory-boy
 flake8==6.0.0 \
     --hash=sha256:3833794e27ff64ea4e9cf5d410082a8b97ff1a06c16aa3d2027339cd0f1195c7 \
@@ -520,6 +520,7 @@ pep8==1.7.1 \
     --hash=sha256:fe249b52e20498e59e0b5c5256aa52ee99fc295b26ec9eaa85776ffdb9fe6374
     # via -r requirements/development.in
 pillow==9.4.0 \
+    --hash=sha256:013016af6b3a12a2f40b704677f8b51f72cb007dac785a9933d5c86a72a7fe33 \
     --hash=sha256:0845adc64fe9886db00f5ab68c4a8cd933ab749a87747555cec1c95acea64b0b \
     --hash=sha256:0884ba7b515163a1a05440a138adeb722b8a6ae2c2b33aea93ea3118dd3a899e \
     --hash=sha256:09b89ddc95c248ee788328528e6a2996e09eaccddeeb82a5356e92645733be35 \
@@ -553,10 +554,16 @@ pillow==9.4.0 \
     --hash=sha256:7a21222644ab69ddd9967cfe6f2bb420b460dae4289c9d40ff9a4896e7c35c9a \
     --hash=sha256:7ac7594397698f77bce84382929747130765f66406dc2cd8b4ab4da68ade4c6e \
     --hash=sha256:7cfc287da09f9d2a7ec146ee4d72d6ea1342e770d975e49a8621bf54eaa8f30f \
+    --hash=sha256:83125753a60cfc8c412de5896d10a0a405e0bd88d0470ad82e0869ddf0cb3848 \
     --hash=sha256:847b114580c5cc9ebaf216dd8c8dbc6b00a3b7ab0131e173d7120e6deade1f57 \
+    --hash=sha256:87708d78a14d56a990fbf4f9cb350b7d89ee8988705e58e39bdf4d82c149210f \
+    --hash=sha256:8a2b5874d17e72dfb80d917213abd55d7e1ed2479f38f001f264f7ce7bae757c \
     --hash=sha256:8f127e7b028900421cad64f51f75c051b628db17fb00e099eb148761eed598c9 \
     --hash=sha256:94cdff45173b1919350601f82d61365e792895e3c3a3443cf99819e6fbf717a5 \
+    --hash=sha256:99d92d148dd03fd19d16175b6d355cc1b01faf80dae93c6c3eb4163709edc0a9 \
     --hash=sha256:9a3049a10261d7f2b6514d35bbb7a4dfc3ece4c4de14ef5876c4b7a23a0e566d \
+    --hash=sha256:9d9a62576b68cd90f7075876f4e8444487db5eeea0e4df3ba298ee38a8d067b0 \
+    --hash=sha256:9e5f94742033898bfe84c93c831a6f552bb629448d4072dd312306bab3bd96f1 \
     --hash=sha256:a1c2d7780448eb93fbcc3789bf3916aa5720d942e37945f4056680317f1cd23e \
     --hash=sha256:a2e0f87144fcbbe54297cae708c5e7f9da21a4646523456b00cc956bd4c65815 \
     --hash=sha256:a4dfdae195335abb4e89cc9762b2edc524f3c6e80d647a9a81bf81e17e3fb6f0 \
@@ -881,8 +888,8 @@ wagtail-factories==4.0.0 \
     --hash=sha256:3e39ec1cc13b61c6e467f1bf223ce2d134e823fa9fe4dc7e32d0222cc8d350ec \
     --hash=sha256:f59f9af283da79b3ddab7b2ca95d6a14b5bbbb929a697563e4f7143948693f53
     # via -r requirements/testing.in
-wagtail-helpdesk @ https://github.com/Klimaat-Helpdesk/wagtail-helpdesk/archive/1aed3f668cd5d62965859f3be54a8071285be0ef.zip \
-    --hash=sha256:335ac41e3b02da1b8ed2718d60ee3baaf00839fe7fd420a66411d0c59d48bb7f
+wagtail-helpdesk @ https://github.com/Klimaat-Helpdesk/wagtail-helpdesk/archive/refs/tags/0.1.0.zip \
+    --hash=sha256:60b76c3fa1baa327eca4e2da5a3989ec8fbfcd393b8122e55acb5fdb30a9160a
     # via -r requirements/base.in
 waitress==2.1.2 \
     --hash=sha256:7500c9625927c8ec60f54377d590f67b30c8e70ef4b8894214ac6e4cad233d2a \
