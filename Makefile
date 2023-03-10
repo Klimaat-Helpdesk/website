@@ -39,7 +39,7 @@ fix-codestyle: requirements.txt.done
 
 test: requirements.txt.done
 	$(PYTHON) -m pip check
-	$(BIN)/safety check --bare
+	$(PYTHON) -m pip_audit -r requirements/production.txt -r requirements/development.txt
 	$(BIN)/flake8 apps
 	$(PYTHON) -X dev -m pytest $(ARGS)
 
