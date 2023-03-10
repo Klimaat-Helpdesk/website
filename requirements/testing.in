@@ -2,7 +2,6 @@ django-webtest
 pytest-cov
 pytest-django
 wagtail-factories
-safety
 black
 isort
 flake8
@@ -10,3 +9,4 @@ flake8-black
 flake8-debugger
 flake8-isort
 responses
+pip-audit
