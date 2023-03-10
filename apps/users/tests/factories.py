@@ -8,7 +8,6 @@ User = get_user_model()
 
 
 class UserFactory(DjangoModelFactory):
-
     username = Faker("user_name")
     email = Faker("email")
     first_name = Faker("name")
