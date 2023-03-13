@@ -128,9 +128,9 @@ invoke==2.0.0 \
     --hash=sha256:7ab5dd9cd76b787d560a78b1a9810d252367ab595985c50612702be21d671dd7 \
     --hash=sha256:a860582bcf7a4b336fe18ef53937f0f28cec1c0053ffa767c2fcf7ba0b850f59
     # via fabric
-paramiko==3.0.0 \
-    --hash=sha256:6bef55b882c9d130f8015b9a26f4bd93f710e90fe7478b9dcc810304e79b3cd8 \
-    --hash=sha256:fedc9b1dd43bc1d45f67f1ceca10bc336605427a46dcdf8dec6bfea3edf57965
+paramiko==3.1.0 \
+    --hash=sha256:6950faca6819acd3219d4ae694a23c7a87ee38d084f70c1724b0c0dbb8b75769 \
+    --hash=sha256:f0caa660e797d9cd10db6fc6ae81e2c9b2767af75c3180fcd0e46158cd368d7f
     # via fabric
 pycparser==2.21 \
     --hash=sha256:8ee45429555515e1f6b185e78100aea234072576aa43ab53aefcae078162fca9 \
