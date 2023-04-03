@@ -2,22 +2,9 @@
 
 from django.db import migrations
 
-
-def forwards(apps, schema_editor):
-    """Import all data from the wagtail_helpdesk GitlabIssues model."""
-    OldGitlabIssue = apps.get_model("core", "GitlabIssues")
-    GitlabIssue = apps.get_model("gitlab", "GitlabIssue")
-
-    GitlabIssue.objects.bulk_create(
-        [
-            GitlabIssue(
-                question=old.question,
-                issue_id=old.issue_id,
-                creation_date=old.creation_date,
-            )
-            for old in OldGitlabIssue.objects.all()
-        ]
-    )
+# This migration moved data from the old datamodel (in the wagtail-helpdesk 'core' app)
+# into the new one in the 'gitlab' app. Data has been migratied but this migration
+# conflicts with changes in the wagtail-helpdesk app, so we made it a noop.
 
 
 class Migration(migrations.Migration):
@@ -26,10 +13,6 @@ class Migration(migrations.Migration):
         ("gitlab", "0001_initial"),
     ]
 
-    run_before = [
-        ("core", "0012_delete_gitlabissues"),
-    ]
-
     operations = [
-        migrations.RunPython(forwards),
+        migrations.RunPython(migrations.RunPython.noop),
     ]
