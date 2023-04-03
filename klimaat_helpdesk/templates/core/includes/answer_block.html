@@ -1,8 +1,0 @@
-{% load i18n %}
-<div class="question-link">
-    <a href="{{ url }}"><h3 class="question-link__title">{{ title }}</h3></a>
-    <p class="question-link__author"> <span class="question-link__by">{% trans 'Beantwoord door' %}</span> <span class="question-link__author-name">{{ author }}</span> </p>
-    {% for category in categories %}
-       <a href="{{ category.url }}"><span class="tag">{{ category.title }}</span></a>
-    {% endfor %}
-</div>

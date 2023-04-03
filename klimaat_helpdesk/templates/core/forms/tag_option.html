@@ -1,6 +1,0 @@
-{% if widget.wrap_label %}
-  {% include "django/forms/widgets/input.html" %}
-  <label class="tag" {% if widget.attrs.id %}
-  for="{{ widget.attrs.id }}"{% endif %}>
-  {{ widget.label }}</label>
-{% endif %}

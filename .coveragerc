@@ -1,5 +1,0 @@
-[run]
-include = klimaat_helpdesk/*
-omit = *migrations*, *tests*
-plugins =
-    django_coverage_plugin
