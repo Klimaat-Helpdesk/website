@@ -1,0 +1,12 @@
+django-webtest
+pytest-cov
+pytest-django
+wagtail-factories
+black
+isort
+flake8
+flake8-black
+flake8-debugger
+flake8-isort
+responses
+pip-audit

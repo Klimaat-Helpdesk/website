@@ -1,0 +1,9 @@
+-r base.in
+-r testing.in
+
+fabric
+GitPython
+inquirer
+pep8
+psycopg2-binary
+termcolor

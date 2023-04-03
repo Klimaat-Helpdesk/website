@@ -1,0 +1,128 @@
+stages:
+  - test
+  - coverage
+  - deploy
+
+variables:
+  POSTGRES_DB: klimaat-helpdesk
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: postgres
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
+cache:
+  paths:
+    - .cache/pip
+    - ~/.cache/pip/
+
+build_frontend:
+  stage: test
+  image: node:18-alpine
+  script:
+    - yarn --frozen-lockfile
+    - yarn lint
+    - yarn build
+  artifacts:
+    paths:
+      - apps/frontend/static
+
+test:
+  stage: test
+  image: python:3.10-buster
+  needs:
+    - build_frontend
+  dependencies:
+    - build_frontend
+  services:
+    - postgres:latest
+  before_script:
+    - python -V
+    - pip install --upgrade pip wheel setuptools
+    - pip install -r requirements/development.txt
+  script:
+    - make test ARGS="--ds=settings.gitlab --cov-report term"
+  coverage: '/TOTAL.*\s+(\d+%)$/'
+  artifacts:
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage.xml
+    paths:
+      - htmlcov/
+  interruptible: true
+
+.deploy:
+  stage: deploy
+  image: python:3.10-buster
+  needs:
+    - build_frontend
+    - test
+  dependencies:
+    - build_frontend
+  before_script:
+    - apt-get update -y
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+    ##
+    ## Run ssh-agent (inside the build environment)
+    ##
+    - eval $(ssh-agent -s)
+
+    ##
+    ## Add the SSH key stored in SSH_PRIVATE_KEY variable to the agent store
+    ## We're using tr to fix line endings which makes ed25519 keys work
+    ## without extra base64 encoding.
+    ## https://gitlab.com/gitlab-examples/ssh-private-key/issues/1#note_48526556
+    ##
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+
+    ##
+    ## Create the SSH directory and give it the right permissions
+    ##
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - touch ~/.ssh/config
+    - chmod 644 ~/.ssh/config
+
+    - echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+    - pip install -r requirements/deploy.txt
+    - apt-get install rsync -y
+
+    # Install private deployment utils
+    - apt-get install curl
+    - curl --get --output fabfile.py https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.com/fourdigits/klimaat-helpdesk/-/raw/ci-utils/fabfile.py
+    - fab --list
+
+deploy_tst:
+  extends: .deploy
+  only:
+    - main
+  script:
+    - echo "Deploy to TST environment"
+    - fab deploy test
+  environment:
+    name: test
+    url: https://klimaathelpdesk-tst.fourdigits.nl
+
+deploy_acc:
+  extends: .deploy
+  when: manual
+  only:
+    - tags
+  script:
+    - echo "Deploy to ACC environment"
+    - fab deploy acceptance
+  environment:
+    name: acceptance
+    url: https://klimaathelpdesk-acc.fourdigits.nl
+
+deploy_prd:
+  extends: .deploy
+  when: manual
+  only:
+    - tags
+  script:
+    - echo "Deploy to PRD environment"
+    - fab deploy production
+  environment:
+    name: production
+    url: https://klimaathelpdesk-prd.fourdigits.nl
