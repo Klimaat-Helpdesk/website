@@ -1,11 +1,18 @@
-# klimaat-helpdesk
+# Klimaathelpdesk
 
-(Initial README generated from https://gitlab.com/fourdigits/utils/cookiecutter-wagtail/)
+This is the repository for website https://klimaathelpdesk.org
 
-The layout of this project and some assumptions are documented here: https://fourdigits.atlassian.net/wiki/spaces/IM1/pages/61344106/Opzetten+van+een+Django+Wagtail+site
+## Repositories
 
+This project consists of the following repositories:
+
+- A [repository on gitlab](https://gitlab.com/fourdigits/klimaat-helpdesk/) that is used for general development and deployment of the website. This repository is private and contains code in a separate `ci-utils` branch, as it is internal machinery for deployment to Four Digits infrastructure.
+- A [public repository on github](https://github.com/Klimaat-Helpdesk/website) that publishes the `main` branch of the above repository.
+- The [wagtail-helpdesk project on github](https://github.com/Klimaat-Helpdesk/wagtail-helpdesk) contains the reusable Django `wagtail-helpdesk` app that comprises the main functionality of Klimaathelpdesk: asking questions, and answering, tagging, reviewing and publishing them. This package can be used to implement similar-working websites.
 
 ## Requirements
+
+The Klimaathelpdesk.org website uses `wagtail-helpdesk`, which builds on `wagtail`, for its main functionality.
 
 ### Database
 
@@ -108,52 +115,30 @@ make requirements UPGRADE=no
 
 ## Deployment and environments
 
-Here we document where the TST/ACC/PRD environments live, and how to update them.
-
-Before deployment, you add an entry to the changelog (see "Changelog location" below).
-
-To be able to deploy you create a tag with the release and link to the changelog in its annotation.
-
-Examples:
-
-- `git tag -a 1.2.1 -m "https://support.fourdigits.nl/organisaties/<organisatie>/documenten/releases/<versie>"`
-- `git tag -a 1.2.1 -m "See changes.rst"`
-
-
-Test is deployed automatically when main is updated, for acceptance and production you can use the
-deploy button in gitlab.
+Test is deployed automatically when the `main` branch is updated, for acceptance and production you can use the
+deploy button in gitlab, available after you add a tag (and a successful build).
 
 It's also possible to run deployment manually from you own command line with::
 
     fab deploy production --ref=<tag/branch>
 
-### Configure Gitlab
+## Development workflow
 
-In your Gitlab project you need two CI/CD variables for deployment:
+1. Clone `wagtail-helpdesk` from github, and `klimaat-helpdesk` from gitlab.
 
-- **SSH_PRIVATE_KEY**: A private key that can connect to servers (you can find this in 1password)
-- **SSH_KNOWN_HOSTS**: List of servers it connects to and their RSA key (you can find this in 1password)
+    git clone git@github.com:Klimaat-Helpdesk/wagtail-helpdesk.git
+    git clone git@gitlab.com:fourdigits/klimaat-helpdesk.git
 
-Go to Settings -> CI/CD -> Variables to add them.
+2. Make changes to the `wagtail-helpdesk` repo, if the changes are based in that package. After all changes are merged, [update the version in \_\_init\_\_.py](https://github.com/Klimaat-Helpdesk/wagtail-helpdesk/blob/main/wagtail_helpdesk/__init__.py) and create a git tag.
 
-Both variables need to *not* be [Protected](https://docs.gitlab.com/ee/ci/variables/index.html#protect-a-cicd-variable)
-(Gitlab's default is to make them Protected).
+3. Update the used version of the wagtail-helpdesk package [in the `website` requirements](https://gitlab.com/fourdigits/klimaat-helpdesk/-/blob/main/requirements/base.in) (if needed) and run `make requirements`.
 
+4. Make any other changes needed to the website code. After all changes are done, create a development tag (`x.y.zdevN`) and deploy to acceptance.
 
-### Slack integration
+5. If the changes are accepted, add a production tag (`x.y.z`) and deploy to acceptance and production.
 
-On successful deployment you can send the message to a Slack channel.
-You need to create a Slack webhook url: https://api.slack.com/apps/AT9A3736D/incoming-webhooks
+6. Push the updated `main` branch to the github repo by adding a second remote in git:
 
-This webhook url needs to be configured as `SLACK_WEBHOOK` variable in Gitlab CI/CD `your project -> settings -> CI/CD -> Variables`
-
-
-### Changelog location
-
-The changelog can be kept in, for example:
-
-- On `https://support.fourdigits.nl/organisaties/<organisatie>/documenten`
-- In a file in this repository, eg. `CHANGES.txt` / `changes.md`
-- Some other place that you agree on with the team
-
-After deciding on where to keep the changelog, update this file.
+    git remote add github git@github.com:Klimaat-Helpdesk/website.git
+    git push github main
+    git push github --tags
