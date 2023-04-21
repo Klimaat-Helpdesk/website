@@ -52,6 +52,71 @@ Note that `manage.py` assumes the default settings file to be `settings/developm
 
 ## Development
 
+### Development workflow
+
+#### Setup your local sources
+
+- Clone `klimaat-helpdesk` from gitlab:
+
+```shell
+git clone git@gitlab.com:fourdigits/klimaat-helpdesk.git
+```
+
+- Create default development setup:
+
+```shell
+createdb klimaat-helpdesk
+make develop
+```
+
+- Get data from `acceptance` environment and test the website:
+
+```shell
+# The fabfile is in a different branch to ensure we don't push it to the public github repo
+git checkout ci-utils
+fab get_data acceptance
+git checkout main
+make run
+firefox http://localhost:8000
+```
+
+- Replace the pip-installed `wagtail-helpdesk` package with a local git checkout:
+
+```shell
+# This checks out the repository next to the klimaat-helpdesk repo
+git clone git@github.com:Klimaat-Helpdesk/wagtail-helpdesk.git ../wagtail-helpdesk
+pip install -e ../wagtail-helpdesk
+make run
+```
+
+#### Make development changes
+
+Changes to the `klimaat-helpdesk` repo can be handled as a regular development change.
+
+For changes to `wagtail-helpdesk`:
+
+- Run `make run` in the `klimaat-helpdesk` repo to get to see changes on http://localhost:8000
+- Run `yarn start` in the `wagtail-helpdesk` repo to rebuild frontend files automatically, refresh the page for updates.
+
+If you made changes to frontend files, after all files have been updated, run `yarn build` and commit the produced changes to the repo (yes, in the `static` folder).
+
+
+#### Deploy a new version
+
+- Create a new release for wagtail-helpdesk (if you made changes to the repo). After all changes are merged, [update the version in \_\_init\_\_.py](https://github.com/Klimaat-Helpdesk/wagtail-helpdesk/blob/main/wagtail_helpdesk/__init__.py) and create a corresponding git tag.
+
+- Update the used version of the `wagtail-helpdesk` package [in the `website` requirements](https://gitlab.com/fourdigits/klimaat-helpdesk/-/blob/main/requirements/base.in) if needed, and run `make requirements`. Commit the new requirements.
+
+- After all other changes are done, create a development tag (`x.y.zdevN`) and deploy to test/acceptance. If the changes are accepted, add a production tag (`x.y.z`) and deploy to acceptance and production.
+
+- Push the updated `klimaat-helpdesk` `main` branch to the github repo by adding an additional remote in git:
+
+```shell
+git remote add github git@github.com:Klimaat-Helpdesk/website.git
+git push github main
+git push github --tags
+```
+
 ### Testing
 
 Run:
@@ -100,7 +165,7 @@ In `requirements/base.in`, we pin as few packages as we can, and pip-tools gener
 
 To upgrade dependencies, run:
 
-```bash
+```shell
 make requirements
 ```
 
@@ -109,7 +174,7 @@ the newest available version.
 
 If you only changed a pinning of a single package, or only added a new dependency, use:
 
-```bash
+```shell
 make requirements UPGRADE=no
 ```
 
@@ -121,24 +186,3 @@ deploy button in gitlab, available after you add a tag (and a successful build).
 It's also possible to run deployment manually from you own command line with::
 
     fab deploy production --ref=<tag/branch>
-
-## Development workflow
-
-1. Clone `wagtail-helpdesk` from github, and `klimaat-helpdesk` from gitlab.
-
-    git clone git@github.com:Klimaat-Helpdesk/wagtail-helpdesk.git
-    git clone git@gitlab.com:fourdigits/klimaat-helpdesk.git
-
-2. Make changes to the `wagtail-helpdesk` repo, if the changes are based in that package. After all changes are merged, [update the version in \_\_init\_\_.py](https://github.com/Klimaat-Helpdesk/wagtail-helpdesk/blob/main/wagtail_helpdesk/__init__.py) and create a git tag.
-
-3. Update the used version of the wagtail-helpdesk package [in the `website` requirements](https://gitlab.com/fourdigits/klimaat-helpdesk/-/blob/main/requirements/base.in) (if needed) and run `make requirements`.
-
-4. Make any other changes needed to the website code. After all changes are done, create a development tag (`x.y.zdevN`) and deploy to acceptance.
-
-5. If the changes are accepted, add a production tag (`x.y.z`) and deploy to acceptance and production.
-
-6. Push the updated `main` branch to the github repo by adding a second remote in git:
-
-    git remote add github git@github.com:Klimaat-Helpdesk/website.git
-    git push github main
-    git push github --tags
