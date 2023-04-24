@@ -88,7 +88,7 @@ test:
     - apt-get install rsync -y
 
     # Install private deployment utils
-    - apt-get install curl
+    - apt-get install curl -y
     - curl --get --output fabfile.py https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.com/fourdigits/klimaat-helpdesk/-/raw/ci-utils/fabfile.py
     - fab --list
 
