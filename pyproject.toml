@@ -1,0 +1,15 @@
+[project]
+name = "klimaat-helpdesk"
+version = "1.0"
+
+[tool.fourdigits]
+docker_repo = "klimaat-helpdesk"
+
+[tool.fourdigits.envs.tst]
+# This section has no values yet.
+
+[tool.fourdigits.envs.acc]
+# This section has no values yet.
+
+[tool.fourdigits.envs.prd]
+# This section has no values yet.
