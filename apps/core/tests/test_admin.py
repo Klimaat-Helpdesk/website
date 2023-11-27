@@ -6,7 +6,7 @@ from django.urls import reverse
 
 @pytest.mark.django_db
 @pytest.mark.usefixtures("home_page")
-def test_django_admin_login_shows_website_version_from_setting(django_app, settings):
+def test_django_admin_login_shows_release_version_from_setting(django_app, settings):
     response = django_app.get(reverse("admin:login"))
     assert response.status_code == HTTPStatus.OK
-    assert f"klimaat-helpdesk versie {settings.WEBSITE_VERSION} in response"
+    assert f"klimaat-helpdesk versie {settings.RELEASE_VERSION} in response"

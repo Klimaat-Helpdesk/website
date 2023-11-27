@@ -1,9 +1,9 @@
 [project]
-name = "klimaat-helpdesk"
+name = "klimaathelpdesk"
 version = "1.0"
 
 [tool.fourdigits]
-docker_repo = "klimaat-helpdesk"
+slack_channel = "klimaat-helpdesk"
 
 [tool.fourdigits.envs.tst]
 # This section has no values yet.

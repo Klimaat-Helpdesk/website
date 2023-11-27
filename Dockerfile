@@ -1,4 +1,4 @@
-FROM node:18-buster-slim as frontend
+FROM node:14-buster-slim as frontend
 WORKDIR /home/userapp/src
 
 RUN chown -R node:node /home/userapp
@@ -10,8 +10,8 @@ RUN yarn install && \
     yarn build
 
 FROM docker-registry.fourdigits.nl/fourdigits-public/django-base-image:310 as production
-ARG TAG
-ENV APP_VERSION=$TAG
+ARG RELEASE_VERSION
+ENV RELEASE_VERSION=$RELEASE_VERSION
 ENV DJANGO_SETTINGS_MODULE=settings.production
 WORKDIR /home/userapp/src
 
