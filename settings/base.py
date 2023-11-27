@@ -7,6 +7,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -14,12 +15,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 DEBUG = True
 
-# Load git version to display in Django admin interface and configure release in sentry.
-# if os.path.exists(BASE_DIR / ".git"):
-#     WEBSITE_VERSION = os.popen("git describe --tags").read().strip()
-# else:
-#     WEBSITE_VERSION = "GIT REPOSITORY NOT FOUND"
-WEBSITE_VERSION = "TODO"
+RELEASE_VERSION = os.environ.get("RELEASE_VERSION", "NO VERSION FOUND")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -66,6 +62,11 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.sitemaps",
+
+    # Health check
+    "health_check",
+    "health_check.db",
+    "health_check.contrib.migrations",
 ]
 
 MIDDLEWARE = [

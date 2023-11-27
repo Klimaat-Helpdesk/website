@@ -51,43 +51,45 @@ test:
       - htmlcov/
   interruptible: true
 
-.build:
-  # This build is used for the new Exonet setup.
+.drone_deploy:
   image: docker-registry.fourdigits.nl/fourdigits-public/docker-pipeline:latest
-  stage: build
-  needs:
-    - test
+  stage: deploy
   services:
     - docker:dind
+  needs:
+    - test
   script:
-    - python3 -m fourdigits_cli docker build --push --version=$BUILD_VERSION --file=Dockerfile --target=production $BUILD_NAME
+    - python3 -m fourdigits_cli docker build --push --version=$DEPLOY_VERSION --file=Dockerfile --target=production $DEPLOY_NAME
+    - python3 -m fourdigits_cli exonet deploy $DEPLOY_NAME $DEPLOY_VERSION
 
-build_tst:
-  extends: .build
+drone_deploy_tst:
+  extends: .drone_deploy
   variables:
-    BUILD_VERSION: $CI_COMMIT_SHORT_SHA
-    BUILD_NAME: tst
+    DEPLOY_NAME: tst
+    DEPLOY_VERSION: $CI_COMMIT_SHORT_SHA
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
-build_acc:
-  extends: .build
+drone_deploy_acc:
+  extends: .drone_deploy
   variables:
-    BUILD_VERSION: $CI_COMMIT_TAG
-    BUILD_NAME: acc
+    DEPLOY_NAME: acc
+    DEPLOY_VERSION: $CI_COMMIT_TAG
   rules:
-    # Only build for semver rc release: X.X.XrcX
+    # Only deploy for semver rc release: X.X.XrcX
     - if: $CI_COMMIT_TAG =~ /.*rc\d+$/
 
-build_prd:
-  extends: .build
+drone_deploy_prd:
+  extends: .drone_deploy
+  when: manual
   variables:
-    BUILD_VERSION: $CI_COMMIT_TAG
-    BUILD_NAME: prd
+    DEPLOY_NAME: prd
+    DEPLOY_VERSION: $CI_COMMIT_TAG
   rules:
-    # Only build on complete semver X.X.X
+    # Only deploy on complete semver X.X.X
     - if: $CI_COMMIT_TAG =~ /^\d+\.\d+\.\d+$/
 
+# Remove lines below when drone deploy is used.
 .deploy:
   stage: deploy
   image: python:3.10-buster
@@ -129,29 +131,6 @@ build_prd:
     - apt-get install curl -y
     - curl --get --output fabfile.py https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.com/fourdigits/klimaat-helpdesk/-/raw/ci-utils/fabfile.py
     - fab --list
-
-deploy_tst:
-  extends: .deploy
-  only:
-    - main
-  script:
-    - echo "Deploy to TST environment"
-    - fab deploy test
-  environment:
-    name: test
-    url: https://klimaathelpdesk-tst.fourdigits.nl
-
-deploy_acc:
-  extends: .deploy
-  when: manual
-  only:
-    - tags
-  script:
-    - echo "Deploy to ACC environment"
-    - fab deploy acceptance
-  environment:
-    name: acceptance
-    url: https://klimaathelpdesk-acc.fourdigits.nl
 
 deploy_prd:
   extends: .deploy
