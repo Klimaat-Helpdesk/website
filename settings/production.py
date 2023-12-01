@@ -54,6 +54,10 @@ LOGGING = {
 
 # Security settings as recommended by `manage check --deploy`
 SECURE_SSL_REDIRECT = True
+# https://docs.djangoproject.com/en/dev/ref/settings/#secure-proxy-ssl-header
+# IMPORTANT: Make sure reverse proxy set this header, for nginx:
+# proxy_set_header X-Forwarded-Proto https;
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 # Enable SECURE_HSTS_SECONDS only when the domain is definitive
