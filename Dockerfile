@@ -1,4 +1,4 @@
-FROM node:14-buster-slim as frontend
+FROM node:18-buster-slim as frontend
 WORKDIR /home/userapp/src
 
 RUN chown -R node:node /home/userapp
