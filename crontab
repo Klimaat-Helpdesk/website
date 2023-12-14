@@ -1,0 +1,5 @@
+# This crontab file is run with the start-crontab command in the docker container
+# On Exonet servers, this is configured as a process.
+
+# Every 5 minutes
+*/5 * * * * python manage.py publish_scheduled

@@ -18,6 +18,7 @@ WORKDIR /home/userapp/src
 COPY --chown=userapp requirements /home/userapp/requirements
 RUN pip install --upgrade pip gunicorn && pip install -r /home/userapp/requirements/production.txt
 
+COPY --chown=userapp crontab /home/userapp/crontab
 COPY --chown=userapp . /home/userapp/src
 COPY --chown=userapp --from=frontend /home/userapp/src/apps/frontend/static /home/userapp/src/apps/frontend/static
 
