@@ -1,7 +1,6 @@
 stages:
-  - test
   - build
-  - coverage
+  - test
   - deploy
 
 variables:
@@ -16,7 +15,7 @@ cache:
     - ~/.cache/pip/
 
 build_frontend:
-  stage: test
+  stage: build
   image: node:18-alpine
   script:
     - yarn --frozen-lockfile
@@ -69,6 +68,9 @@ drone_deploy_tst:
     DEPLOY_VERSION: $CI_COMMIT_SHORT_SHA
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  environment:
+    name: test
+    url: https://klimaathelpdesk.tst.fourdigits.dev
 
 drone_deploy_acc:
   extends: .drone_deploy
@@ -78,6 +80,9 @@ drone_deploy_acc:
   rules:
     # Only deploy for semver rc release: X.X.XrcX
     - if: $CI_COMMIT_TAG =~ /.*rc\d+$/
+  environment:
+    name: acceptation
+    url: https://klimaathelpdesk.acc.fourdigits.dev
 
 drone_deploy_prd:
   extends: .drone_deploy
@@ -88,58 +93,6 @@ drone_deploy_prd:
   rules:
     # Only deploy on complete semver X.X.X
     - if: $CI_COMMIT_TAG =~ /^\d+\.\d+\.\d+$/
-
-# Remove lines below when drone deploy is used.
-.deploy:
-  stage: deploy
-  image: python:3.10-buster
-  needs:
-    - build_frontend
-    - test
-  dependencies:
-    - build_frontend
-  before_script:
-    - apt-get update -y
-    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
-    ##
-    ## Run ssh-agent (inside the build environment)
-    ##
-    - eval $(ssh-agent -s)
-
-    ##
-    ## Add the SSH key stored in SSH_PRIVATE_KEY variable to the agent store
-    ## We're using tr to fix line endings which makes ed25519 keys work
-    ## without extra base64 encoding.
-    ## https://gitlab.com/gitlab-examples/ssh-private-key/issues/1#note_48526556
-    ##
-    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
-
-    ##
-    ## Create the SSH directory and give it the right permissions
-    ##
-    - mkdir -p ~/.ssh
-    - chmod 700 ~/.ssh
-    - touch ~/.ssh/config
-    - chmod 644 ~/.ssh/config
-
-    - echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
-    - chmod 644 ~/.ssh/known_hosts
-    - pip install -r requirements/deploy.txt
-    - apt-get install rsync -y
-
-    # Install private deployment utils
-    - apt-get install curl -y
-    - curl --get --output fabfile.py https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.com/fourdigits/klimaat-helpdesk/-/raw/ci-utils/fabfile.py
-    - fab --list
-
-deploy_prd:
-  extends: .deploy
-  when: manual
-  only:
-    - tags
-  script:
-    - echo "Deploy to PRD environment"
-    - fab deploy production
   environment:
     name: production
-    url: https://klimaathelpdesk-prd.fourdigits.nl
+    url: https://klimaathelpdesk.prd.fourdigits.dev

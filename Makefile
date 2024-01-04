@@ -54,10 +54,10 @@ fixtures: requirements.txt.done
 	$(PYTHON) -m manage build_fixtures
 
 deploy_prd:
-	$(BIN)/fab deploy production
+	$(BIN)/fab deploy prd
 
 deploy_acc:
-	$(BIN)/fab deploy acceptance
+	$(BIN)/fab deploy acc
 
 clean:
 	rm -f requirements.txt.done
