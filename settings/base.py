@@ -65,8 +65,6 @@ INSTALLED_APPS = [
 
     # Health check
     "health_check",
-    "health_check.db",
-    "health_check.contrib.migrations",
 ]
 
 MIDDLEWARE = [
