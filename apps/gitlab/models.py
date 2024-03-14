@@ -44,7 +44,7 @@ class GitlabIssue(models.Model):
                     }
                 )
                 issue.labels = [
-                    "Editor needed",
+                    "Inbox",
                 ]
                 issue.save()
                 self.issue_id = issue.get_id()
