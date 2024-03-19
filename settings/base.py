@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     "wagtail.images",
     "wagtail.search",
     "wagtail.admin",
-    "wagtail.core",
+    "wagtail",
     "modelcluster",
     "taggit",
     "django.contrib.admin",
@@ -111,7 +111,7 @@ AUTH_USER_MODEL = "users.User"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "klimaat-helpdesk",
+        "NAME": "klimaathelpdesk",
         "CONN_MAX_AGE": 600,
         # number of seconds database connections should persist for
         "USER": "",
