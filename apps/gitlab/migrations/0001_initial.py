@@ -9,17 +9,33 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('core', '0001_initial'),
+        ("core", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='GitlabIssue',
+            name="GitlabIssue",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('issue_id', models.IntegerField()),
-                ('creation_date', models.DateTimeField(auto_now_add=True)),
-                ('question', models.OneToOneField(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='issue', to='core.question')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("issue_id", models.IntegerField()),
+                ("creation_date", models.DateTimeField(auto_now_add=True)),
+                (
+                    "question",
+                    models.OneToOneField(
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="issue",
+                        to="core.question",
+                    ),
+                ),
             ],
         ),
     ]

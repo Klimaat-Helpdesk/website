@@ -4,7 +4,7 @@ stages:
   - deploy
 
 variables:
-  POSTGRES_DB: klimaat-helpdesk
+  POSTGRES_DB: klimaathelpdesk
   POSTGRES_USER: postgres
   POSTGRES_PASSWORD: postgres
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"

@@ -22,7 +22,7 @@ We assume you have Postgres on your $PATH, for example:
 
 Create a database:
 
-    createdb klimaat-helpdesk
+    createdb klimaathelpdesk
 
 
 ### Front-end build
@@ -65,7 +65,7 @@ git clone git@gitlab.com:fourdigits/klimaat-helpdesk.git
 - Create default development setup:
 
 ```shell
-createdb klimaat-helpdesk
+createdb klimaathelpdesk
 make develop
 ```
 
