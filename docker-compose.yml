@@ -2,9 +2,9 @@ services:
   db:
     image: postgres:14-alpine
     environment:
-      - POSTGRES_USER=klimaat-helpdesk
-      - POSTGRES_PASSWORD=klimaat-helpdesk
-      - POSTGRES_DB=klimaat-helpdesk
+      - POSTGRES_USER=klimaathelpdesk
+      - POSTGRES_PASSWORD=klimaathelpdesk
+      - POSTGRES_DB=klimaathelpdesk
     ports:
          - "5432:5432"
     volumes:
