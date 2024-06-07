@@ -1070,8 +1070,8 @@ wagtail-factories==4.2.1 \
     --hash=sha256:7a180fc1b074af7a78648c634740ee89d4dbb45899917744b66431d38155b6ae \
     --hash=sha256:bfe158092982a2b30a3e603c482242905df0b163fc69573fa6f159df482175c5
     # via -r requirements/testing.in
-wagtail-helpdesk @ https://github.com/Klimaat-Helpdesk/wagtail-helpdesk/archive/refs/tags/0.5.0.zip \
-    --hash=sha256:dd8a345f0b3be6b7d9adeb666b2443026aaf0dc3366c78e5af47b196be227831
+wagtail-helpdesk @ https://github.com/Klimaat-Helpdesk/wagtail-helpdesk/archive/refs/tags/0.6.0.zip \
+    --hash=sha256:ced8db00d1a9839c3e6bb35e13bc06539741ef387b42e30213d8ec4de4decf87
     # via -r requirements/base.in
 wagtail-modeladmin==2.0.0 \
     --hash=sha256:36931ce4b2c2bb56d0367317b29786eb001344b7c9a1cd4f719d7f11efeae71b \
