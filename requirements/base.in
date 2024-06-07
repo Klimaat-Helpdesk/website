@@ -1,5 +1,5 @@
 django~=4.2
 wagtail~=5.2
-wagtail-helpdesk @ https://github.com/Klimaat-Helpdesk/wagtail-helpdesk/archive/refs/tags/0.3.0.zip
+wagtail-helpdesk @ https://github.com/Klimaat-Helpdesk/wagtail-helpdesk/archive/refs/tags/0.5.0.zip
 python-gitlab
 django-health-check
