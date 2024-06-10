@@ -443,9 +443,9 @@ requests-toolbelt==1.0.0 \
     --hash=sha256:7681a0a3d047012b5bdc0ee37d7f8f07ebe76ab08caeccfc3921ce23c88d5bc6 \
     --hash=sha256:cccfdd665f0a24fcf4726e690f65639d272bb0637b9b92dfd91a5568ccf6bd06
     # via python-gitlab
-sentry-sdk==2.5.0 \
-    --hash=sha256:05453f921c561b51159f712c2cd267b595e5c195b38b337d03baeb42719dd3c7 \
-    --hash=sha256:75d2e1fd8a887fdf63df612f5d37991c248a080b886d80714560bdded2bb9051
+sentry-sdk==2.5.1 \
+    --hash=sha256:1f87acdce4a43a523ae5aa21a3fc37522d73ebd9ec04b1dbf01aa3d173852def \
+    --hash=sha256:fbc40a78a8a9c6675133031116144f0d0940376fa6e4e1acd5624c90b0aaf58b
     # via -r requirements/production.in
 six==1.16.0 \
     --hash=sha256:1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926 \
@@ -465,9 +465,9 @@ telepath==0.3.1 \
     --hash=sha256:925c0609e0a8a6488ec4a55b19d485882cf72223b2b19fe2359a50fddd813c9c \
     --hash=sha256:c280aa8e77ad71ce80e96500a4e4d4a32f35b7e0b52e896bb5fde9a5bcf0699a
     # via wagtail
-typing-extensions==4.12.1 \
-    --hash=sha256:6024b58b69089e5a89c347397254e35f1bf02a907728ec7fee9bf0fe837d203a \
-    --hash=sha256:915f5e35ff76f56588223f15fdd5938f9a1cf9195c0de25130c627e4d597f6d1
+typing-extensions==4.12.2 \
+    --hash=sha256:04e5ca0351e0f3f85c6853954072df659d0d13fac324d0072316b67d7794700d \
+    --hash=sha256:1a7ead55c7e559dd4dee8856e3a88b41225abfe1ce8df57b7c13915fe121ffb8
     # via asgiref
 urllib3==2.2.1 \
     --hash=sha256:450b20ec296a467077128bff42b73080516e71b56ff59a60a02bef2232c4fa9d \
@@ -482,8 +482,8 @@ wagtail==5.2.5 \
     #   -r requirements/base.in
     #   wagtail-helpdesk
     #   wagtail-modeladmin
-wagtail-helpdesk @ https://github.com/Klimaat-Helpdesk/wagtail-helpdesk/archive/refs/tags/0.6.0.zip \
-    --hash=sha256:ced8db00d1a9839c3e6bb35e13bc06539741ef387b42e30213d8ec4de4decf87
+wagtail-helpdesk @ https://github.com/Klimaat-Helpdesk/wagtail-helpdesk/archive/refs/tags/0.7.0.zip \
+    --hash=sha256:62ad8d3b78fc16a7339211c37e53ee6a9dfde9d0a84fcd8d11b1ff12a2d1d0e8
     # via -r requirements/base.in
 wagtail-modeladmin==2.0.0 \
     --hash=sha256:36931ce4b2c2bb56d0367317b29786eb001344b7c9a1cd4f719d7f11efeae71b \
