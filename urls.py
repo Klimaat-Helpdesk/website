@@ -1,5 +1,8 @@
+import os
+
 from django.conf import settings
 from django.contrib import admin
+from django.http import HttpResponse
 from django.urls import include, path
 from wagtail import urls as wagtail_urls
 from wagtail.admin import urls as wagtailadmin_urls
@@ -13,6 +16,7 @@ urlpatterns = [
     path("admin/", include(wagtailadmin_urls)),
     path("documents/", include(wagtaildocs_urls)),
     path("__healthcheck__/", include("health_check.urls")),
+    path("__commithash__/", lambda request: HttpResponse(os.getenv("COMMIT_HASH", ""))),
 ]
 
 

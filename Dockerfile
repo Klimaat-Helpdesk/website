@@ -11,7 +11,9 @@ RUN yarn install && \
 
 FROM docker-registry.fourdigits.nl/fourdigits-public/django-base-image:310 as production
 ARG RELEASE_VERSION
+ARG COMMIT_HASH
 ENV RELEASE_VERSION=$RELEASE_VERSION
+ENV COMMIT_HASH=$COMMIT_HASH
 ENV DJANGO_SETTINGS_MODULE=settings.production
 WORKDIR /home/userapp/src
 
