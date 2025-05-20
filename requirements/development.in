@@ -3,6 +3,7 @@
 
 fabric
 GitPython
+gunicorn
 inquirer
 pep8
 psycopg2-binary
