@@ -114,7 +114,6 @@ uvicorn==0.34.2
 virtualenv==20.29.3
 wagtail==5.2.6
 wagtail-factories==4.2.1
--e ../Wagtail-helpdesk
 wagtail-modeladmin==2.0.0
 waitress==3.0.0
 wcwidth==0.2.13
