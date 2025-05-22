@@ -28,6 +28,8 @@ blessed==1.20.0
     # via inquirer
 boolean-py==4.0
     # via license-expression
+brotli==1.1.0
+    # via whitenoise
 cachecontrol[filecache]==0.14.0
     # via
     #   cachecontrol
@@ -42,7 +44,9 @@ cffi==1.17.1
 charset-normalizer==3.3.2
     # via requests
 click==8.1.7
-    # via black
+    # via
+    #   black
+    #   uvicorn
 colorama==0.4.6
     # via
     #   click
@@ -128,6 +132,8 @@ gitpython==3.1.43
     # via -r requirements/development.in
 gunicorn==23.0.0
     # via -r requirements/development.in
+h11==0.16.0
+    # via uvicorn
 html5lib==1.1
     # via
     #   pip-audit
@@ -273,6 +279,8 @@ urllib3==2.2.2
     # via
     #   requests
     #   responses
+uvicorn==0.34.2
+    # via -r requirements/development.in
 wagtail==5.2.6
     # via
     #   -r c:\KH\klimaat-helpdesk\requirements\base.in
@@ -295,6 +303,8 @@ webob==1.8.8
     # via webtest
 webtest==3.0.1
     # via django-webtest
+whitenoise[brotli]==6.9.0
+    # via -r requirements/development.in
 willow[heif]==1.6.3
     # via
     #   wagtail

@@ -8,3 +8,5 @@ inquirer
 pep8
 psycopg2-binary
 termcolor
+uvicorn
+whitenoise[brotli]
