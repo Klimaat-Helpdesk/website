@@ -3,7 +3,7 @@ from fabric.transfer import Transfer
 from invoke import run
 from termcolor import cprint
 
-APP_NAME = "klimaathelpdeskfabfile"
+APP_NAME = "klimaathelpdesk"
 
 
 def get_db_dump_for_env(username):

@@ -1,5 +1,5 @@
 [project]
-name = "klimaathelpdeskpyproject"
+name = "klimaathelpdesk"
 version = "1.0"
 
 [tool.fourdigits]
