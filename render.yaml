@@ -20,3 +20,5 @@ services:
         generateValue: true
       - key: WEB_CONCURRENCY
         value: 4
+      - key: PYTHONPATH
+        value: /opt/render/project/src
