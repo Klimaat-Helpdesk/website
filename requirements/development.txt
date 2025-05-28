@@ -65,9 +65,12 @@ defusedxml==0.7.1
     #   willow
 deprecated==1.2.14
     # via fabric
+dj-database-url==2.3.0
+    # via -r requirements/development.in
 django==4.2.16
     # via
     #   -r c:\KH\klimaat-helpdesk\requirements\base.in
+    #   dj-database-url
     #   django-allauth
     #   django-filter
     #   django-health-check
@@ -273,6 +276,8 @@ termcolor==2.4.0
     # via -r requirements/development.in
 toml==0.10.2
     # via pip-audit
+typing-extensions==4.13.2
+    # via dj-database-url
 tzdata==2025.2
     # via django
 urllib3==2.2.2

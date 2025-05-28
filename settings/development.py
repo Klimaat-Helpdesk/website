@@ -1,4 +1,5 @@
 import os
+import dj_database_url 
 from .base import *  # NOQA
 
 
@@ -9,6 +10,15 @@ INSTALLED_APPS += [
 MIDDLEWARE += [
     # "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
+
+# Replace the SQLite DATABASES configuration with PostgreSQL:
+DATABASES = {
+    'default': dj_database_url.config(
+        # Replace this value with your local database's connection string.
+        default='postgresql://klimaathelpdeskdev_user:jRrv7yfoUkVI5Xt437CU43PS9SfXEHlo@dpg-cvr7nsvgi27c738n8log-a/klimaathelpdeskdev',
+        conn_max_age=600
+    )
+}
 
 ALLOWED_HOSTS = []
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')

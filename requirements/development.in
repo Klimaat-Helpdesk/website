@@ -1,6 +1,7 @@
 -r base.in
 -r testing.in
 
+dj_database_url
 fabric
 GitPython
 gunicorn
