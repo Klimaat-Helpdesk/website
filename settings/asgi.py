@@ -12,6 +12,6 @@ from .wsgi import * #https://github.com/encode/uvicorn/discussions/1495
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mysite.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings')
 
 application = get_asgi_application()
