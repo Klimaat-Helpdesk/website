@@ -29,6 +29,7 @@ if RENDER_EXTERNAL_HOSTNAME:
 SECRET_KEY = "CHANGEME!!!"
 
 BASE_URL = WAGTAILADMIN_BASE_URL = "http://localhost:8000"
+MEDIA_ROOT = "/media"
 
 LOGGING = {
     "version": 1,
