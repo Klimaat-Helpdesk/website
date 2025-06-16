@@ -1,0 +1,2 @@
+$(PYTHON) manage.py makemigrations
+$(PYTHON) manage.py migrate
