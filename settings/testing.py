@@ -3,10 +3,6 @@ from .base import *  # NOQA
 
 SECRET_KEY = "CHANGEME!!!"
 
-DATABASES["default"]["USER"] = "klimaathelpdesk"
-DATABASES["default"]["PASSWORD"] = "klimaathelpdesk"
-DATABASES["default"]["HOST"] = "localhost"
-
 # We need this because django-webtest uses StaticFilesStorage
 STORAGES["staticfiles"] = {  # noqa: F405
     "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage"

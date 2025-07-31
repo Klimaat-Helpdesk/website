@@ -63,7 +63,14 @@ CSRF_COOKIE_SECURE = True
 # Enable SECURE_HSTS_SECONDS only when the domain is definitive
 # SECURE_HSTS_SECONDS = 3600 * 24 * 365  # 1 year
 
-try:
-    from .local import *
-except ImportError:
-    pass
+sentry_sdk.init(
+    dsn=get_secret(os.getenv("SENTRY_DSN_FILE", "/run/secrets/sentry_dsn"), ""),
+    integrations=[DjangoIntegration()],
+    environment=os.getenv("SENTRY_ENVIRONMENT"),
+    release=RELEASE_VERSION,
+)
+
+GITLAB_PERSONAL_TOKEN= get_secret(
+    os.getenv("GITLAB_PERSONAL_TOKEN_FILE", "/run/secrets/gitlab_personal_token"), ""
+)
+GITLAB_PROJECT_ID=14981988

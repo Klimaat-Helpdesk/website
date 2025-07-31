@@ -23,7 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 DEBUG = True
 
-RELEASE_VERSION = os.environ.get("RELEASE_VERSION", "NO VERSION FOUND")
+# https://docs.djangoproject.com/en/4.1/ref/settings/#allowed-hosts
+# Allow localhost for docker HEALTHCHECK
+ALLOWED_HOSTS = [".localhost", "127.0.0.1", "[::1]"] + list(filter(None, os.getenv("ALLOWED_HOSTS", "").split(",")))
+
+RELEASE_VERSION = os.getenv("RELEASE_VERSION", "NO VERSION FOUND")
+WAGTAILADMIN_BASE_URL=os.getenv("WAGTAILADMIN_BASE_URL")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -111,23 +116,31 @@ TEMPLATES = [
     },
 ]
 
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
 AUTH_USER_MODEL = "users.User"
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "klimaathelpdesk",
+# DATABASES
+# ------------------------------------------------------------------------------
+# https://docs.djangoproject.com/en/dev/ref/settings/#databases
+DATABASES = {"default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
         "CONN_MAX_AGE": 600,
-        # number of seconds database connections should persist for
-        "USER": "",
-        "HOST": "",
-        "PASSWORD": "",
-    }
-}
+        "DISABLE_SERVER_SIDE_CURSORS": True,  # For PgBouncer
+        "NAME": os.getenv("POSTGRES_NAME", "biodiversiteithelpdesk"),
+        "HOST": os.getenv("POSTGRES_HOST", ""),
+        "PORT": os.getenv("POSTGRES_PORT", 5432),
+        "USER": os.getenv("POSTGRES_USER", ""),
+        "PASSWORD": get_secret(
+            os.getenv("POSTGRES_PASSWORD_FILE", "/run/secrets/db_password"),
+            "",
+        ),
+}}
 
+# https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = get_secret(
+    os.getenv("SECRET_KEY_FILE", "/run/secrets/secret_key"),
+    "django-insecure-default-secret-key",
+)
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -183,9 +196,6 @@ STORAGES = {
     "default": {"BACKEND": "apps.core.storages.MediaS3Storage"},
     "staticfiles": {"BACKEND": "apps.core.storages.StaticS3Storage"},
 }
-
-
-WAGTAILADMIN_BASE_URL = BASE_URL = "https://klimaathelpdesk.org"
 
 
 # Static files (CSS, JavaScript, Images)

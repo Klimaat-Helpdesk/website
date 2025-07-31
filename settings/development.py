@@ -41,7 +41,3 @@ MEDIA_URL = "/media/"
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
-try:
-    from .local import *  # NOQA
-except ImportError:
-    pass
