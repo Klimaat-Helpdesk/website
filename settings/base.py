@@ -9,13 +9,26 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 from pathlib import Path
+from botocore.client import Config as BotoConfig
+
+
+def get_secret(secret_path, default=None):
+    if not os.path.exists(secret_path):
+        return default
+    return Path(secret_path).read_text().strip()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 DEBUG = True
 
-RELEASE_VERSION = os.environ.get("RELEASE_VERSION", "NO VERSION FOUND")
+# https://docs.djangoproject.com/en/4.1/ref/settings/#allowed-hosts
+# Allow localhost for docker HEALTHCHECK
+ALLOWED_HOSTS = [".localhost", "127.0.0.1", "[::1]"] + list(filter(None, os.getenv("ALLOWED_HOSTS", "").split(",")))
+
+RELEASE_VERSION = os.getenv("RELEASE_VERSION", "NO VERSION FOUND")
+WAGTAILADMIN_BASE_URL=os.getenv("WAGTAILADMIN_BASE_URL")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -103,23 +116,31 @@ TEMPLATES = [
     },
 ]
 
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
 AUTH_USER_MODEL = "users.User"
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "klimaathelpdesk",
+# DATABASES
+# ------------------------------------------------------------------------------
+# https://docs.djangoproject.com/en/dev/ref/settings/#databases
+DATABASES = {"default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
         "CONN_MAX_AGE": 600,
-        # number of seconds database connections should persist for
-        "USER": "",
-        "HOST": "",
-        "PASSWORD": "",
-    }
-}
+        "DISABLE_SERVER_SIDE_CURSORS": True,  # For PgBouncer
+        "NAME": os.getenv("POSTGRES_NAME", "biodiversiteithelpdesk"),
+        "HOST": os.getenv("POSTGRES_HOST", ""),
+        "PORT": os.getenv("POSTGRES_PORT", 5432),
+        "USER": os.getenv("POSTGRES_USER", ""),
+        "PASSWORD": get_secret(
+            os.getenv("POSTGRES_PASSWORD_FILE", "/run/secrets/db_password"),
+            "",
+        ),
+}}
 
+# https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = get_secret(
+    os.getenv("SECRET_KEY_FILE", "/run/secrets/secret_key"),
+    "django-insecure-default-secret-key",
+)
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -151,7 +172,30 @@ USE_L10N = True
 
 USE_TZ = True
 
-WAGTAILADMIN_BASE_URL = BASE_URL = "https://klimaathelpdesk.org"
+
+# S3/Minio (used by static and media storage)
+# ------------------------------------------------------------------------------
+# https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
+AWS_S3_ENDPOINT_URL = os.getenv("AWS_S3_ENDPOINT_URL", "http://minio:8001/")
+AWS_STORAGE_BUCKET_NAME = os.getenv("AWS_STORAGE_BUCKET_NAME", "s3bucket")
+AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID", "minioadmin")
+AWS_SECRET_ACCESS_KEY = get_secret(
+    os.getenv("AWS_SECRET_ACCESS_KEY_FILE", "/run/secrets/aws_secret_access_key"),
+    "miniopassword",
+)
+# Fix SignatureDoesNotMatch with latest boto3 release:
+# https://github.com/jschneier/django-storages/issues/1482#issuecomment-2648033009
+AWS_S3_CLIENT_CONFIG = BotoConfig(
+    request_checksum_calculation="when_required",
+    response_checksum_validation="when_required",
+)
+
+# STORAGES
+# https://docs.djangoproject.com/en/4.2/ref/settings/#storages
+STORAGES = {
+    "default": {"BACKEND": "apps.core.storages.MediaS3Storage"},
+    "staticfiles": {"BACKEND": "apps.core.storages.StaticS3Storage"},
+}
 
 
 # Static files (CSS, JavaScript, Images)
@@ -162,11 +206,6 @@ STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 ]
 
-STATIC_ROOT = BASE_DIR / "static"
-STATIC_URL = "/static/"
-
-MEDIA_ROOT = BASE_DIR / "media"
-MEDIA_URL = "/media/"
 # Wagtail settings
 
 WAGTAIL_SITE_NAME = "klimaat-helpdesk"
