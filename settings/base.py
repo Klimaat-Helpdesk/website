@@ -9,6 +9,14 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 from pathlib import Path
+from botocore.client import Config as BotoConfig
+
+
+def get_secret(secret_path, default=None):
+    if not os.path.exists(secret_path):
+        return default
+    return Path(secret_path).read_text().strip()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -151,6 +159,32 @@ USE_L10N = True
 
 USE_TZ = True
 
+
+# S3/Minio (used by static and media storage)
+# ------------------------------------------------------------------------------
+# https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
+AWS_S3_ENDPOINT_URL = os.getenv("AWS_S3_ENDPOINT_URL", "http://minio:8001/")
+AWS_STORAGE_BUCKET_NAME = os.getenv("AWS_STORAGE_BUCKET_NAME", "s3bucket")
+AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID", "minioadmin")
+AWS_SECRET_ACCESS_KEY = get_secret(
+    os.getenv("AWS_SECRET_ACCESS_KEY_FILE", "/run/secrets/aws_secret_access_key"),
+    "miniopassword",
+)
+# Fix SignatureDoesNotMatch with latest boto3 release:
+# https://github.com/jschneier/django-storages/issues/1482#issuecomment-2648033009
+AWS_S3_CLIENT_CONFIG = BotoConfig(
+    request_checksum_calculation="when_required",
+    response_checksum_validation="when_required",
+)
+
+# STORAGES
+# https://docs.djangoproject.com/en/4.2/ref/settings/#storages
+STORAGES = {
+    "default": {"BACKEND": "apps.core.storages.MediaS3Storage"},
+    "staticfiles": {"BACKEND": "apps.core.storages.StaticS3Storage"},
+}
+
+
 WAGTAILADMIN_BASE_URL = BASE_URL = "https://klimaathelpdesk.org"
 
 
@@ -162,11 +196,6 @@ STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 ]
 
-STATIC_ROOT = BASE_DIR / "static"
-STATIC_URL = "/static/"
-
-MEDIA_ROOT = BASE_DIR / "media"
-MEDIA_URL = "/media/"
 # Wagtail settings
 
 WAGTAIL_SITE_NAME = "klimaat-helpdesk"
