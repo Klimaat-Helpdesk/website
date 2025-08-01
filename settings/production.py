@@ -1,3 +1,6 @@
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
+
 from .base import *  # noqa: F403
 
 # Do not set SECRET_KEY, Postgres or LDAP password or any other sensitive data here.
