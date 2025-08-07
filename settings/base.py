@@ -33,8 +33,26 @@ WAGTAILADMIN_BASE_URL=os.getenv("WAGTAILADMIN_BASE_URL")
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
-# Add a default sender email address.
+# EMAIL
+# ------------------------------------------------------------------------------
+# https://docs.djangoproject.com/en/dev/ref/settings/#default-from-email
 DEFAULT_FROM_EMAIL = "info@klimaathelpdesk.org"
+# https://docs.djangoproject.com/en/dev/ref/settings/#email-host
+
+EMAIL_HOST = os.getenv("EMAIL_HOST", "localhost")
+# https://docs.djangoproject.com/en/dev/ref/settings/#email-host-user
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER", "")
+# https://docs.djangoproject.com/en/dev/ref/settings/#email-host-password
+EMAIL_HOST_PASSWORD = get_secret(
+    os.getenv("EMAIL_HOST_PASSWORD_FILE", "/run/secrets/email_host_password"),
+    "",
+)
+# https://docs.djangoproject.com/en/dev/ref/settings/#email-port
+EMAIL_PORT = int(os.getenv("EMAIL_PORT", "25"))
+# https://docs.djangoproject.com/en/dev/ref/settings/#email-use-tls
+EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS", "False").lower() in ("true", "1")
+# https://docs.djangoproject.com/en/dev/ref/settings/#email-use-ssl
+EMAIL_USE_SSL = os.getenv("MAIL_USE_SSL", "False").lower() in ("true", "1")
 
 # Set default primary key field
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
