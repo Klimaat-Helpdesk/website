@@ -298,7 +298,9 @@ wagtail==5.2.6
     #   wagtail-modeladmin
 wagtail-factories==4.2.1
     # via -r c:\KH\klimaat-helpdesk\requirements\testing.in
-wagtail-helpdesk @ https://github.com/Klimaat-Helpdesk/wagtail-helpdesk/archive/refs/tags/0.7.5.zip
+# wagtail-helpdesk @ https://github.com/Klimaat-Helpdesk/wagtail-helpdesk/archive/refs/tags/0.7.5.zip
+# build test by Jos Velema 
+wagtail-helpdesk @ https://github.com/KlimaatHelpdeskInternal/wagtail-helpdesk/archive/refs/heads/ticket-9.zip
     # via -r c:\KH\klimaat-helpdesk\requirements\base.in
 wagtail-modeladmin==2.0.0
     # via wagtail-helpdesk
