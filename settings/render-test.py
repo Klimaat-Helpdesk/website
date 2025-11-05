@@ -22,6 +22,7 @@ DATABASES = {
 }
 
 ALLOWED_HOSTS = []
+DEBUG = False
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
@@ -64,6 +65,7 @@ if not DEBUG:
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 WAGTAIL_SITE_NAME = "klimaat-helpdesk"
+WAGTAILADMIN_BASE_URL = BASE_URL = "https://klimaathelpdesk.org"
 
 try:
     from .local import *  # NOQA
