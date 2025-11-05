@@ -53,8 +53,8 @@ LOGGING = {
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 MEDIA_ROOT = "/media"
 
-STATIC_ROOT = BASE_DIR / "static"
-STATIC_URL = "/static/"
+STATIC_ROOT = BASE_DIR / "media"
+STATIC_URL = "/media/"
 # This production code might break development mode, so we check whether we're in DEBUG mode
 if not DEBUG:
     # Tell Django to copy static assets into a path called `staticfiles` (this is specific to Render)
