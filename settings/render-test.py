@@ -42,7 +42,8 @@ ALLOWED_HOSTS.append("test.klimaathelpdesk.org")
 SECRET_KEY = "CHANGEME!!!"
 
 BASE_URL = WAGTAILADMIN_BASE_URL = "http://localhost:8000"
-MEDIA_ROOT = "/media"
+MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_URL = "/media/"
 
 STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
@@ -60,7 +61,6 @@ LOGGING = {
 }
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-MEDIA_ROOT = "/media"
 
 STATIC_ROOT = BASE_DIR / "static"
 STATIC_URL = "/static/"
