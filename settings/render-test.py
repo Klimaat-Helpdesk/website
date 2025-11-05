@@ -34,6 +34,11 @@ SECRET_KEY = "CHANGEME!!!"
 BASE_URL = WAGTAILADMIN_BASE_URL = "http://localhost:8000"
 MEDIA_ROOT = "/media"
 
+STATICFILES_FINDERS = [
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+]
+
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
@@ -47,6 +52,8 @@ LOGGING = {
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 MEDIA_ROOT = "/media"
 
+STATIC_ROOT = BASE_DIR / "static"
+STATIC_URL = "/static/"
 # This production code might break development mode, so we check whether we're in DEBUG mode
 if not DEBUG:
     # Tell Django to copy static assets into a path called `staticfiles` (this is specific to Render)
@@ -55,6 +62,8 @@ if not DEBUG:
     # Enable the WhiteNoise storage backend, which compresses static files to reduce disk use
     # and renames the files with unique names for each version to support long-term caching
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+WAGTAIL_SITE_NAME = "klimaat-helpdesk"
 
 try:
     from .local import *  # NOQA
