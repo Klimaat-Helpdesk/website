@@ -15,7 +15,7 @@ urlpatterns = [
     path("django-admin/", admin.site.urls),
     path("admin/", include(wagtailadmin_urls)),
     path("documents/", include(wagtaildocs_urls)),
-    path("__healthcheck__/", include("health_check.urls")),
+    #path("__healthcheck__/", include("health_check.urls")),
     path("__commithash__/", lambda request: HttpResponse(os.getenv("COMMIT_HASH", ""))),
 ]
 
