@@ -7,9 +7,18 @@ INSTALLED_APPS += [
     # "debug_toolbar",
 ]
 
-MIDDLEWARE += [
-        "whitenoise.middleware.WhiteNoiseMiddleware"
+MIDDLEWARE = [
+    "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware"
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "wagtail.contrib.redirects.middleware.RedirectMiddleware",
 ]
+
 
 # Replace the SQLite DATABASES configuration with PostgreSQL:
 DATABASES = {
@@ -53,8 +62,8 @@ LOGGING = {
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 MEDIA_ROOT = "/media"
 
-STATIC_ROOT = BASE_DIR / "media"
-STATIC_URL = "/media/"
+STATIC_ROOT = BASE_DIR / "static"
+STATIC_URL = "/static/"
 # This production code might break development mode, so we check whether we're in DEBUG mode
 if not DEBUG:
     # Tell Django to copy static assets into a path called `staticfiles` (this is specific to Render)
