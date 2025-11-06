@@ -22,7 +22,7 @@ beautifulsoup4==4.11.2
     #   webtest
 black==25.9.0
     # via
-    #   -r C:\KH\HostingInRender\website\requirements\testing.in
+    #   -r c:\KH\HostingInRender\website\requirements\testing.in
     #   flake8-black
 blessed==1.23.0
     # via inquirer
@@ -75,7 +75,7 @@ dj-database-url==3.0.1
     # via -r requirements/render.in
 django==4.2.26
     # via
-    #   -r C:\KH\HostingInRender\website\requirements\base.in
+    #   -r c:\KH\HostingInRender\website\requirements\base.in
     #   dj-database-url
     #   django-allauth
     #   django-filter
@@ -95,19 +95,19 @@ django-crispy-forms==1.14.0
 django-filter==23.5
     # via wagtail
 django-health-check==3.20.0
-    # via -r C:\KH\HostingInRender\website\requirements\base.in
+    # via -r c:\KH\HostingInRender\website\requirements\base.in
 django-modelcluster==6.4
     # via wagtail
 django-permissionedforms==0.1
     # via wagtail
 django-storages[s3]==1.14.6
-    # via -r C:\KH\HostingInRender\website\requirements\base.in
+    # via -r c:\KH\HostingInRender\website\requirements\base.in
 django-taggit==4.0.0
     # via wagtail
 django-treebeard==4.7.1
     # via wagtail
 django-webtest==1.9.14
-    # via -r C:\KH\HostingInRender\website\requirements\testing.in
+    # via -r c:\KH\HostingInRender\website\requirements\testing.in
 djangorestframework==3.16.1
     # via wagtail
 draftjs-exporter==2.1.7
@@ -117,7 +117,7 @@ editor==1.6.6
 et-xmlfile==2.0.0
     # via openpyxl
 fabric==3.2.2
-    # via -r C:\KH\HostingInRender\website\requirements\development.in
+    # via -r c:\KH\HostingInRender\website\requirements\development.in
 factory-boy==3.3.3
     # via wagtail-factories
 faker==37.12.0
@@ -128,20 +128,20 @@ filetype==1.2.0
     # via willow
 flake8==7.3.0
     # via
-    #   -r C:\KH\HostingInRender\website\requirements\testing.in
+    #   -r c:\KH\HostingInRender\website\requirements\testing.in
     #   flake8-black
     #   flake8-debugger
     #   flake8-isort
 flake8-black==0.4.0
-    # via -r C:\KH\HostingInRender\website\requirements\testing.in
+    # via -r c:\KH\HostingInRender\website\requirements\testing.in
 flake8-debugger==4.1.2
-    # via -r C:\KH\HostingInRender\website\requirements\testing.in
+    # via -r c:\KH\HostingInRender\website\requirements\testing.in
 flake8-isort==7.0.0
-    # via -r C:\KH\HostingInRender\website\requirements\testing.in
+    # via -r c:\KH\HostingInRender\website\requirements\testing.in
 gitdb==4.0.12
     # via gitpython
 gitpython==3.1.45
-    # via -r C:\KH\HostingInRender\website\requirements\development.in
+    # via -r c:\KH\HostingInRender\website\requirements\development.in
 gunicorn==23.0.0
     # via -r requirements/render.in
 h11==0.16.0
@@ -153,14 +153,14 @@ idna==3.11
 iniconfig==2.3.0
     # via pytest
 inquirer==3.4.1
-    # via -r C:\KH\HostingInRender\website\requirements\development.in
+    # via -r c:\KH\HostingInRender\website\requirements\development.in
 invoke==2.2.1
     # via
     #   fabric
     #   paramiko
 isort==7.0.0
     # via
-    #   -r C:\KH\HostingInRender\website\requirements\testing.in
+    #   -r c:\KH\HostingInRender\website\requirements\testing.in
     #   flake8-isort
 jinxed==1.3.0
     # via blessed
@@ -198,7 +198,7 @@ paramiko==4.0.0
 pathspec==0.12.1
     # via black
 pep8==1.7.1
-    # via -r C:\KH\HostingInRender\website\requirements\development.in
+    # via -r c:\KH\HostingInRender\website\requirements\development.in
 pillow==10.4.0
     # via
     #   pillow-heif
@@ -208,7 +208,7 @@ pillow-heif==0.22.0
 pip-api==0.0.34
     # via pip-audit
 pip-audit==2.9.0
-    # via -r C:\KH\HostingInRender\website\requirements\testing.in
+    # via -r c:\KH\HostingInRender\website\requirements\testing.in
 pip-requirements-parser==32.0.1
     # via pip-audit
 platformdirs==4.5.0
@@ -220,7 +220,7 @@ pluggy==1.6.0
     #   pytest
     #   pytest-cov
 psycopg2-binary==2.9.11
-    # via -r C:\KH\HostingInRender\website\requirements\development.in
+    # via -r c:\KH\HostingInRender\website\requirements\development.in
 py-serializable==2.1.0
     # via cyclonedx-python-lib
 pycodestyle==2.14.0
@@ -244,13 +244,13 @@ pytest==8.4.2
     #   pytest-cov
     #   pytest-django
 pytest-cov==7.0.0
-    # via -r C:\KH\HostingInRender\website\requirements\testing.in
+    # via -r c:\KH\HostingInRender\website\requirements\testing.in
 pytest-django==4.11.1
-    # via -r C:\KH\HostingInRender\website\requirements\testing.in
+    # via -r c:\KH\HostingInRender\website\requirements\testing.in
 python-dateutil==2.9.0.post0
     # via botocore
 python-gitlab==7.0.0
-    # via -r C:\KH\HostingInRender\website\requirements\base.in
+    # via -r c:\KH\HostingInRender\website\requirements\base.in
 pytokens==0.3.0
     # via black
 pytz==2025.2
@@ -270,7 +270,7 @@ requests==2.32.5
 requests-toolbelt==1.0.0
     # via python-gitlab
 responses==0.25.8
-    # via -r C:\KH\HostingInRender\website\requirements\testing.in
+    # via -r c:\KH\HostingInRender\website\requirements\testing.in
 rich==14.2.0
     # via pip-audit
 runs==1.2.2
@@ -293,7 +293,7 @@ sqlparse==0.5.3
 telepath==0.3.1
     # via wagtail
 termcolor==3.2.0
-    # via -r C:\KH\HostingInRender\website\requirements\development.in
+    # via -r c:\KH\HostingInRender\website\requirements\development.in
 toml==0.10.2
     # via pip-audit
 tzdata==2025.2
@@ -309,14 +309,14 @@ uvicorn==0.38.0
     # via -r requirements/render.in
 wagtail==5.2.8
     # via
-    #   -r C:\KH\HostingInRender\website\requirements\base.in
+    #   -r c:\KH\HostingInRender\website\requirements\base.in
     #   wagtail-factories
     #   wagtail-helpdesk
     #   wagtail-modeladmin
 wagtail-factories==4.2.1
-    # via -r C:\KH\HostingInRender\website\requirements\testing.in
+    # via -r c:\KH\HostingInRender\website\requirements\testing.in
 wagtail-helpdesk @ https://github.com/Klimaat-Helpdesk/wagtail-helpdesk/archive/refs/tags/0.7.0.zip
-    # via -r C:\KH\HostingInRender\website\requirements\base.in
+    # via -r c:\KH\HostingInRender\website\requirements\base.in
 wagtail-modeladmin==2.2.0
     # via wagtail-helpdesk
 waitress==3.0.2

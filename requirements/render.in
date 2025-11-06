@@ -1,5 +1,4 @@
 -r base.in
--r testing.in
 -r development.in
 dj_database_url
 gunicorn
