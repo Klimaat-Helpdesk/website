@@ -1,6 +1,16 @@
 import os
 import dj_database_url 
+from pathlib import Path
 
+
+def get_secret(secret_path, default=None):
+    if not os.path.exists(secret_path):
+        return default
+    return Path(secret_path).read_text().strip()
+
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
 INSTALLED_APPS = [
     "apps.gitlab",
     "apps.users",
