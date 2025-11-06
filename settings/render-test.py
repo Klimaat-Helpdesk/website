@@ -1,7 +1,5 @@
 import os
 import dj_database_url 
-from .base import *  # NOQA
-
 
 INSTALLED_APPS = [
     "apps.gitlab",
