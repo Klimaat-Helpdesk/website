@@ -35,7 +35,7 @@ if RENDER_EXTERNAL_HOSTNAME:
 ALLOWED_HOSTS.append("test.klimaathelpdesk.org")
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-STORAGES = {}
+STORAGES = None
 STATIC_ROOT = BASE_DIR / "static"
 STATIC_URL = "/static/"
 # This production code might break development mode, so we check whether we're in DEBUG mode
