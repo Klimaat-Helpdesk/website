@@ -11,6 +11,7 @@ def get_secret(secret_path, default=None):
 
 from .base import *  # NOQA
 
+#delattr( ., "STORAGES")
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
