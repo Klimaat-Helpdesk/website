@@ -1,9 +1,10 @@
-django~=4.2
-wagtail~=5.2
-wagtail-helpdesk @ https://github.com/Klimaat-Helpdesk/wagtail-helpdesk/archive/refs/tags/0.7.5.zip
-python-gitlab
-django-health-check
-django-storages[s3]
+#django~=4.2
+#wagtail~=5.2
+#wagtail-helpdesk @ https://github.com/Klimaat-Helpdesk/wagtail-helpdesk/archive/refs/tags/0.7.5.zip
+#python-gitlab
+#django-health-check
+#django-storages[s3]
+-r base.in
 -r development.in
 dj_database_url
 gunicorn
