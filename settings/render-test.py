@@ -1,9 +1,10 @@
 import os
 
 #from .base import *  #
-from .base import * #  NOQA
-#BASE_DIR, RELEASE_VERSION, WAGTAILADMIN_BASE_URL, DEFAULT_FROM_EMAIL, EMAIL_HOST
-to_exclude = ['STORAGES']
+#from .base import * #  NOQA
+from .base import BASE_DIR, RELEASE_VERSION, WAGTAILADMIN_BASE_URL, DEFAULT_AUTO_FIELD,INSTALLED_APPS, ROOT_URLCONF, MANIFEST_LOADER, TEMPLATES, AUTH_USER_MODEL, DATABASES, SECRET_KEY,  AUTH_PASSWORD_VALIDATORS,LANGUAGE_CODE,TIME_ZONE,USE_I18N, USE_L10N , USE_TZ, STATICFILES_FINDERS, WAGTAIL_SITE_NAME
+
+#to_exclude = ['STORAGES']
 #for name in to_exclude:
     #settings.base.globals().pop(name)
 #delattr( ., "STORAGES")
@@ -27,19 +28,6 @@ if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 ALLOWED_HOSTS.append("test.klimaathelpdesk.org")
-
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-# Override STORAGES from base.py
-STORAGES = {
-    "default": {
-        "BACKEND": "django.core.files.storage.FileSystemStorage",
-        "LOCATION": BASE_DIR / "media",
-    },
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    },
-}
- 
 
 STATIC_ROOT = BASE_DIR / "static"
 STATIC_URL = "/static/"
