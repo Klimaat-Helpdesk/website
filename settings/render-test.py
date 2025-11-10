@@ -3,10 +3,8 @@ import os
 #from .base import *  #
 from .base import * #  NOQA
 #BASE_DIR, RELEASE_VERSION, WAGTAILADMIN_BASE_URL, DEFAULT_FROM_EMAIL, EMAIL_HOST
-to_exclude = ['STORAGES']
-#for name in to_exclude:
-    #settings.base.globals().pop(name)
-#delattr( ., "STORAGES")
+
+globals().pop('STORAGES', None)
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -29,27 +27,14 @@ if RENDER_EXTERNAL_HOSTNAME:
 ALLOWED_HOSTS.append("test.klimaathelpdesk.org")
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-# Override STORAGES from base.py
-STORAGES = {
-    "default": {
-        "BACKEND": "django.core.files.storage.FileSystemStorage",
-        "LOCATION": BASE_DIR / "media",
-    },
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    },
-}
- 
 
-STATIC_ROOT = BASE_DIR / "static"
+# static files and media 
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATIC_URL = "/static/"
 
-# Tell Django to copy static assets into a path called `staticfiles` (this is specific to Render)
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-# Enable the WhiteNoise storage backend, which compresses static files to reduce disk use
-# and renames the files with unique names for each version to support long-term caching
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
+DEFAULT_FILE_STORAGE = "django.core.files.storage.FileSystemStorage"
+MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_URL = "/media/"
 
 
