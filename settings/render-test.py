@@ -75,7 +75,8 @@ DATABASES = {"default": {
         ),
 }}
 
-
+# Set default primary key field
+DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 ROOT_URLCONF = "urls"
 
 MANIFEST_LOADER = {

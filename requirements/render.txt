@@ -315,7 +315,7 @@ wagtail==5.2.8
     #   wagtail-modeladmin
 wagtail-factories==4.2.1
     # via -r c:\KH\HostingInRender\website\requirements\testing.in
-wagtail-helpdesk @ https://github.com/Klimaat-Helpdesk/wagtail-helpdesk/archive/refs/tags/0.7.0.zip
+wagtail-helpdesk @ https://github.com/Klimaat-Helpdesk/wagtail-helpdesk/archive/refs/tags/0.7.5.zip
     # via -r c:\KH\HostingInRender\website\requirements\base.in
 wagtail-modeladmin==2.2.0
     # via wagtail-helpdesk
