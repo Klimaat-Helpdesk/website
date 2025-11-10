@@ -1,16 +1,11 @@
 import os
-import dj_database_url 
-from pathlib import Path
 
-
-def get_secret(secret_path, default=None):
-    if not os.path.exists(secret_path):
-        return default
-    return Path(secret_path).read_text().strip()
-
-
-from .base import *  # NOQA
-
+#from .base import *  #
+from .base import * #  NOQA
+#BASE_DIR, RELEASE_VERSION, WAGTAILADMIN_BASE_URL, DEFAULT_FROM_EMAIL, EMAIL_HOST
+to_exclude = ['STORAGES']
+#for name in to_exclude:
+    #settings.base.globals().pop(name)
 #delattr( ., "STORAGES")
 
 MIDDLEWARE = [
@@ -25,10 +20,8 @@ MIDDLEWARE = [
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",
 ]
 
-
-# Replace the SQLite DATABASES configuration with PostgreSQL:
-ALLOWED_HOSTS = []
 DEBUG = False
+ALLOWED_HOSTS = []
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
@@ -50,14 +43,13 @@ STORAGES = {
 
 STATIC_ROOT = BASE_DIR / "static"
 STATIC_URL = "/static/"
-# This production code might break development mode, so we check whether we're in DEBUG mode
-if not DEBUG:
-    # Tell Django to copy static assets into a path called `staticfiles` (this is specific to Render)
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-    # Enable the WhiteNoise storage backend, which compresses static files to reduce disk use
-    # and renames the files with unique names for each version to support long-term caching
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# Tell Django to copy static assets into a path called `staticfiles` (this is specific to Render)
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Enable the WhiteNoise storage backend, which compresses static files to reduce disk use
+# and renames the files with unique names for each version to support long-term caching
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 
