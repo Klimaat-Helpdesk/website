@@ -149,4 +149,3 @@ if not DEBUG:
 WAGTAIL_SITE_NAME = "klimaat-helpdesk"
 WAGTAILADMIN_BASE_URL = BASE_URL = "https://klimaathelpdesk.org"
 
-
