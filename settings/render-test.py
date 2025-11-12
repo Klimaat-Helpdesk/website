@@ -2,14 +2,15 @@ import os
 import dj_database_url 
 from pathlib import Path
 
+#from .base import * #  NOQA
+from .base import BASE_DIR, RELEASE_VERSION, WAGTAILADMIN_BASE_URL, DEFAULT_AUTO_FIELD,INSTALLED_APPS, ROOT_URLCONF, MANIFEST_LOADER, TEMPLATES, AUTH_USER_MODEL, DATABASES, SECRET_KEY,  AUTH_PASSWORD_VALIDATORS,LANGUAGE_CODE,TIME_ZONE,USE_I18N, USE_L10N , USE_TZ, STATICFILES_FINDERS, WAGTAIL_SITE_NAME
+
+#to_exclude = ['STORAGES']
 
 def get_secret(secret_path, default=None):
     if not os.path.exists(secret_path):
         return default
     return Path(secret_path).read_text().strip()
-
-
-from .base import *  # NOQA
 
 
 MIDDLEWARE = [
