@@ -6,5 +6,5 @@ set -o errexit
 pip install -r ./requirements/render.txt
 
 # Convert static asset files
-#python manage.py collectstatic --no-input
+# python manage.py collectstatic --no-input
 
