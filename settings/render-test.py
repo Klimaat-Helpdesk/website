@@ -115,7 +115,7 @@ ALLOWED_HOSTS.append("test.klimaathelpdesk.org")
 SECRET_KEY = "CHANGEME!!!"
 
 BASE_URL = WAGTAILADMIN_BASE_URL = "http://localhost:8000"
-MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_ROOT = "/media"
 MEDIA_URL = "/media/"
 
 STATICFILES_FINDERS = [
