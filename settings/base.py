@@ -95,7 +95,7 @@ INSTALLED_APPS = [
     "django.contrib.sitemaps",
 
     # Health check
-    #"health_check",
+    "health_check",
 ]
 
 MIDDLEWARE = [
