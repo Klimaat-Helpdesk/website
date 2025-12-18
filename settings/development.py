@@ -35,7 +35,7 @@ STATIC_ROOT = "/static/"
 STORAGES["default"] = {  # noqa: F405
     "BACKEND": "django.core.files.storage.FileSystemStorage"
 }
-MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_ROOT = os.getenv("MEDIA_ROOT", BASE_DIR / "media")
 MEDIA_URL = "/media/"
 
 
