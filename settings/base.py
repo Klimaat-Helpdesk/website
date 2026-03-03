@@ -86,6 +86,7 @@ INSTALLED_APPS = [
     "wagtail",
     "modelcluster",
     "taggit",
+     "embed_video",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
